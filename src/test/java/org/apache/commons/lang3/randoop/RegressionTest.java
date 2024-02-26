@@ -1,3 +1,5 @@
+package org.apache.commons.lang3.randoop;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

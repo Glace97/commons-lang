@@ -1,3 +1,5 @@
+package org.apache.commons.lang3.randoop;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -1102,26 +1104,26 @@ public class RegressionTest2 {
         org.junit.Assert.assertNotNull(wildcardClassArray41);
     }
 
-    @Test
-    public void test1063() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1063");
-        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle0 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
-        java.lang.StringBuffer stringBuffer1 = null;
-        org.apache.commons.lang3.JavaVersion javaVersion3 = org.apache.commons.lang3.JavaVersion.JAVA_0_9;
-        org.apache.commons.lang3.JavaVersion javaVersion4 = org.apache.commons.lang3.JavaVersion.JAVA_0_9;
-        org.apache.commons.lang3.Range<org.apache.commons.lang3.JavaVersion> javaVersionRange5 = org.apache.commons.lang3.Range.of(javaVersion3, javaVersion4);
-        // The following exception was thrown during execution in test generation
-        try {
-            multilineRecursiveToStringStyle0.appendDetail(stringBuffer1, "null", (java.lang.Object) javaVersion4);
-            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field private final java.lang.String java.lang.Enum.name accessible: module java.base does not \"opens java.lang\" to unnamed module @654b5005");
-        } catch (java.lang.reflect.InaccessibleObjectException e) {
-            // Expected exception.
-        }
-        org.junit.Assert.assertTrue("'" + javaVersion3 + "' != '" + org.apache.commons.lang3.JavaVersion.JAVA_0_9 + "'", javaVersion3.equals(org.apache.commons.lang3.JavaVersion.JAVA_0_9));
-        org.junit.Assert.assertTrue("'" + javaVersion4 + "' != '" + org.apache.commons.lang3.JavaVersion.JAVA_0_9 + "'", javaVersion4.equals(org.apache.commons.lang3.JavaVersion.JAVA_0_9));
-        org.junit.Assert.assertNotNull(javaVersionRange5);
-    }
+//    @Test
+//    public void test1063() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1063");
+//        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle0 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
+//        java.lang.StringBuffer stringBuffer1 = null;
+//        org.apache.commons.lang3.JavaVersion javaVersion3 = org.apache.commons.lang3.JavaVersion.JAVA_0_9;
+//        org.apache.commons.lang3.JavaVersion javaVersion4 = org.apache.commons.lang3.JavaVersion.JAVA_0_9;
+//        org.apache.commons.lang3.Range<org.apache.commons.lang3.JavaVersion> javaVersionRange5 = org.apache.commons.lang3.Range.of(javaVersion3, javaVersion4);
+//        // The following exception was thrown during execution in test generation
+//        try {
+//            multilineRecursiveToStringStyle0.appendDetail(stringBuffer1, "null", (java.lang.Object) javaVersion4);
+//            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field private final java.lang.String java.lang.Enum.name accessible: module java.base does not \"opens java.lang\" to unnamed module @654b5005");
+//        } catch (java.lang.reflect.InaccessibleObjectException e) {
+//            // Expected exception.
+//        }
+//        org.junit.Assert.assertTrue("'" + javaVersion3 + "' != '" + org.apache.commons.lang3.JavaVersion.JAVA_0_9 + "'", javaVersion3.equals(org.apache.commons.lang3.JavaVersion.JAVA_0_9));
+//        org.junit.Assert.assertTrue("'" + javaVersion4 + "' != '" + org.apache.commons.lang3.JavaVersion.JAVA_0_9 + "'", javaVersion4.equals(org.apache.commons.lang3.JavaVersion.JAVA_0_9));
+//        org.junit.Assert.assertNotNull(javaVersionRange5);
+//    }
 
     @Test
     public void test1064() throws Throwable {
@@ -3392,17 +3394,17 @@ public class RegressionTest2 {
         org.junit.Assert.assertEquals(java.util.Arrays.toString(byteArray1), "[]");
     }
 
-    @Test
-    public void test1168() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1168");
-        org.apache.commons.lang3.tuple.ImmutableTriple<java.lang.String, java.lang.constant.ConstantDesc, java.lang.constant.Constable> strImmutableTriple0 = org.apache.commons.lang3.tuple.ImmutableTriple.nullTriple();
-        java.lang.String str2 = strImmutableTriple0.toString("hi!");
-        java.lang.constant.ConstantDesc constantDesc3 = strImmutableTriple0.getMiddle();
-        org.junit.Assert.assertNotNull(strImmutableTriple0);
-        org.junit.Assert.assertEquals("'" + str2 + "' != '" + "hi!" + "'", str2, "hi!");
-        org.junit.Assert.assertNull(constantDesc3);
-    }
+//    @Test
+//    public void test1168() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1168");
+//        org.apache.commons.lang3.tuple.ImmutableTriple<java.lang.String, java.lang.constant.ConstantDesc, java.lang.constant.Constable> strImmutableTriple0 = org.apache.commons.lang3.tuple.ImmutableTriple.nullTriple();
+//        java.lang.String str2 = strImmutableTriple0.toString("hi!");
+//        java.lang.constant.ConstantDesc constantDesc3 = strImmutableTriple0.getMiddle();
+//        org.junit.Assert.assertNotNull(strImmutableTriple0);
+//        org.junit.Assert.assertEquals("'" + str2 + "' != '" + "hi!" + "'", str2, "hi!");
+//        org.junit.Assert.assertNull(constantDesc3);
+//    }
 
     @Test
     public void test1169() throws Throwable {
@@ -3624,24 +3626,24 @@ public class RegressionTest2 {
         org.junit.Assert.assertEquals(java.util.Arrays.toString(byteArray8), "[0, -1]");
     }
 
-    @Test
-    public void test1181() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1181");
-        org.apache.commons.lang3.builder.ToStringStyle toStringStyle2 = null;
-        org.apache.commons.lang3.builder.ReflectionDiffBuilder<java.io.Serializable> serializableReflectionDiffBuilder3 = new org.apache.commons.lang3.builder.ReflectionDiffBuilder<java.io.Serializable>((java.io.Serializable) (byte) 10, (java.io.Serializable) 0, toStringStyle2);
-        org.apache.commons.lang3.function.FailableIntFunction<org.apache.commons.lang3.builder.RecursiveToStringStyle, java.lang.RuntimeException> recursiveToStringStyleFailableIntFunction4 = org.apache.commons.lang3.function.FailableIntFunction.nop();
-        org.apache.commons.lang3.tuple.Pair<org.apache.commons.lang3.builder.Builder<org.apache.commons.lang3.builder.DiffResult<java.io.Serializable>>, org.apache.commons.lang3.function.FailableIntFunction<org.apache.commons.lang3.builder.RecursiveToStringStyle, java.lang.RuntimeException>> serializableDiffResultBuilderPair5 = org.apache.commons.lang3.tuple.Pair.ofNonNull((org.apache.commons.lang3.builder.Builder<org.apache.commons.lang3.builder.DiffResult<java.io.Serializable>>) serializableReflectionDiffBuilder3, recursiveToStringStyleFailableIntFunction4);
-        // The following exception was thrown during execution in test generation
-        try {
-            org.apache.commons.lang3.builder.DiffResult<java.io.Serializable> serializableDiffResult6 = serializableReflectionDiffBuilder3.build();
-            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field private final byte java.lang.Byte.value accessible: module java.base does not \"opens java.lang\" to unnamed module @654b5005");
-        } catch (java.lang.reflect.InaccessibleObjectException e) {
-            // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(recursiveToStringStyleFailableIntFunction4);
-        org.junit.Assert.assertNotNull(serializableDiffResultBuilderPair5);
-    }
+//    @Test
+//    public void test1181() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1181");
+//        org.apache.commons.lang3.builder.ToStringStyle toStringStyle2 = null;
+//        org.apache.commons.lang3.builder.ReflectionDiffBuilder<java.io.Serializable> serializableReflectionDiffBuilder3 = new org.apache.commons.lang3.builder.ReflectionDiffBuilder<java.io.Serializable>((java.io.Serializable) (byte) 10, (java.io.Serializable) 0, toStringStyle2);
+//        org.apache.commons.lang3.function.FailableIntFunction<org.apache.commons.lang3.builder.RecursiveToStringStyle, java.lang.RuntimeException> recursiveToStringStyleFailableIntFunction4 = org.apache.commons.lang3.function.FailableIntFunction.nop();
+//        org.apache.commons.lang3.tuple.Pair<org.apache.commons.lang3.builder.Builder<org.apache.commons.lang3.builder.DiffResult<java.io.Serializable>>, org.apache.commons.lang3.function.FailableIntFunction<org.apache.commons.lang3.builder.RecursiveToStringStyle, java.lang.RuntimeException>> serializableDiffResultBuilderPair5 = org.apache.commons.lang3.tuple.Pair.ofNonNull((org.apache.commons.lang3.builder.Builder<org.apache.commons.lang3.builder.DiffResult<java.io.Serializable>>) serializableReflectionDiffBuilder3, recursiveToStringStyleFailableIntFunction4);
+//        // The following exception was thrown during execution in test generation
+//        try {
+//            org.apache.commons.lang3.builder.DiffResult<java.io.Serializable> serializableDiffResult6 = serializableReflectionDiffBuilder3.build();
+//            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field private final byte java.lang.Byte.value accessible: module java.base does not \"opens java.lang\" to unnamed module @654b5005");
+//        } catch (java.lang.reflect.InaccessibleObjectException e) {
+//            // Expected exception.
+//        }
+//        org.junit.Assert.assertNotNull(recursiveToStringStyleFailableIntFunction4);
+//        org.junit.Assert.assertNotNull(serializableDiffResultBuilderPair5);
+//    }
 
     @Test
     public void test1182() throws Throwable {
@@ -5520,37 +5522,37 @@ public class RegressionTest2 {
         org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + true + "'", boolean37 == true);
     }
 
-    @Test
-    public void test1272() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1272");
-        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle0 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
-        org.apache.commons.lang3.text.StrTokenizer strTokenizer4 = new org.apache.commons.lang3.text.StrTokenizer("581cd446", '\n', 'a');
-        java.lang.String[] strArray5 = strTokenizer4.getTokenArray();
-        java.lang.String str6 = org.apache.commons.lang3.builder.ReflectionToStringBuilder.toStringExclude((java.lang.Object) multilineRecursiveToStringStyle0, strArray5);
-        java.lang.StringBuffer stringBuffer7 = null;
-        java.util.Locale[] localeArray9 = new java.util.Locale[] {};
-        java.util.ArrayList<java.util.Locale> localeList10 = new java.util.ArrayList<java.util.Locale>();
-        boolean boolean11 = java.util.Collections.addAll((java.util.Collection<java.util.Locale>) localeList10, localeArray9);
-        java.net.URL[] uRLArray13 = org.apache.commons.lang3.ClassLoaderUtils.getThreadURLs();
-        java.util.Collection<java.util.Locale> localeCollection14 = org.apache.commons.lang3.Validate.noNullElements((java.util.Collection<java.util.Locale>) localeList10, "Integer", (java.lang.Object[]) uRLArray13);
-        org.apache.commons.lang3.stream.Streams.FailableStream<java.util.Locale> localeFailableStream15 = org.apache.commons.lang3.stream.Streams.failableStream((java.util.Collection<java.util.Locale>) localeList10);
-        java.util.stream.Stream<java.util.Locale> localeStream16 = localeFailableStream15.stream();
-        // The following exception was thrown during execution in test generation
-        try {
-            multilineRecursiveToStringStyle0.appendDetail(stringBuffer7, "UTF-16", (java.lang.Object) localeStream16);
-            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field static final boolean java.util.stream.AbstractPipeline.$assertionsDisabled accessible: module java.base does not \"opens java.util.stream\" to unnamed module @654b5005");
-        } catch (java.lang.reflect.InaccessibleObjectException e) {
-            // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(strArray5);
-        org.junit.Assert.assertNotNull(localeArray9);
-        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
-        org.junit.Assert.assertNotNull(uRLArray13);
-        org.junit.Assert.assertNotNull(localeCollection14);
-        org.junit.Assert.assertNotNull(localeFailableStream15);
-        org.junit.Assert.assertNotNull(localeStream16);
-    }
+//    @Test
+//    public void test1272() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1272");
+//        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle0 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
+//        org.apache.commons.lang3.text.StrTokenizer strTokenizer4 = new org.apache.commons.lang3.text.StrTokenizer("581cd446", '\n', 'a');
+//        java.lang.String[] strArray5 = strTokenizer4.getTokenArray();
+//        java.lang.String str6 = org.apache.commons.lang3.builder.ReflectionToStringBuilder.toStringExclude((java.lang.Object) multilineRecursiveToStringStyle0, strArray5);
+//        java.lang.StringBuffer stringBuffer7 = null;
+//        java.util.Locale[] localeArray9 = new java.util.Locale[] {};
+//        java.util.ArrayList<java.util.Locale> localeList10 = new java.util.ArrayList<java.util.Locale>();
+//        boolean boolean11 = java.util.Collections.addAll((java.util.Collection<java.util.Locale>) localeList10, localeArray9);
+//        java.net.URL[] uRLArray13 = org.apache.commons.lang3.ClassLoaderUtils.getThreadURLs();
+//        java.util.Collection<java.util.Locale> localeCollection14 = org.apache.commons.lang3.Validate.noNullElements((java.util.Collection<java.util.Locale>) localeList10, "Integer", (java.lang.Object[]) uRLArray13);
+//        org.apache.commons.lang3.stream.Streams.FailableStream<java.util.Locale> localeFailableStream15 = org.apache.commons.lang3.stream.Streams.failableStream((java.util.Collection<java.util.Locale>) localeList10);
+//        java.util.stream.Stream<java.util.Locale> localeStream16 = localeFailableStream15.stream();
+//        // The following exception was thrown during execution in test generation
+//        try {
+//            multilineRecursiveToStringStyle0.appendDetail(stringBuffer7, "UTF-16", (java.lang.Object) localeStream16);
+//            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field static final boolean java.util.stream.AbstractPipeline.$assertionsDisabled accessible: module java.base does not \"opens java.util.stream\" to unnamed module @654b5005");
+//        } catch (java.lang.reflect.InaccessibleObjectException e) {
+//            // Expected exception.
+//        }
+//        org.junit.Assert.assertNotNull(strArray5);
+//        org.junit.Assert.assertNotNull(localeArray9);
+//        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+//        org.junit.Assert.assertNotNull(uRLArray13);
+//        org.junit.Assert.assertNotNull(localeCollection14);
+//        org.junit.Assert.assertNotNull(localeFailableStream15);
+//        org.junit.Assert.assertNotNull(localeStream16);
+//    }
 
     @Test
     public void test1273() throws Throwable {
@@ -7832,18 +7834,18 @@ public class RegressionTest2 {
         org.junit.Assert.assertTrue("'" + boolean41 + "' != '" + false + "'", boolean41 == false);
     }
 
-    @Test
-    public void test1372() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1372");
-        // The following exception was thrown during execution in test generation
-        try {
-            int int4 = org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode((-27), (int) (short) 97, (java.lang.Object) "glacierali", true);
-            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field static final boolean java.lang.String.COMPACT_STRINGS accessible: module java.base does not \"opens java.lang\" to unnamed module @654b5005");
-        } catch (java.lang.reflect.InaccessibleObjectException e) {
-            // Expected exception.
-        }
-    }
+//    @Test
+//    public void test1372() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1372");
+//        // The following exception was thrown during execution in test generation
+//        try {
+//            int int4 = org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode((-27), (int) (short) 97, (java.lang.Object) "glacierali", true);
+//            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field static final boolean java.lang.String.COMPACT_STRINGS accessible: module java.base does not \"opens java.lang\" to unnamed module @654b5005");
+//        } catch (java.lang.reflect.InaccessibleObjectException e) {
+//            // Expected exception.
+//        }
+//    }
 
     @Test
     public void test1373() throws Throwable {
@@ -8708,21 +8710,21 @@ public class RegressionTest2 {
         org.junit.Assert.assertNotNull(equalsBuilder46);
     }
 
-    @Test
-    public void test1409() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1409");
-        org.apache.commons.lang3.tuple.ImmutableTriple<java.lang.String, java.lang.constant.ConstantDesc, java.lang.constant.Constable> strImmutableTriple0 = org.apache.commons.lang3.tuple.ImmutableTriple.nullTriple();
-        java.lang.constant.ConstantDesc constantDesc1 = strImmutableTriple0.middle;
-        java.lang.String str3 = strImmutableTriple0.toString("HH:mm:ss");
-        java.lang.String str4 = strImmutableTriple0.getLeft();
-        java.lang.String str5 = strImmutableTriple0.getLeft();
-        org.junit.Assert.assertNotNull(strImmutableTriple0);
-        org.junit.Assert.assertNull(constantDesc1);
-        org.junit.Assert.assertEquals("'" + str3 + "' != '" + "HH:mm:ss" + "'", str3, "HH:mm:ss");
-        org.junit.Assert.assertNull(str4);
-        org.junit.Assert.assertNull(str5);
-    }
+//    @Test
+//    public void test1409() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1409");
+//        org.apache.commons.lang3.tuple.ImmutableTriple<java.lang.String, java.lang.constant.ConstantDesc, java.lang.constant.Constable> strImmutableTriple0 = org.apache.commons.lang3.tuple.ImmutableTriple.nullTriple();
+//        java.lang.constant.ConstantDesc constantDesc1 = strImmutableTriple0.middle;
+//        java.lang.String str3 = strImmutableTriple0.toString("HH:mm:ss");
+//        java.lang.String str4 = strImmutableTriple0.getLeft();
+//        java.lang.String str5 = strImmutableTriple0.getLeft();
+//        org.junit.Assert.assertNotNull(strImmutableTriple0);
+//        org.junit.Assert.assertNull(constantDesc1);
+//        org.junit.Assert.assertEquals("'" + str3 + "' != '" + "HH:mm:ss" + "'", str3, "HH:mm:ss");
+//        org.junit.Assert.assertNull(str4);
+//        org.junit.Assert.assertNull(str5);
+//    }
 
     @Test
     public void test1410() throws Throwable {

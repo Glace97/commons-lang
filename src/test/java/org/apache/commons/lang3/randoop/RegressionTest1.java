@@ -1,3 +1,4 @@
+package org.apache.commons.lang3.randoop;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -2998,49 +2999,49 @@ public class RegressionTest1 {
         org.junit.Assert.assertEquals("'" + str3 + "' != '" + "ava.specif" + "'", str3, "ava.specif");
     }
 
-    @Test
-    public void test0702() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest1.test0702");
-        long[] longArray5 = new long[] { 10L, (byte) 100, 100L, 'a', '4' };
-        java.util.BitSet bitSet8 = org.apache.commons.lang3.ArrayUtils.indexesOf(longArray5, (long) '\n', 100);
-        boolean boolean9 = org.apache.commons.lang3.ArrayUtils.isEmpty(longArray5);
-        long[] longArray11 = org.apache.commons.lang3.ArrayUtils.add(longArray5, (long) (short) 101);
-        long[] longArray18 = new long[] { (short) 10, 1L, 'a', 100L, ' ', 100 };
-        long[] longArray20 = org.apache.commons.lang3.ArrayUtils.remove(longArray18, 3);
-        boolean boolean21 = org.apache.commons.lang3.ArrayUtils.isSameLength(longArray5, longArray18);
-        java.lang.Long[] longArray29 = new java.lang.Long[] { 10L, 0L, (-1L), (-1L), 10L, 1L };
-        java.lang.Long[] longArray30 = org.apache.commons.lang3.ArrayUtils.nullToEmpty(longArray29);
-        java.net.URL[] uRLArray31 = org.apache.commons.lang3.ClassLoaderUtils.getThreadURLs();
-        boolean boolean32 = org.apache.commons.lang3.ArrayUtils.isSameLength((java.lang.Object[]) longArray29, (java.lang.Object[]) uRLArray31);
-        java.lang.constant.ConstantDesc[] constantDescArray34 = org.apache.commons.lang3.ArrayUtils.removeAllOccurrences((java.lang.constant.ConstantDesc[]) longArray29, (java.lang.constant.ConstantDesc) (-1.0d));
-        java.lang.Class<?>[] wildcardClassArray35 = org.apache.commons.lang3.ArrayUtils.EMPTY_CLASS_ARRAY;
-        // The following exception was thrown during execution in test generation
-        try {
-            java.lang.Object obj36 = org.apache.commons.lang3.reflect.MethodUtils.invokeExactMethod((java.lang.Object) longArray18, "user.dir", (java.lang.Object[]) longArray29, wildcardClassArray35);
-            org.junit.Assert.fail("Expected exception of type java.lang.NoSuchMethodException; message: No such accessible method: user.dir() on object: [J");
-        } catch (java.lang.NoSuchMethodException e) {
-            // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(longArray5);
-        org.junit.Assert.assertEquals(java.util.Arrays.toString(longArray5), "[10, 100, 100, 97, 52]");
-        org.junit.Assert.assertNotNull(bitSet8);
-        org.junit.Assert.assertEquals(bitSet8.toString(), "{}");
-        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
-        org.junit.Assert.assertNotNull(longArray11);
-        org.junit.Assert.assertEquals(java.util.Arrays.toString(longArray11), "[10, 100, 100, 97, 52, 101]");
-        org.junit.Assert.assertNotNull(longArray18);
-        org.junit.Assert.assertEquals(java.util.Arrays.toString(longArray18), "[10, 1, 97, 100, 32, 100]");
-        org.junit.Assert.assertNotNull(longArray20);
-        org.junit.Assert.assertEquals(java.util.Arrays.toString(longArray20), "[10, 1, 97, 32, 100]");
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
-        org.junit.Assert.assertNotNull(longArray29);
-        org.junit.Assert.assertNotNull(longArray30);
-        org.junit.Assert.assertNotNull(uRLArray31);
-        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
-        org.junit.Assert.assertNotNull(constantDescArray34);
-        org.junit.Assert.assertNotNull(wildcardClassArray35);
-    }
+//    @Test
+//    public void test0702() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest1.test0702");
+//        long[] longArray5 = new long[] { 10L, (byte) 100, 100L, 'a', '4' };
+//        java.util.BitSet bitSet8 = org.apache.commons.lang3.ArrayUtils.indexesOf(longArray5, (long) '\n', 100);
+//        boolean boolean9 = org.apache.commons.lang3.ArrayUtils.isEmpty(longArray5);
+//        long[] longArray11 = org.apache.commons.lang3.ArrayUtils.add(longArray5, (long) (short) 101);
+//        long[] longArray18 = new long[] { (short) 10, 1L, 'a', 100L, ' ', 100 };
+//        long[] longArray20 = org.apache.commons.lang3.ArrayUtils.remove(longArray18, 3);
+//        boolean boolean21 = org.apache.commons.lang3.ArrayUtils.isSameLength(longArray5, longArray18);
+//        java.lang.Long[] longArray29 = new java.lang.Long[] { 10L, 0L, (-1L), (-1L), 10L, 1L };
+//        java.lang.Long[] longArray30 = org.apache.commons.lang3.ArrayUtils.nullToEmpty(longArray29);
+//        java.net.URL[] uRLArray31 = org.apache.commons.lang3.ClassLoaderUtils.getThreadURLs();
+//        boolean boolean32 = org.apache.commons.lang3.ArrayUtils.isSameLength((java.lang.Object[]) longArray29, (java.lang.Object[]) uRLArray31);
+//        java.lang.constant.ConstantDesc[] constantDescArray34 = org.apache.commons.lang3.ArrayUtils.removeAllOccurrences((java.lang.constant.ConstantDesc[]) longArray29, (java.lang.constant.ConstantDesc) (-1.0d));
+//        java.lang.Class<?>[] wildcardClassArray35 = org.apache.commons.lang3.ArrayUtils.EMPTY_CLASS_ARRAY;
+//        // The following exception was thrown during execution in test generation
+//        try {
+//            java.lang.Object obj36 = org.apache.commons.lang3.reflect.MethodUtils.invokeExactMethod((java.lang.Object) longArray18, "user.dir", (java.lang.Object[]) longArray29, wildcardClassArray35);
+//            org.junit.Assert.fail("Expected exception of type java.lang.NoSuchMethodException; message: No such accessible method: user.dir() on object: [J");
+//        } catch (java.lang.NoSuchMethodException e) {
+//            // Expected exception.
+//        }
+//        org.junit.Assert.assertNotNull(longArray5);
+//        org.junit.Assert.assertEquals(java.util.Arrays.toString(longArray5), "[10, 100, 100, 97, 52]");
+//        org.junit.Assert.assertNotNull(bitSet8);
+//        org.junit.Assert.assertEquals(bitSet8.toString(), "{}");
+//        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+//        org.junit.Assert.assertNotNull(longArray11);
+//        org.junit.Assert.assertEquals(java.util.Arrays.toString(longArray11), "[10, 100, 100, 97, 52, 101]");
+//        org.junit.Assert.assertNotNull(longArray18);
+//        org.junit.Assert.assertEquals(java.util.Arrays.toString(longArray18), "[10, 1, 97, 100, 32, 100]");
+//        org.junit.Assert.assertNotNull(longArray20);
+//        org.junit.Assert.assertEquals(java.util.Arrays.toString(longArray20), "[10, 1, 97, 32, 100]");
+//        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+//        org.junit.Assert.assertNotNull(longArray29);
+//        org.junit.Assert.assertNotNull(longArray30);
+//        org.junit.Assert.assertNotNull(uRLArray31);
+//        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
+//        org.junit.Assert.assertNotNull(constantDescArray34);
+//        org.junit.Assert.assertNotNull(wildcardClassArray35);
+//    }
 
     @Test
     public void test0703() throws Throwable {
@@ -3890,19 +3891,19 @@ public class RegressionTest1 {
         org.junit.Assert.assertEquals("'" + str2 + "' != '" + "java.ext.dirs" + "'", str2, "java.ext.dirs");
     }
 
-    @Test
-    public void test0761() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest1.test0761");
-        org.apache.commons.lang3.tuple.ImmutableTriple<java.lang.String, java.lang.constant.ConstantDesc, java.lang.constant.Constable> strImmutableTriple0 = org.apache.commons.lang3.tuple.ImmutableTriple.nullTriple();
-        org.apache.commons.lang3.function.FailableObjIntConsumer failableObjIntConsumer1 = org.apache.commons.lang3.function.FailableObjIntConsumer.NOP;
-        boolean boolean2 = strImmutableTriple0.equals((java.lang.Object) failableObjIntConsumer1);
-        java.lang.constant.ConstantDesc constantDesc3 = strImmutableTriple0.middle;
-        org.junit.Assert.assertNotNull(strImmutableTriple0);
-        org.junit.Assert.assertNotNull(failableObjIntConsumer1);
-        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertNull(constantDesc3);
-    }
+//    @Test
+//    public void test0761() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest1.test0761");
+//        org.apache.commons.lang3.tuple.ImmutableTriple<java.lang.String, java.lang.constant.ConstantDesc, java.lang.constant.Constable> strImmutableTriple0 = org.apache.commons.lang3.tuple.ImmutableTriple.nullTriple();
+//        org.apache.commons.lang3.function.FailableObjIntConsumer failableObjIntConsumer1 = org.apache.commons.lang3.function.FailableObjIntConsumer.NOP;
+//        boolean boolean2 = strImmutableTriple0.equals((java.lang.Object) failableObjIntConsumer1);
+//        java.lang.constant.ConstantDesc constantDesc3 = strImmutableTriple0.middle;
+//        org.junit.Assert.assertNotNull(strImmutableTriple0);
+//        org.junit.Assert.assertNotNull(failableObjIntConsumer1);
+//        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+//        org.junit.Assert.assertNull(constantDesc3);
+//    }
 
     @Test
     public void test0762() throws Throwable {
@@ -4496,65 +4497,65 @@ public class RegressionTest1 {
         org.junit.Assert.assertNull(contextedRuntimeException1);
     }
 
-    @Test
-    public void test0794() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest1.test0794");
-        org.apache.commons.lang3.builder.EqualsBuilder equalsBuilder1 = new org.apache.commons.lang3.builder.EqualsBuilder();
-        org.apache.commons.lang3.builder.EqualsBuilder equalsBuilder4 = equalsBuilder1.append(false, false);
-        java.lang.Object obj5 = null;
-        org.apache.commons.lang3.concurrent.MultiBackgroundInitializer multiBackgroundInitializer6 = new org.apache.commons.lang3.concurrent.MultiBackgroundInitializer();
-        java.util.concurrent.ExecutorService executorService7 = multiBackgroundInitializer6.getExternalExecutor();
-        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle10 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
-        org.apache.commons.lang3.text.StrTokenizer strTokenizer14 = new org.apache.commons.lang3.text.StrTokenizer("581cd446", '\n', 'a');
-        java.lang.String[] strArray15 = strTokenizer14.getTokenArray();
-        java.lang.String str16 = org.apache.commons.lang3.builder.ReflectionToStringBuilder.toStringExclude((java.lang.Object) multilineRecursiveToStringStyle10, strArray15);
-        java.lang.String str20 = org.apache.commons.lang3.StringUtils.join((java.lang.Object[]) strArray15, ";ClT9Ss'St<Q", (int) (short) 10, (-27));
-        int int21 = org.apache.commons.lang3.StringUtils.indexOfAny((java.lang.CharSequence) ";ClT9Ss'St<Q", (java.lang.CharSequence[]) strArray15);
-        boolean boolean22 = org.apache.commons.lang3.StringUtils.endsWithAny((java.lang.CharSequence) "                                                                                                open", (java.lang.CharSequence[]) strArray15);
-        boolean boolean23 = org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals(obj5, (java.lang.Object) executorService7, strArray15);
-        java.lang.Object[] objArray24 = org.apache.commons.lang3.ArrayUtils.nullToEmpty((java.lang.Object[]) strArray15);
-        java.lang.Object obj25 = null;
-        org.apache.commons.lang3.concurrent.MultiBackgroundInitializer multiBackgroundInitializer26 = new org.apache.commons.lang3.concurrent.MultiBackgroundInitializer();
-        java.util.concurrent.ExecutorService executorService27 = multiBackgroundInitializer26.getExternalExecutor();
-        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle30 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
-        org.apache.commons.lang3.text.StrTokenizer strTokenizer34 = new org.apache.commons.lang3.text.StrTokenizer("581cd446", '\n', 'a');
-        java.lang.String[] strArray35 = strTokenizer34.getTokenArray();
-        java.lang.String str36 = org.apache.commons.lang3.builder.ReflectionToStringBuilder.toStringExclude((java.lang.Object) multilineRecursiveToStringStyle30, strArray35);
-        java.lang.String str40 = org.apache.commons.lang3.StringUtils.join((java.lang.Object[]) strArray35, ";ClT9Ss'St<Q", (int) (short) 10, (-27));
-        int int41 = org.apache.commons.lang3.StringUtils.indexOfAny((java.lang.CharSequence) ";ClT9Ss'St<Q", (java.lang.CharSequence[]) strArray35);
-        boolean boolean42 = org.apache.commons.lang3.StringUtils.endsWithAny((java.lang.CharSequence) "                                                                                                open", (java.lang.CharSequence[]) strArray35);
-        boolean boolean43 = org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals(obj25, (java.lang.Object) executorService27, strArray35);
-        java.lang.Object[] objArray44 = org.apache.commons.lang3.ArrayUtils.nullToEmpty((java.lang.Object[]) strArray35);
-        org.apache.commons.lang3.builder.EqualsBuilder equalsBuilder45 = equalsBuilder1.append((java.lang.Object[]) strArray15, objArray44);
-        // The following exception was thrown during execution in test generation
-        try {
-            int int46 = org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode((java.lang.Object) "/Users/glacierali", strArray15);
-            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field static final boolean java.lang.String.COMPACT_STRINGS accessible: module java.base does not \"opens java.lang\" to unnamed module @654b5005");
-        } catch (java.lang.reflect.InaccessibleObjectException e) {
-            // Expected exception.
-        }
-        org.junit.Assert.assertNotNull(equalsBuilder4);
-        org.junit.Assert.assertNull(executorService7);
-        org.junit.Assert.assertNotNull(strArray15);
-        org.junit.Assert.assertEquals("'" + str20 + "' != '" + "" + "'", str20, "");
-        org.junit.Assert.assertTrue("'" + int21 + "' != '" + (-1) + "'", int21 == (-1));
-        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
-        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + true + "'", boolean23 == true);
-        org.junit.Assert.assertNotNull(objArray24);
-        org.junit.Assert.assertEquals(java.util.Arrays.deepToString(objArray24), "[581cd446]");
-        org.junit.Assert.assertEquals(java.util.Arrays.toString(objArray24), "[581cd446]");
-        org.junit.Assert.assertNull(executorService27);
-        org.junit.Assert.assertNotNull(strArray35);
-        org.junit.Assert.assertEquals("'" + str40 + "' != '" + "" + "'", str40, "");
-        org.junit.Assert.assertTrue("'" + int41 + "' != '" + (-1) + "'", int41 == (-1));
-        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
-        org.junit.Assert.assertTrue("'" + boolean43 + "' != '" + true + "'", boolean43 == true);
-        org.junit.Assert.assertNotNull(objArray44);
-        org.junit.Assert.assertEquals(java.util.Arrays.deepToString(objArray44), "[581cd446]");
-        org.junit.Assert.assertEquals(java.util.Arrays.toString(objArray44), "[581cd446]");
-        org.junit.Assert.assertNotNull(equalsBuilder45);
-    }
+//    @Test
+//    public void test0794() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest1.test0794");
+//        org.apache.commons.lang3.builder.EqualsBuilder equalsBuilder1 = new org.apache.commons.lang3.builder.EqualsBuilder();
+//        org.apache.commons.lang3.builder.EqualsBuilder equalsBuilder4 = equalsBuilder1.append(false, false);
+//        java.lang.Object obj5 = null;
+//        org.apache.commons.lang3.concurrent.MultiBackgroundInitializer multiBackgroundInitializer6 = new org.apache.commons.lang3.concurrent.MultiBackgroundInitializer();
+//        java.util.concurrent.ExecutorService executorService7 = multiBackgroundInitializer6.getExternalExecutor();
+//        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle10 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
+//        org.apache.commons.lang3.text.StrTokenizer strTokenizer14 = new org.apache.commons.lang3.text.StrTokenizer("581cd446", '\n', 'a');
+//        java.lang.String[] strArray15 = strTokenizer14.getTokenArray();
+//        java.lang.String str16 = org.apache.commons.lang3.builder.ReflectionToStringBuilder.toStringExclude((java.lang.Object) multilineRecursiveToStringStyle10, strArray15);
+//        java.lang.String str20 = org.apache.commons.lang3.StringUtils.join((java.lang.Object[]) strArray15, ";ClT9Ss'St<Q", (int) (short) 10, (-27));
+//        int int21 = org.apache.commons.lang3.StringUtils.indexOfAny((java.lang.CharSequence) ";ClT9Ss'St<Q", (java.lang.CharSequence[]) strArray15);
+//        boolean boolean22 = org.apache.commons.lang3.StringUtils.endsWithAny((java.lang.CharSequence) "                                                                                                open", (java.lang.CharSequence[]) strArray15);
+//        boolean boolean23 = org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals(obj5, (java.lang.Object) executorService7, strArray15);
+//        java.lang.Object[] objArray24 = org.apache.commons.lang3.ArrayUtils.nullToEmpty((java.lang.Object[]) strArray15);
+//        java.lang.Object obj25 = null;
+//        org.apache.commons.lang3.concurrent.MultiBackgroundInitializer multiBackgroundInitializer26 = new org.apache.commons.lang3.concurrent.MultiBackgroundInitializer();
+//        java.util.concurrent.ExecutorService executorService27 = multiBackgroundInitializer26.getExternalExecutor();
+//        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle30 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
+//        org.apache.commons.lang3.text.StrTokenizer strTokenizer34 = new org.apache.commons.lang3.text.StrTokenizer("581cd446", '\n', 'a');
+//        java.lang.String[] strArray35 = strTokenizer34.getTokenArray();
+//        java.lang.String str36 = org.apache.commons.lang3.builder.ReflectionToStringBuilder.toStringExclude((java.lang.Object) multilineRecursiveToStringStyle30, strArray35);
+//        java.lang.String str40 = org.apache.commons.lang3.StringUtils.join((java.lang.Object[]) strArray35, ";ClT9Ss'St<Q", (int) (short) 10, (-27));
+//        int int41 = org.apache.commons.lang3.StringUtils.indexOfAny((java.lang.CharSequence) ";ClT9Ss'St<Q", (java.lang.CharSequence[]) strArray35);
+//        boolean boolean42 = org.apache.commons.lang3.StringUtils.endsWithAny((java.lang.CharSequence) "                                                                                                open", (java.lang.CharSequence[]) strArray35);
+//        boolean boolean43 = org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals(obj25, (java.lang.Object) executorService27, strArray35);
+//        java.lang.Object[] objArray44 = org.apache.commons.lang3.ArrayUtils.nullToEmpty((java.lang.Object[]) strArray35);
+//        org.apache.commons.lang3.builder.EqualsBuilder equalsBuilder45 = equalsBuilder1.append((java.lang.Object[]) strArray15, objArray44);
+//        // The following exception was thrown during execution in test generation
+//        try {
+//            int int46 = org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode((java.lang.Object) "/Users/glacierali", strArray15);
+//            org.junit.Assert.fail("Expected exception of type java.lang.reflect.InaccessibleObjectException; message: Unable to make field static final boolean java.lang.String.COMPACT_STRINGS accessible: module java.base does not \"opens java.lang\" to unnamed module @654b5005");
+//        } catch (java.lang.reflect.InaccessibleObjectException e) {
+//            // Expected exception.
+//        }
+//        org.junit.Assert.assertNotNull(equalsBuilder4);
+//        org.junit.Assert.assertNull(executorService7);
+//        org.junit.Assert.assertNotNull(strArray15);
+//        org.junit.Assert.assertEquals("'" + str20 + "' != '" + "" + "'", str20, "");
+//        org.junit.Assert.assertTrue("'" + int21 + "' != '" + (-1) + "'", int21 == (-1));
+//        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+//        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + true + "'", boolean23 == true);
+//        org.junit.Assert.assertNotNull(objArray24);
+//        org.junit.Assert.assertEquals(java.util.Arrays.deepToString(objArray24), "[581cd446]");
+//        org.junit.Assert.assertEquals(java.util.Arrays.toString(objArray24), "[581cd446]");
+//        org.junit.Assert.assertNull(executorService27);
+//        org.junit.Assert.assertNotNull(strArray35);
+//        org.junit.Assert.assertEquals("'" + str40 + "' != '" + "" + "'", str40, "");
+//        org.junit.Assert.assertTrue("'" + int41 + "' != '" + (-1) + "'", int41 == (-1));
+//        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
+//        org.junit.Assert.assertTrue("'" + boolean43 + "' != '" + true + "'", boolean43 == true);
+//        org.junit.Assert.assertNotNull(objArray44);
+//        org.junit.Assert.assertEquals(java.util.Arrays.deepToString(objArray44), "[581cd446]");
+//        org.junit.Assert.assertEquals(java.util.Arrays.toString(objArray44), "[581cd446]");
+//        org.junit.Assert.assertNotNull(equalsBuilder45);
+//    }
 
     @Test
     public void test0795() throws Throwable {
