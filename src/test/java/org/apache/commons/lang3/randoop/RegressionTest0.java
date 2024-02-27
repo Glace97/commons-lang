@@ -684,13 +684,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertEquals("'" + str1 + "' != '" + " " + "'", str1, " ");
     }
 
-    @Test
-    public void test0061() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0061");
-        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_VERSION;
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1" + "'", str0, "16.0.1");
-    }
+//    @Test
+//    public void test0061() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0061");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_VERSION;
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1" + "'", str0, "16.0.1");
+//    }
 
     @Test
     public void test0062() throws Throwable {
@@ -930,13 +930,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertEquals(java.util.Arrays.toString(charArray8), "[#]");
     }
 
-    @Test
-    public void test0082() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0082");
-        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_RUNTIME_VERSION;
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1+9" + "'", str0, "16.0.1+9");
-    }
+//    @Test
+//    public void test0082() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0082");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_RUNTIME_VERSION;
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1+9" + "'", str0, "16.0.1+9");
+//    }
 
     @Test
     public void test0083() throws Throwable {
@@ -1001,13 +1001,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertNotNull(strArray4);
     }
 
-    @Test
-    public void test0088() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0088");
-        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_VM_VENDOR;
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "AdoptOpenJDK" + "'", str0, "AdoptOpenJDK");
-    }
+//    @Test
+//    public void test0088() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0088");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_VM_VENDOR;
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "AdoptOpenJDK" + "'", str0, "AdoptOpenJDK");
+//    }
 
     @Test
     public void test0089() throws Throwable {
@@ -1062,13 +1062,13 @@ public class RegressionTest0 {
         }
     }
 
-    @Test
-    public void test0095() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0095");
-        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaClassVersion();
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "60.0" + "'", str0, "60.0");
-    }
+//    @Test
+//    public void test0095() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0095");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaClassVersion();
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "60.0" + "'", str0, "60.0");
+//    }
 
     @Test
     public void test0096() throws Throwable {
@@ -1178,13 +1178,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertEquals("'" + str2 + "' != '" + "581cd446" + "'", str2, "581cd446");
     }
 
-    @Test
-    public void test0106() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0106");
-        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_VM_VERSION;
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1+9" + "'", str0, "16.0.1+9");
-    }
+//    @Test
+//    public void test0106() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0106");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_VM_VERSION;
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1+9" + "'", str0, "16.0.1+9");
+//    }
 
     @Test
     public void test0107() throws Throwable {
@@ -2009,13 +2009,13 @@ public class RegressionTest0 {
         org.apache.commons.lang3.concurrent.CircuitBreakingException circuitBreakingException1 = new org.apache.commons.lang3.concurrent.CircuitBreakingException("UnicodeUnescaper");
     }
 
-    @Test
-    public void test0181() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0181");
-        boolean boolean0 = org.apache.commons.lang3.SystemUtils.IS_JAVA_21;
-        org.junit.Assert.assertTrue("'" + boolean0 + "' != '" + false + "'", boolean0 == false);
-    }
+//    @Test
+//    public void test0181() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0181");
+//        boolean boolean0 = org.apache.commons.lang3.SystemUtils.IS_JAVA_21;
+//        org.junit.Assert.assertTrue("'" + boolean0 + "' != '" + false + "'", boolean0 == false);
+//    }
 
     @Test
     public void test0182() throws Throwable {
@@ -2168,13 +2168,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + float2 + "' != '" + 32.0f + "'", float2 == 32.0f);
     }
 
-    @Test
-    public void test0196() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0196");
-        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.OS_VERSION;
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "11.5" + "'", str0, "11.5");
-    }
+//    @Test
+//    public void test0196() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0196");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.OS_VERSION;
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "11.5" + "'", str0, "11.5");
+//    }
 
     @Test
     public void test0197() throws Throwable {
@@ -3137,13 +3137,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + byte1 + "' != '" + (byte) 0 + "'", byte1 == (byte) 0);
     }
 
-    @Test
-    public void test0284() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0284");
-        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaVendorUrl();
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "https://adoptopenjdk.net/" + "'", str0, "https://adoptopenjdk.net/");
-    }
+//    @Test
+//    public void test0284() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0284");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaVendorUrl();
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "https://adoptopenjdk.net/" + "'", str0, "https://adoptopenjdk.net/");
+//    }
 
     @Test
     public void test0285() throws Throwable {
@@ -4532,13 +4532,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertEquals("'" + str1 + "' != '" + "true,},,,{,],[,true,=,,,false,false,<null>,>,<size=,>,<,true,true,true,false" + "'", str1, "true,},,,{,],[,true,=,,,false,false,<null>,>,<size=,>,<,true,true,true,false");
     }
 
-    @Test
-    public void test0402() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0402");
-        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getOsVersion();
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "11.5" + "'", str0, "11.5");
-    }
+//    @Test
+//    public void test0402() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0402");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getOsVersion();
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "11.5" + "'", str0, "11.5");
+//    }
 
     @Test
     public void test0403() throws Throwable {
@@ -5782,13 +5782,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertEquals("'" + str1 + "' != '" + "100" + "'", str1, "100");
     }
 
-    @Test
-    public void test0485() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0485");
-        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaVmVendor();
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "AdoptOpenJDK" + "'", str0, "AdoptOpenJDK");
-    }
+//   @Test
+//    public void test0485() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0485");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaVmVendor();
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "AdoptOpenJDK" + "'", str0, "AdoptOpenJDK");
+//    }
 
     @Test
     public void test0486() throws Throwable {
@@ -5897,13 +5897,13 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
     }
 
-    @Test
-    public void test0494() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test0494");
-        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_CLASS_VERSION;
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "60.0" + "'", str0, "60.0");
-    }
+//    @Test
+//    public void test0494() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest0.test0494");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemUtils.JAVA_CLASS_VERSION;
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "60.0" + "'", str0, "60.0");
+//    }
 
     @Test
     public void test0495() throws Throwable {

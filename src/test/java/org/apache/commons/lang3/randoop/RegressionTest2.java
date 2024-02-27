@@ -2982,13 +2982,13 @@ public class RegressionTest2 {
         org.junit.Assert.assertEquals("'" + str1 + "' != '" + "FastDateFormat[yyyy-MM-dd,en_SE,Europe/Stockholm]" + "'", str1, "FastDateFormat[yyyy-MM-dd,en_SE,Europe/Stockholm]");
     }
 
-    @Test
-    public void test1143() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1143");
-        boolean boolean0 = org.apache.commons.lang3.SystemUtils.IS_OS_MAC_OSX_BIG_SUR;
-        org.junit.Assert.assertTrue("'" + boolean0 + "' != '" + true + "'", boolean0 == true);
-    }
+//    @Test
+//    public void test1143() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1143");
+//        boolean boolean0 = org.apache.commons.lang3.SystemUtils.IS_OS_MAC_OSX_BIG_SUR;
+//        org.junit.Assert.assertTrue("'" + boolean0 + "' != '" + true + "'", boolean0 == true);
+//    }
 
     @Test
     public void test1144() throws Throwable {
@@ -3099,13 +3099,13 @@ public class RegressionTest2 {
         }
     }
 
-    @Test
-    public void test1148() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1148");
-        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaHome();
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home" + "'", str0, "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home");
-    }
+//    @Test
+//    public void test1148() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1148");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaHome();
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home" + "'", str0, "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home");
+//    }
 
     @Test
     public void test1149() throws Throwable {
@@ -5337,13 +5337,13 @@ public class RegressionTest2 {
         org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + true + "'", boolean11 == true);
     }
 
-    @Test
-    public void test1262() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1262");
-        boolean boolean0 = org.apache.commons.lang3.SystemUtils.IS_OS_MAC_OSX_VENTURA;
-        org.junit.Assert.assertTrue("'" + boolean0 + "' != '" + false + "'", boolean0 == false);
-    }
+//    @Test
+//    public void test1262() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1262");
+//        boolean boolean0 = org.apache.commons.lang3.SystemUtils.IS_OS_MAC_OSX_VENTURA;
+//        org.junit.Assert.assertTrue("'" + boolean0 + "' != '" + false + "'", boolean0 == false);
+//    }
 
     @Test
     public void test1263() throws Throwable {
@@ -7034,13 +7034,13 @@ public class RegressionTest2 {
         }
     }
 
-    @Test
-    public void test1331() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest2.test1331");
-        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaVmVersion();
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1+9" + "'", str0, "16.0.1+9");
-    }
+//    @Test
+//    public void test1331() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest2.test1331");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaVmVersion();
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1+9" + "'", str0, "16.0.1+9");
+//    }
 
     @Test
     public void test1332() throws Throwable {

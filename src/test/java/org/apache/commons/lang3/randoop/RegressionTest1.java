@@ -2498,13 +2498,13 @@ public class RegressionTest1 {
         org.junit.Assert.assertNotNull(wildcardClassComparator0);
     }
 
-    @Test
-    public void test0667() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest1.test0667");
-        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaVendor();
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "AdoptOpenJDK" + "'", str0, "AdoptOpenJDK");
-    }
+//    @Test
+//    public void test0667() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest1.test0667");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaVendor();
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "AdoptOpenJDK" + "'", str0, "AdoptOpenJDK");
+//    }
 
     @Test
     public void test0668() throws Throwable {
@@ -3544,13 +3544,13 @@ public class RegressionTest1 {
         org.junit.Assert.assertNotNull(strArray0);
     }
 
-    @Test
-    public void test0736() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest1.test0736");
-        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaRuntimeVersion();
-        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1+9" + "'", str0, "16.0.1+9");
-    }
+//    @Test
+//    public void test0736() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest1.test0736");
+//        java.lang.String str0 = org.apache.commons.lang3.SystemProperties.getJavaRuntimeVersion();
+//        org.junit.Assert.assertEquals("'" + str0 + "' != '" + "16.0.1+9" + "'", str0, "16.0.1+9");
+//    }
 
     @Test
     public void test0737() throws Throwable {
@@ -8016,25 +8016,25 @@ public class RegressionTest1 {
         org.apache.commons.lang3.StringEscapeUtils stringEscapeUtils0 = new org.apache.commons.lang3.StringEscapeUtils();
     }
 
-    @Test
-    public void test0985() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest1.test0985");
-        org.apache.commons.lang3.exception.DefaultExceptionContext defaultExceptionContext0 = new org.apache.commons.lang3.exception.DefaultExceptionContext();
-        org.apache.commons.lang3.function.FailableBiConsumer<java.io.File, org.apache.commons.lang3.builder.RecursiveToStringStyle, java.lang.RuntimeException> fileFailableBiConsumer2 = org.apache.commons.lang3.function.FailableBiConsumer.nop();
-        org.apache.commons.lang3.exception.DefaultExceptionContext defaultExceptionContext3 = defaultExceptionContext0.addContextValue("\n", (java.lang.Object) fileFailableBiConsumer2);
-        java.io.File file4 = org.apache.commons.lang3.SystemUtils.getJavaHome();
-        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle5 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
-        org.apache.commons.lang3.function.Failable.accept(fileFailableBiConsumer2, file4, (org.apache.commons.lang3.builder.RecursiveToStringStyle) multilineRecursiveToStringStyle5);
-        org.apache.commons.lang3.compare.ObjectToStringComparator objectToStringComparator8 = new org.apache.commons.lang3.compare.ObjectToStringComparator();
-        org.apache.commons.lang3.Range<java.lang.Object> objRange9 = org.apache.commons.lang3.Range.between((java.lang.Object) file4, (java.lang.Object) "Double", (java.util.Comparator<java.lang.Object>) objectToStringComparator8);
-        org.junit.Assert.assertNotNull(fileFailableBiConsumer2);
-        org.junit.Assert.assertNotNull(defaultExceptionContext3);
-        org.junit.Assert.assertNotNull(file4);
-        org.junit.Assert.assertEquals(file4.getParent(), "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents");
-        org.junit.Assert.assertEquals(file4.toString(), "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home");
-        org.junit.Assert.assertNotNull(objRange9);
-    }
+//    @Test
+//    public void test0985() throws Throwable {
+//        if (debug)
+//            System.out.format("%n%s%n", "RegressionTest1.test0985");
+//        org.apache.commons.lang3.exception.DefaultExceptionContext defaultExceptionContext0 = new org.apache.commons.lang3.exception.DefaultExceptionContext();
+//        org.apache.commons.lang3.function.FailableBiConsumer<java.io.File, org.apache.commons.lang3.builder.RecursiveToStringStyle, java.lang.RuntimeException> fileFailableBiConsumer2 = org.apache.commons.lang3.function.FailableBiConsumer.nop();
+//        org.apache.commons.lang3.exception.DefaultExceptionContext defaultExceptionContext3 = defaultExceptionContext0.addContextValue("\n", (java.lang.Object) fileFailableBiConsumer2);
+//        java.io.File file4 = org.apache.commons.lang3.SystemUtils.getJavaHome();
+//        org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle multilineRecursiveToStringStyle5 = new org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle();
+//        org.apache.commons.lang3.function.Failable.accept(fileFailableBiConsumer2, file4, (org.apache.commons.lang3.builder.RecursiveToStringStyle) multilineRecursiveToStringStyle5);
+//        org.apache.commons.lang3.compare.ObjectToStringComparator objectToStringComparator8 = new org.apache.commons.lang3.compare.ObjectToStringComparator();
+//        org.apache.commons.lang3.Range<java.lang.Object> objRange9 = org.apache.commons.lang3.Range.between((java.lang.Object) file4, (java.lang.Object) "Double", (java.util.Comparator<java.lang.Object>) objectToStringComparator8);
+//        org.junit.Assert.assertNotNull(fileFailableBiConsumer2);
+//        org.junit.Assert.assertNotNull(defaultExceptionContext3);
+//        org.junit.Assert.assertNotNull(file4);
+//        org.junit.Assert.assertEquals(file4.getParent(), "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents");
+//        org.junit.Assert.assertEquals(file4.toString(), "/Library/Java/JavaVirtualMachines/adoptopenjdk-16.jdk/Contents/Home");
+//        org.junit.Assert.assertNotNull(objRange9);
+//    }
 
     @Test
     public void test0986() throws Throwable {
