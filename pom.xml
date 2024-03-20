@@ -583,6 +583,12 @@
       <version>3.0.2</version>
       <scope>test</scope>
     </dependency>
+    <!-- ANTLR parsing -->
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr4-runtime</artifactId>
+      <version>4.9.3</version>
+    </dependency>
   </dependencies>
 
   <distributionManagement>
