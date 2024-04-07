@@ -1,0 +1,1 @@
+The test class for the `replaceIgnoreCase` method should be named `ReplaceIgnoreCaseTest`.

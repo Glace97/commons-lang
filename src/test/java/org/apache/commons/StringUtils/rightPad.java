@@ -1,0 +1,1 @@
+The test class for the `rightPad` method should be named `RightPadTest`.

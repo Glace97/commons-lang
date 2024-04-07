@@ -1,0 +1,1 @@
+The test class for the `indexOfAnyBut` method should be named `IndexOfAnyButTest`.

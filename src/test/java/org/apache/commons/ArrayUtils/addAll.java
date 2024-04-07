@@ -1,0 +1,1 @@
+The test class for the `addAll` method should be named `AddAllTest`.
