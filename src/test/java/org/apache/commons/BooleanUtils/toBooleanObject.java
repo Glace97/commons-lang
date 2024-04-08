@@ -1,1 +1,0 @@
-The test class for the `toBooleanObject` method should be named `toBooleanObjectTest`.

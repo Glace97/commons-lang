@@ -1,1 +1,0 @@
-The test class for the shuffle method should be named "ShuffleTest".

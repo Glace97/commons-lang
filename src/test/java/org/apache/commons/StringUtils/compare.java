@@ -1,1 +1,0 @@
-The test class for the `compare` method should be named `CompareTest`.

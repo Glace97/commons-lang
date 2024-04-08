@@ -1,1 +1,0 @@
-The test class for the method toMap should be named `toMapTest`.

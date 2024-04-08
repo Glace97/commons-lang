@@ -1,1 +1,0 @@
-The test class should be named "SetLeftTest".

@@ -1,1 +1,0 @@
-The test class for the `splitByWholeSeparator` method should be named `SplitByWholeSeparatorTest`.

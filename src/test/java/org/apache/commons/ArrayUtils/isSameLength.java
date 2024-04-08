@@ -1,1 +1,0 @@
-The test class for the `isSameLength` method should be named `IsSameLengthTest`.
