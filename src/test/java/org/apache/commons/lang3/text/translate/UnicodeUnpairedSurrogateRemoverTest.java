@@ -27,61 +27,63 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.io.StringWriter;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 public class UnicodeUnpairedSurrogateRemoverTest {
+    private UnicodeUnpairedSurrogateRemover remover;
+
+    @BeforeEach
+    void setUp() {
+        remover = new UnicodeUnpairedSurrogateRemover();
+    }
+
     @Test
-    @DisplayName("Test translate with valid surrogate pair")
-    void testValidSurrogatePair() throws IOException {
-        // Arrange
-        int codePoint = 0xD83D;
-    
-        // Act
-        boolean translated = remover.translate(codePoint, writer);
-    
-        // Assert
-        assertTrue(translated);
+    @DisplayName("Translate should return true for surrogate characters")
+    void testTranslateSurrogateCharacters() throws IOException {
+        // Surrogate characters range from \uD800 to \uDFFF
+        for (int i = Character.MIN_SURROGATE; i <= Character.MAX_SURROGATE; i++) {
+            Writer writer = new StringWriter();
+            assertTrue(remover.translate(i, writer));
+            assertEquals("", writer.toString());
+        }
+    }
+
+    @Test
+    @DisplayName("Translate should return false for non-surrogate characters")
+    void testTranslateNonSurrogateCharacters() throws IOException {
+        // Test some non-surrogate characters
+        assertFalse(remover.translate('A', new StringWriter()));
+        assertFalse(remover.translate('Z', new StringWriter()));
+        assertFalse(remover.translate('1', new StringWriter()));
+        assertFalse(remover.translate('$', new StringWriter()));
+    }
+
+    @Test
+    @DisplayName("Translate should throw IOException if Writer is null")
+    void testTranslateWithNullWriter() {
+        assertThrows(IOException.class, () -> remover.translate('A', null));
+    }
+
+    @Test
+    @DisplayName("Translate should not write anything to Writer for surrogate characters")
+    void testTranslateOutputForSurrogateCharacters() throws IOException {
+        StringWriter writer = new StringWriter();
+        assertTrue(remover.translate(Character.MIN_SURROGATE, writer));
+        assertTrue(remover.translate(Character.MAX_SURROGATE, writer));
         assertEquals("", writer.toString());
     }
-    
+
     @Test
-    @DisplayName("Test translate with invalid surrogate pair")
-    void testInvalidSurrogatePair() throws IOException {
-        // Arrange
-        int codePoint = 0xD83D;
-    
-        // Act
-        boolean translated = remover.translate(codePoint, writer);
-    
-        // Assert
-        assertTrue(translated);
+    @DisplayName("Translate should not write anything to Writer for non-surrogate characters")
+    void testTranslateOutputForNonSurrogateCharacters() throws IOException {
+        StringWriter writer = new StringWriter();
+        assertFalse(remover.translate('A', writer));
+        assertFalse(remover.translate('$', writer));
         assertEquals("", writer.toString());
-    }
-    
-    @Test
-    @DisplayName("Test translate with valid non-surrogate code point")
-    void testValidNonSurrogateCodePoint() throws IOException {
-        // Arrange
-        int codePoint = 'A';
-    
-        // Act
-        boolean translated = remover.translate(codePoint, writer);
-    
-        // Assert
-        assertFalse(translated);
-        assertEquals("A", writer.toString());
-    }
-    
-    @Test
-    @DisplayName("Test translate with invalid non-surrogate code point")
-    void testInvalidNonSurrogateCodePoint() throws IOException {
-        // Arrange
-        int codePoint = Character.MAX_CODE_POINT + 1;
-    
-        // Act
-        boolean translated = remover.translate(codePoint, writer);
-    
-        // Assert
-        assertFalse(translated);
-        assertEquals(Character.toString(codePoint), writer.toString());
     }
 
 }

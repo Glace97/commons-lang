@@ -22,28 +22,16 @@ import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 
 public class OctalUnescaperTest {
-    import org.junit.jupiter.api.Test;
-    import org.junit.jupiter.api.TestInstance;
-    import org.junit.jupiter.api.TestInstance.Lifecycle;
-    
-    import java.io.IOException;
-    import java.io.StringWriter;
-    import java.io.Writer;
-    
-    import static org.junit.jupiter.api.Assertions.assertEquals;
-    
-    @TestInstance(Lifecycle.PER_CLASS)
-    class OctalUnescaperTestSuite {
-    
         private OctalUnescaper octalUnescaper;
     
-        @BeforeAll
+        @BeforeEach
         void setUp() {
             octalUnescaper = new OctalUnescaper();
         }
@@ -111,6 +99,5 @@ public class OctalUnescaperTest {
             assertEquals(0, result);
             assertEquals("", writer.toString());
         }
-    }
 
 }

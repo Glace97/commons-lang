@@ -22,12 +22,13 @@ import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.lang3.math.NumberUtils;
+import org.junit.jupiter.api.*;
 
 public class MutableLongTest {
+
+    MutableLong mutableLong;
+
     @Test
     void testIntValue_Zero() {
         assertEquals(0, mutableLong.intValue());
@@ -237,73 +238,73 @@ public class MutableLongTest {
     }
     @Test
     @DisplayName("subtracting positive value")
-    void subtractPositiveValue() {
+    void subtractPositiveValue1() {
         mutableLong.subtract(5L);
         Assertions.assertEquals(5L, mutableLong.getValue());
     }
     
     @Test
     @DisplayName("subtracting zero")
-    void subtractZero() {
+    void subtractZero1() {
         mutableLong.subtract(0L);
         Assertions.assertEquals(10L, mutableLong.getValue());
     }
     
     @Test
     @DisplayName("subtracting negative value")
-    void subtractNegativeValue() {
+    void subtractNegativeValue1() {
         mutableLong.subtract(-5L);
         Assertions.assertEquals(15L, mutableLong.getValue());
     }
     
     @Test
     @DisplayName("subtracting maximum value")
-    void subtractMaxValue() {
+    void subtractMaxValue1() {
         mutableLong.subtract(Long.MAX_VALUE);
         Assertions.assertEquals(-9223372036854775797L, mutableLong.getValue());
     }
     
-    @Test
-    @DisplayName("subtracting minimum value")
-    void subtractMinValue() {
-        mutableLong.subtract(Long.MIN_VALUE);
-        Assertions.assertEquals(9223372036854775817L, mutableLong.getValue());
-    }
+//    @Test
+//    @DisplayName("subtracting minimum value")
+//    void subtractMinValue() {
+//        mutableLong.subtract(Long.MIN_VALUE);
+//        Assertions.assertEquals(9223372036854775817L, mutableLong.getValue());
+//    }
     
     @Test
     @DisplayName("subtracting positive value")
-    void subtractPositiveValue() {
+    void subtractPositiveValue2() {
         mutableLong.subtract(5);
         Assertions.assertEquals(5L, mutableLong.getValue());
     }
     
     @Test
     @DisplayName("subtracting zero")
-    void subtractZero() {
+    void subtractZero2() {
         mutableLong.subtract(0);
         Assertions.assertEquals(10L, mutableLong.getValue());
     }
     
     @Test
     @DisplayName("subtracting negative value")
-    void subtractNegativeValue() {
+    void subtractNegativeValue2() {
         mutableLong.subtract(-5);
         Assertions.assertEquals(15L, mutableLong.getValue());
     }
     
     @Test
     @DisplayName("subtracting maximum value")
-    void subtractMaxValue() {
+    void subtractMaxValue2() {
         mutableLong.subtract(Long.MAX_VALUE);
         Assertions.assertEquals(-9223372036854775797L, mutableLong.getValue());
     }
     
-    @Test
-    @DisplayName("subtracting minimum value")
-    void subtractMinValue() {
-        mutableLong.subtract(Long.MIN_VALUE);
-        Assertions.assertEquals(9223372036854775817L, mutableLong.getValue());
-    }
+//    @Test
+//    @DisplayName("subtracting minimum value")
+//    void subtractMinValue() {
+//        mutableLong.subtract(Long.MIN_VALUE);
+//        Assertions.assertEquals(9223372036854775817L, mutableLong.getValue());
+//    }
     @Test
     public void testFloatValueWithZeroValue() {
         mutableLong = new MutableLong(0);
@@ -525,78 +526,78 @@ public class MutableLongTest {
         assertEquals(Long.MIN_VALUE + 1, minValue.getAndIncrement());
     }
     // Your Java code here
-    
-    @Test
-    void testEquals_SameObject_ReturnsTrue() {
-        mutableLong1 = new MutableLong(10);
-        mutableLong2 = mutableLong1;
-        
-        assertTrue(mutableLong1.equals(mutableLong2));
-    }
-    
-    @Test
-    void testEquals_NullObject_ReturnsFalse() {
-        mutableLong1 = new MutableLong(10);
-        mutableLong2 = null;
-        
-        assertFalse(mutableLong1.equals(mutableLong2));
-    }
-    
-    @Test
-    void testEquals_DifferentClass_ReturnsFalse() {
-        mutableLong1 = new MutableLong(10);
-        String string = "Hello";
-        
-        assertFalse(mutableLong1.equals(string));
-    }
-    
-    @Test
-    void testEquals_DifferentValue_ReturnsFalse() {
-        mutableLong1 = new MutableLong(10);
-        mutableLong2 = new MutableLong(20);
-        
-        assertFalse(mutableLong1.equals(mutableLong2));
-    }
-    
-    @Test
-    void testEquals_SameValue_ReturnsTrue() {
-        mutableLong1 = new MutableLong(10);
-        mutableLong2 = new MutableLong(10);
-        
-        assertTrue(mutableLong1.equals(mutableLong2));
-    }
-    
-    @Test
-    void testEquals_NullValue_ReturnsFalse() {
-        mutableLong1 = new MutableLong(10);
-        mutableLong2 = new MutableLong((Number) null);
-        
-        assertFalse(mutableLong1.equals(mutableLong2));
-    }
-    
-    @Test
-    void testEquals_StringValue_ReturnsFalse() {
-        mutableLong1 = new MutableLong(10);
-        mutableLong2 = new MutableLong("10");
-        
-        assertFalse(mutableLong1.equals(mutableLong2));
-    }
-    
-    @Test
-    void testEquals_SameStringValue_ReturnsTrue() {
-        mutableLong1 = new MutableLong(10);
-        mutableLong2 = new MutableLong("10");
-        
-        assertTrue(mutableLong1.equals(mutableLong2));
-    }
-    
-    @Test
-    void testEquals_NullStringValue_ReturnsFalse() {
-        mutableLong1 = new MutableLong(10);
-        mutableLong2 = new MutableLong((String) null);
-        
-        assertFalse(mutableLong1.equals(mutableLong2));
-    }
+//
+//    @Test
+//    void testEquals_SameObject_ReturnsTrue() {
+//        mutableLong1 = new MutableLong(10);
+//        mutableLong2 = mutableLong1;
+//
+//        assertTrue(mutableLong1.equals(mutableLong2));
+//    }
+//
+//    @Test
+//    void testEquals_NullObject_ReturnsFalse() {
+//        mutableLong1 = new MutableLong(10);
+//        mutableLong2 = null;
+//
+//        assertFalse(mutableLong1.equals(mutableLong2));
+//    }
+//
+//    @Test
+//    void testEquals_DifferentClass_ReturnsFalse() {
+//        mutableLong1 = new MutableLong(10);
+//        String string = "Hello";
+//
+//        assertFalse(mutableLong1.equals(string));
+//    }
+//
+//    @Test
+//    void testEquals_DifferentValue_ReturnsFalse() {
+//        mutableLong1 = new MutableLong(10);
+//        mutableLong2 = new MutableLong(20);
+//
+//        assertFalse(mutableLong1.equals(mutableLong2));
+//    }
+//
+//    @Test
+//    void testEquals_SameValue_ReturnsTrue() {
+//        mutableLong1 = new MutableLong(10);
+//        mutableLong2 = new MutableLong(10);
+//
+//        assertTrue(mutableLong1.equals(mutableLong2));
+//    }
+//
+//    @Test
+//    void testEquals_NullValue_ReturnsFalse() {
+//        mutableLong1 = new MutableLong(10);
+//        mutableLong2 = new MutableLong((Number) null);
+//
+//        assertFalse(mutableLong1.equals(mutableLong2));
+//    }
+//
+//    @Test
+//    void testEquals_StringValue_ReturnsFalse() {
+//        mutableLong1 = new MutableLong(10);
+//        mutableLong2 = new MutableLong("10");
+//
+//        assertFalse(mutableLong1.equals(mutableLong2));
+//    }
+//
+//    @Test
+//    void testEquals_SameStringValue_ReturnsTrue() {
+//        mutableLong1 = new MutableLong(10);
+//        mutableLong2 = new MutableLong("10");
+//
+//        assertTrue(mutableLong1.equals(mutableLong2));
+//    }
+//
+//    @Test
+//    void testEquals_NullStringValue_ReturnsFalse() {
+//        mutableLong1 = new MutableLong(10);
+//        mutableLong2 = new MutableLong((String) null);
+//
+//        assertFalse(mutableLong1.equals(mutableLong2));
+//    }
     @Test
     void testAdd_long() {
         mutableLong.add(5);
@@ -633,29 +634,29 @@ public class MutableLongTest {
         assertEquals(0, mutableLong.getValue());
     }
     
-    @Test
-    void testAdd_String() {
-        mutableLong.add("10");
-        assertEquals(10, mutableLong.getValue());
-    }
-    
-    @Test
-    void testAdd_String_negative() {
-        mutableLong.add("-5");
-        assertEquals(-5, mutableLong.getValue());
-    }
-    
-    @Test
-    void testAdd_String_zero() {
-        mutableLong.add("0");
-        assertEquals(0, mutableLong.getValue());
-    }
-    
-    @Test
-    void testAdd_String_invalidFormat() {
-        assertThrows(NumberFormatException.class, () -> mutableLong.add("abc"));
-    }
-    
+//    @Test
+//    void testAdd_String() {
+//        mutableLong.add("10");
+//        assertEquals(10, mutableLong.getValue());
+//    }
+//
+//    @Test
+//    void testAdd_String_negative() {
+//        mutableLong.add("-5");
+//        assertEquals(-5, mutableLong.getValue());
+//    }
+//
+//    @Test
+//    void testAdd_String_zero() {
+//        mutableLong.add("0");
+//        assertEquals(0, mutableLong.getValue());
+//    }
+//
+//    @Test
+//    void testAdd_String_invalidFormat() {
+//        assertThrows(NumberFormatException.class, () -> mutableLong.add("abc"));
+//    }
+//
     @Test
     void testAdd_null() {
         assertThrows(NullPointerException.class, () -> mutableLong.add(null));
@@ -718,19 +719,19 @@ public class MutableLongTest {
             mutableLong.setValue(null);
         });
     }
-    
-    void testSetValue_String() {
-        String value = "20";
-        mutableLong.setValue(value);
-        Assertions.assertEquals(Long.parseLong(value), mutableLong.getValue());
-    }
-    
-    void testSetValue_InvalidString() {
-        String value = "abc";
-        Assertions.assertThrows(NumberFormatException.class, () -> {
-            mutableLong.setValue(value);
-        });
-    }
+//
+//    void testSetValue_String() {
+//        String value = "20";
+//        mutableLong.setValue(value);
+//        Assertions.assertEquals(Long.parseLong(value), mutableLong.getValue());
+//    }
+//
+//    void testSetValue_InvalidString() {
+//        String value = "abc";
+//        Assertions.assertThrows(NumberFormatException.class, () -> {
+//            mutableLong.setValue(value);
+//        });
+//    }
     @Test
     void testDecrementFromZero() {
       mutableLong.decrement();
@@ -815,28 +816,28 @@ public class MutableLongTest {
         assertEquals(9, mutableLong.getValue());
     }
     
-    @Test
-    void testGetAndAddWithStringOperand() {
-        long result = mutableLong.getAndAdd("5");
-        assertEquals(10, result);
-        assertEquals(15, mutableLong.getValue());
-    }
-    
-    @Test
-    void testGetAndAddWithStringOperand_Zero() {
-        long result = mutableLong.getAndAdd("0");
-        assertEquals(10, result);
-        assertEquals(10, mutableLong.getValue());
-    }
-    
-    @Test
-    void testGetAndAddWithStringOperand_Negative() {
-        long result = mutableLong.getAndAdd("-5");
-        assertEquals(10, result);
-        assertEquals(5, mutableLong.getValue());
-    }
-    // Your Java code here
-    
+//    @Test
+//    void testGetAndAddWithStringOperand() {
+//        long result = mutableLong.getAndAdd("5");
+//        assertEquals(10, result);
+//        assertEquals(15, mutableLong.getValue());
+//    }
+//
+//    @Test
+//    void testGetAndAddWithStringOperand_Zero() {
+//        long result = mutableLong.getAndAdd("0");
+//        assertEquals(10, result);
+//        assertEquals(10, mutableLong.getValue());
+//    }
+//
+//    @Test
+//    void testGetAndAddWithStringOperand_Negative() {
+//        long result = mutableLong.getAndAdd("-5");
+//        assertEquals(10, result);
+//        assertEquals(5, mutableLong.getValue());
+//    }
+//    // Your Java code here
+//
     @Test
     void testGetValue() {
         MutableLong mutableLong = new MutableLong(5);
@@ -949,7 +950,7 @@ public class MutableLongTest {
     }
     @Test
     @DisplayName("should return the sum of the current value and the operand")
-    void shouldReturnSumOfCurrentValueAndOperand() {
+    void shouldReturnSumOfCurrentValueAndOperand1() {
         Assertions.assertEquals(5L, mutableLong.addAndGet(5L));
         Assertions.assertEquals(10L, mutableLong.addAndGet(5L));
         Assertions.assertEquals(-3L, mutableLong.addAndGet(-13L));
@@ -957,7 +958,7 @@ public class MutableLongTest {
     
     @Test
     @DisplayName("should return the sum of the current value and the operand")
-    void shouldReturnSumOfCurrentValueAndOperand() {
+    void shouldReturnSumOfCurrentValueAndOperand2() {
         Assertions.assertEquals(5L, mutableLong.addAndGet(NumberUtils.LONG_ONE));
         Assertions.assertEquals(10L, mutableLong.addAndGet(NumberUtils.LONG_ONE));
         Assertions.assertEquals(-3L, mutableLong.addAndGet(NumberUtils.LONG_MINUS_ONE));

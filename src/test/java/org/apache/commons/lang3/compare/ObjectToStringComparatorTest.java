@@ -28,7 +28,16 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class ObjectToStringComparatorTest {
+
+    ObjectToStringComparator comparator;
+
+    @BeforeEach
+    void setUp(){
+        comparator = new ObjectToStringComparator();
+    }
+
     @Test
+
     void testCompareBothNull() {
         assertEquals(0, comparator.compare(null, null));
     }

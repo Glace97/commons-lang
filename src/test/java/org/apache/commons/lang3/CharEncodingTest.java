@@ -28,14 +28,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class CharEncodingTest {
-    import org.junit.jupiter.api.Test;
-    import org.junit.jupiter.api.TestInstance;
-    import org.junit.jupiter.api.TestInstance.Lifecycle;
-    import static org.junit.jupiter.api.Assertions.*;
+
     
-    @TestInstance(Lifecycle.PER_CLASS)
-    class CharEncodingTestSuite {
-    
+
         @Test
         void testIsSupportedWithValidCharset() {
             assertTrue(CharEncoding.isSupported("ISO-8859-1"));
@@ -55,6 +50,5 @@ public class CharEncodingTest {
         void testIsSupportedWithNullCharset() {
             assertFalse(CharEncoding.isSupported(null));
         }
-    }
 
 }

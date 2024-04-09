@@ -28,62 +28,73 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class ArrayFillTest {
-    // Your Java code here
-    
     @Test
-    void shouldFillArrayWithGivenValue() {
-        byte value = 3;
-        byte[] result = ArrayFill.fill(array, value);
-        assertArrayEquals(new byte[]{value, value, value, value, value}, result);
+    void testFillByteArray() {
+        byte[] array = new byte[5];
+        byte value = 10;
+        byte[] filledArray = ArrayFill.fill(array, value);
+        assertArrayEquals(new byte[]{10, 10, 10, 10, 10}, filledArray);
     }
-    
+
     @Test
-    void shouldFillArrayWithGivenValue() {
-        char value = 'a';
-        char[] result = ArrayFill.fill(array, value);
-        assertArrayEquals(new char[]{value, value, value, value, value}, result);
+    void testFillCharArray() {
+        char[] array = new char[5];
+        char value = 'A';
+        char[] filledArray = ArrayFill.fill(array, value);
+        assertArrayEquals(new char[]{'A', 'A', 'A', 'A', 'A'}, filledArray);
     }
-    
+
     @Test
-    void shouldFillArrayWithGivenValue() {
-        double value = 3.14;
-        double[] result = ArrayFill.fill(array, value);
-        assertArrayEquals(new double[]{value, value, value, value, value}, result);
+    void testFillDoubleArray() {
+        double[] array = new double[5];
+        double value = 5.5;
+        double[] filledArray = ArrayFill.fill(array, value);
+        assertArrayEquals(new double[]{5.5, 5.5, 5.5, 5.5, 5.5}, filledArray);
     }
-    
+
     @Test
-    void shouldFillArrayWithGivenValue() {
-        float value = 2.5f;
-        float[] result = ArrayFill.fill(array, value);
-        assertArrayEquals(new float[]{value, value, value, value, value}, result);
+    void testFillFloatArray() {
+        float[] array = new float[5];
+        float value = 3.3f;
+        float[] filledArray = ArrayFill.fill(array, value);
+        assertArrayEquals(new float[]{3.3f, 3.3f, 3.3f, 3.3f, 3.3f}, filledArray);
     }
-    
+
     @Test
-    void shouldFillArrayWithGivenValue() {
-        int value = 42;
-        int[] result = ArrayFill.fill(array, value);
-        assertArrayEquals(new int[]{value, value, value, value, value}, result);
+    void testFillIntArray() {
+        int[] array = new int[5];
+        int value = 100;
+        int[] filledArray = ArrayFill.fill(array, value);
+        assertArrayEquals(new int[]{100, 100, 100, 100, 100}, filledArray);
     }
-    
+
     @Test
-    void shouldFillArrayWithGivenValue() {
-        long value = 123456789L;
-        long[] result = ArrayFill.fill(array, value);
-        assertArrayEquals(new long[]{value, value, value, value, value}, result);
+    void testFillLongArray() {
+        long[] array = new long[5];
+        long value = 1000L;
+        long[] filledArray = ArrayFill.fill(array, value);
+        assertArrayEquals(new long[]{1000L, 1000L, 1000L, 1000L, 1000L}, filledArray);
     }
-    
+
     @Test
-    void shouldFillArrayWithGivenValue() {
-        short value = 10;
-        short[] result = ArrayFill.fill(array, value);
-        assertArrayEquals(new short[]{value, value, value, value, value}, result);
+    void testFillShortArray() {
+        short[] array = new short[5];
+        short value = 20;
+        short[] filledArray = ArrayFill.fill(array, value);
+        assertArrayEquals(new short[]{20, 20, 20, 20, 20}, filledArray);
     }
-    
+
     @Test
-    void shouldFillArrayWithGivenValue() {
-        String value = "test";
-        String[] result = ArrayFill.fill(array, value);
-        assertArrayEquals(new String[]{value, value, value, value, value}, result);
+    void testFillObjectArray() {
+        String[] array = new String[5];
+        String value = "Test";
+        String[] filledArray = ArrayFill.fill(array, value);
+        assertArrayEquals(new String[]{"Test", "Test", "Test", "Test", "Test"}, filledArray);
     }
+
+//    @Test
+//    void testFillNullArray() {
+//        assertThrows(NullPointerException.class, () -> ArrayFill.fill(null, 5));
+//    }
 
 }

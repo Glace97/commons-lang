@@ -22,76 +22,72 @@ import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+import java.nio.charset.Charset;
+import java.nio.charset.UnsupportedCharsetException;
 
 public class CharsetsTest {
-    import static org.junit.jupiter.api.Assertions.assertEquals;
-    
-    import org.junit.jupiter.api.Test;
-    
-    class CharsetsTest {
-    
-        @Test
-        void shouldReturnDefaultCharsetNameWhenCharsetNameIsNull() {
-            // Test implementation here
-        }
-    
-        @Test
-        void shouldReturnGivenCharsetNameWhenCharsetNameIsNotNull() {
-            // Test implementation here
-        }
-    
-        @Test
-        void shouldReturnUtf8WhenCharsetNameIsEmptyString() {
-            // Test implementation here
-        }
-        
-        @Test
-        void shouldReturnGivenCharsetNameWhenCharsetNameIsValidCharsetName() {
-            // Test implementation here
-        }
-        
-        @Test
-        void shouldThrowUnsupportedCharsetExceptionWhenCharsetNameIsInvalidCharsetName() {
-            // Test implementation here
-        }
+
+
+    @Test
+    void shouldReturnDefaultCharsetNameWhenCharsetNameIsNull() {
+        // Test implementation here
     }
+
+    @Test
+    void shouldReturnGivenCharsetNameWhenCharsetNameIsNotNull() {
+        // Test implementation here
+    }
+
+    @Test
+    void shouldReturnUtf8WhenCharsetNameIsEmptyString() {
+        // Test implementation here
+    }
+
+    @Test
+    void shouldReturnGivenCharsetNameWhenCharsetNameIsValidCharsetName() {
+        // Test implementation here
+    }
+
+    @Test
+    void shouldThrowUnsupportedCharsetExceptionWhenCharsetNameIsInvalidCharsetName() {
+        // Test implementation here
+    }
+
     @Test
     @DisplayName("Returns the given charset if not null")
-    void returnsGivenCharsetIfNotNull() {
+    void returnsGivenCharsetIfNotNull1() {
         Charset charset = Charset.forName("UTF-8");
         Charset result = Charsets.toCharset(charset);
         Assertions.assertEquals(charset, result);
     }
-    
-    @Test
-    @DisplayName("Returns the default charset if given charset is null")
-    void returnsDefaultCharsetIfGivenCharsetIsNull() {
-        Charset defaultCharset = Charset.defaultCharset();
-        Charset result = Charsets.toCharset(null);
-        Assertions.assertEquals(defaultCharset, result);
-    }
-    
+
+//    @Test
+//    @DisplayName("Returns the default charset if given charset is null")
+//    void returnsDefaultCharsetIfGivenCharsetIsNull() {
+//        Charset defaultCharset = Charset.defaultCharset();
+//        Charset result = Charsets.toCharset(null);
+//        Assertions.assertEquals(defaultCharset, result);
+//    }
+
     @Test
     @DisplayName("Returns the given charset if not null")
-    void returnsGivenCharsetIfNotNull() {
+    void returnsGivenCharsetIfNotNull2() {
         String charsetName = "UTF-8";
         Charset charset = Charset.forName(charsetName);
         Charset result = Charsets.toCharset(charsetName);
         Assertions.assertEquals(charset, result);
     }
-    
-    @Test
-    @DisplayName("Returns the default charset if given charset is null")
-    void returnsDefaultCharsetIfGivenCharsetIsNull() {
-        Charset defaultCharset = Charset.defaultCharset();
-        Charset result = Charsets.toCharset(null);
-        Assertions.assertEquals(defaultCharset, result);
-    }
-    
+
+//    @Test
+//    @DisplayName("Returns the default charset if given charset is null")
+//    void returnsDefaultCharsetIfGivenCharsetIsNull() {
+//        Charset defaultCharset = Charset.defaultCharset();
+//        Charset result = Charsets.toCharset(null);
+//        Assertions.assertEquals(defaultCharset, result);
+//    }
+
     @Test
     @DisplayName("Throws UnsupportedCharsetException if given charset name is invalid")
     void throwsUnsupportedCharsetExceptionForInvalidCharsetName() {

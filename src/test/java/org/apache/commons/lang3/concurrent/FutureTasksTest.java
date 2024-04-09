@@ -27,25 +27,28 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.FutureTask;
+
 public class FutureTasksTest {
     @Test
     void testRun() throws Exception {
         // Test with a Callable that returns a String
         Callable<String> callable1 = () -> "Hello, World!";
         FutureTask<String> futureTask1 = FutureTasks.run(callable1);
-        Assertions.assertEquals("Hello, World!", futureTask1.get());
+        assertEquals("Hello, World!", futureTask1.get());
     
         // Test with a Callable that returns an Integer
         Callable<Integer> callable2 = () -> 42;
         FutureTask<Integer> futureTask2 = FutureTasks.run(callable2);
-        Assertions.assertEquals(42, futureTask2.get());
+        assertEquals(42, futureTask2.get());
     
         // Test with a Callable that throws an Exception
         Callable<Object> callable3 = () -> {
             throw new Exception("Test Exception");
         };
         FutureTask<Object> futureTask3 = FutureTasks.run(callable3);
-        Assertions.assertThrows(Exception.class, futureTask3::get);
+        assertThrows(Exception.class, futureTask3::get);
     
         // Test with a Callable that takes a long time to execute
         Callable<String> callable4 = () -> {
@@ -53,7 +56,7 @@ public class FutureTasksTest {
             return "Done";
         };
         FutureTask<String> futureTask4 = FutureTasks.run(callable4);
-        Assertions.assertEquals("Done", futureTask4.get());
+        assertEquals("Done", futureTask4.get());
     }
 
 }

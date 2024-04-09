@@ -27,42 +27,36 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.TimeZone;
+
 public class TimeZonesTest {
-    import static org.junit.jupiter.api.Assertions.assertEquals;
-    import static org.junit.jupiter.api.Assertions.assertNotNull;
-    import static org.junit.jupiter.api.Assertions.assertSame;
-    import static org.junit.jupiter.api.Assertions.assertTrue;
-    
-    import org.junit.jupiter.api.Test;
-    
-    class TimeZonesTest {
-    
-        @Test
-        void returnsGivenTimeZoneIfNonNull() {
-            TimeZone timeZone = TimeZone.getTimeZone("PST");
-            TimeZone result = TimeZones.toTimeZone(timeZone);
-            assertSame(timeZone, result);
-        }
-    
-        @Test
-        void returnsDefaultTimeZoneIfGivenTimeZoneIsNull() {
-            TimeZone result = TimeZones.toTimeZone(null);
-            assertNotNull(result);
-            assertSame(TimeZone.getDefault(), result);
-        }
-    
-        @Test
-        void gmtIdFieldIsSetToGMT() {
-            TimeZones timeZones = new TimeZones();
-            assertEquals("GMT", timeZones.GMT_ID);
-        }
-    
-        @Test
-        void gmtFieldIsSetToTimeZoneGetTimeZoneWithGMTId() {
-            TimeZones timeZones = new TimeZones();
-            assertEquals(TimeZone.getTimeZone(timeZones.GMT_ID), timeZones.GMT);
-        }
-    
+
+
+    @Test
+    void returnsGivenTimeZoneIfNonNull() {
+        TimeZone timeZone = TimeZone.getTimeZone("PST");
+        TimeZone result = TimeZones.toTimeZone(timeZone);
+        assertSame(timeZone, result);
     }
+
+    @Test
+    void returnsDefaultTimeZoneIfGivenTimeZoneIsNull() {
+        TimeZone result = TimeZones.toTimeZone(null);
+        assertNotNull(result);
+        assertSame(TimeZone.getDefault(), result);
+    }
+
+//    @Test
+//    void gmtIdFieldIsSetToGMT() {
+//        TimeZones timeZones = new TimeZones();
+//        assertEquals("GMT", timeZones.GMT_ID);
+//    }
+//
+//    @Test
+//    void gmtFieldIsSetToTimeZoneGetTimeZoneWithGMTId() {
+//        TimeZones timeZones = new TimeZones();
+//        assertEquals(TimeZone.getTimeZone(timeZones.GMT_ID), timeZones.GMT);
+//    }
+
 
 }

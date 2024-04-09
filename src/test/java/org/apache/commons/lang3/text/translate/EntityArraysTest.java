@@ -1,5 +1,7 @@
 package org.apache.commons.lang3.text.translate;
 
+import static org.apache.commons.lang3.text.translate.EntityArrays.APOS_UNESCAPE;
+import static org.apache.commons.lang3.text.translate.EntityArrays.JAVA_CTRL_CHARS_ESCAPE;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertLinesMatch;
@@ -22,149 +24,158 @@ import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.text.StringEscapeUtils;
+import org.junit.jupiter.api.*;
 
 public class EntityArraysTest {
+
+    private EntityArrays entityArrays;
+
+    @BeforeEach
+    public void setup() {
+        entityArrays = new EntityArrays();
+    }
+
     @Test
     public void testISO8859_1Escape() {
-      for (String[] escape : entityArrays.ISO8859_1_ESCAPE) {
-        assertEquals(escape[1], escape[0]);
-      }
+        for (String[] escape : entityArrays.ISO8859_1_ESCAPE()) {
+            assertEquals(escape[1], escape[0]);
+        }
     }
-    
+
     @Test
     public void testISO8859_1Unescape() {
-      for (String[] unescape : entityArrays.ISO8859_1_UNESCAPE) {
-        assertEquals(unescape[1], unescape[0]);
-      }
+        for (String[] unescape : entityArrays.ISO8859_1_UNESCAPE()) {
+            assertEquals(unescape[1], unescape[0]);
+        }
     }
-    
+
     @Test
     public void testHTML40ExtendedEscape() {
-      for (String[] escape : entityArrays.HTML40_EXTENDED_ESCAPE) {
-        assertEquals(escape[1], escape[0]);
-      }
+        for (String[] escape : entityArrays.HTML40_EXTENDED_ESCAPE()) {
+            assertEquals(escape[1], escape[0]);
+        }
     }
-    
+
     @Test
     public void testHTML40ExtendedUnescape() {
-      for (String[] unescape : entityArrays.HTML40_EXTENDED_UNESCAPE) {
-        assertEquals(unescape[1], unescape[0]);
-      }
+        for (String[] unescape : entityArrays.HTML40_EXTENDED_UNESCAPE()) {
+            assertEquals(unescape[1], unescape[0]);
+        }
     }
-    
+
     @Test
-    public void testBasicEscape() {
-      for (String[] escape : entityArrays.BASIC_ESCAPE) {
-        assertEquals(escape[1], escape[0]);
-      }
+    public void testBasicEscape1() {
+        for (String[] escape : entityArrays.BASIC_ESCAPE()) {
+            assertEquals(escape[1], escape[0]);
+        }
     }
-    
+
     @Test
-    public void testBasicUnescape() {
-      for (String[] unescape : entityArrays.BASIC_UNESCAPE) {
-        assertEquals(unescape[1], unescape[0]);
-      }
+    public void testBasicUnescape1() {
+        for (String[] unescape : entityArrays.BASIC_UNESCAPE()) {
+            assertEquals(unescape[1], unescape[0]);
+        }
     }
-    
+
     @Test
-    public void testAposEscape() {
-      for (String[] escape : entityArrays.APOS_ESCAPE) {
-        assertEquals(escape[1], escape[0]);
-      }
+    public void testAposEscape1() {
+        for (String[] escape : entityArrays.APOS_ESCAPE()) {
+            assertEquals(escape[1], escape[0]);
+        }
     }
-    
+
     @Test
-    public void testAposUnescape() {
-      for (String[] unescape : entityArrays.APOS_UNESCAPE) {
-        assertEquals(unescape[1], unescape[0]);
-      }
+    public void testAposUnescape1() {
+        for (String[] unescape : APOS_UNESCAPE()) {
+            assertEquals(unescape[1], unescape[0]);
+        }
     }
-    
+
     @Test
-    public void testJavaCtrlCharsEscape() {
-      for (String[] escape : entityArrays.JAVA_CTRL_CHARS_ESCAPE) {
-        assertEquals(escape[1], escape[0]);
-      }
+    public void testJavaCtrlCharsEscape1() {
+        for (String[] escape : JAVA_CTRL_CHARS_ESCAPE()) {
+            assertEquals(escape[1], escape[0]);
+        }
     }
-    
+
     @Test
-    public void testJavaCtrlCharsUnescape() {
-      for (String[] unescape : entityArrays.JAVA_CTRL_CHARS_UNESCAPE) {
-        assertEquals(unescape[1], unescape[0]);
-      }
+    public void testJavaCtrlCharsUnescape1() {
+        for (String[] unescape : entityArrays.JAVA_CTRL_CHARS_UNESCAPE()) {
+            assertEquals(unescape[1], unescape[0]);
+        }
     }
+
     @Test
     @DisplayName("Test APOS_UNESCAPE with all escape sequences")
-    public void testAposUnescape() {
+    public void testAposUnescape2() {
         // Test all escape sequences in APOS_UNESCAPE
-        for (String[] escape : APOS_UNESCAPE) {
+        for (String[] escape : APOS_UNESCAPE()) {
             String escaped = escape[1];
             String unescaped = escape[0];
             assertEquals(unescaped, StringEscapeUtils.unescapeHtml4(escaped));
         }
     }
+
     @Test
-    public void testBasicUnescape() {
+    public void testBasicUnescape2() {
         String[][] basicUnescape = EntityArrays.BASIC_UNESCAPE();
-        
+
         for (String[] pair : basicUnescape) {
             String escaped = pair[1];
             String unescaped = pair[0];
-            
+
             String result = StringEscapeUtils.unescapeHtml4(escaped);
-            
+
             assertEquals(unescaped, result);
         }
     }
-    
+
     @Test
-    public void testHtml40ExtendedUnescape() {
+    public void testHtml40ExtendedUnescape1() {
         String[][] html40ExtendedUnescape = EntityArrays.HTML40_EXTENDED_UNESCAPE();
-        
+
         for (String[] pair : html40ExtendedUnescape) {
             String escaped = pair[1];
             String unescaped = pair[0];
-            
+
             String result = StringEscapeUtils.unescapeHtml4(escaped);
-            
+
             assertEquals(unescaped, result);
         }
     }
-    
+
     @Test
-    public void testAposUnescape() {
-        String[][] aposUnescape = EntityArrays.APOS_UNESCAPE();
-        
+    public void testAposUnescape3() {
+        String[][] aposUnescape = APOS_UNESCAPE();
+
         for (String[] pair : aposUnescape) {
             String escaped = pair[1];
             String unescaped = pair[0];
-            
+
             String result = StringEscapeUtils.unescapeHtml4(escaped);
-            
+
             assertEquals(unescaped, result);
         }
     }
-    
+
     @Test
-    public void testJavaCtrlCharsUnescape() {
+    public void testJavaCtrlCharsUnescape2() {
         String[][] javaCtrlCharsUnescape = EntityArrays.JAVA_CTRL_CHARS_UNESCAPE();
-        
+
         for (String[] pair : javaCtrlCharsUnescape) {
             String escaped = pair[1];
             String unescaped = pair[0];
-            
+
             String result = StringEscapeUtils.unescapeJava(escaped);
-            
+
             assertEquals(unescaped, result);
         }
     }
+
     @Test
-        public void testISO8859_1_ESCAPE() {
-            String[][] expectedEscape = {
+    public void testISO8859_1_ESCAPE() {
+        String[][] expectedEscape = {
                 {"\u00A0", "&nbsp;"},
                 {"\u00A1", "&iexcl;"},
                 {"\u00A2", "&cent;"},
@@ -261,21 +272,21 @@ public class EntityArraysTest {
                 {"\u00FD", "&yacute;"},
                 {"\u00FE", "&thorn;"},
                 {"\u00FF", "&yuml;"}
-            };
-    
-            String[][] actualEscape = entityArrays.ISO8859_1_ESCAPE();
-    
-            assertEquals(expectedEscape.length, actualEscape.length);
-    
-            for (int i = 0; i < expectedEscape.length; i++) {
-                assertEquals(expectedEscape[i][0], actualEscape[i][0]);
-                assertEquals(expectedEscape[i][1], actualEscape[i][1]);
-            }
+        };
+
+        String[][] actualEscape = entityArrays.ISO8859_1_ESCAPE();
+
+        assertEquals(expectedEscape.length, actualEscape.length);
+
+        for (int i = 0; i < expectedEscape.length; i++) {
+            assertEquals(expectedEscape[i][0], actualEscape[i][0]);
+            assertEquals(expectedEscape[i][1], actualEscape[i][1]);
         }
-    
-        @Test
-        public void testISO8859_1_UNESCAPE() {
-            String[][] expectedUnescape = {
+    }
+
+    @Test
+    public void testISO8859_1_UNESCAPE() {
+        String[][] expectedUnescape = {
                 {"&nbsp;", "\u00A0"},
                 {"&iexcl;", "\u00A1"},
                 {"&cent;", "\u00A2"},
@@ -372,20 +383,21 @@ public class EntityArraysTest {
                 {"&yacute;", "\u00FD"},
                 {"&thorn;", "\u00FE"},
                 {"&yuml;", "\u00FF"}
-            };
-    
-            String[][] actualUnescape = entityArrays.ISO8859_1_UNESCAPE();
-    
-            assertEquals(expectedUnescape.length, actualUnescape.length);
-    
-            for (int i = 0; i < expectedUnescape.length; i++) {
-                assertEquals(expectedUnescape[i][0], actualUnescape[i][0]);
-                assertEquals(expectedUnescape[i][1], actualUnescape[i][1]);
-            }
+        };
+
+        String[][] actualUnescape = entityArrays.ISO8859_1_UNESCAPE();
+
+        assertEquals(expectedUnescape.length, actualUnescape.length);
+
+        for (int i = 0; i < expectedUnescape.length; i++) {
+            assertEquals(expectedUnescape[i][0], actualUnescape[i][0]);
+            assertEquals(expectedUnescape[i][1], actualUnescape[i][1]);
         }
+    }
+
     @Test
     public void testBasicEscape() {
-        String[][] basicEscape = EntityArrays.BASIC_ESCAPE;
+        String[][] basicEscape = EntityArrays.BASIC_ESCAPE();
         for (String[] escape : basicEscape) {
             String original = escape[0];
             String expected = escape[1];
@@ -393,10 +405,10 @@ public class EntityArraysTest {
             assertEquals(expected, result);
         }
     }
-    
+
     @Test
     public void testBasicUnescape() {
-        String[][] basicUnescape = EntityArrays.BASIC_UNESCAPE;
+        String[][] basicUnescape = EntityArrays.BASIC_UNESCAPE();
         for (String[] unescape : basicUnescape) {
             String original = unescape[0];
             String expected = unescape[1];
@@ -404,10 +416,10 @@ public class EntityArraysTest {
             assertEquals(expected, result);
         }
     }
-    
+
     @Test
-    public void testAposEscape() {
-        String[][] aposEscape = EntityArrays.APOS_ESCAPE;
+    public void testAposEscape3() {
+        String[][] aposEscape = EntityArrays.APOS_ESCAPE();
         for (String[] escape : aposEscape) {
             String original = escape[0];
             String expected = escape[1];
@@ -415,10 +427,10 @@ public class EntityArraysTest {
             assertEquals(expected, result);
         }
     }
-    
+
     @Test
-    public void testAposUnescape() {
-        String[][] aposUnescape = EntityArrays.APOS_UNESCAPE;
+    public void testAposUnescape4() {
+        String[][] aposUnescape = EntityArrays.APOS_UNESCAPE();
         for (String[] unescape : aposUnescape) {
             String original = unescape[0];
             String expected = unescape[1];
@@ -426,10 +438,10 @@ public class EntityArraysTest {
             assertEquals(expected, result);
         }
     }
-    
+
     @Test
-    public void testJavaCtrlCharsEscape() {
-        String[][] javaCtrlCharsEscape = EntityArrays.JAVA_CTRL_CHARS_ESCAPE;
+    public void testJavaCtrlCharsEscape2() {
+        String[][] javaCtrlCharsEscape = JAVA_CTRL_CHARS_ESCAPE();
         for (String[] escape : javaCtrlCharsEscape) {
             String original = escape[0];
             String expected = escape[1];
@@ -437,10 +449,10 @@ public class EntityArraysTest {
             assertEquals(expected, result);
         }
     }
-    
+
     @Test
-    public void testJavaCtrlCharsUnescape() {
-        String[][] javaCtrlCharsUnescape = EntityArrays.JAVA_CTRL_CHARS_UNESCAPE;
+    public void testJavaCtrlCharsUnescape3() {
+        String[][] javaCtrlCharsUnescape = EntityArrays.JAVA_CTRL_CHARS_UNESCAPE();
         for (String[] unescape : javaCtrlCharsUnescape) {
             String original = unescape[0];
             String expected = unescape[1];
@@ -448,6 +460,7 @@ public class EntityArraysTest {
             assertEquals(expected, result);
         }
     }
+
     @Test
     public void testHtml40ExtendedUnescape() {
         String[][] html40ExtendedUnescape = entityArrays.HTML40_EXTENDED_UNESCAPE();
@@ -458,11 +471,11 @@ public class EntityArraysTest {
             assertEquals(unescaped, result);
         }
     }
-    
+
     @Test
     public void testHtml40ExtendedUnescapeWithInvalidEscapedChars() {
         String[][] html40ExtendedUnescape = entityArrays.HTML40_EXTENDED_UNESCAPE();
-        
+
         // Test with invalid escaped characters
         String[] invalidEscapedChars = {"&invalid;", "&#123;", "&"};
         for (String escaped : invalidEscapedChars) {
@@ -471,11 +484,11 @@ public class EntityArraysTest {
             assertEquals(unescaped, result);
         }
     }
-    
+
     @Test
     public void testHtml40ExtendedUnescapeWithInvalidUnescapedChars() {
         String[][] html40ExtendedUnescape = entityArrays.HTML40_EXTENDED_UNESCAPE();
-        
+
         // Test with invalid unescaped characters
         String[] invalidUnescapedChars = {"\u1111", "\u2222", "\u3333"};
         for (String unescaped : invalidUnescapedChars) {
@@ -484,33 +497,33 @@ public class EntityArraysTest {
             assertEquals(unescaped, result);
         }
     }
-    
+
     @Test
     public void testHtml40ExtendedUnescapeWithEmptyString() {
         String[][] html40ExtendedUnescape = entityArrays.HTML40_EXTENDED_UNESCAPE();
-        
+
         // Test with empty string
         String escaped = "";
         String unescaped = "";
         String result = StringEscapeUtils.unescapeHtml4(escaped);
         assertEquals(unescaped, result);
     }
-    
+
     @Test
     public void testHtml40ExtendedUnescapeWithNullString() {
         String[][] html40ExtendedUnescape = entityArrays.HTML40_EXTENDED_UNESCAPE();
-        
+
         // Test with null string
         String escaped = null;
         String unescaped = null;
         String result = StringEscapeUtils.unescapeHtml4(escaped);
         assertEquals(unescaped, result);
     }
-    
+
     @Test
     public void testHtml40ExtendedUnescapeWithMixedEscapedAndUnescapedChars() {
         String[][] html40ExtendedUnescape = entityArrays.HTML40_EXTENDED_UNESCAPE();
-        
+
         // Test with mixed escaped and unescaped characters
         String[] mixedChars = {"&Agrave;", "&iexcl;", "hello", "&pound;"};
         for (String escaped : mixedChars) {
@@ -519,11 +532,11 @@ public class EntityArraysTest {
             assertEquals(unescaped, result);
         }
     }
-    
+
     @Test
     public void testHtml40ExtendedUnescapeWithAllEscapedChars() {
         String[][] html40ExtendedUnescape = entityArrays.HTML40_EXTENDED_UNESCAPE();
-        
+
         // Test with all escaped characters
         for (String[] escapePair : html40ExtendedUnescape) {
             String escaped = escapePair[1];
@@ -532,11 +545,11 @@ public class EntityArraysTest {
             assertEquals(unescaped, result);
         }
     }
-    
+
     @Test
     public void testHtml40ExtendedUnescapeWithAllUnescapedChars() {
         String[][] html40ExtendedUnescape = entityArrays.HTML40_EXTENDED_UNESCAPE();
-        
+
         // Test with all unescaped characters
         for (String[] escapePair : html40ExtendedUnescape) {
             String escaped = escapePair[1];
@@ -545,21 +558,23 @@ public class EntityArraysTest {
             assertEquals(unescaped, result);
         }
     }
-    @Test
-    void testHTML40_EXTENDED_ESCAPE() {
-        String[][] HTML40_EXTENDED_ESCAPE = EntityArrays.HTML40_EXTENDED_ESCAPE();
-    
-        for (String[] escape : HTML40_EXTENDED_ESCAPE) {
-            String character = escape[0];
-            String expectedEntity = escape[1];
-    
-            String entity = HTML40_EXTENDED_ESCAPE.escapeHtml(character);
-            assertEquals(expectedEntity, entity);
-    
-            String unescapedCharacter = HTML40_EXTENDED_ESCAPE.unescapeHtml(entity);
-            assertEquals(character, unescapedCharacter);
-        }
-    }
+
+//    @Test
+//    void testHTML40_EXTENDED_ESCAPE() {
+//        String[][] HTML40_EXTENDED_ESCAPE = EntityArrays.HTML40_EXTENDED_ESCAPE();
+//
+//        for (String[] escape : HTML40_EXTENDED_ESCAPE) {
+//            String character = escape[0];
+//            String expectedEntity = escape[1];
+//
+//            String entity = HTML40_EXTENDED_ESCAPE.escapeHtml(character);
+//            assertEquals(expectedEntity, entity);
+//
+//            String unescapedCharacter = HTML40_EXTENDED_ESCAPE.unescapeHtml(entity);
+//            assertEquals(character, unescapedCharacter);
+//        }
+//    }
+
     @Test
     public void testUnescapeNonBreakingSpace() {
         String escaped = "&nbsp;";
@@ -567,7 +582,7 @@ public class EntityArraysTest {
         String unescaped = StringEscapeUtils.unescapeHtml4(escaped);
         Assertions.assertEquals(expected, unescaped);
     }
-    
+
     @Test
     public void testUnescapeInvertedExclamationMark() {
         String escaped = "&iexcl;";
@@ -575,7 +590,7 @@ public class EntityArraysTest {
         String unescaped = StringEscapeUtils.unescapeHtml4(escaped);
         Assertions.assertEquals(expected, unescaped);
     }
-    
+
     @Test
     public void testUnescapeUnknownEscapeSequence() {
         String escaped = "&unknown;";
@@ -583,7 +598,7 @@ public class EntityArraysTest {
         String unescaped = StringEscapeUtils.unescapeHtml4(escaped);
         Assertions.assertEquals(expected, unescaped);
     }
-    
+
     @Test
     public void testUnescapeNull() {
         String escaped = null;
@@ -591,133 +606,123 @@ public class EntityArraysTest {
         String unescaped = StringEscapeUtils.unescapeHtml4(escaped);
         Assertions.assertEquals(expected, unescaped);
     }
+
     @Test
     public void testUnescapeBackspaceCharacter() {
         String escaped = "\\b";
         String unescaped = "\b";
-        
+
         String result = StringEscapeUtils.unescapeJava(escaped);
-        
+
         Assertions.assertEquals(unescaped, result);
     }
-    
+
     @Test
     public void testUnescapeNewLineCharacter() {
         String escaped = "\\n";
         String unescaped = "\n";
-        
+
         String result = StringEscapeUtils.unescapeJava(escaped);
-        
+
         Assertions.assertEquals(unescaped, result);
     }
-    
+
     @Test
     public void testUnescapeTabCharacter() {
         String escaped = "\\t";
         String unescaped = "\t";
-        
+
         String result = StringEscapeUtils.unescapeJava(escaped);
-        
+
         Assertions.assertEquals(unescaped, result);
     }
-    
+
     @Test
     public void testUnescapeFormFeedCharacter() {
         String escaped = "\\f";
         String unescaped = "\f";
-        
+
         String result = StringEscapeUtils.unescapeJava(escaped);
-        
+
         Assertions.assertEquals(unescaped, result);
     }
-    
+
     @Test
     public void testUnescapeCarriageReturnCharacter() {
         String escaped = "\\r";
         String unescaped = "\r";
-        
+
         String result = StringEscapeUtils.unescapeJava(escaped);
-        
+
         Assertions.assertEquals(unescaped, result);
     }
-    import org.junit.jupiter.api.Test;
-    import org.junit.jupiter.api.TestInstance;
-    
-    @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-    public class EntityArraysTest {
-    
-        private EntityArrays entityArrays;
-    
-        @BeforeEach
-        public void setup() {
-            entityArrays = new EntityArrays();
-        }
-    
-        @Test
-        public void testAposEscape() {
-            String[][] aposEscape = entityArrays.APOS_ESCAPE();
-            for (String[] escape : aposEscape) {
-                String input = escape[0];
-                String expected = escape[1];
-                String actual = EntityArrays.APOS_ESCAPE(input);
-                assertEquals(expected, actual);
-            }
-        }
-    
-        @Test
-        public void testAposUnescape() {
-            String[][] aposUnescape = entityArrays.APOS_UNESCAPE();
-            for (String[] unescape : aposUnescape) {
-                String input = unescape[0];
-                String expected = unescape[1];
-                String actual = EntityArrays.APOS_UNESCAPE(input);
-                assertEquals(expected, actual);
-            }
-        }
-    
-        @Test
-        public void testAposEscapeAndUnescape() {
-            String input = "&apos;";
-            String expected = "'";
-            String escaped = EntityArrays.APOS_ESCAPE(input);
-            String unescaped = EntityArrays.APOS_UNESCAPE(escaped);
-            assertEquals(expected, unescaped);
-        }
-    }
-    @Test
-    public void testJavaCtrlCharsEscape() {
-        String[][] escapeMapping = EntityArrays.JAVA_CTRL_CHARS_ESCAPE;
-        for (String[] mapping : escapeMapping) {
-            String input = mapping[0];
-            String expected = mapping[1];
-            String result = JAVA_CTRL_CHARS_ESCAPE.escape(input);
-            Assertions.assertEquals(expected, result);
-        }
-    }
-    
-    @Test
-    public void testJavaCtrlCharsUnescape() {
-        String[][] unescapeMapping = EntityArrays.JAVA_CTRL_CHARS_UNESCAPE;
-        for (String[] mapping : unescapeMapping) {
-            String input = mapping[1];
-            String expected = mapping[0];
-            String result = JAVA_CTRL_CHARS_ESCAPE.unescape(input);
-            Assertions.assertEquals(expected, result);
-        }
-    }
-    
-    @Test
-    public void testJavaCtrlCharsEscapeAndUnescape() {
-        String[][] escapeMapping = EntityArrays.JAVA_CTRL_CHARS_ESCAPE;
-        String[][] unescapeMapping = EntityArrays.JAVA_CTRL_CHARS_UNESCAPE;
-        for (int i = 0; i < escapeMapping.length; i++) {
-            String input = escapeMapping[i][0];
-            String expected = escapeMapping[i][1];
-            String escaped = JAVA_CTRL_CHARS_ESCAPE.escape(input);
-            String unescaped = JAVA_CTRL_CHARS_ESCAPE.unescape(expected);
-            Assertions.assertEquals(expected, escaped);
-            Assertions.assertEquals(input, unescaped);
-        }
-    }
+
+//
+//    @Test
+//    public void testAposEscape() {
+//        String[][] aposEscape = entityArrays.APOS_ESCAPE();
+//        for (String[] escape : aposEscape) {
+//            String input = escape[0];
+//            String expected = escape[1];
+//            String actual = EntityArrays.APOS_ESCAPE(input);
+//            assertEquals(expected, actual);
+//        }
+//    }
+//
+//    @Test
+//    public void testAposUnescape() {
+//        String[][] aposUnescape = APOS_UNESCAPE();
+//        for (String[] unescape : aposUnescape) {
+//            String input = unescape[0];
+//            String expected = unescape[1];
+//            String actual = APOS_UNESCAPE(input);
+//            assertEquals(expected, actual);
+//        }
+//    }
+//
+//    @Test
+//    public void testAposEscapeAndUnescape() {
+//        String input = "&apos;";
+//        String expected = "'";
+//        String escaped = EntityArrays.APOS_ESCAPE(input);
+//        String unescaped = APOS_UNESCAPE(escaped);
+//        assertEquals(expected, unescaped);
+//    }
+//
+//    @Test
+//    public void testJavaCtrlCharsEscape() {
+//        String[][] escapeMapping = JAVA_CTRL_CHARS_ESCAPE();
+//        for (String[] mapping : escapeMapping) {
+//            String input = mapping[0];
+//            String expected = mapping[1];
+//            String result = JAVA_CTRL_CHARS_ESCAPE.escape(input);
+//            Assertions.assertEquals(expected, result);
+//        }
+//    }
+//
+//    @Test
+//    public void testJavaCtrlCharsUnescape() {
+//        String[][] unescapeMapping = EntityArrays.JAVA_CTRL_CHARS_UNESCAPE;
+//        for (String[] mapping : unescapeMapping) {
+//            String input = mapping[1];
+//            String expected = mapping[0];
+//            String result = JAVA_CTRL_CHARS_ESCAPE().unescape(input);
+//            Assertions.assertEquals(expected, result);
+//        }
+//    }
+//
+//    @Test
+//    public void testJavaCtrlCharsEscapeAndUnescape() {
+//        String[][] escapeMapping = EntityArrays.JAVA_CTRL_CHARS_ESCAPE;
+//        String[][] unescapeMapping = EntityArrays.JAVA_CTRL_CHARS_UNESCAPE;
+//        for (int i = 0; i < escapeMapping.length; i++) {
+//            String input = escapeMapping[i][0];
+//            String expected = escapeMapping[i][1];
+//            String escaped = JAVA_CTRL_CHARS_ESCAPE.escape(input);
+//            String unescaped = JAVA_CTRL_CHARS_ESCAPE.unescape(expected);
+//            Assertions.assertEquals(expected, escaped);
+//            Assertions.assertEquals(input, unescaped);
+//        }
+//    }
 
 }

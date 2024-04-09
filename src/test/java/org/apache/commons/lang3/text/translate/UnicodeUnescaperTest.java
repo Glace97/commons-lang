@@ -1,99 +1,66 @@
 package org.apache.commons.lang3.text.translate;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertLinesMatch;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertTimeout;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-
-
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
+import org.apache.commons.text.translate.UnicodeUnescaper;
 import org.junit.jupiter.api.Test;
+import java.io.IOException;
+import java.io.StringWriter;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UnicodeUnescaperTest {
+
     @Test
-    void testTranslate_whenValidInputWithUnicodeValue_shouldWriteCorrectCharacter() throws IOException {
-        CharSequence input = "\\u0061";
-        int index = 0;
-    
-        int translated = unescaper.translate(input, index, writer);
-    
-        assertEquals(6, translated);
-        assertEquals("a", writer.toString());
-    }
-    
-    @Test
-    void testTranslate_whenValidInputWithUnicodeValueAndAdditionalUChars_shouldWriteCorrectCharacter() throws IOException {
-        CharSequence input = "\\uuu0061";
-        int index = 0;
-    
-        int translated = unescaper.translate(input, index, writer);
-    
-        assertEquals(7, translated);
-        assertEquals("a", writer.toString());
-    }
-    
-    @Test
-    void testTranslate_whenValidInputWithUnicodeValueAndPlusChar_shouldWriteCorrectCharacter() throws IOException {
-        CharSequence input = "\\u+0061";
-        int index = 0;
-    
-        int translated = unescaper.translate(input, index, writer);
-    
-        assertEquals(7, translated);
-        assertEquals("a", writer.toString());
-    }
-    
-    @Test
-    void testTranslate_whenValidInputWithInvalidUnicodeValue_shouldThrowException() {
-        CharSequence input = "\\u00g1";
-        int index = 0;
-    
-        assertThrows(IllegalArgumentException.class, () -> unescaper.translate(input, index, writer));
-    }
-    
-    @Test
-    void testTranslate_whenInputEndsWithoutEnoughHexDigits_shouldThrowException() {
-        CharSequence input = "\\u006";
-        int index = 0;
-    
-        assertThrows(IllegalArgumentException.class, () -> unescaper.translate(input, index, writer));
-    }
-    
-    @Test
-    void testTranslate_whenInputEndsWithoutEnoughHexDigitsDueToEndOfCharSequence_shouldThrowException() {
-        CharSequence input = "\\u006";
-        int index = 0;
-    
-        assertThrows(IllegalArgumentException.class, () -> unescaper.translate(input, index, writer));
-    }
-    
-    @Test
-    void testTranslate_whenInvalidInput_shouldReturnZero() throws IOException {
-        CharSequence input = "abc";
-        int index = 0;
-    
-        int translated = unescaper.translate(input, index, writer);
-    
-        assertEquals(0, translated);
-        assertEquals("", writer.toString());
+    public void testTranslate_basicCase() throws IOException {
+        UnicodeUnescaper unescaper = new UnicodeUnescaper();
+        StringWriter writer = new StringWriter();
+        int consumed = unescaper.translate("\\u0041", 0, writer);
+        assertEquals(6, consumed); // consumed 6 characters including '\\u0041'
+        assertEquals("A", writer.toString()); // translated correctly
     }
 
+    @Test
+    public void testTranslate_multipleU() throws IOException {
+        UnicodeUnescaper unescaper = new UnicodeUnescaper();
+        StringWriter writer = new StringWriter();
+        int consumed = unescaper.translate("\\uu0041", 0, writer);
+        assertEquals(7, consumed); // consumed 7 characters including '\\uu0041'
+        assertEquals("A", writer.toString()); // translated correctly
+    }
+
+    @Test
+    public void testTranslate_withPlus() throws IOException {
+        UnicodeUnescaper unescaper = new UnicodeUnescaper();
+        StringWriter writer = new StringWriter();
+        int consumed = unescaper.translate("\\u+0041", 0, writer);
+        assertEquals(7, consumed); // consumed 7 characters including '\\u+0041'
+        assertEquals("A", writer.toString()); // translated correctly
+    }
+
+    @Test
+    public void testTranslate_incompleteInput() {
+        UnicodeUnescaper unescaper = new UnicodeUnescaper();
+        StringWriter writer = new StringWriter();
+        assertThrows(IllegalArgumentException.class, () -> unescaper.translate("\\u004", 0, writer));
+    }
+
+    @Test
+    public void testTranslate_invalidHexDigits() {
+        UnicodeUnescaper unescaper = new UnicodeUnescaper();
+        StringWriter writer = new StringWriter();
+        assertThrows(IllegalArgumentException.class, () -> unescaper.translate("\\u00G1", 0, writer));
+    }
+
+    @Test
+    public void testTranslate_lessThan4HexDigits() {
+        UnicodeUnescaper unescaper = new UnicodeUnescaper();
+        StringWriter writer = new StringWriter();
+        assertThrows(IllegalArgumentException.class, () -> unescaper.translate("\\u004", 0, writer));
+    }
+
+    @Test
+    public void testTranslate_endOfCharSequence() {
+        UnicodeUnescaper unescaper = new UnicodeUnescaper();
+        StringWriter writer = new StringWriter();
+        assertThrows(IllegalArgumentException.class, () -> unescaper.translate("\\u0041", 1, writer));
+    }
 }

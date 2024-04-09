@@ -27,21 +27,23 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.function.Consumer;
+
 public class ConsumersTest {
     @Test
     void testNop() {
         Consumer<String> nop = Consumers.nop();
     
         // Test with null input
-        Assertions.assertDoesNotThrow(() -> nop.accept(null));
+        assertDoesNotThrow(() -> nop.accept(null));
     
         // Test with empty string
         String emptyString = "";
-        Assertions.assertDoesNotThrow(() -> nop.accept(emptyString));
+        assertDoesNotThrow(() -> nop.accept(emptyString));
     
         // Test with non-empty string
         String nonEmptyString = "Hello World";
-        Assertions.assertDoesNotThrow(() -> nop.accept(nonEmptyString));
+        assertDoesNotThrow(() -> nop.accept(nonEmptyString));
     }
 
 }

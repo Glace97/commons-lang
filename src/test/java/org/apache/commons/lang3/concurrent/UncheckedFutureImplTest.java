@@ -27,6 +27,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
+
 public class UncheckedFutureImplTest {
     @Test
     void testGet() throws InterruptedException, ExecutionException {
@@ -44,12 +47,12 @@ public class UncheckedFutureImplTest {
     }
     
     @Test
-    void testGetWithTimeout() throws InterruptedException, ExecutionException, TimeoutException {
+    void testGetWithTimeout() throws InterruptedException, ExecutionException {
         // Test logic here
     }
     
     @Test
-    void testGetWithTimeout_Interrupted() throws InterruptedException, ExecutionException, TimeoutException {
+    void testGetWithTimeout_Interrupted() throws InterruptedException, ExecutionException {
         // Test logic here
     }
     
