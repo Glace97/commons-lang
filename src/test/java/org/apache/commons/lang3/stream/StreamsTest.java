@@ -29,7 +29,6 @@ import org.apache.commons.lang3.function.FailableConsumer;
 import org.apache.commons.lang3.function.FailableFunction;
 import org.apache.commons.lang3.function.FailablePredicate;
 import org.junit.jupiter.api.*;
-import sun.jvm.hotspot.debugger.win32.coff.Characteristics;
 
 import java.util.*;
 import java.util.function.BiConsumer;
