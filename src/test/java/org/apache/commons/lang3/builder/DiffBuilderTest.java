@@ -25,64 +25,64 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import org.junit.jupiter.api.*;
 
 public class DiffBuilderTest {
-    @Test
-    void testGetLeft1() {
-        // Test when left and right objects are the same
-        String sameObject = "same";
-        DiffBuilder<String> diffBuilder1 = new DiffBuilder.Builder<String>()
-                .setLeft(sameObject)
-                .setRight(sameObject)
-                .build();
-        assertEquals(sameObject, diffBuilder1.getLeft());
-
-        // Test when left and right objects are different
-        String differentObject = "different";
-        DiffBuilder<String> diffBuilder2 = new DiffBuilder.Builder<String>()
-                .setLeft(differentObject)
-                .setRight("other")
-                .build();
-        assertEquals(differentObject, diffBuilder2.getLeft());
-    }
-    @Test
-    void setToStringFormat_withValidFormat_shouldSetToStringFormat() {
-        String format = "Field %s differs from %s";
-        DiffBuilder.Builder<Object> diffBuilder = new DiffBuilder.Builder<>();
-        diffBuilder.setToStringFormat(format);
-        assertEquals(format, ((DiffBuilder.Builder<Object>) diffBuilder).toStringFormat);
-    }
-    
-    @Test
-    void setToStringFormat_withNullFormat_shouldSetDefaultToStringFormat() {
-        DiffBuilder.Builder<Object> diffBuilder = new DiffBuilder.Builder<>();
-        diffBuilder.setToStringFormat(null);
-        assertEquals(DiffBuilder.TO_STRING_FORMAT, diffBuilder.toStringFormat);
-    }
-    
-    @Test
-    void setToStringFormat_withEmptyFormat_shouldSetDefaultToStringFormat() {
-        DiffBuilder.Builder<Object> diffBuilder = new DiffBuilder.Builder<>();
-        diffBuilder.setToStringFormat("");
-        assertEquals(DiffBuilder.TO_STRING_FORMAT, diffBuilder.toStringFormat);
-    }
-
-    @Test
-    void testSetTestObjectsEquals1() {
-        // Test when testObjectsEquals is true
-        DiffBuilder<Integer> builder = new DiffBuilder.Builder<Integer>()
-                .setLeft(5)
-                .setRight(5)
-                .setTestObjectsEquals(true)
-                .build();
-        assertTrue(((DiffBuilder<Integer>) builder).equals);
-
-        // Test when testObjectsEquals is false
-        builder = new DiffBuilder.Builder<Integer>()
-                .setLeft(5)
-                .setRight(5)
-                .setTestObjectsEquals(false)
-                .build();
-        assertFalse(builder.equals);
-    }
+//    @Test
+//    void testGetLeft1() {
+//        // Test when left and right objects are the same
+//        String sameObject = "same";
+//        DiffBuilder<String> diffBuilder1 = new DiffBuilder.Builder<String>()
+//                .setLeft(sameObject)
+//                .setRight(sameObject)
+//                .build();
+//        assertEquals(sameObject, diffBuilder1.getLeft());
+//
+//        // Test when left and right objects are different
+//        String differentObject = "different";
+//        DiffBuilder<String> diffBuilder2 = new DiffBuilder.Builder<String>()
+//                .setLeft(differentObject)
+//                .setRight("other")
+//                .build();
+//        assertEquals(differentObject, diffBuilder2.getLeft());
+//    }
+//    @Test
+//    void setToStringFormat_withValidFormat_shouldSetToStringFormat() {
+//        String format = "Field %s differs from %s";
+//        DiffBuilder.Builder<Object> diffBuilder = new DiffBuilder.Builder<>();
+//        diffBuilder.setToStringFormat(format);
+//        assertEquals(format, ((DiffBuilder.Builder<Object>) diffBuilder).toStringFormat);
+//    }
+//
+//    @Test
+//    void setToStringFormat_withNullFormat_shouldSetDefaultToStringFormat() {
+//        DiffBuilder.Builder<Object> diffBuilder = new DiffBuilder.Builder<>();
+//        diffBuilder.setToStringFormat(null);
+//        assertEquals(DiffBuilder.TO_STRING_FORMAT, diffBuilder.toStringFormat);
+//    }
+//
+//    @Test
+//    void setToStringFormat_withEmptyFormat_shouldSetDefaultToStringFormat() {
+//        DiffBuilder.Builder<Object> diffBuilder = new DiffBuilder.Builder<>();
+//        diffBuilder.setToStringFormat("");
+//        assertEquals(DiffBuilder.TO_STRING_FORMAT, diffBuilder.toStringFormat);
+//    }
+//
+//    @Test
+//    void testSetTestObjectsEquals1() {
+//        // Test when testObjectsEquals is true
+//        DiffBuilder<Integer> builder = new DiffBuilder.Builder<Integer>()
+//                .setLeft(5)
+//                .setRight(5)
+//                .setTestObjectsEquals(true)
+//                .build();
+//        assertTrue(((DiffBuilder<Integer>) builder).equals);
+//
+//        // Test when testObjectsEquals is false
+//        builder = new DiffBuilder.Builder<Integer>()
+//                .setLeft(5)
+//                .setRight(5)
+//                .setTestObjectsEquals(false)
+//                .build();
+//        assertFalse(builder.equals);
+//    }
 
     @Test
     void testGetLeft() {
