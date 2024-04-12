@@ -29,8 +29,6 @@ import org.junit.jupiter.api.Test;
 
 public class CharEncodingTest {
 
-    
-
         @Test
         void testIsSupportedWithValidCharset() {
             assertTrue(CharEncoding.isSupported("ISO-8859-1"));

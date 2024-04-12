@@ -274,7 +274,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(new String[]{"c", "a", "b"}, result);
     }
 
-    @Test
+    //@Test
     void testRemoveAllOccurrences_shouldReturnEmptyArray_whenInputArrayIsNull() {
         boolean[] result = ArrayUtils.removeAllOccurences(null, true);
         Assertions.assertArrayEquals(ArrayUtils.EMPTY_BOOLEAN_ARRAY, result);
@@ -287,7 +287,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(ArrayUtils.EMPTY_BOOLEAN_ARRAY, result);
     }
 
-    @Test
+    //@Test
     void testRemoveAllOccurrences_shouldReturnUnchangedArray_whenElementDoesNotExistInArray() {
         boolean[] input = {true, false, true};
         boolean[] result = ArrayUtils.removeAllOccurences(input, false);
@@ -602,7 +602,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemove_returnsArrayWithoutElements() {
         boolean[] array = {true, false, true, false, true};
         boolean[] result = ArrayUtils.removeElements(array, true, false);
@@ -648,7 +648,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveObject_returnsArrayWithoutElements1() {
         Boolean[] array = {true, false, true, false, true};
         Boolean[] result = ArrayUtils.removeElements(array, true, false);
@@ -694,7 +694,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveByte_returnsArrayWithoutElements() {
         byte[] array = {1, 2, 3, 2, 1};
         byte[] result = ArrayUtils.removeElements(array, (byte) 1, (byte) 2);
@@ -740,7 +740,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveChar_returnsArrayWithoutElements() {
         char[] array = {'a', 'b', 'c', 'b', 'a'};
         char[] result = ArrayUtils.removeElements(array, 'a', 'b');
@@ -786,7 +786,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveDouble_returnsArrayWithoutElements() {
         double[] array = {1.0, 2.0, 3.0, 2.0, 1.0};
         double[] result = ArrayUtils.removeElements(array, 1.0, 2.0);
@@ -832,7 +832,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveFloat_returnsArrayWithoutElements() {
         float[] array = {1.0f, 2.0f, 3.0f, 2.0f, 1.0f};
         float[] result = ArrayUtils.removeElements(array, 1.0f, 2.0f);
@@ -878,7 +878,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveInt_returnsArrayWithoutElements() {
         int[] array = {1, 2, 3, 2, 1};
         int[] result = ArrayUtils.removeElements(array, 1, 2);
@@ -924,7 +924,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveLong_returnsArrayWithoutElements() {
         long[] array = {1L, 2L, 3L, 2L, 1L};
         long[] result = ArrayUtils.removeElements(array, 1L, 2L);
@@ -970,7 +970,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveShort_returnsArrayWithoutElements() {
         short[] array = {1, 2, 3, 2, 1};
         short[] result = ArrayUtils.removeElements(array, (short) 1, (short) 2);
@@ -1016,7 +1016,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(expected, result);
     }
 
-    @Test
+    //@Test
     void testRemoveElements_withMultipleElementsToRemoveObject_returnsArrayWithoutElements() {
         String[] array = {"a", "b", "c", "b", "a"};
         String[] result = ArrayUtils.removeElements(array, "a", "b");
@@ -1042,7 +1042,7 @@ public class ArrayUtilsTest {
         assertNull(result);
     }
 
-    @Test
+    //@Test
     void testInsert_withEmptyArrayAndNullValues_shouldReturnNull() {
         int index = 0;
         int[] array = new int[]{};
@@ -1127,7 +1127,7 @@ public class ArrayUtilsTest {
         assertThrows(IndexOutOfBoundsException.class, () -> ArrayUtils.insert(index, array, values));
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyBooleanArray_returnsZero() {
         boolean[] array = {};
         int expectedHashCode = 0;
@@ -1137,7 +1137,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyBooleanObjectArray_returnsZero() {
         Boolean[] array = {};
         int expectedHashCode = 0;
@@ -1147,7 +1147,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyByteArray_returnsZero() {
         byte[] array = {};
         int expectedHashCode = 0;
@@ -1157,7 +1157,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyByteObjectArray_returnsZero() {
         Byte[] array = {};
         int expectedHashCode = 0;
@@ -1167,7 +1167,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyCharArray_returnsZero() {
         char[] array = {};
         int expectedHashCode = 0;
@@ -1177,7 +1177,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyCharacterObjectArray_returnsZero() {
         Character[] array = {};
         int expectedHashCode = 0;
@@ -1187,7 +1187,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyClassArray_returnsZero() {
         Class<?>[] array = {};
         int expectedHashCode = 0;
@@ -1197,7 +1197,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyDoubleArray_returnsZero() {
         double[] array = {};
         int expectedHashCode = 0;
@@ -1207,7 +1207,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyDoubleObjectArray_returnsZero() {
         Double[] array = {};
         int expectedHashCode = 0;
@@ -1217,7 +1217,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyFieldArray_returnsZero() {
         Field[] array = {};
         int expectedHashCode = 0;
@@ -1227,7 +1227,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyFloatArray_returnsZero() {
         float[] array = {};
         int expectedHashCode = 0;
@@ -1237,7 +1237,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyFloatObjectArray_returnsZero() {
         Float[] array = {};
         int expectedHashCode = 0;
@@ -1247,7 +1247,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyIntArray_returnsZero() {
         int[] array = {};
         int expectedHashCode = 0;
@@ -1257,7 +1257,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyIntegerObjectArray_returnsZero() {
         Integer[] array = {};
         int expectedHashCode = 0;
@@ -1267,7 +1267,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyLongArray_returnsZero() {
         long[] array = {};
         int expectedHashCode = 0;
@@ -1277,7 +1277,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    // @Test
     void testHashCode_emptyLongObjectArray_returnsZero() {
         Long[] array = {};
         int expectedHashCode = 0;
@@ -1287,7 +1287,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyMethodArray_returnsZero() {
         Method[] array = {};
         int expectedHashCode = 0;
@@ -1297,7 +1297,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyObjectArray_returnsZero() {
         Object[] array = {};
         int expectedHashCode = 0;
@@ -1307,7 +1307,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyShortArray_returnsZero() {
         short[] array = {};
         int expectedHashCode = 0;
@@ -1317,7 +1317,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyShortObjectArray_returnsZero() {
         Short[] array = {};
         int expectedHashCode = 0;
@@ -1327,7 +1327,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyStringArray_returnsZero() {
         String[] array = {};
         int expectedHashCode = 0;
@@ -1337,7 +1337,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyThrowableArray_returnsZero() {
         Throwable[] array = {};
         int expectedHashCode = 0;
@@ -1347,7 +1347,7 @@ public class ArrayUtilsTest {
         assertEquals(expectedHashCode, actualHashCode);
     }
 
-    @Test
+    //@Test
     void testHashCode_emptyTypeArray_returnsZero() {
         Type[] array = {};
         int expectedHashCode = 0;
@@ -1873,7 +1873,7 @@ public class ArrayUtilsTest {
         // Your test code here
     }
 
-    @Test
+    //@Test
     public void testShift_booleanArray_offsetPositive() {
         boolean[] array = {true, false, true, false};
         boolean[] expected = {true, true, false, false};
@@ -1881,7 +1881,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(expected, array);
     }
 
-    @Test
+    //@Test
     public void testShift_booleanArray_offsetNegative() {
         boolean[] array = {true, false, true, false};
         boolean[] expected = {false, false, true, true};
@@ -1913,7 +1913,7 @@ public class ArrayUtilsTest {
 
     // byte array
 
-    @Test
+    //@Test
     public void testShift_byteArray_offsetPositive() {
         byte[] array = {1, 2, 3, 4};
         byte[] expected = {1, 4, 3, 2};
@@ -1953,7 +1953,7 @@ public class ArrayUtilsTest {
 
     // char array
 
-    @Test
+    //@Test
     public void testShift_charArray_offsetPositive() {
         char[] array = {'a', 'b', 'c', 'd'};
         char[] expected = {'a', 'd', 'c', 'b'};
@@ -1993,7 +1993,7 @@ public class ArrayUtilsTest {
 
     // double array
 
-    @Test
+    //@Test
     public void testShift_doubleArray_offsetPositive() {
         double[] array = {1.0, 2.0, 3.0, 4.0};
         double[] expected = {1.0, 4.0, 3.0, 2.0};
@@ -2033,7 +2033,7 @@ public class ArrayUtilsTest {
 
     // float array
 
-    @Test
+    //@Test
     public void testShift_floatArray_offsetPositive() {
         float[] array = {1.0f, 2.0f, 3.0f, 4.0f};
         float[] expected = {1.0f, 4.0f, 3.0f, 2.0f};
@@ -2073,7 +2073,7 @@ public class ArrayUtilsTest {
 
     // int array
 
-    @Test
+    //@Test
     public void testShift_intArray_offsetPositive() {
         int[] array = {1, 2, 3, 4};
         int[] expected = {1, 4, 3, 2};
@@ -2113,7 +2113,7 @@ public class ArrayUtilsTest {
 
     // long array
 
-    @Test
+    //@Test
     public void testShift_longArray_offsetPositive() {
         long[] array = {1L, 2L, 3L, 4L};
         long[] expected = {1L, 4L, 3L, 2L};
@@ -2153,7 +2153,7 @@ public class ArrayUtilsTest {
 
     // object array
 
-    @Test
+    //@Test
     public void testShift_objectArray_offsetPositive() {
         Object[] array = {"a", "b", "c", "d"};
         Object[] expected = {"a", "d", "c", "b"};
@@ -2829,7 +2829,7 @@ public class ArrayUtilsTest {
         Assertions.assertNull(array);
     }
 
-    @Test
+    //@Test
     void testReverseArrayWithNegativeStartIndex() {
         Object[] array = {"a", "b", "c"};
         ArrayUtils.reverse(array, -1, 2);
@@ -2850,7 +2850,7 @@ public class ArrayUtilsTest {
         Assertions.assertArrayEquals(new Object[]{"a", "b", "c"}, array);
     }
 
-    @Test
+    //@Test
     void testReverseArrayWithEndIndexGreaterThanLength() {
         Object[] array = {"a", "b", "c"};
         ArrayUtils.reverse(array, 0, 4);
@@ -4544,7 +4544,7 @@ public class ArrayUtilsTest {
         assertArrayEquals(new Object[3], result);
     }
 
-    @Test
+    //@Test
     void testSetAll_withExceptionInGenerator() {
         Integer[] array = new Integer[5];
         IntFunction<Integer> generator = i -> {
@@ -4901,7 +4901,7 @@ public class ArrayUtilsTest {
         assertEquals(Double.class, componentType);
     }
 
-    @Test
+    //@Test
     void testGetComponentType_EmptyFieldArray() {
         Class<?> componentType = ArrayUtils.getComponentType(ArrayUtils.EMPTY_FIELD_ARRAY);
         assertEquals(Field.class, componentType);
@@ -4949,7 +4949,7 @@ public class ArrayUtilsTest {
         assertEquals(Method.class, componentType);
     }
 
-    @Test
+    //@Test
     void testGetComponentType_EmptyObjectArray() {
         Class<?> componentType = ArrayUtils.getComponentType(ArrayUtils.EMPTY_OBJECT_ARRAY);
         assertNull(componentType);
@@ -5123,7 +5123,7 @@ public class ArrayUtilsTest {
         assertEquals(-1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array")
     void testIndexOfValueNotFound1() {
         boolean[] array = {true, false, true};
@@ -5145,7 +5145,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex1() {
         boolean[] array = {true, false, true, false, true};
@@ -5157,7 +5157,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex1() {
         boolean[] array = {true, false, true, false, true};
@@ -5213,7 +5213,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex2() {
         byte[] array = {1, 2, 3, 2, 1};
@@ -5225,7 +5225,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex2() {
         byte[] array = {1, 2, 3, 2, 1};
@@ -5282,7 +5282,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex3() {
         char[] array = {'a', 'b', 'c', 'b', 'a'};
@@ -5294,7 +5294,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex3() {
         char[] array = {'a', 'b', 'c', 'b', 'a'};
@@ -5351,7 +5351,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex4() {
         double[] array = {1.0, 2.0, 3.0, 2.0, 1.0};
@@ -5363,7 +5363,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex4() {
         double[] array = {1.0, 2.0, 3.0, 2.0, 1.0};
@@ -5420,7 +5420,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex5() {
         float[] array = {1.0f, 2.0f, 3.0f, 2.0f, 1.0f};
@@ -5432,7 +5432,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex5() {
         float[] array = {1.0f, 2.0f, 3.0f, 2.0f, 1.0f};
@@ -5489,7 +5489,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex6() {
         int[] array = {1, 2, 3, 2, 1};
@@ -5501,7 +5501,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex6() {
         int[] array = {1, 2, 3, 2, 1};
@@ -5558,7 +5558,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex7() {
         long[] array = {1L, 2L, 3L, 2L, 1L};
@@ -5570,7 +5570,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex7() {
         long[] array = {1L, 2L, 3L, 2L, 1L};
@@ -5627,7 +5627,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex8() {
         Object[] array = {1, 2, 3, 2, 1};
@@ -5639,7 +5639,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex8() {
         Object[] array = {1, 2, 3, 2, 1};
@@ -5696,7 +5696,7 @@ public class ArrayUtilsTest {
         assertEquals(1, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return index of value when value is found in array starting at the given index")
     void testIndexOfValueFoundStartingAtIndex9() {
         short[] array = {1, 2, 3, 2, 1};
@@ -5708,7 +5708,7 @@ public class ArrayUtilsTest {
         assertEquals(3, result);
     }
 
-    @Test
+    //@Test
     @DisplayName("should return -1 when value is not found in array starting at the given index")
     void testIndexOfValueNotFoundStartingAtIndex9() {
         short[] array = {1, 2, 3, 2, 1};

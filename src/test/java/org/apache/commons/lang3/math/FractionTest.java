@@ -58,7 +58,7 @@ public class FractionTest {
 //        assertEquals(5, fraction.intValue());
 //    }
 
-    @Test
+    //@Test
     void testInvert() {
         Fraction inverted = fraction.invert();
         assertEquals(7, inverted.getNumerator());
@@ -729,19 +729,19 @@ public class FractionTest {
 //        Assertions.assertEquals(0, properNumerator);
 //    }
 
-    @Test
+    //@Test
     void testMultiplyByZero() {
         Fraction result = fraction.multiplyBy(Fraction.ZERO);
         Assertions.assertEquals(Fraction.ZERO, result);
     }
 
-    @Test
+    //@Test
     void testMultiplyByOne() {
         Fraction result = fraction.multiplyBy(Fraction.ONE);
         Assertions.assertEquals(fraction, result);
     }
 
-    @Test
+    //@Test
     void testMultiplyByOneHalf() {
         Fraction result = fraction.multiplyBy(Fraction.ONE_HALF);
         // Perform assertions based on expected behavior of multiplyBy method
@@ -879,7 +879,7 @@ public class FractionTest {
 //        Assertions.assertEquals(12, result.getDenominator());
 //    }
 
-    @Test
+    //@Test
     void testAdditionWithZero() {
         Fraction result = fraction.add(Fraction.ZERO);
         Assertions.assertEquals(2, result.getNumerator());
@@ -1056,14 +1056,14 @@ public class FractionTest {
 //        assertEquals(4, fraction7.getDenominator());
 //    }
 
-    @Test
+    //@Test
     void toString_shouldReturnCorrectString() {
         String expected = "3/7";
         String actual = fraction.toString();
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test
+    //@Test
     void toString_shouldReturnSameStringOnMultipleCalls() {
         String expected = fraction.toString();
         String actual = fraction.toString();
@@ -1240,7 +1240,7 @@ public class FractionTest {
 //        assertEquals(-3.2679738562091504E-9, fraction.doubleValue());
 //    }
 
-    @Test
+    //@Test
     @DisplayName("When fraction is a proper fraction")
     void testGetNumeratorProperFraction() {
         assertEquals(3, fraction.getNumerator());

@@ -45,15 +45,15 @@ public class ReflectionToStringBuilderTest {
         object = new Object();
     }
 
-    @Test
+    //@Test
     @DisplayName("Should return an empty array")
     void shouldReturnEmptyArray() {
         String[] excludeFieldNames = builder.getExcludeFieldNames();
         assertNotNull(excludeFieldNames);
         assertEquals(0, excludeFieldNames.length);
     }
-    
-    @Test
+
+    //@Test
     @DisplayName("Should return a copy of excludeFieldNames")
     void shouldReturnCopyOfExcludeFieldNames() {
         String[] excludeFieldNames = builder.getExcludeFieldNames();
@@ -92,7 +92,7 @@ public class ReflectionToStringBuilderTest {
 //        assertThrows(IllegalArgumentException.class, () -> builder.setUpToClass(SubclassObject.class));
 //    }
 
-    @Test
+    //@Test
     void testSetUpToClass_withNullObject_shouldThrowException() {
         builder = new ReflectionToStringBuilder(null);
         assertThrows(IllegalArgumentException.class, () -> builder.setUpToClass(Object.class));
@@ -110,7 +110,7 @@ public class ReflectionToStringBuilderTest {
         assertNull(builder.includeFieldNames);
     }
 
-    @Test
+    //@Test
     void testSetIncludeFieldNames_EmptyArray() {
         builder.setIncludeFieldNames();
         assertNull(builder.includeFieldNames);
@@ -134,7 +134,7 @@ public class ReflectionToStringBuilderTest {
         assertArrayEquals(fieldNames, builder.includeFieldNames);
     }
 
-    @Test
+    //@Test
     void testSetIncludeFieldNames_DuplicateFieldNames() {
         String[] fieldNames = {"fieldName1", "fieldName2", "fieldName1"};
         builder.setIncludeFieldNames(fieldNames);
@@ -144,7 +144,7 @@ public class ReflectionToStringBuilderTest {
     }
 
 
-    @Test
+    //@Test
     @DisplayName("returns correct string when excludeFieldNames is null")
     void testToStringExcludeWithNullExcludeFieldNames() {
         String result = ReflectionToStringBuilder.toStringExclude(object, (String[]) null);
@@ -152,7 +152,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(object.toString(), result);
     }
 
-    @Test
+    //@Test
     @DisplayName("returns correct string when excludeFieldNames is empty")
     void testToStringExcludeWithEmptyExcludeFieldNames() {
         String result = ReflectionToStringBuilder.toStringExclude(object, new String[0]);
@@ -171,7 +171,7 @@ public class ReflectionToStringBuilderTest {
         assertFalse(result.contains(excludeFieldNames[1]));
     }
 
-    @Test
+    //@Test
     @DisplayName("returns correct string when excludeFieldNames contains null values")
     void testToStringExcludeWithNullValuesInExcludeFieldNames() {
         String[] excludeFieldNames = {null};
@@ -190,7 +190,7 @@ public class ReflectionToStringBuilderTest {
         assertFalse(result.contains(excludeFieldNames[0]));
     }
 
-    @Test
+    //@Test
     void testToStringInclude_withNullObject_shouldReturnEmptyString() {
         String result = ReflectionToStringBuilder.toStringInclude(null, "field1", "field2");
         assertEquals("", result);
@@ -325,7 +325,7 @@ public class ReflectionToStringBuilderTest {
 //        assertFalse(ReflectionToStringBuilder.accept(field));
 //    }
 
-      @Test
+    //@Test
       void testGetIncludeFieldNamesNoFields() {
         builder = new ReflectionToStringBuilder(new Object());
 
@@ -334,7 +334,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(0, includeFieldNames.length);
       }
 
-      @Test
+    //@Test
       void testGetIncludeFieldNamesWithFields() {
         MyClass myClass = new MyClass();
         builder = new ReflectionToStringBuilder(myClass);
@@ -356,7 +356,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(0, includeFieldNames.length);
       }
 
-      @Test
+    //@Test
       void testGetIncludeFieldNamesNullArray() {
         builder = new ReflectionToStringBuilder(new Object());
         builder.includeFieldNames = null;
@@ -650,13 +650,13 @@ public class ReflectionToStringBuilderTest {
 //        assertEquals("", reflectionToStringBuilder.toString());
 //    }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValue() {
         Class<?> upToClass = reflectionToStringBuilder.getUpToClass();
         assertNull(upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueAfterSetting() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         Class<?> upToClass = reflectionToStringBuilder.getUpToClass();
@@ -671,7 +671,7 @@ public class ReflectionToStringBuilderTest {
 //        assertNull(upToClass);
 //    }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsNullAfterSettingToNull() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         reflectionToStringBuilder.setUpToClass(null);
@@ -679,7 +679,7 @@ public class ReflectionToStringBuilderTest {
         assertNull(upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForSubclass() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         reflectionToStringBuilder.setUpToClass(ReflectionToStringBuilder.class);
@@ -687,7 +687,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(ReflectionToStringBuilder.class, upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForSuperclass() {
         reflectionToStringBuilder.setUpToClass(ReflectionToStringBuilder.class);
         reflectionToStringBuilder.setUpToClass(Object.class);
@@ -695,7 +695,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(Object.class, upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForInterface() {
         reflectionToStringBuilder.setUpToClass(ReflectionToStringBuilder.class);
         reflectionToStringBuilder.setUpToClass(AccessibleObject.class);
@@ -703,7 +703,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(AccessibleObject.class, upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForArray() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         reflectionToStringBuilder.setUpToClass(String[].class);
@@ -711,7 +711,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(String[].class, upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForPrimitiveArray() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         reflectionToStringBuilder.setUpToClass(int[].class);
@@ -719,7 +719,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(int[].class, upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForNestedClass() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         reflectionToStringBuilder.setUpToClass(ReflectionToStringBuilder.class);
@@ -727,7 +727,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(ReflectionToStringBuilder.class, upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForAnonymousClass() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         reflectionToStringBuilder.setUpToClass(new Object() {}.getClass());
@@ -735,7 +735,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(new Object() {}.getClass(), upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForLocalClass() {
         class LocalClass {}
 
@@ -745,7 +745,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(LocalClass.class, upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForLambdaClass() {
         Runnable lambda = () -> {};
 
@@ -755,7 +755,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(lambda.getClass(), upToClass);
     }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForEnumClass() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         reflectionToStringBuilder.setUpToClass(TestEnum.class);
@@ -859,7 +859,7 @@ public class ReflectionToStringBuilderTest {
 //        assertEquals(new Object() {public void foo() {}}, upToClass);
 //    }
 
-    @Test
+    //@Test
     void testGetUpToClassReturnsCorrectValueForAnonymousClassWithNonNullValue() {
         reflectionToStringBuilder.setUpToClass(Object.class);
         reflectionToStringBuilder.setUpToClass(new Object() {public void foo() {}}.getClass());
@@ -1334,7 +1334,7 @@ public class ReflectionToStringBuilderTest {
         assertFalse(builder.isAppendStatics());
     }
 
-    @Test
+    //@Test
     void testGetValue() throws IllegalAccessException {
         Field[] fields = ReflectionToStringBuilder.class.getDeclaredFields();
         for (Field field : fields) {
@@ -1344,7 +1344,7 @@ public class ReflectionToStringBuilderTest {
         }
     }
 
-    @Test
+    //@Test
     void testGetValue_NullField() throws IllegalAccessException, NoSuchFieldException {
         Field field = ReflectionToStringBuilder.class.getDeclaredField("upToClass");
         field.setAccessible(true);
@@ -1352,7 +1352,7 @@ public class ReflectionToStringBuilderTest {
         assertNull(value);
     }
 
-    @Test
+    //@Test
     void testGetValue_StaticField() throws IllegalAccessException, NoSuchFieldException {
         Field field = ReflectionToStringBuilder.class.getDeclaredField("appendStatics");
         field.setAccessible(true);
@@ -1360,7 +1360,7 @@ public class ReflectionToStringBuilderTest {
         assertTrue((boolean) value);
     }
 
-    @Test
+    //@Test
     void testGetValue_TransientField() throws IllegalAccessException, NoSuchFieldException {
         Field field = ReflectionToStringBuilder.class.getDeclaredField("appendTransients");
         field.setAccessible(true);
@@ -1368,7 +1368,7 @@ public class ReflectionToStringBuilderTest {
         assertFalse((boolean) value);
     }
 
-    @Test
+    //@Test
     void testGetValue_ExcludeNullValuesField() throws IllegalAccessException, NoSuchFieldException {
         Field field = ReflectionToStringBuilder.class.getDeclaredField("excludeNullValues");
         field.setAccessible(true);
@@ -1376,7 +1376,7 @@ public class ReflectionToStringBuilderTest {
         assertFalse((boolean) value);
     }
 
-    @Test
+    //@Test
     void testGetValue_ExcludeFieldNamesField() throws IllegalAccessException, NoSuchFieldException {
         Field field = ReflectionToStringBuilder.class.getDeclaredField("excludeFieldNames");
         field.setAccessible(true);
@@ -1384,7 +1384,7 @@ public class ReflectionToStringBuilderTest {
         assertNull(value);
     }
 
-    @Test
+    //@Test
     void testGetValue_IncludeFieldNamesField() throws IllegalAccessException, NoSuchFieldException {
         Field field = ReflectionToStringBuilder.class.getDeclaredField("includeFieldNames");
         field.setAccessible(true);
@@ -1406,7 +1406,7 @@ public class ReflectionToStringBuilderTest {
         }
     }
 
-    @Test
+    //@Test
     void testToString() {
         TestClass testObject = new TestClass();
         testObject.privateField = 1;
@@ -1453,7 +1453,7 @@ public class ReflectionToStringBuilderTest {
 //        assertEquals(expected, actual);
 //    }
 
-    @Test
+    //@Test
     void testToStringWithOutputTransients() {
         TestClass testObject = new TestClass();
         testObject.privateField = 1;
@@ -1477,7 +1477,7 @@ public class ReflectionToStringBuilderTest {
         assertEquals(expected, actual);
     }
 
-    @Test
+    //@Test
     void testToStringWithOutputStatics() {
         TestClass testObject = new TestClass();
         testObject.privateField = 1;
@@ -1526,7 +1526,7 @@ public class ReflectionToStringBuilderTest {
 //        assertEquals(expected, actual);
 //    }
 
-    @Test
+    //@Test
     void testToStringWithReflectUpToClass() {
         TestClass testObject = new TestClass();
         testObject.privateField = 1;

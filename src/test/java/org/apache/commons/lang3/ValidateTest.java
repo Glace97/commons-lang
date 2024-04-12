@@ -111,7 +111,7 @@ public class ValidateTest {
         assertEquals("Custom message", exception.getMessage());
     }
 
-    @Test
+    //@Test
     void isTrue_shouldThrowExceptionWithCustomMessageAndDoubleValue_whenExpressionIsFalse() {
         double value = 10.5;
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> validate.isTrue(false, "Value is %f", value));

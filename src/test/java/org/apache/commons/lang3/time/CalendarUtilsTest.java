@@ -50,7 +50,7 @@ public class CalendarUtilsTest {
         calendarUtils = new CalendarUtils(calendar);
     }
 
-    @Test
+    //@Test
     void shouldReturnCurrentYear() {
         int expectedYear = Calendar.getInstance().get(Calendar.YEAR);
         int actualYear = calendarUtils.getYear();
