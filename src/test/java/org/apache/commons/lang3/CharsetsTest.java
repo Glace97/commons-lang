@@ -63,13 +63,6 @@ public class CharsetsTest {
         Assertions.assertEquals(charset, result);
     }
 
-//    @Test
-//    @DisplayName("Returns the default charset if given charset is null")
-//    void returnsDefaultCharsetIfGivenCharsetIsNull() {
-//        Charset defaultCharset = Charset.defaultCharset();
-//        Charset result = Charsets.toCharset(null);
-//        Assertions.assertEquals(defaultCharset, result);
-//    }
 
     @Test
     @DisplayName("Returns the given charset if not null")
@@ -79,14 +72,6 @@ public class CharsetsTest {
         Charset result = Charsets.toCharset(charsetName);
         Assertions.assertEquals(charset, result);
     }
-
-//    @Test
-//    @DisplayName("Returns the default charset if given charset is null")
-//    void returnsDefaultCharsetIfGivenCharsetIsNull() {
-//        Charset defaultCharset = Charset.defaultCharset();
-//        Charset result = Charsets.toCharset(null);
-//        Assertions.assertEquals(defaultCharset, result);
-//    }
 
     @Test
     @DisplayName("Throws UnsupportedCharsetException if given charset name is invalid")

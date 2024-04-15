@@ -31,7 +31,6 @@ import java.util.TimeZone;
 
 public class TimeZonesTest {
 
-
     @Test
     void returnsGivenTimeZoneIfNonNull() {
         TimeZone timeZone = TimeZone.getTimeZone("PST");
@@ -39,24 +38,6 @@ public class TimeZonesTest {
         assertSame(timeZone, result);
     }
 
-    //@Test
-    void returnsDefaultTimeZoneIfGivenTimeZoneIsNull() {
-        TimeZone result = TimeZones.toTimeZone(null);
-        assertNotNull(result);
-        assertSame(TimeZone.getDefault(), result);
-    }
-
-//    @Test
-//    void gmtIdFieldIsSetToGMT() {
-//        TimeZones timeZones = new TimeZones();
-//        assertEquals("GMT", timeZones.GMT_ID);
-//    }
-//
-//    @Test
-//    void gmtFieldIsSetToTimeZoneGetTimeZoneWithGMTId() {
-//        TimeZones timeZones = new TimeZones();
-//        assertEquals(TimeZone.getTimeZone(timeZones.GMT_ID), timeZones.GMT);
-//    }
 
 
 }

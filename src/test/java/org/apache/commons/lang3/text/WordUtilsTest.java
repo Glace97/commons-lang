@@ -109,8 +109,6 @@ public class WordUtilsTest {
         assertEquals("", result);
     }
 
-
-
     @Test
     @DisplayName("Test swapCase with all lowercase characters")
     void testSwapCaseAllLowercase() {
@@ -127,17 +125,6 @@ public class WordUtilsTest {
     void testSwapCaseAllUppercase() {
         String input = "THE QUICK BROWN FOX";
         String expected = "the quick brown fox";
-
-        String result = WordUtils.swapCase(input);
-
-        assertEquals(expected, result);
-    }
-
-    //@Test
-    @DisplayName("Test swapCase with mixed case characters")
-    void testSwapCaseMixedCase() {
-        String input = "ThE qUicK BrOWn foX";
-        String expected = "tHe QuICk bRoWN FOx";
 
         String result = WordUtils.swapCase(input);
 
@@ -177,7 +164,6 @@ public class WordUtilsTest {
         assertEquals(expected, result);
     }
 
-
     @Test
     void shouldReturnNullWhenInputIsNull() {
         // Arrange
@@ -213,20 +199,6 @@ public class WordUtilsTest {
 
         // Act
         String result = WordUtils.wrap(input, wrapLength);
-
-        // Assert
-        assertEquals(expected, result);
-    }
-
-    //@Test
-    void shouldWrapLongWordsIfWrapLongWordsIsTrue() {
-        // Arrange
-        String input = "Click here to jump to the commons website - https://commons.apache.org";
-        int wrapLength = 20;
-        String expected = "Click here to jump\nto the commons\nwebsite -\nhttps://commons.apach\ne.org";
-
-        // Act
-        String result = WordUtils.wrap(input, wrapLength, null, true);
 
         // Assert
         assertEquals(expected, result);
@@ -360,11 +332,6 @@ public class WordUtilsTest {
         assertEquals("I Am Fine", wordUtils.capitalizeFully("i am fine", null));
     }
 
-    //@Test
-    void testCapitalizeFully_DelimiterSet_EmptyDelimiters() {
-        assertEquals("I Am Fine", wordUtils.capitalizeFully("i am fine", new char[0]));
-    }
-
     @Test
     void testUncapitalizeWithNullString() {
         String result = WordUtils.uncapitalize(null);
@@ -381,18 +348,6 @@ public class WordUtilsTest {
     void testUncapitalizeWithNoDelimiters() {
         String result = WordUtils.uncapitalize("I Am FINE");
         assertEquals("i am fINE", result);
-    }
-
-    //@Test
-    void testUncapitalizeWithNullDelimiters() {
-        String result = WordUtils.uncapitalize("I AM.FINE", null);
-        assertEquals("i am.fINE", result);
-    }
-
-    //@Test
-    void testUncapitalizeWithEmptyDelimiters() {
-        String result = WordUtils.uncapitalize("I AM.FINE", new char[0]);
-        assertEquals("i am.fINE", result);
     }
 
     @Test
@@ -413,11 +368,6 @@ public class WordUtilsTest {
         assertEquals("i aM.fINE", result);
     }
 
-    //@Test
-    void testUncapitalizeWithMixedCaseStringAndDelimiters() {
-        String result = WordUtils.uncapitalize("i AM.FINE", '.');
-        assertEquals("i aM.fINE", result);
-    }
 
     @Test
     @DisplayName("Test capitalize with null input")

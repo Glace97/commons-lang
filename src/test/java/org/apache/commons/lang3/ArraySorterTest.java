@@ -102,12 +102,6 @@ public class ArraySorterTest {
         assertArrayEquals(expected, ArraySorter.sort(array, comparator));
     }
 
-    // @Test
-    public void testSortObjectArrayWithNullArray() {
-        String[] array = null;
-        assertNull(ArraySorter.sort(array));
-    }
-
     @Test
     public void testSortEmptyObjectArray() {
         String[] array = {};

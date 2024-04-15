@@ -28,8 +28,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class GmtTimeZoneTest {
-
-
     private GmtTimeZone gmtTimeZone;
 
     @BeforeEach
@@ -97,13 +95,6 @@ public class GmtTimeZoneTest {
         assertNotEquals(gmtTimeZone.hashCode(), gmtTimeZone2.hashCode());
     }
 
-//    @Test
-//    void testHashCodeDifferentZoneId() {
-//        GmtTimeZone gmtTimeZone2 = new GmtTimeZone(false, 0, 0);
-//        gmtTimeZone2.zoneId = "GMT+01:00";
-//        assertNotEquals(gmtTimeZone.hashCode(), gmtTimeZone2.hashCode());
-//    }
-
     @Test
     void testHashCodeDifferentObjects() {
         GmtTimeZone gmtTimeZone2 = new GmtTimeZone(true, 0, 0);
@@ -117,40 +108,6 @@ public class GmtTimeZoneTest {
         Assertions.assertEquals(0, offset);
     }
 
-    //@Test
-    @DisplayName("should throw IllegalArgumentException if era is out of range")
-    void shouldThrowIllegalArgumentExceptionForOutOfRangeEra() {
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                gmtTimeZone.getOffset(0, 2022, Calendar.JANUARY, 1, Calendar.SATURDAY, 0));
-    }
-
-    //@Test
-    @DisplayName("should throw IllegalArgumentException if year is out of range")
-    void shouldThrowIllegalArgumentExceptionForOutOfRangeYear() {
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                gmtTimeZone.getOffset(1, 10000, Calendar.JANUARY, 1, Calendar.SATURDAY, 0));
-    }
-
-    //@Test
-    @DisplayName("should throw IllegalArgumentException if month is out of range")
-    void shouldThrowIllegalArgumentExceptionForOutOfRangeMonth() {
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                gmtTimeZone.getOffset(1, 2022, 13, 1, Calendar.SATURDAY, 0));
-    }
-
-    //@Test
-    @DisplayName("should throw IllegalArgumentException if day is out of range")
-    void shouldThrowIllegalArgumentExceptionForOutOfRangeDay() {
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                gmtTimeZone.getOffset(1, 2022, Calendar.JANUARY, 32, Calendar.SATURDAY, 0));
-    }
-
-    //@Test
-    @DisplayName("should throw IllegalArgumentException if dayOfWeek is out of range")
-    void shouldThrowIllegalArgumentExceptionForOutOfRangeDayOfWeek() {
-        Assertions.assertThrows(IllegalArgumentException.class, () ->
-                gmtTimeZone.getOffset(1, 2022, Calendar.JANUARY, 1, 7, 0));
-    }
 
     @Test
     @DisplayName("should return correct offset for a given milliseconds")
@@ -159,98 +116,7 @@ public class GmtTimeZoneTest {
         Assertions.assertEquals(0, offset);
     }
 
-//    @Test
-//    public void testSetRawOffset_PositiveOffset_Success() {
-//        GmtTimeZone gmtTimeZone = new GmtTimeZone(false, 2, 30);
-//        int offsetMillis = 7200000;
-//
-//        gmtTimeZone.setRawOffset(offsetMillis);
-//
-//        Assertions.assertEquals(offsetMillis, gmtTimeZone.offset);
-//    }
-//
-//    @Test
-//    public void testSetRawOffset_NegativeOffset_Success() {
-//        GmtTimeZone gmtTimeZone = new GmtTimeZone(true, 1, 45);
-//        int offsetMillis = -6300000;
-//
-//        gmtTimeZone.setRawOffset(offsetMillis);
-//
-//        Assertions.assertEquals(offsetMillis, gmtTimeZone.offset);
-//    }
-//
-//    @Test
-//    public void testSetRawOffset_ZeroOffset_Success() {
-//        GmtTimeZone gmtTimeZone = new GmtTimeZone(false, 0, 0);
-//        int offsetMillis = 0;
-//
-//        gmtTimeZone.setRawOffset(offsetMillis);
-//
-//        Assertions.assertEquals(offsetMillis, gmtTimeZone.offset);
-//    }
 
-    //@Test
-    public void testSetRawOffset_MaxHoursOutOfRange_ExceptionThrown() {
-        GmtTimeZone gmtTimeZone = new GmtTimeZone(false, 24, 0);
-        int offsetMillis = 0;
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            gmtTimeZone.setRawOffset(offsetMillis);
-        });
-    }
-
-    //@Test
-    public void testSetRawOffset_MaxMinutesOutOfRange_ExceptionThrown() {
-        GmtTimeZone gmtTimeZone = new GmtTimeZone(false, 0, 60);
-        int offsetMillis = 0;
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            gmtTimeZone.setRawOffset(offsetMillis);
-        });
-    }
-
-    //@Test
-    public void testSetRawOffset_NegativeMaxHoursOutOfRange_ExceptionThrown() {
-        GmtTimeZone gmtTimeZone = new GmtTimeZone(true, 25, 0);
-        int offsetMillis = 0;
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            gmtTimeZone.setRawOffset(offsetMillis);
-        });
-    }
-
-    //@Test
-    public void testSetRawOffset_NegativeMaxMinutesOutOfRange_ExceptionThrown() {
-        GmtTimeZone gmtTimeZone = new GmtTimeZone(true, 0, 61);
-        int offsetMillis = 0;
-
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            gmtTimeZone.setRawOffset(offsetMillis);
-        });
-    }
-
-//    @Test
-//    public void testSetRawOffset_LargePositiveOffset_Success() {
-//        GmtTimeZone gmtTimeZone = new GmtTimeZone(false, 0, 0);
-//        int offsetMillis = 86400000;
-//
-//        gmtTimeZone.setRawOffset(offsetMillis);
-//
-//        Assertions.assertEquals(offsetMillis, gmtTimeZone.offset);
-//    }
-//
-//    @Test
-//    public void testSetRawOffset_LargeNegativeOffset_Success() {
-//        GmtTimeZone gmtTimeZone = new GmtTimeZone(true, 0, 0);
-//        int offsetMillis = -86400000;
-//
-//        gmtTimeZone.setRawOffset(offsetMillis);
-//
-//        Assertions.assertEquals(offsetMillis, gmtTimeZone.offset);
-//    }
-//    // Your Java code here
-//
-//
     @Test
     void testInDaylightTime() {
         GmtTimeZone gmtTimeZone = new GmtTimeZone(false, 0, 0);
@@ -281,15 +147,6 @@ public class GmtTimeZoneTest {
         assertFalse(result);
     }
 
-    //@Test
-    void testInDaylightTimeWithInvalidDate() {
-        GmtTimeZone gmtTimeZone = new GmtTimeZone(false, 0, 0);
-        Date date = null;
-
-        assertThrows(NullPointerException.class, () -> {
-            gmtTimeZone.inDaylightTime(date);
-        });
-    }
 
     @Test
     void testInDaylightTimeWithOutOfRangeHours() {
@@ -334,27 +191,6 @@ public class GmtTimeZoneTest {
         assertEquals(-((60 * 60 * 1000) + (30 * 60 * 1000)), gmtTimeZone.getRawOffset());
     }
 
-    //@Test
-    public void testGetRawOffset_OutOfRangeHours_ThrowsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new GmtTimeZone(false, 25, 0);
-        });
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new GmtTimeZone(false, -1, 0);
-        });
-    }
-
-    //@Test
-    public void testGetRawOffset_OutOfRangeMinutes_ThrowsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            new GmtTimeZone(false, 0, 60);
-        });
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            new GmtTimeZone(false, 0, -1);
-        });
-    }
 
     @Test
     public void testGetRawOffset_EdgeCaseHours_ReturnsCorrectOffset() {
@@ -430,24 +266,6 @@ public class GmtTimeZoneTest {
     }
 
 
-
-    //@Test
-    @DisplayName("should return the expected string representation")
-    void shouldReturnExpectedStringRepresentation() {
-        String expected = "[GmtTimeZone id=\"+00:00\",offset=0]";
-        String actual = gmtTimeZone.toString();
-        assertEquals(expected, actual);
-    }
-
-    //@Test
-    @DisplayName("should handle negative offset")
-    void shouldHandleNegativeOffset() {
-        GmtTimeZone gmtTimeZone = new GmtTimeZone(true, 1, 30);
-        String expected = "[GmtTimeZone id=\"-01:30\",offset=-5400000]";
-        String actual = gmtTimeZone.toString();
-        assertEquals(expected, actual);
-    }
-
     @Test
     @DisplayName("should throw IllegalArgumentException for hours out of range")
     void shouldThrowIllegalArgumentExceptionForHoursOutOfRange() {
@@ -459,7 +277,6 @@ public class GmtTimeZoneTest {
     void shouldThrowIllegalArgumentExceptionForMinutesOutOfRange() {
         assertThrows(IllegalArgumentException.class, () -> new GmtTimeZone(false, 0, 60));
     }
-
 
     @Test
     void returnsFalseForAllCases() {
@@ -483,23 +300,6 @@ public class GmtTimeZoneTest {
             new GmtTimeZone(false, 0, 60);
         });
     }
-// Your Java code here
-
-//    @Test
-//    @DisplayName("Returns correct two-digit string for single-digit number")
-//    void testTwoDigitsSingleDigit() {
-//        StringBuilder sb = new StringBuilder();
-//        GmtTimeZone.twoDigits(sb, 5);
-//        Assertions.assertEquals("05", sb.toString());
-//    }
-//
-//    @Test
-//    @DisplayName("Returns correct two-digit string for double-digit number")
-//    void testTwoDigitsDoubleDigit() {
-//        StringBuilder sb = new StringBuilder();
-//        GmtTimeZone.twoDigits(sb, 15);
-//        Assertions.assertEquals("15", sb.toString());
-//    }
 
     @Test
     @DisplayName("Throws exception when hours is out of range")
@@ -514,21 +314,5 @@ public class GmtTimeZoneTest {
         Assertions.assertThrows(IllegalArgumentException.class, () ->
                 new GmtTimeZone(false, 12, 60));
     }
-
-//    @Test
-//    @DisplayName("Creates GmtTimeZone object with correct offset and zoneId when negate is false")
-//    void testGmtTimeZoneNegateFalse() {
-//        GmtTimeZone gmtTimeZone = new GmtTimeZone(false, 2, 30);
-//        Assertions.assertEquals(9000000, gmtTimeZone.offset);
-//        Assertions.assertEquals("GMT+02:30", gmtTimeZone.zoneId);
-//    }
-//
-//    @Test
-//    @DisplayName("Creates GmtTimeZone object with correct offset and zoneId when negate is true")
-//    void testGmtTimeZoneNegateTrue() {
-//        GmtTimeZone gmtTimeZone = new GmtTimeZone(true, 5, 45);
-//        Assertions.assertEquals(-21300000, gmtTimeZone.offset);
-//        Assertions.assertEquals("GMT-05:45", gmtTimeZone.zoneId);
-//    }
 
 }

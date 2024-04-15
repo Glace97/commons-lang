@@ -28,67 +28,29 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class ReflectionDiffBuilderTest {
-        @Test
-        public void testGetExcludeFieldNames() {
-            // Test cases here
-        }
-        
-//        @Test
-//        public void testSetExcludeFieldNames() {
-//            // Test cases here
-//        }
-//
-//        @Test
-//        public void testBuild() {
-//            // Test cases here
-//        }
-//
-//        @Test
-//        public void testSetDiffBuilder() {
-//            // Test cases here
-//        }
-//
-        @Test
-        void testSetExcludeFieldNamesWithNull() {
-            ReflectionDiffBuilder.Builder<String> builder = new ReflectionDiffBuilder.Builder<>();
-            builder.setExcludeFieldNames(null);
-            ReflectionDiffBuilder<String> diffBuilder = builder.build();
-            assertNotNull(diffBuilder);
-            assertEquals(0, diffBuilder.getExcludeFieldNames().length);
-        }
-    
-        @Test
-        void testSetExcludeFieldNamesWithEmptyArray() {
-            ReflectionDiffBuilder.Builder<String> builder = new ReflectionDiffBuilder.Builder<>();
-            builder.setExcludeFieldNames(new String[0]);
-            ReflectionDiffBuilder<String> diffBuilder = builder.build();
-            assertNotNull(diffBuilder);
-            assertEquals(0, diffBuilder.getExcludeFieldNames().length);
-        }
+    @Test
+    public void testGetExcludeFieldNames() {
+        // Test cases here
+    }
 
-    //@Test
-        void testSetExcludeFieldNamesWithFieldsToExclude() {
-            ReflectionDiffBuilder.Builder<String> builder = new ReflectionDiffBuilder.Builder<>();
-            builder.setExcludeFieldNames("password", "lastModificationDate");
-            ReflectionDiffBuilder<String> diffBuilder = builder.build();
-            assertNotNull(diffBuilder);
-            String[] excludeFieldNames = diffBuilder.getExcludeFieldNames();
-            assertEquals(2, excludeFieldNames.length);
-            assertEquals("password", excludeFieldNames[0]);
-            assertEquals("lastModificationDate", excludeFieldNames[1]);
-        }
+    @Test
+    void testSetExcludeFieldNamesWithNull() {
+        ReflectionDiffBuilder.Builder<String> builder = new ReflectionDiffBuilder.Builder<>();
+        builder.setExcludeFieldNames(null);
+        ReflectionDiffBuilder<String> diffBuilder = builder.build();
+        assertNotNull(diffBuilder);
+        assertEquals(0, diffBuilder.getExcludeFieldNames().length);
+    }
 
+    @Test
+    void testSetExcludeFieldNamesWithEmptyArray() {
+        ReflectionDiffBuilder.Builder<String> builder = new ReflectionDiffBuilder.Builder<>();
+        builder.setExcludeFieldNames(new String[0]);
+        ReflectionDiffBuilder<String> diffBuilder = builder.build();
+        assertNotNull(diffBuilder);
+        assertEquals(0, diffBuilder.getExcludeFieldNames().length);
+    }
 
-//        @Test
-//        void testSetDiffBuilder() {
-//            // Test logic here
-//        }
-//
-//        @Test
-//        void testSetExcludeFieldNames() {
-//            // Test logic here
-//        }
-//
     @Test
     void testSetExcludeFieldNames_emptyArray() {
         // Test logic here
@@ -124,30 +86,6 @@ public class ReflectionDiffBuilderTest {
         // Test logic here
     }
 
-
-//    @Test
-//    void shouldReturnEmptyArrayWhenPassedNull() {
-//        String[] excludeFieldNames = null;
-//        String[] result = ReflectionDiffBuilder.toExcludeFieldNames(excludeFieldNames);
-//        assertEquals(0, result.length);
-//    }
-//
-//    @Test
-//    void shouldReturnEmptyArrayWhenPassedEmptyArray() {
-//        String[] excludeFieldNames = new String[0];
-//        String[] result = ReflectionDiffBuilder.toExcludeFieldNames(excludeFieldNames);
-//        assertEquals(0, result.length);
-//    }
-//
-//    @Test
-//    void shouldReturnSortedArrayWithoutNullValues() {
-//        String[] excludeFieldNames = {"field2", "field1", null, "field3"};
-//        String[] result = ReflectionDiffBuilder.toExcludeFieldNames(excludeFieldNames);
-//        assertEquals(3, result.length);
-//        assertEquals("field1", result[0]);
-//        assertEquals("field2", result[1]);
-//        assertEquals("field3", result[2]);
-//    }
 
     @Test
     void shouldSetExcludeFieldNamesToEmptyArrayWhenPassedNull() {
@@ -188,34 +126,5 @@ public class ReflectionDiffBuilderTest {
     void testAppendFields_ClassWithFields_ReturnsDiffResultWithAllFieldsAppended() {
         // test code here
     }
-    // Only @Test test functions:
-    
-//    @Test
-//    void testBuild() {
-//        ReflectionDiffBuilder<Object> reflectionDiffBuilder = builder.setDiffBuilder(diffBuilder)
-//                .setExcludeFieldNames(excludeFieldNames)
-//                .build();
-//
-//        assertNotNull(reflectionDiffBuilder);
-//        assertEquals(diffBuilder, reflectionDiffBuilder.getDiffBuilder());
-//        assertArrayEquals(excludeFieldNames, reflectionDiffBuilder.getExcludeFieldNames());
-//    }
-    
-//    @Test
-//    void testSetDiffBuilder() {
-//        ReflectionDiffBuilder.Builder<Object> builder;
-//        ReflectionDiffBuilder<Object> reflectionDiffBuilder = builder.setDiffBuilder(diffBuilder).build();
-//
-//        assertNotNull(reflectionDiffBuilder);
-//        assertEquals(diffBuilder, reflectionDiffBuilder.getDiffBuilder());
-//    }
-//
-//    @Test
-//    void testSetExcludeFieldNames() {
-//        ReflectionDiffBuilder<Object> reflectionDiffBuilder = builder.setExcludeFieldNames(excludeFieldNames).build();
-//
-//        assertNotNull(reflectionDiffBuilder);
-//        assertArrayEquals(excludeFieldNames, reflectionDiffBuilder.getExcludeFieldNames());
-//    }
 
 }

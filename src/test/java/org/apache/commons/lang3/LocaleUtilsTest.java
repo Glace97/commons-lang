@@ -27,12 +27,6 @@ import org.junit.jupiter.api.*;
 
 public class LocaleUtilsTest {
 
-//    @Test
-//    void testToLocaleWithNull() {
-//        Locale result = LocaleUtils.toLocale(null);
-//        Assertions.assertEquals(Locale.getDefault(), result);
-//    }
-
     @Test
     void testToLocaleWithEmptyString() {
         Locale result = LocaleUtils.toLocale("");
@@ -98,25 +92,6 @@ public class LocaleUtilsTest {
         });
     }
 
-//    @Test
-//    void shouldReturnSameListAsLocaleGetAvailableLocales() {
-//        List<Locale> expected = List.of(Locale.getAvailableLocales());
-//        List<Locale> actual = localeUtils.availableLocaleList();
-//        assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    void shouldReturnUnmodifiableList() {
-//        List<Locale> locales = localeUtils.availableLocaleList();
-//        assertThrows(UnsupportedOperationException.class, () -> locales.add(Locale.US));
-//    }
-//
-//    @Test
-//    void shouldReturnFilteredList() {
-//        List<Locale> locales = localeUtils.availableLocaleList(l -> l.getLanguage().equals("en"));
-//        assertTrue(locales.stream().allMatch(l -> l.getLanguage().equals("en")));
-//    }
-//
     @Test
     void testAvailableLocaleSet() {
         Set<Locale> expectedLocales = new HashSet<>(Arrays.asList(Locale.getAvailableLocales()));
@@ -124,12 +99,6 @@ public class LocaleUtilsTest {
 
         assertEquals(expectedLocales.size(), actualLocales.size());
         assertTrue(expectedLocales.containsAll(actualLocales));
-    }
-
-    //@Test
-    public void testCountriesByLanguage() {
-        List<Locale> englishCountries = LocaleUtils.countriesByLanguage("en");
-        assertEquals(234, englishCountries.size());
     }
 
     @Test
@@ -168,49 +137,12 @@ public class LocaleUtilsTest {
         assertTrue(result.isEmpty());
     }
 
-    //@Test
-    public void testLanguagesByCountry_ValidCountryCode_ReturnsLanguages() {
-        List<Locale> result = LocaleUtils.languagesByCountry("US");
-        assertEquals(1, result.size());
-        assertEquals(Locale.US, result.get(0));
-    }
-
-    //@Test
-    public void testLanguagesByCountry_CaseInsensitiveCountryCode_ReturnsLanguages() {
-        List<Locale> result = LocaleUtils.languagesByCountry("us");
-        assertEquals(1, result.size());
-        assertEquals(Locale.US, result.get(0));
-    }
 
     @Test
     public void testLanguagesByCountry_UndeterminedCountryCode_ReturnsEmptyList() {
         List<Locale> result = LocaleUtils.languagesByCountry("und");
         assertTrue(result.isEmpty());
     }
-
-//    void testLocaleLookupList() {
-//        Locale locale = new Locale("fr", "CA", "xxx");
-//        List<Locale> expected = List.of(
-//                new Locale("fr", "CA", "xxx"),
-//                new Locale("fr", "CA"),
-//                new Locale("fr")
-//        );
-//        List<Locale> result = LocaleUtils.localeLookupList(locale);
-//        assertEquals(expected, result);
-//    }
-//
-//    void testLocaleLookupListWithDefaultLocale() {
-//        Locale locale = new Locale("fr", "CA", "xxx");
-//        Locale defaultLocale = new Locale("en");
-//        List<Locale> expected = List.of(
-//                new Locale("fr", "CA", "xxx"),
-//                new Locale("fr", "CA"),
-//                new Locale("fr"),
-//                new Locale("en")
-//        );
-//        List<Locale> result = LocaleUtils.localeLookupList(locale, defaultLocale);
-//        assertEquals(expected, result);
-//    }
 
     @Test
     void testIsAvailableLocaleWithAvailableLocale() {
@@ -229,27 +161,9 @@ public class LocaleUtilsTest {
         assertFalse(LocaleUtils.isAvailableLocale(null));
     }
 
-    //@Test
-    void testIsAvailableLocaleWithUndeterminedLanguage() {
-        Locale locale = new Locale("und");
-        assertTrue(LocaleUtils.isAvailableLocale(locale));
-    }
-
-    //@Test
-    void testIsAvailableLocaleWithUndeterminedCountry() {
-        Locale locale = new Locale("en", "und");
-        assertTrue(LocaleUtils.isAvailableLocale(locale));
-    }
-
     @Test
     void testIsAvailableLocaleWithEmptyLanguage() {
         Locale locale = new Locale("", "US");
-        assertFalse(LocaleUtils.isAvailableLocale(locale));
-    }
-
-    //@Test
-    void testIsAvailableLocaleWithEmptyCountry() {
-        Locale locale = new Locale("en", "");
         assertFalse(LocaleUtils.isAvailableLocale(locale));
     }
 
@@ -288,27 +202,6 @@ public class LocaleUtilsTest {
     @DisplayName("should return false for determined language locale")
     void shouldReturnFalseForDeterminedLanguageLocale() {
         Locale locale = new Locale("en");
-        assertFalse(LocaleUtils.isLanguageUndetermined(locale));
-    }
-
-    //@Test
-    @DisplayName("should return false for well-formed language locale")
-    void shouldReturnFalseForWellFormedLanguageLocale() {
-        Locale locale = new Locale("en_US");
-        assertFalse(LocaleUtils.isLanguageUndetermined(locale));
-    }
-
-    //@Test
-    @DisplayName("should return false for empty language locale")
-    void shouldReturnFalseForEmptyLanguageLocale() {
-        Locale locale = new Locale("");
-        assertFalse(LocaleUtils.isLanguageUndetermined(locale));
-    }
-
-    //@Test
-    @DisplayName("should return false for malformed language locale")
-    void shouldReturnFalseForMalformedLanguageLocale() {
-        Locale locale = new Locale("a");
         assertFalse(LocaleUtils.isLanguageUndetermined(locale));
     }
 

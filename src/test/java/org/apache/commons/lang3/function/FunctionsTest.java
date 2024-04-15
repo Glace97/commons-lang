@@ -34,13 +34,6 @@ public class FunctionsTest {
         Assertions.assertEquals(6, result);
     }
 
-    //@Test
-    public void testFunctionWithNullArgument() {
-        Function<String, Integer> function = Functions.function(Integer::parseInt);
-        Integer result = function.apply(null);
-        Assertions.assertNull(result);
-    }
-    
     @Test
     public void testFunctionWithNegativeArgument() {
         Function<Integer, Integer> function = Functions.function(x -> x * -1);

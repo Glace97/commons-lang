@@ -40,13 +40,7 @@ public class RecursiveToStringStyleTest {
         assertTrue(style.accept(Collection.class));
     }
 
-    //@Test
-    void testAcceptReturnsFalseForSpecificClasses() {
-        RecursiveToStringStyle style = new RecursiveToStringStyle();
-        assertFalse(style.accept(RecursiveToStringStyle.class));
-        assertFalse(style.accept(ClassUtils.class));
-    }
-    
+
     @Test
     void testAcceptReturnsTrueForPrimitiveClasses() {
         RecursiveToStringStyle style = new RecursiveToStringStyle();

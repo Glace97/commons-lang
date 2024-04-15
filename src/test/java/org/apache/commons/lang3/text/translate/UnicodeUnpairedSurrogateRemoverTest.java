@@ -62,11 +62,6 @@ public class UnicodeUnpairedSurrogateRemoverTest {
         assertFalse(remover.translate('$', new StringWriter()));
     }
 
-    //@Test
-    @DisplayName("Translate should throw IOException if Writer is null")
-    void testTranslateWithNullWriter() {
-        assertThrows(IOException.class, () -> remover.translate('A', null));
-    }
 
     @Test
     @DisplayName("Translate should not write anything to Writer for surrogate characters")

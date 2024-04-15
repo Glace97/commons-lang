@@ -57,10 +57,4 @@ public class UnicodeUnescaperTest {
         assertThrows(IllegalArgumentException.class, () -> unescaper.translate("\\u004", 0, writer));
     }
 
-    //@Test
-    public void testTranslate_endOfCharSequence() {
-        UnicodeUnescaper unescaper = new UnicodeUnescaper();
-        StringWriter writer = new StringWriter();
-        assertThrows(IllegalArgumentException.class, () -> unescaper.translate("\\u0041", 1, writer));
-    }
 }

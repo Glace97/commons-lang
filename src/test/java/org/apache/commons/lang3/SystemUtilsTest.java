@@ -47,16 +47,6 @@ public class SystemUtilsTest {
         assertFalse(SystemUtils.isOSVersionMatch(null, "10"));
     }
 
-    //@Test
-    void testIsOSVersionMatchWithEmptyVersionPrefix() {
-        assertTrue(SystemUtils.isOSVersionMatch("10.0", ""));
-    }
-
-    //@Test
-    void testIsOSVersionMatchWithNullVersionPrefix() {
-        assertTrue(SystemUtils.isOSVersionMatch("10.0", null));
-    }
-
     @Test
     void testIsOSVersionMatchWithMatchingVersionPrefixWithDot() {
         assertTrue(SystemUtils.isOSVersionMatch("10.0", "10."));
@@ -179,45 +169,6 @@ public class SystemUtilsTest {
         assertTrue(tempDir.isDirectory());
     }
 
-//    @Test
-//    void getUserHome_ReturnsUserHomeDirectory() {
-//        // Arrange
-//        String expected = System.getProperty("user.home");
-//
-//        // Act
-//        String actual = SystemUtils.getUserHome();
-//
-//        // Assert
-//        assertEquals(expected, actual);
-//    }
-
-//    @Test
-//    void getUserHome_ReturnsNonNullValue() {
-//        // Act
-//        String actual = SystemUtils.getUserHome();
-//
-//        // Assert
-//        assertNotNull(actual);
-//    }
-//
-//    @Test
-//    void getUserHome_ReturnsString() {
-//        // Act
-//        String actual = SystemUtils.getUserHome();
-//
-//        // Assert
-//        assertTrue(actual instanceof String);
-//    }
-//
-//    @Test
-//    void getUserHome_ReturnsNonEmptyString() {
-//        // Act
-//        String actual = SystemUtils.getUserHome();
-//
-//        // Assert
-//        assertFalse(actual.isEmpty());
-//    }
-
     @Test
     void testGetJavaHome() {
         File javaHome = SystemUtils.getJavaHome();
@@ -278,99 +229,14 @@ public class SystemUtilsTest {
         assertFalse(SystemUtils.isJavaVersionMatch("1.8.0_301", "1.9"));
     }
 
-    //@Test
-    void testIsJavaVersionMatch_NullPrefix() {
-        assertFalse(SystemUtils.isJavaVersionMatch("1.8.0_301", null));
-    }
-
     @Test
     void testIsJavaVersionMatch_EmptyPrefix() {
         assertTrue(SystemUtils.isJavaVersionMatch("1.8.0_301", ""));
     }
 
-    //@Test
-    void testIsJavaVersionMatch_PrefixTooShort() {
-        assertFalse(SystemUtils.isJavaVersionMatch("1.8.0_301", "1.8.0_"));
-    }
-
     @Test
     void testIsJavaVersionMatch_PrefixTooLong() {
         assertFalse(SystemUtils.isJavaVersionMatch("1.8.0_301", "1.8.0_3011"));
-    }
-
-    void testGetEnvironmentVariable() {
-        // Test when the environment variable exists
-        String value = SystemUtils.getEnvironmentVariable("JAVA_HOME", "");
-        assertNotNull(value);
-        assertFalse(value.isEmpty());
-
-        // Test when the environment variable does not exist
-        value = SystemUtils.getEnvironmentVariable("INVALID_VARIABLE", "default");
-        assertNotNull(value);
-        assertEquals("default", value);
-
-        // Test when the environment variable is empty
-        value = SystemUtils.getEnvironmentVariable("EMPTY_VARIABLE", "default");
-        assertNotNull(value);
-        assertTrue(value.isEmpty());
-    }
-
-    //@Test
-    public void testIsJavaAwtHeadless() {
-        assertTrue(SystemUtils.isJavaAwtHeadless());
-    }
-
-    //@Test
-    void getHostName_Windows_ReturnsComputerName() {
-        // Arrange
-        SystemUtils systemUtils = new SystemUtils();
-
-        // Act
-        String hostName = systemUtils.getHostName();
-
-        // Assert
-        assertNotNull(hostName);
-        assertTrue(hostName.length() > 0);
-    }
-
-    //@Test
-    void getHostName_NonWindows_ReturnsHostName() {
-        // Arrange
-        SystemUtils systemUtils = new SystemUtils();
-
-        // Act
-        String hostName = systemUtils.getHostName();
-
-        // Assert
-        assertNotNull(hostName);
-        assertTrue(hostName.length() > 0);
-    }
-
-    // @Test
-    void testIsJavaVersionAtMost() {
-        // Test for different Java versions
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_1));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_2));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_3));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_4));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_5));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_6));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_7));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_1_8));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_9));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_10));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_11));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_12));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_13));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_14));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_15));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_16));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_17));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_18));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_19));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_20));
-        Assertions.assertTrue(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_21));
-       // Assertions.assertFalse(SystemUtils.isJavaVersionAtMost(JavaVersion.JAVA_22));
     }
 
     @Test
@@ -396,12 +262,6 @@ public class SystemUtilsTest {
     @DisplayName("should return true when actual version is greater than required version")
     void shouldReturnTrueWhenActualVersionIsGreaterThanRequiredVersion() {
         assertTrue(SystemUtils.isJavaVersionAtLeast(JavaVersion.get("1.9")));
-    }
-
-    //@Test
-    @DisplayName("should return false when actual version is less than required version")
-    void shouldReturnFalseWhenActualVersionIsLessThanRequiredVersion() {
-        assertFalse(SystemUtils.isJavaVersionAtLeast(JavaVersion.get("1.7")));
     }
 
 }

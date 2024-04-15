@@ -92,9 +92,5 @@ public class ArrayFillTest {
         assertArrayEquals(new String[]{"Test", "Test", "Test", "Test", "Test"}, filledArray);
     }
 
-//    @Test
-//    void testFillNullArray() {
-//        assertThrows(NullPointerException.class, () -> ArrayFill.fill(null, 5));
-//    }
 
 }

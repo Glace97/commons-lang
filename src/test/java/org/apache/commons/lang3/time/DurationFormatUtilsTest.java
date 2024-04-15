@@ -102,27 +102,6 @@ public class DurationFormatUtilsTest {
         assertEquals(expected, result);
     }
 
-    //@Test
-    void testFormatDuration_DurationWithSeconds() {
-        long durationMillis = 123456789;
-        String format = "ss.SSS";
-        String expected = "2057.789";
-
-        String result = DurationFormatUtils.formatDuration(durationMillis, format);
-
-        assertEquals(expected, result);
-    }
-
-    //@Test
-    void testFormatDuration_DurationWithMilliseconds() {
-        long durationMillis = 123456789;
-        String format = "SSS";
-        String expected = "789";
-
-        String result = DurationFormatUtils.formatDuration(durationMillis, format);
-
-        assertEquals(expected, result);
-    }
 
     @Test
     void testFormatDuration_DurationWithPadding() {
@@ -146,15 +125,6 @@ public class DurationFormatUtilsTest {
         assertEquals(expected, result);
     }
 
-    //@Test
-    void testFormatDuration_DurationWithInvalidFormat() {
-        long durationMillis = 123456789;
-        String format = "HH:mm:ss.SS";
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            DurationFormatUtils.formatDuration(durationMillis, format);
-        });
-    }
 
     @Test
     void testContainsTokenWithValue_shouldReturnTrueIfTokenWithValueExists() {
@@ -202,21 +172,6 @@ public class DurationFormatUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    @DisplayName("Test formatPeriodISO - valid input")
-//    void testFormatPeriodISO() {
-//        String expected = "P1970Y8M3DT2H46M40S";
-//        String result = DurationFormatUtils.formatPeriodISO(startMillis, endMillis);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    @DisplayName("Test formatPeriodISO - startMillis greater than endMillis")
-//    void testFormatPeriodISO_StartMillisGreaterThanEndMillis() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            DurationFormatUtils.formatPeriodISO(endMillis, startMillis);
-//        });
-//    }
 
     @Test
     void testHashCode() {
@@ -237,77 +192,9 @@ public class DurationFormatUtilsTest {
         Assertions.assertEquals(0, tokens.length);
     }
 
-    //@Test
-    void testLexxWithValidFormat() {
-        String format = "yyyy-MM-dd'T'HH:mm:ss.SSS";
-        DurationFormatUtils.Token[] tokens = DurationFormatUtils.lexx(format);
-        Assertions.assertEquals(7, tokens.length);
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "y"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "M"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "d"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "H"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "m"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "s"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "S"));
-    }
-
-    //@Test
-    void testLexxWithLiteralQuotes() {
-        String format = "'yyyy'-'MM'-'dd'T'HH:mm:ss.SSS";
-        DurationFormatUtils.Token[] tokens = DurationFormatUtils.lexx(format);
-        Assertions.assertEquals(7, tokens.length);
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "yyyy"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "-"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "MM"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "-"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "dd"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "T"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "HH"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, ":"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "mm"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, ":"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "ss"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "."));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "SSS"));
-    }
-
-    //@Test
-    void testLexxWithOptionalBlocks() {
-        String format = "[yyyy][MM][dd][HH][mm][ss][SSS]";
-        DurationFormatUtils.Token[] tokens = DurationFormatUtils.lexx(format);
-        Assertions.assertEquals(7, tokens.length);
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "y"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "M"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "d"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "H"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "m"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "s"));
-        Assertions.assertTrue(DurationFormatUtils.Token.containsTokenWithValue(tokens, "S"));
-        Assertions.assertEquals(0, tokens[0].getCount());
-        Assertions.assertEquals(0, tokens[1].getCount());
-        Assertions.assertEquals(0, tokens[2].getCount());
-        Assertions.assertEquals(0, tokens[3].getCount());
-        Assertions.assertEquals(0, tokens[4].getCount());
-        Assertions.assertEquals(0, tokens[5].getCount());
-        Assertions.assertEquals(0, tokens[6].getCount());
-//        Assertions.assertEquals(0, tokens[0].optionalIndex);
-//        Assertions.assertEquals(1, tokens[1].optionalIndex);
-//        Assertions.assertEquals(2, tokens[2].optionalIndex);
-//        Assertions.assertEquals(3, tokens[3].optionalIndex);
-//        Assertions.assertEquals(4, tokens[4].optionalIndex);
-//        Assertions.assertEquals(5, tokens[5].optionalIndex);
-//        Assertions.assertEquals(6, tokens[6].optionalIndex);
-    }
-
     @Test
     void testLexxWithInvalidOptionalBlocks() {
         String format = "[yyyy[MM][dd][HH]]mm[ss][SSS]";
-        Assertions.assertThrows(IllegalArgumentException.class, () -> DurationFormatUtils.lexx(format));
-    }
-
-    //@Test
-    void testLexxWithUnmatchedQuotes() {
-        String format = "'yyyy'-'MM'-'dd'T'HH:mm:ss.SSS'";
         Assertions.assertThrows(IllegalArgumentException.class, () -> DurationFormatUtils.lexx(format));
     }
 
@@ -371,7 +258,6 @@ public class DurationFormatUtilsTest {
         assertEquals("value", token.toString());
     }
 
-
     @Test
     @DisplayName("Should return true if tokens contain value")
     void shouldReturnTrueIfTokensContainValue() {
@@ -383,8 +269,6 @@ public class DurationFormatUtilsTest {
     void shouldReturnFalseIfTokensDoNotContainValue() {
         assertFalse(DurationFormatUtils.Token.containsTokenWithValue(tokens, "value3"));
     }
-
-
 
     @Test
     @DisplayName("Token should be equal to itself")
@@ -434,13 +318,6 @@ public class DurationFormatUtilsTest {
         assertEquals(token.hashCode(), otherToken.hashCode());
     }
 
-    //@Test
-    @DisplayName("should format duration in ISO format")
-    void shouldFormatDurationInISOFormat() {
-        long durationMillis = 123456789;
-        String expected = "P0Y0M0DT3H25M56.789S";
-        assertEquals(expected, DurationFormatUtils.formatDurationISO(durationMillis));
-    }
 
     @Test
     @DisplayName("should throw IllegalArgumentException for negative duration")
@@ -457,14 +334,6 @@ public class DurationFormatUtilsTest {
         assertEquals(expected, DurationFormatUtils.formatDurationISO(durationMillis));
     }
 
-
-    //@Test
-    void testFormat() {
-        // Test case 1: Formatting with all tokens
-        DurationFormatUtils.Token[] tokens1 = {new DurationFormatUtils.Token("P", false, -1), new DurationFormatUtils.Token("y", false, -1), new DurationFormatUtils.Token("M", false, -1), new DurationFormatUtils.Token("d", false, -1), new DurationFormatUtils.Token("T", false, -1), new DurationFormatUtils.Token("H", false, -1), new DurationFormatUtils.Token("m", false, -1), new DurationFormatUtils.Token("s", false, -1), new DurationFormatUtils.Token(".", false, -1), new DurationFormatUtils.Token("S", false, -1)};
-        String result1 = DurationFormatUtils.format(tokens1, 1, 2, 3, 4, 5, 6, 7, true);
-        assertEquals("P1Y2M3DT4H5M6.007S", result1);
-    }
 
     @Test
     void testContainsTokenWithValue() {
@@ -557,12 +426,6 @@ public class DurationFormatUtilsTest {
         assertEquals("MMM", token.toString());
     }
 
-    //@Test
-    @DisplayName("Test toString with optional token")
-    void testToStringWithOptionalToken() {
-        DurationFormatUtils.Token token = new DurationFormatUtils.Token("M", true, 0);
-        assertEquals("M?", token.toString());
-    }
 
     @Test
     @DisplayName("Test toString with negative optional index")
@@ -571,14 +434,7 @@ public class DurationFormatUtilsTest {
         assertEquals("M", token.toString());
     }
 
-    //@Test
-    @DisplayName("Test toString with different value types")
-    void testToStringWithDifferentValueTypes() {
-        DurationFormatUtils.Token token1 = new DurationFormatUtils.Token(new StringBuilder("M"), false, -1);
-        DurationFormatUtils.Token token2 = new DurationFormatUtils.Token(1, false, -1);
-        DurationFormatUtils.Token token3 = new DurationFormatUtils.Token(1.5, false, -1);
-        assertTrue(token1.toString().equals(token2.toString()) && token2.toString().equals(token3.toString()));
-    }
+
 
     @Test
     @DisplayName("Test toString with equal tokens")
@@ -605,38 +461,6 @@ public class DurationFormatUtilsTest {
     }
 
 
-    //@Test
-    void formatDurationWords_shouldFormatDurationWithLeadingZeroElements() {
-        long duration = 123456789;
-        String expected = "0 days 3 hours 25 minutes 56 seconds";
-        String actual = DurationFormatUtils.formatDurationWords(duration, false, false);
-        Assertions.assertEquals(expected, actual);
-    }
-
-    //@Test
-    void formatDurationWords_shouldFormatDurationWithoutLeadingZeroElements() {
-        long duration = 123456789;
-        String expected = "3 hours 25 minutes 56 seconds";
-        String actual = DurationFormatUtils.formatDurationWords(duration, true, false);
-        Assertions.assertEquals(expected, actual);
-    }
-
-    //@Test
-    void formatDurationWords_shouldFormatDurationWithTrailingZeroElements() {
-        long duration = 123456789;
-        String expected = "0 days 3 hours 25 minutes 56 seconds";
-        String actual = DurationFormatUtils.formatDurationWords(duration, false, true);
-        Assertions.assertEquals(expected, actual);
-    }
-
-    //@Test
-    void formatDurationWords_shouldFormatDurationWithoutTrailingZeroElements() {
-        long duration = 123456789;
-        String expected = "0 days 3 hours 25 minutes 56 seconds";
-        String actual = DurationFormatUtils.formatDurationWords(duration, true, true);
-        Assertions.assertEquals(expected, actual);
-    }
-
     @Test
     void testFormatDurationHMS_PositiveDuration() {
         long duration = 3661000; // 1 hour, 1 minute, 1 second
@@ -659,14 +483,6 @@ public class DurationFormatUtilsTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             DurationFormatUtils.formatDurationHMS(duration);
         });
-    }
-
-    //@Test
-    void testFormatDurationHMS_LargeDuration() {
-        long duration = Long.MAX_VALUE; // Maximum value of long
-        String expected = "9223372036854775807:59:59.999";
-        String actual = DurationFormatUtils.formatDurationHMS(duration);
-        Assertions.assertEquals(expected, actual);
     }
 
     @Test

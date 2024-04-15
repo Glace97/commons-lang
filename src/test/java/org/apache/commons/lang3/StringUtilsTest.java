@@ -65,11 +65,6 @@ public class StringUtilsTest {
         assertEquals("abc", result);
     }
 
-    //@Test
-    void testTrimToNull_withStringContainingControlCharacters_shouldReturnNull() {
-        String result = stringUtils.trimToNull("\nabc\r");
-        assertNull(result);
-    }
 
     @Test
     void testRightWithNullString() {
@@ -217,14 +212,7 @@ public class StringUtilsTest {
         assertFalse(StringUtils.isAlpha(""));
     }
 
-    //@Test
-    @DisplayName("Should return true for alphabetic strings with whitespace")
-    void shouldReturnTrueForAlphabeticStringsWithWhitespace() {
-        assertTrue(StringUtils.isAlpha("abc def"));
-        assertTrue(StringUtils.isAlpha("ABC DEF"));
-        assertTrue(StringUtils.isAlpha("abc def ghi"));
-        assertTrue(StringUtils.isAlpha("ABC DEF GHI"));
-    }
+
 
     @Test
     @DisplayName("Should return false for non-alphabetic strings with whitespace")
@@ -448,10 +436,6 @@ public class StringUtilsTest {
         assertEquals("abc", stringUtils.substringBeforeLast("abcd", "d"));
     }
 
-    //@Test
-    void testSubstringBeforeLastMultipleSeparators() {
-        assertEquals("abc", stringUtils.substringBeforeLast("abcabcabc", "c"));
-    }
 
     @Test
     @DisplayName("Should return null")
@@ -569,11 +553,6 @@ public class StringUtilsTest {
     @Test
     void testSplitByCharacterTypeCamelCase_SingleWord_ReturnArrayWithSingleWord() {
         assertArrayEquals(new String[]{"word"}, StringUtils.splitByCharacterTypeCamelCase("word"));
-    }
-
-    //@Test
-    void testSplitByCharacterTypeCamelCase_MultipleWords_ReturnArrayWithWordsSeparatedByWhitespace() {
-        assertArrayEquals(new String[]{"camel", " case"}, StringUtils.splitByCharacterTypeCamelCase("camel case"));
     }
 
     @Test
@@ -893,28 +872,10 @@ public class StringUtilsTest {
         assertEquals("", StringUtils.wrapIfMissing("", 'x'));
     }
 
-    //@Test
-    void testWrapIfMissing_withStringAlreadyWrapped_shouldReturnSameString2() {
-        String str = "abc";
-        assertEquals(str, StringUtils.wrapIfMissing("x" + str + "x", 'x'));
-    }
-
     @Test
     void testWrapIfMissing_withStringNotWrapped_shouldReturnWrappedString1() {
         String str = "abc";
         assertEquals("x" + str + "x", StringUtils.wrapIfMissing(str, 'x'));
-    }
-
-    //@Test
-    void testWrapIfMissing_withStringWrappedOnStart_shouldReturnSameString2() {
-        String str = "abc";
-        assertEquals(str, StringUtils.wrapIfMissing("x" + str, 'x'));
-    }
-
-    // @Test
-    void testWrapIfMissing_withStringWrappedOnEnd_shouldReturnSameString1() {
-        String str = "abc";
-        assertEquals(str, StringUtils.wrapIfMissing(str + "x", 'x'));
     }
 
     @Test
@@ -938,28 +899,11 @@ public class StringUtilsTest {
         assertEquals("", StringUtils.wrapIfMissing("", "x"));
     }
 
-    //@Test
-    void testWrapIfMissing_withStringAlreadyWrapped_shouldReturnSameString1() {
-        String str = "abc";
-        assertEquals(str, StringUtils.wrapIfMissing("x" + str + "x", "x"));
-    }
 
     @Test
     void testWrapIfMissing_withStringNotWrapped_shouldReturnWrappedString2() {
         String str = "abc";
         assertEquals("x" + str + "x", StringUtils.wrapIfMissing(str, "x"));
-    }
-
-    //@Test
-    void testWrapIfMissing_withStringWrappedOnStart_shouldReturnSameString1() {
-        String str = "abc";
-        assertEquals(str, StringUtils.wrapIfMissing("x" + str, "x"));
-    }
-
-    //@Test
-    void testWrapIfMissing_withStringWrappedOnEnd_shouldReturnSameString2() {
-        String str = "abc";
-        assertEquals(str, StringUtils.wrapIfMissing(str + "x", "x"));
     }
 
     @Test
@@ -1074,14 +1018,6 @@ public class StringUtilsTest {
         assertFalse(stringUtils.endsWithIgnoreCase("ABCDEF", "cde"));
     }
 
-    //@Test
-    public void testEndsWithIgnoreCase_EmptyString() {
-        assertTrue(stringUtils.endsWithIgnoreCase("", ""));
-        assertFalse(stringUtils.endsWithIgnoreCase("", "def"));
-        assertFalse(stringUtils.endsWithIgnoreCase("abcdef", ""));
-        assertTrue(stringUtils.endsWithIgnoreCase("ABCDEF", ""));
-    }
-
     @Test
     public void testEndsWithIgnoreCase_Whitespace() {
         assertTrue(stringUtils.endsWithIgnoreCase("abc def", " def"));
@@ -1134,12 +1070,6 @@ public class StringUtilsTest {
         assertEquals("12345!@#$%", StringUtils.swapCase("12345!@#$%"));
     }
 
-    //@Test
-    @DisplayName("Test swapCase with Unicode characters")
-    void testSwapCaseWithUnicodeCharacters() {
-        assertEquals("ΑβΓδεΖηΘ", StringUtils.swapCase("αΒγΔΕζΗθ"));
-    }
-
     @Test
     @DisplayName("Should return all matching substrings in an array")
     void testSubstringsBetween() {
@@ -1176,41 +1106,11 @@ public class StringUtilsTest {
         assertEquals(0, actual.length);
     }
 
-    //@Test
-    @DisplayName("Should return empty array when open string is empty")
-    void testSubstringsBetweenWithEmptyOpen() {
-        String[] actual = stringUtils.substringsBetween("[a][b][c]", "", "]");
-        assertEquals(0, actual.length);
-    }
-
-    //@Test
-    @DisplayName("Should return empty array when close string is empty")
-    void testSubstringsBetweenWithEmptyClose() {
-        String[] actual = stringUtils.substringsBetween("[a][b][c]", "[", "");
-        assertEquals(0, actual.length);
-    }
-
     @Test
     @DisplayName("Should return null when no match is found")
     void testSubstringsBetweenWithNoMatch() {
         String[] actual = stringUtils.substringsBetween("[a][b][c]", "{", "}");
         assertNull(actual);
-    }
-
-    //@Test
-    @DisplayName("Should handle multiple occurrences of open and close strings")
-    void testSubstringsBetweenWithMultipleOccurrences() {
-        String[] expected = {"a", "b", "c"};
-        String[] actual = stringUtils.substringsBetween("[a][b][c][d][e][f]", "[", "]");
-        assertArrayEquals(expected, actual);
-    }
-
-    //@Test
-    @DisplayName("Should handle overlapping open and close strings")
-    void testSubstringsBetweenWithOverlappingStrings() {
-        String[] expected = {"ab"};
-        String[] actual = stringUtils.substringsBetween("[ab][bc][cd]", "[a", "b]");
-        assertArrayEquals(expected, actual);
     }
 
     @Test
@@ -1338,10 +1238,6 @@ public class StringUtilsTest {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.truncate("abcdefg", 0, -1));
     }
 
-    //@Test
-    void shouldThrowIllegalArgumentExceptionWhenOffsetIsGreaterThanStringLength() {
-//        assertThrows(IllegalArgumentException.class, () -> StringUtils.truncate("abcdefg", 10, 5));
-    }
 
     @Test
     @DisplayName("Test strip() with null input")
@@ -1408,45 +1304,6 @@ public class StringUtilsTest {
         assertEquals("", StringUtils.strip(str, stripChars));
     }
 
-    //@Test
-    @DisplayName("Test strip() with whitespace input and strip characters")
-    void testStripWithWhitespaceInputAndStripCharacters() {
-        String str = "   ";
-        String stripChars = "xyz";
-        assertEquals("", StringUtils.strip(str, stripChars));
-    }
-
-    @Test
-    @DisplayName("Test strip() with non-whitespace input and strip characters")
-    void testStripWithNonWhitespaceInputAndStripCharacters() {
-        String str = "abc";
-        String stripChars = "xyz";
-        assertEquals("abc", StringUtils.strip(str, stripChars));
-    }
-
-    //@Test
-    @DisplayName("Test strip() with leading whitespace input and strip characters")
-    void testStripWithLeadingWhitespaceInputAndStripCharacters() {
-        String str = "  abc";
-        String stripChars = "xyz";
-        assertEquals("abc", StringUtils.strip(str, stripChars));
-    }
-
-    //@Test
-    @DisplayName("Test strip() with trailing whitespace input and strip characters")
-    void testStripWithTrailingWhitespaceInputAndStripCharacters() {
-        String str = "abc  ";
-        String stripChars = "xyz";
-        assertEquals("abc", StringUtils.strip(str, stripChars));
-    }
-
-    //@Test
-    @DisplayName("Test strip() with whitespace in between input and strip characters")
-    void testStripWithWhitespaceInBetweenInputAndStripCharacters() {
-        String str = " ab c ";
-        String stripChars = "xyz";
-        assertEquals("ab c", StringUtils.strip(str, stripChars));
-    }
 
     // Your Java code here
     @Test
@@ -1602,13 +1459,6 @@ public class StringUtilsTest {
         Assertions.assertEquals("replacement string", result);
     }
 
-    //@Test
-    void testReplaceFirst_MatchFoundWithRegex_ReplacesFirstMatch() {
-        String input = "input string";
-        String result = stringUtils.replaceFirst(input, "in.*", "replacement");
-        Assertions.assertEquals("replacement string", result);
-    }
-
     @Test
     void testReplaceFirst_MatchFoundWithRegexCaseSensitive_ReplacesFirstMatch() {
         String input = "input string";
@@ -1616,12 +1466,6 @@ public class StringUtilsTest {
         Assertions.assertEquals("input string", result);
     }
 
-    //@Test
-    void testReplaceFirst_MatchFoundWithRegexCaseInsensitive_ReplacesFirstMatch() {
-        String input = "input string";
-        String result = stringUtils.replaceFirst(input, "(?i)IN.*", "replacement");
-        Assertions.assertEquals("replacement string", result);
-    }
 
     @Test
     void testReplaceFirst_SpecialCharactersInRegex_ReplacesFirstMatch() {
@@ -1689,11 +1533,6 @@ public class StringUtilsTest {
         assertEquals("abcdefg", stringUtils.abbreviate("abcdefg", 0, 7));
     }
 
-    //@Test
-    void testAbbreviateWithOffset_InputGreaterThanMaxWidth_ReturnsAbbreviatedString() {
-        assertEquals("...defgh", stringUtils.abbreviate("abcdefgh", 3, 8));
-    }
-
     @Test
     void testAbbreviateWithOffset_MaxWidthLessThanFour_ThrowsIllegalArgumentException() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -1721,10 +1560,6 @@ public class StringUtilsTest {
         assertEquals("abcdefg", stringUtils.abbreviate("abcdefg", "...", 7));
     }
 
-    //@Test
-    void testAbbreviateWithMarker_InputGreaterThanMaxWidth_ReturnsAbbreviatedString() {
-        assertEquals("ab...", stringUtils.abbreviate("abcdefgh", "...", 6));
-    }
 
     @Test
     void testAbbreviateWithMarker_MaxWidthLessThanMarkerLengthPlusOne_ThrowsIllegalArgumentException() {
@@ -1753,10 +1588,6 @@ public class StringUtilsTest {
         assertEquals("abcdefg", stringUtils.abbreviate("abcdefg", "...", 0, 7));
     }
 
-    //@Test
-    void testAbbreviateWithOffsetAndMarker_InputGreaterThanMaxWidth_ReturnsAbbreviatedString() {
-        assertEquals("...defgh", stringUtils.abbreviate("abcdefgh", "...", 3, 8));
-    }
 
     @Test
     void testAbbreviateWithOffsetAndMarker_MaxWidthLessThanMarkerLengthPlusOne_ThrowsIllegalArgumentException() {
@@ -1764,7 +1595,6 @@ public class StringUtilsTest {
             stringUtils.abbreviate("abcdefg", "...", 0, 3);
         });
     }
-
 
 
     @Test
@@ -1777,13 +1607,6 @@ public class StringUtilsTest {
         assertFalse(stringUtils.isNoneEmpty(new String[]{""}));
     }
 
-    //@Test
-    @DisplayName("should return false if any CharSequence is null")
-    void testIsNoneEmpty_withNullCharSequence_shouldReturnFalse() {
-        assertFalse(stringUtils.isNoneEmpty((CharSequence) null));
-        assertFalse(stringUtils.isNoneEmpty((CharSequence[]) null));
-        assertFalse(stringUtils.isNoneEmpty(null, "foo"));
-    }
 
     @Test
     @DisplayName("should return true if all CharSequences are not empty or null")
@@ -1838,26 +1661,10 @@ public class StringUtilsTest {
         assertFalse(StringUtils.containsAnyIgnoreCase(cs, searchCharSequences));
     }
 
-    //@Test
-    void testContainsAnyIgnoreCase_caseSensitiveMatch() {
-        CharSequence cs = "abcd";
-        CharSequence[] searchCharSequences = {"AB", "CD"};
-
-        assertFalse(StringUtils.containsAnyIgnoreCase(cs, searchCharSequences));
-    }
-
     @Test
     void testContainsAnyIgnoreCase_caseInsensitiveMatch() {
         CharSequence cs = "abcd";
         CharSequence[] searchCharSequences = {"AB", "CD"};
-
-        assertTrue(StringUtils.containsAnyIgnoreCase(cs, searchCharSequences));
-    }
-
-    //@Test
-    void testContainsAnyIgnoreCase_unicodeNormalization() {
-        CharSequence cs = "café";
-        CharSequence[] searchCharSequences = {"cafe"};
 
         assertTrue(StringUtils.containsAnyIgnoreCase(cs, searchCharSequences));
     }
@@ -2032,20 +1839,6 @@ public class StringUtilsTest {
         Assertions.assertEquals("c", result[4]);
     }
 
-    //
-    //@Test
-    @DisplayName("Test splitByCharacterType with input containing mixed whitespace characters")
-    void testSplitByCharacterTypeWithMixedWhitespaceInput() {
-        String[] result = stringUtils.splitByCharacterType("a\tb\n\rc");
-        //Assertions.assertEquals(7, result.length);
-        Assertions.assertEquals("a", result[0]);
-        Assertions.assertEquals("\t", result[1]);
-        Assertions.assertEquals("b", result[2]);
-//        Assertions.assertEquals("\n", result[3]);
-        Assertions.assertEquals("\r", result[4]);
-        Assertions.assertEquals("c", result[5]);
-    }
-
     @Test
     @DisplayName("Test splitByCharacterType with input containing special characters")
     void testSplitByCharacterTypeWithSpecialCharacterInput() {
@@ -2057,67 +1850,6 @@ public class StringUtilsTest {
         Assertions.assertEquals("#", result[3]);
         Assertions.assertEquals("c", result[4]);
     }
-
-    //@Test
-    @DisplayName("Test splitByCharacterType with input containing multiple special characters")
-    void testSplitByCharacterTypeWithMultipleSpecialCharactersInput() {
-        String[] result = stringUtils.splitByCharacterType("a@#b$c");
-        Assertions.assertEquals(7, result.length);
-        Assertions.assertEquals("a", result[0]);
-        Assertions.assertEquals("@", result[1]);
-        Assertions.assertEquals("#", result[2]);
-        Assertions.assertEquals("b", result[3]);
-        Assertions.assertEquals("$", result[4]);
-        Assertions.assertEquals("c", result[5]);
-    }
-
-//    @Test
-//    @DisplayName("Should convert all remaining accent characters to their corresponding non-accent characters")
-//    void testConvertRemainingAccentCharacters() {
-//        StringBuilder decomposed = new StringBuilder("ąćęłńóśźż");
-//        StringUtils.convertRemainingAccentCharacters(decomposed);
-//        assertEquals("acelnoszz", decomposed.toString());
-//    }
-//
-//    @Test
-//    @DisplayName("Should not modify the string if there are no remaining accent characters")
-//    void testConvertRemainingAccentCharactersNoAccentCharacters() {
-//        StringBuilder decomposed = new StringBuilder("abcdef");
-//        StringUtils.convertRemainingAccentCharacters(decomposed);
-//        assertEquals("abcdef", decomposed.toString());
-//    }
-//
-//    @Test
-//    @DisplayName("Should convert 'Ł' to 'L'")
-//    void testConvertRemainingAccentCharactersCapitalL() {
-//        StringBuilder decomposed = new StringBuilder("Ł");
-//        StringUtils.convertRemainingAccentCharacters(decomposed);
-//        assertEquals("L", decomposed.toString());
-//    }
-//
-//    @Test
-//    @DisplayName("Should convert 'ł' to 'l'")
-//    void testConvertRemainingAccentCharactersLowercaseL() {
-//        StringBuilder decomposed = new StringBuilder("ł");
-//        StringUtils.convertRemainingAccentCharacters(decomposed);
-//        assertEquals("l", decomposed.toString());
-//    }
-//
-//    @Test
-//    @DisplayName("Should not modify the string if it is empty")
-//    void testConvertRemainingAccentCharactersEmptyString() {
-//        StringBuilder decomposed = new StringBuilder();
-//        StringUtils.convertRemainingAccentCharacters(decomposed);
-//        assertEquals("", decomposed.toString());
-//    }
-//
-//    @Test
-//    @DisplayName("Should handle null string")
-//    void testConvertRemainingAccentCharactersNullString() {
-//        StringBuilder decomposed = null;
-//        StringUtils.convertRemainingAccentCharacters(decomposed);
-//        assertEquals(null, decomposed);
-//    }
 
     @Test
     @DisplayName("Should return null when input string is null")
@@ -2147,19 +1879,6 @@ public class StringUtilsTest {
         assertEquals("", result);
     }
 
-    //@Test
-    @DisplayName("Should return input string when remove char is null")
-    void shouldReturnInputStringWhenRemoveCharIsNull() {
-        // Arrange
-        String str = "abc";
-        Character remove = null;
-
-        // Act
-        String result = StringUtils.removeStart(str, remove);
-
-        // Assert
-        assertEquals("abc", result);
-    }
 
     @Test
     @DisplayName("Should remove char at the beginning of the input string")
@@ -2317,16 +2036,6 @@ public class StringUtilsTest {
         assertFalse(StringUtils.equalsIgnoreCase("abc", "\r"));
     }
 
-    //@Test
-    void testEqualsIgnoreCase_AccentedCharacters_ReturnsTrue() {
-        assertTrue(StringUtils.equalsIgnoreCase("àèìòù", "ÀÈÌÒÙ"));
-        assertTrue(StringUtils.equalsIgnoreCase("äëïöü", "ÄËÏÖÜ"));
-        assertTrue(StringUtils.equalsIgnoreCase("áéíóú", "ÁÉÍÓÚ"));
-        assertTrue(StringUtils.equalsIgnoreCase("âêîôû", "ÂÊÎÔÛ"));
-        assertTrue(StringUtils.equalsIgnoreCase("ãõñ", "ÃÕÑ"));
-        assertTrue(StringUtils.equalsIgnoreCase("āēīōū", "ĀĒĪŌŪ"));
-    }
-
     @Test
     void testEqualsIgnoreCase_AsciiAndNonAsciiCharacters_ReturnsFalse() {
         assertFalse(StringUtils.equalsIgnoreCase("abc", "àbc"));
@@ -2393,31 +2102,6 @@ public class StringUtilsTest {
         assertEquals("control", result);
     }
 
-    //@Test
-    @DisplayName("should remove accents from input string")
-    void shouldRemoveAccentsFromInputString() {
-        // Arrange
-        String input = "&eacute;clair";
-
-        // Act
-        String result = StringUtils.stripAccents(input);
-
-        // Assert
-        assertEquals("eclair", result);
-    }
-
-    //@Test
-    @DisplayName("should correctly remove accents from input string with ligatures")
-    void shouldCorrectlyRemoveAccentsFromInputStringWithLigatures() {
-        // Arrange
-        String input = "floræ";
-
-        // Act
-        String result = StringUtils.stripAccents(input);
-
-        // Assert
-        assertEquals("florae", result);
-    }
 
     @Test
     @DisplayName("Should return null when input string is null")
@@ -2979,13 +2663,6 @@ public class StringUtilsTest {
         assertEquals("prefixstr", result);
     }
 
-    //@Test
-    @DisplayName("should return prefix + str if str starts with prefix in different case")
-    void testPrependIfMissingIgnoreCaseWithMatchingPrefixDifferentCase() {
-        String result = stringUtils.prependIfMissingIgnoreCase("prefixstr", "PREFIX");
-        assertEquals("PREFIXstr", result);
-    }
-
     @Test
     @DisplayName("should return prefix + str if str starts with any of the prefixes")
     void testPrependIfMissingIgnoreCaseWithMultiplePrefixes() {
@@ -3004,13 +2681,6 @@ public class StringUtilsTest {
     @DisplayName("should return str if str starts with any of the prefixes in different case")
     void testPrependIfMissingIgnoreCaseWithMultiplePrefixesMatchingDifferentCase() {
         String result = stringUtils.prependIfMissingIgnoreCase("PREFIXstr", "prefix", "another");
-        assertEquals("PREFIXstr", result);
-    }
-
-    //@Test
-    @DisplayName("should return prefix + str if str starts with any of the prefixes in different case")
-    void testPrependIfMissingIgnoreCaseWithMultiplePrefixesNonMatchingDifferentCase() {
-        String result = stringUtils.prependIfMissingIgnoreCase("prefixstr", "PREFIX", "another");
         assertEquals("PREFIXstr", result);
     }
 
@@ -3046,13 +2716,6 @@ public class StringUtilsTest {
     @DisplayName("should return str if str starts with any of the prefixes in different case and additional prefixes are provided")
     void testPrependIfMissingIgnoreCaseWithAdditionalPrefixesMatchingDifferentCase() {
         String result = stringUtils.prependIfMissingIgnoreCase("PREFIXstr", "prefix", "another");
-        assertEquals("PREFIXstr", result);
-    }
-
-    //@Test
-    @DisplayName("should return prefix + str if str starts with any of the prefixes in different case and additional prefixes are provided")
-    void testPrependIfMissingIgnoreCaseWithAdditionalPrefixesNonMatchingDifferentCase() {
-        String result = stringUtils.prependIfMissingIgnoreCase("prefixstr", "PREFIX", "another");
         assertEquals("PREFIXstr", result);
     }
 
@@ -3094,33 +2757,6 @@ public class StringUtilsTest {
     @Test
     public void testWhitespaceInMiddleInput() {
         assertEquals("ab c", stringUtils.stripToEmpty(" ab c "));
-    }
-
-    void testStripStart_withNullString_returnsNull() {
-    }
-
-    void testStripStart_withEmptyString_returnsEmptyString() {
-    }
-
-    void testStripStart_withNonMatchingStripChars_returnsOriginalString() {
-    }
-
-    void testStripStart_withEmptyStripChars_returnsOriginalString() {
-    }
-
-    void testStripStart_withNullStripChars_stripsWhitespace() {
-    }
-
-    void testStripStart_withNonEmptyStripChars_stripsMatchingCharacters() {
-    }
-
-    void testStripStart_withWhitespaceStringAndNullStripChars_stripsWhitespace() {
-    }
-
-    void testStripStart_withWhitespaceStringAndEmptyStripChars_returnsOriginalString() {
-    }
-
-    void testStripStart_withWhitespaceStringAndNonEmptyStripChars_returnsOriginalString() {
     }
 
     @Test
@@ -3214,18 +2850,6 @@ public class StringUtilsTest {
         assertEquals("acacac", stringUtils.removeAll(input, "b"));
     }
 
-    //@Test
-    void testRemoveAll_RegexMatch_ReturnsStringWithoutMatches() {
-        String input = "A<__>\n<__>B";
-        assertEquals("AB", stringUtils.removeAll(input, "<.*>"));
-    }
-
-    //@Test
-    void testRemoveAll_RegexWithDotallOption_ReturnsStringWithoutMatches() {
-        String input = "A<__>\n<__>B";
-        assertEquals("A\nB", stringUtils.removeAll(input, "(?s)<.*>"));
-    }
-
     @Test
     void testRemoveAll_RegexWithSpecialChars_ReturnsStringWithoutMatches() {
         String input = "ABCabc123abc";
@@ -3280,11 +2904,6 @@ public class StringUtilsTest {
         assertTrue(stringUtils.containsWhitespace("   "));
     }
 
-    //@Test
-    @DisplayName("String with non-breaking whitespace characters should return true")
-    void testContainsWhitespace_NonBreakingWhitespaceCharacters() {
-        assertTrue(stringUtils.containsWhitespace("Hello\u00A0World"));
-    }
 
     @Test
     @DisplayName("Null string should return false")
@@ -3476,12 +3095,6 @@ public class StringUtilsTest {
         assertTrue(StringUtils.containsNone(null, 'a', 'b', 'c'));
     }
 
-//    @Test
-//    @DisplayName("Should return true when searchChars is null")
-//    void testContainsNoneCharArrayWithNullSearchChars() {
-//        assertTrue(StringUtils.containsNone("abc", null));
-//    }
-
     @Test
     @DisplayName("Should return true when cs is an empty string")
     void testContainsNoneCharArrayWithEmptyCs() {
@@ -3524,11 +3137,6 @@ public class StringUtilsTest {
         assertTrue(StringUtils.containsNone(null, "abc"));
     }
 
-//    @Test
-//    @DisplayName("Should return true when invalidChars is null")
-//    void testContainsNoneStringWithNullInvalidChars() {
-//        assertTrue(StringUtils.containsNone("abc", null));
-//    }
 
     @Test
     @DisplayName("Should return true when cs is an empty string")
@@ -3818,30 +3426,6 @@ public class StringUtilsTest {
         assertEquals(2, result);
     }
 
-    //@Test
-    void shouldReturnTwoWhenInputContainsTwoCharSequencesWithDifferentLengthsAndTheDifferenceIsAtTheSecondCharacter() {
-        // Arrange
-        CharSequence[] css = {"ab", "adc"};
-
-        // Act
-        int result = stringUtils.indexOfDifference(css);
-
-        // Assert
-        assertEquals(2, result);
-    }
-
-    //@Test
-    void shouldReturnTwoWhenInputContainsTwoCharSequencesWithDifferentLengthsAndTheDifferenceIsAtTheThirdCharacter() {
-        // Arrange
-        CharSequence[] css = {"abc", "ad"};
-
-        // Act
-        int result = stringUtils.indexOfDifference(css);
-
-        // Assert
-        assertEquals(2, result);
-    }
-
     @Test
     void shouldReturnSevenWhenInputContainsTwoCharSequencesWithDifferentLengthsAndTheDifferenceIsAtTheSeventhCharacter() {
         // Arrange
@@ -3971,32 +3555,6 @@ public class StringUtilsTest {
         assertEquals(2, result);
     }
 
-    //@Test
-    void shouldReturnTwoWhenInputCharSequencesHaveDifferentLengthsAndTheDifferenceIsAtTheSecondCharacter() {
-        // Arrange
-        CharSequence cs1 = "ab";
-        CharSequence cs2 = "adc";
-
-        // Act
-        int result = stringUtils.indexOfDifference(cs1, cs2);
-
-        // Assert
-        assertEquals(2, result);
-    }
-
-    //@Test
-    void shouldReturnTwoWhenInputCharSequencesHaveDifferentLengthsAndTheDifferenceIsAtTheThirdCharacter() {
-        // Arrange
-        CharSequence cs1 = "abc";
-        CharSequence cs2 = "ad";
-
-        // Act
-        int result = stringUtils.indexOfDifference(cs1, cs2);
-
-        // Assert
-        assertEquals(2, result);
-    }
-
     @Test
     void shouldReturnSevenWhenInputCharSequencesHaveDifferentLengthsAndTheDifferenceIsAtTheSeventhCharacter() {
         // Arrange
@@ -4022,11 +3580,6 @@ public class StringUtilsTest {
         assertEquals(-1, result);
     }
 
-    //@Test
-    public void testIndexOfIgnoreCase_EmptyString_ReturnsZero() {
-        int result = stringUtils.indexOfIgnoreCase("", "abc");
-        assertEquals(0, result);
-    }
 
     @Test
     public void testIndexOfIgnoreCase_EmptySearchStr_ReturnsStartPos() {
@@ -4218,18 +3771,6 @@ public class StringUtilsTest {
         assertNull(stringUtils.mid(null, 0, 2));
     }
 
-//    @Test
-//    @DisplayName("Test mid() with valid string and positions")
-//    void testMidWithValidStringAndPositions4(String str, int pos, int len, String expected) {
-//        assertEquals(expected, stringUtils.mid(str, pos, len));
-//    }
-//
-//    @Test
-//    @DisplayName("Test mid() with invalid positions")
-//    void testMidWithInvalidPositions4(String str, int pos, int len, String expected) {
-//        assertEquals(expected, stringUtils.mid(str, pos, len));
-//    }
-
     @Test
     void testEndsWithNullNull() {
         assertTrue(StringUtils.endsWith(null, null));
@@ -4339,11 +3880,6 @@ public class StringUtilsTest {
         assertFalse(StringUtils.endsWithAny("abcxyz", null));
     }
 
-    //@Test
-    void testEndsWithAny_NonEmptySequence_EmptySearchStrings_ReturnsTrue() {
-        assertTrue(StringUtils.endsWithAny("abcxyz"));
-    }
-
     @Test
     void testEndsWithAny_NonEmptySequence_NonEmptySearchStrings_NoMatch_ReturnsFalse() {
         assertFalse(StringUtils.endsWithAny("abcxyz", "def"));
@@ -4369,42 +3905,6 @@ public class StringUtilsTest {
         assertFalse(StringUtils.endsWithAny("abcXYZ", "def", "xyz"));
     }
 
-
-//    @Test
-//    void shouldReturnCorrectMatchValues() {
-//        String first = "hello";
-//        String second = "hello";
-//        int[] expected = {5, 0, 5, 5};
-//        int[] result = StringUtils.matches(first, second);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    void shouldReturnCorrectMatchValues2() {
-//        String first = "hello";
-//        String second = "hella";
-//        int[] expected = {4, 0, 4, 5};
-//        int[] result = StringUtils.matches(first, second);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    void shouldReturnCorrectMatchValues3() {
-//        String first = "hello";
-//        String second = "hallo";
-//        int[] expected = {4, 0, 1, 5};
-//        int[] result = StringUtils.matches(first, second);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    void shouldReturnCorrectMatchValues4() {
-//        String first = "hello";
-//        String second = "world";
-//        int[] expected = {0, 0, 0, 5};
-//        int[] result = StringUtils.matches(first, second);
-//        assertEquals(expected, result);
-//    }
 
     @Test
     @DisplayName("Should return true for null input")
@@ -4496,12 +3996,6 @@ public class StringUtilsTest {
         assertEquals(StringUtils.INDEX_NOT_FOUND, lastIndex);
     }
 
-    //@Test
-    void shouldReturnIndexNotFoundWhenNoMatchWithStartPos() {
-        int lastIndex = StringUtils.lastIndexOfIgnoreCase("aabaabaa", "B", 11);
-        assertEquals(StringUtils.INDEX_NOT_FOUND, lastIndex);
-    }
-
     @Test
     void shouldReturnIndexNotFoundWhenNoMatch() {
         int lastIndex = StringUtils.lastIndexOfIgnoreCase("aabaabaa", "C");
@@ -4572,66 +4066,6 @@ public class StringUtilsTest {
         // Assert
         assertEquals("abc", result);
     }
-//
-//    @Test
-//    void testIndexOfAnyBut_withNullCharSequence_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withEmptyCharSequence_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withNullSearchChars_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withEmptySearchChars_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withValidInput_shouldReturnIndex() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withValidInput_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withNullCharSequence_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withEmptyCharSequence_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withNullSearchChars_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withEmptySearchChars_shouldReturnMinusOne() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withValidInput_shouldReturnIndex() {
-//        // test logic here
-//    }
-//
-//    @Test
-//    void testIndexOfAnyBut_withValidInput_shouldReturnMinusOne() {
-//        // test logic here
-//    }
 
     @Test
     void testDeleteWhitespace_NullInput_ReturnNull() {
@@ -4753,25 +4187,6 @@ public class StringUtilsTest {
         assertEquals("ef", result[2]);
     }
 
-    // @Test
-    @DisplayName("Should split the string by the separator and return empty tokens")
-    void testSplitByWholeSeparatorPreserveAllTokensWithValidStringAndSeparatorIncludingEmptyTokens() {
-        // Arrange
-        String str = "ab::cd::ef";
-        String separator = "::";
-
-        // Act
-        String[] result = stringUtils.splitByWholeSeparatorPreserveAllTokens(str, separator);
-
-        // Assert
-        assertNotNull(result);
-//        assertEquals(5, result.length);
-        assertEquals("ab", result[0]);
-//        assertEquals("", result[1]);
-        // assertEquals("", result[2]);
-        assertEquals("cd", result[3]);
-        assertEquals("ef", result[4]);
-    }
 
     @Test
     @DisplayName("Should split the string by the separator and return limited number of tokens")
@@ -4856,14 +4271,6 @@ public class StringUtilsTest {
         assertTrue(StringUtils.containsIgnoreCase("abc", "BC"));
     }
 
-    //@Test
-    @DisplayName("returns false when input string does not contain search string")
-    void testNotContains() {
-        assertFalse(StringUtils.containsIgnoreCase("abc", "z"));
-        assertFalse(StringUtils.containsIgnoreCase("abc", "d"));
-        assertFalse(StringUtils.containsIgnoreCase("abc", "bc"));
-        assertFalse(StringUtils.containsIgnoreCase("abc", "CB"));
-    }
 
     @Test
     @DisplayName("Test isWhitespace with null input")
@@ -4983,13 +4390,6 @@ public class StringUtilsTest {
         assertEquals(-1, stringUtils.ordinalIndexOf(null, null, 1));
     }
 
-    //@Test
-    @DisplayName("Test ordinalIndexOf with empty input")
-    void testOrdinalIndexOfWithEmptyInput() {
-        assertEquals(0, stringUtils.ordinalIndexOf("", "", 1));
-        assertEquals(0, stringUtils.ordinalIndexOf("", "a", 1));
-        assertEquals(0, stringUtils.ordinalIndexOf("a", "", 1));
-    }
 
     @Test
     @DisplayName("Test ordinalIndexOf with valid input")
@@ -5355,12 +4755,6 @@ public class StringUtilsTest {
         assertEquals("bc", result);
     }
 
-    //@Test
-    void testSubstringAfterLast_WithSeparatorInString_ReturnsSubstringAfterSeparator1() {
-        String result = stringUtils.substringAfterLast(" abc", ' ');
-        assertEquals("bc", result);
-    }
-
     @Test
     void testSubstringAfterLast_WithUnicodeSeparator_ReturnsSubstringAfterSeparator1() {
         String result = stringUtils.substringAfterLast("abc\u00A0def", '\u00A0');
@@ -5415,11 +4809,6 @@ public class StringUtilsTest {
         assertEquals("bc", result);
     }
 
-    //@Test
-    void testSubstringAfterLast_WithSeparatorInString_ReturnsSubstringAfterSeparator() {
-        String result = stringUtils.substringAfterLast(" abc", " ");
-        assertEquals("bc", result);
-    }
 
     @Test
     void testSubstringAfterLast_WithUnicodeSeparator_ReturnsSubstringAfterSeparator2() {
@@ -5450,16 +4839,6 @@ public class StringUtilsTest {
     @Test
     void testReverse_InputWithWhitespace_ReturnsReversedStringWithWhitespace() {
         assertEquals("  yz  ", stringUtils.reverse("  zy  "));
-    }
-
-    //@Test
-    void testReverse_InputWithSpecialCharacters_ReturnsReversedStringWithSpecialCharacters() {
-        assertEquals(")dcba*(#@!", stringUtils.reverse("!@(#*abcd)"));
-    }
-
-    //@Test
-    void testReverse_InputWithUnicodeCharacters_ReturnsReversedStringWithUnicodeCharacters() {
-        assertEquals("ɘɿɒƨɘvoЯ", stringUtils.reverse("Яovoƨɒɿɘ"));
     }
 
     @Test
@@ -5763,23 +5142,12 @@ public class StringUtilsTest {
         assertEquals("stringsuffix", result);
     }
 
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffix() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringSuffix", "suffix");
-        assertEquals("stringSuffixsuffix", result);
-    }
-
     @Test
     void testAppendIfMissingIgnoreCase_NullSuffixes() {
         String result = stringUtils.appendIfMissingIgnoreCase("string", "suffix", null);
         assertEquals("stringsuffix", result);
     }
 
-    //@Test
-    void testAppendIfMissingIgnoreCase_EmptySuffixes() {
-        String result = stringUtils.appendIfMissingIgnoreCase("string", "suffix", "");
-        assertEquals("stringsuffix", result);
-    }
 
     @Test
     void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes1() {
@@ -5791,18 +5159,6 @@ public class StringUtilsTest {
     void testAppendIfMissingIgnoreCase_StringWithSuffixes() {
         String result = stringUtils.appendIfMissingIgnoreCase("stringsuffix", "suffix", "mno");
         assertEquals("stringsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes2() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringSuffix", "suffix", "mno");
-        assertEquals("stringSuffixsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes13() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno");
-        assertEquals("stringMNOsuffix", result);
     }
 
     @Test
@@ -5823,65 +5179,6 @@ public class StringUtilsTest {
         assertNull(result);
     }
 
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes3() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", null);
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes4() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "");
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes5() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "XYZ");
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    // @Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes6() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "XYZ", "abc");
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes7() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "XYZ", "abc", null);
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes8() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "XYZ", "abc", "");
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes9() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "XYZ", "abc", "def");
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes10() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "XYZ", "abc", "def", "ghi");
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes11() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "XYZ", "abc", "def", "ghi", null);
-        assertEquals("stringMNOsuffix", result);
-    }
-
-    //@Test
-    void testAppendIfMissingIgnoreCase_StringWithDifferentCaseSuffixes12() {
-        String result = stringUtils.appendIfMissingIgnoreCase("stringMNO", "suffix", "mno", "XYZ", "abc", "def", "ghi", "");
-        assertEquals("stringMNOsuffix", result);
-    }
 
     @Test
     @DisplayName("Replace once with non-null text, search string, and replacement")
@@ -5915,19 +5212,6 @@ public class StringUtilsTest {
         String searchString = null;
         String replacement = "z";
         String expectedResult = "aba";
-
-        String result = stringUtils.replaceOnce(text, searchString, replacement);
-
-        assertEquals(expectedResult, result);
-    }
-
-    //@Test
-    @DisplayName("Replace once with null replacement")
-    void testReplaceOnceWithNullReplacement() {
-        String text = "aba";
-        String searchString = "a";
-        String replacement = null;
-        String expectedResult = "ba";
 
         String result = stringUtils.replaceOnce(text, searchString, replacement);
 
@@ -6181,45 +5465,6 @@ public class StringUtilsTest {
         assertEquals("abc", result);
     }
 
-    // @Test
-    public void testReplaceOnceIgnoreCase() {
-        // Test null input
-        assertNull(stringUtils.replaceOnceIgnoreCase(null, "", ""));
-        assertNull(stringUtils.replaceOnceIgnoreCase(null, "a", ""));
-        assertNull(stringUtils.replaceOnceIgnoreCase(null, "", "z"));
-        assertNull(stringUtils.replaceOnceIgnoreCase(null, "a", "z"));
-
-        // Test empty input
-        assertEquals("", stringUtils.replaceOnceIgnoreCase("", "", ""));
-        assertEquals("", stringUtils.replaceOnceIgnoreCase("", "a", ""));
-        assertEquals("", stringUtils.replaceOnceIgnoreCase("", "", "z"));
-        assertEquals("", stringUtils.replaceOnceIgnoreCase("", "a", "z"));
-
-        // Test no replacement
-        assertEquals("foo", stringUtils.replaceOnceIgnoreCase("foo", "", ""));
-        assertEquals("foo", stringUtils.replaceOnceIgnoreCase("foo", "a", ""));
-        assertEquals("foo", stringUtils.replaceOnceIgnoreCase("foo", "", "z"));
-        assertEquals("foo", stringUtils.replaceOnceIgnoreCase("foo", "a", "z"));
-
-        // Test replacement
-        assertEquals("zoo", stringUtils.replaceOnceIgnoreCase("foo", "f", "z"));
-        assertEquals("foo", stringUtils.replaceOnceIgnoreCase("foo", "o", "z"));
-        assertEquals("zoo", stringUtils.replaceOnceIgnoreCase("foo", "F", "z"));
-        assertEquals("foo", stringUtils.replaceOnceIgnoreCase("foo", "O", "z"));
-
-        // Test multiple replacements
-        assertEquals("zoo", stringUtils.replaceOnceIgnoreCase("fOo", "o", "z"));
-        assertEquals("foo", stringUtils.replaceOnceIgnoreCase("fOo", "O", "z"));
-        assertEquals("zoo", stringUtils.replaceOnceIgnoreCase("fOo", "O", "z"));
-
-        // Test case-insensitive replacement
-        assertEquals("zoo", stringUtils.replaceOnceIgnoreCase("FoO", "o", "z"));
-        assertEquals("foo", stringUtils.replaceOnceIgnoreCase("FoO", "O", "z"));
-
-        // Test case-sensitive replacement
-//        assertEquals("Foo", stringUtils.replaceOnceIgnoreCase("FoO", "o", "z", 0));
-//        assertEquals("FoO", stringUtils.replaceOnceIgnoreCase("FoO", "O", "z", 0));
-    }
 
     @Test
     void testRemoveStartIgnoreCase_NullSourceString() {
@@ -6311,19 +5556,6 @@ public class StringUtilsTest {
         Assertions.assertEquals("!@#$%^&*()", result);
     }
 
-    //@Test
-    public void testToRootLowerCase_AccentedCharactersSource() {
-        String source = "ÁÉÍÓÚ";
-        String result = StringUtils.toRootLowerCase(source);
-        Assertions.assertEquals("áéíóú", result);
-    }
-
-    //@Test
-    public void testToRootLowerCase_MixedCharactersSource() {
-        String source = "MiXeDcAsEÁÉÍÓÚ";
-        String result = StringUtils.toRootLowerCase(source);
-        Assertions.assertEquals("mixedcaseáéíóú", result);
-    }
     // Your Java code here
 
     @Test
@@ -6375,17 +5607,6 @@ public class StringUtilsTest {
     void shouldReturnEmptyStringWhenBothStringsAreEqual() {
         String str1 = "abc";
         String str2 = "abc";
-
-        String result = StringUtils.difference(str1, str2);
-
-        assertEquals("", result);
-    }
-
-    //@Test
-    @DisplayName("Should return empty string when str1 is a substring of str2")
-    void shouldReturnEmptyStringWhenStr1IsSubstringOfStr2() {
-        String str1 = "ab";
-        String str2 = "abxyz";
 
         String result = StringUtils.difference(str1, str2);
 
@@ -6581,11 +5802,6 @@ public class StringUtilsTest {
     @Test
     void testEqualsWithNonEmptyAndEmptyCharSequences() {
         assertFalse(StringUtils.equals("abc", ""));
-    }
-
-    //@Test
-    void testIsNoneBlank_NullInput() {
-        assertFalse(StringUtils.isNoneBlank((CharSequence[]) null));
     }
 
     @Test
@@ -7229,20 +6445,6 @@ public class StringUtilsTest {
         assertEquals(0, StringUtils.splitPreserveAllTokens("").length);
     }
 
-    //@Test
-    public void testSplitPreserveAllTokens_SpaceInput_ReturnArrayWithEmptyString() {
-        String[] result = StringUtils.splitPreserveAllTokens(" ");
-        assertEquals(1, result.length);
-        assertEquals("", result[0]);
-    }
-
-    //@Test
-    public void testSplitPreserveAllTokens_NoSeparators_ReturnArrayWithOriginalString() {
-        String[] result = StringUtils.splitPreserveAllTokens("abc def");
-        assertEquals(1, result.length);
-        assertEquals("abc def", result[0]);
-    }
-
     @Test
     public void testSplitPreserveAllTokens_SingleSeparator_ReturnArrayWithTokens() {
         String[] result = StringUtils.splitPreserveAllTokens("a.b.c", '.');
@@ -7271,41 +6473,12 @@ public class StringUtilsTest {
         assertEquals("c", result[2]);
     }
 
-    //@Test
-    public void testSplitPreserveAllTokens_EmptySeparator_ReturnArrayWithTokensSeparatedByWhitespaces() {
-        String[] result = StringUtils.splitPreserveAllTokens("a b c", "");
-//        assertEquals(3, result.length);
-        assertEquals("a", result[0]);
-        assertEquals("b", result[1]);
-        assertEquals("c", result[2]);
-    }
-
     @Test
     public void testSplitPreserveAllTokens_MaxLengthReached_ReturnArrayWithLimitedNumberOfElements() {
         String[] result = StringUtils.splitPreserveAllTokens("ab   de fg", null, 2);
         assertEquals(2, result.length);
         assertEquals("ab", result[0]);
         assertEquals("  de fg", result[1]);
-    }
-
-    //@Test
-    public void testSplitPreserveAllTokens_MaxLengthZero_ReturnArrayWithAllElements() {
-        String[] result = StringUtils.splitPreserveAllTokens("ab   de fg", null, 0);
-        assertEquals(4, result.length);
-        assertEquals("ab", result[0]);
-        assertEquals("", result[1]);
-        assertEquals("", result[2]);
-        assertEquals("de fg", result[3]);
-    }
-
-    //@Test
-    public void testSplitPreserveAllTokens_MaxLengthNegative_ReturnArrayWithAllElements() {
-        String[] result = StringUtils.splitPreserveAllTokens("ab   de fg", null, -1);
-        assertEquals(4, result.length);
-        assertEquals("ab", result[0]);
-        assertEquals("", result[1]);
-        assertEquals("", result[2]);
-        assertEquals("de fg", result[3]);
     }
 
     @Test
@@ -7355,54 +6528,6 @@ public class StringUtilsTest {
     void testDefaultIfBlank_NonBlankInputAndDefault() {
         assertEquals("bat", stringUtils.defaultIfBlank("bat", "NULL"));
     }
-
-//    @Test
-//    public void testToStringOrEmpty_NullObject_ReturnsEmptyString() {
-//        Object obj = null;
-//        String expected = "";
-//        String result = stringUtils.toStringOrEmpty(obj);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    public void testToStringOrEmpty_EmptyStringObject_ReturnsEmptyString() {
-//        Object obj = "";
-//        String expected = "";
-//        String result = stringUtils.toStringOrEmpty(obj);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    public void testToStringOrEmpty_NonEmptyStringObject_ReturnsString() {
-//        Object obj = "Hello";
-//        String expected = "Hello";
-//        String result = stringUtils.toStringOrEmpty(obj);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    public void testToStringOrEmpty_IntegerObject_ReturnsString() {
-//        Object obj = 123;
-//        String expected = "123";
-//        String result = stringUtils.toStringOrEmpty(obj);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    public void testToStringOrEmpty_DoubleObject_ReturnsString() {
-//        Object obj = 3.14;
-//        String expected = "3.14";
-//        String result = stringUtils.toStringOrEmpty(obj);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    public void testToStringOrEmpty_BooleanObject_ReturnsString() {
-//        Object obj = true;
-//        String expected = "true";
-//        String result = stringUtils.toStringOrEmpty(obj);
-//        assertEquals(expected, result);
-//    }
 
     @Test
     @DisplayName("Test with null string")
@@ -7794,21 +6919,6 @@ public class StringUtilsTest {
         assertEquals("abc", stringUtils.uncapitalize("Abc"));
     }
 
-    //@Test
-    void testUncapitalizeFirstCharacterUnicode() {
-        assertEquals("άbc", stringUtils.uncapitalize("Άbc"));
-    }
-
-    //@Test
-    void testUncapitalizeFirstCharacterExtendedUnicode() {
-        assertEquals("𐐏bc", stringUtils.uncapitalize("𐐏bc"));
-    }
-
-    //@Test
-    void testUncapitalizeLongString() {
-        String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        assertEquals(str.toLowerCase(), stringUtils.uncapitalize(str));
-    }
 
     @Test
     @DisplayName("Test prependIfMissing with null string and null prefix")
@@ -8240,11 +7350,6 @@ public class StringUtilsTest {
         );
     }
 
-//    @ParameterizedTest(name = "startsWithAny({0}, {1}) = {2}")
-//    void startsWithAny_ShouldReturnExpectedResult(String sequence, String[] searchStrings, boolean expectedResult) {
-//        boolean result = stringUtils.startsWithAny(sequence, searchStrings);
-//        assertEquals(expectedResult, result);
-//    }
 
     @Test
     void exampleTest1() {
@@ -8254,43 +7359,6 @@ public class StringUtilsTest {
     @Test
     void exampleTest2() {
         // Test code here
-    }
-
-    // Add more @Test methods as needed
-
-    // Here are the @Test test functions:
-
-    //@Test
-    void testToStringWithNullBytesAndNullCharsetName() throws UnsupportedEncodingException {
-        byte[] bytes = null;
-        String charsetName = null;
-        String expected = null;
-
-        String result = StringUtils.toString(bytes, charsetName);
-
-        assertEquals(expected, result);
-    }
-
-    //@Test
-    void testToStringWithNullBytesAndCharsetName() throws UnsupportedEncodingException {
-        byte[] bytes = null;
-        String charsetName = "UTF-8";
-        String expected = null;
-
-        String result = StringUtils.toString(bytes, charsetName);
-
-        assertEquals(expected, result);
-    }
-
-    //@Test
-    void testToStringWithBytesAndNullCharsetName() throws UnsupportedEncodingException {
-        byte[] bytes = "Hello".getBytes();
-        String charsetName = null;
-        String expected = null;
-
-        String result = StringUtils.toString(bytes, charsetName);
-
-        assertEquals(expected, result);
     }
 
     @Test
@@ -8349,13 +7417,6 @@ public class StringUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-    //@Test
-    void testStripAll_StripCharsEmpty_ReturnStrippedStrings() {
-        String[] strs = {"abc", "  abc", "def"};
-        String[] expected = {"abc", "abc", "def"};
-        String[] result = stringUtils.stripAll(strs, "");
-        assertArrayEquals(expected, result);
-    }
 
     @Test
     void testStripAll_StripCharsWhitespace_ReturnStrippedStrings() {
@@ -8365,13 +7426,6 @@ public class StringUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-    //@Test
-    void testStripAll_StripCharsNonWhitespace_ReturnStrippedStrings() {
-        String[] strs = {"xyzabcxyz", "yzdefyz", "ghi"};
-        String[] expected = {"abc", "def", "ghi"};
-        String[] result = stringUtils.stripAll(strs, "yz");
-        assertArrayEquals(expected, result);
-    }
 
     @Test
     void shouldReturnNullWhenInputStringIsNull5() {
@@ -8619,11 +7673,6 @@ public class StringUtilsTest {
         assertEquals("zbz", result);
     }
 
-    //@Test
-    void testReplace_MultipleOccurrences_ReturnsTextWithReplacements() {
-        String result = stringUtils.replace("abaa", "a", "z");
-        assertEquals("zbza", result);
-    }
 
     @Test
     void testReplace_MaxZero_ReturnsUnchangedText() {
@@ -8764,33 +7813,11 @@ public class StringUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-    //@Test
-    @DisplayName("Should handle surrogate pairs correctly")
-    void shouldHandleSurrogatePairsCorrectly() {
-        // Given
-        CharSequence input = "😀👍";
-
-        // When
-        int[] result = StringUtils.toCodePoints(input);
-
-        // Then
-        int[] expected = {128512, 128077};
-        assertArrayEquals(expected, result);
-    }
-
     @Test
     void testGetBytes_NullString_ReturnEmptyByteArray() {
         byte[] result = stringUtils.getBytes(null, Charset.defaultCharset());
         assertEquals(0, result.length);
     }
-
-//    @Test
-//    void testGetBytes_NullCharset_ReturnDefaultCharsetByteArray() {
-//        String string = "Hello World";
-//        byte[] expectedResult = string.getBytes(Charset.defaultCharset());
-//        byte[] result = stringUtils.getBytes(string, null);
-//        assertArrayEquals(expectedResult, result);
-//    }
 
     @Test
     void testGetBytes_ValidStringAndCharset_ReturnByteArray() {
@@ -8965,22 +7992,10 @@ public class StringUtilsTest {
         Assertions.assertEquals("zzz", result);
     }
 
-    //@Test
-    void testReplacePattern_emptySourceAndNonEmptyRegex_withSpecialCharacters() {
-        String result = stringUtils.replacePattern("", "<.*>", "zzz");
-        Assertions.assertEquals("zzz", result);
-    }
-
     @Test
     void testReplacePattern_emptySourceAndNonEmptyRegex_withAlphabets() {
         String result = stringUtils.replacePattern("", "[a-z]", "zzz");
         Assertions.assertEquals("", result);
-    }
-
-    //@Test
-    void testReplacePattern_nonEmptySourceAndEmptyRegex() {
-        String result = stringUtils.replacePattern("ABCabc123", "", "zzz");
-        Assertions.assertEquals("ABCabc123", result);
     }
 
     @Test
@@ -9355,16 +8370,6 @@ public class StringUtilsTest {
         assertEquals("ab", result);
     }
 
-    //@Test
-    @DisplayName("Returns common prefix when input array contains multiple strings with common prefix and one string with common prefix only in the middle")
-    void testGetCommonPrefix_MultipleStringsWithCommonPrefixAndOneStringWithCommonPrefixOnlyInMiddle_ReturnsCommonPrefix() {
-        String[] strs = {"abcde", "abxyz", "axyz"};
-
-        String result = stringUtils.getCommonPrefix(strs);
-
-        assertEquals("", result);
-    }
-
     @Test
     @DisplayName("Returns common prefix when input array contains multiple strings with common prefix and one string with common prefix overlapping at the start and end")
     void testGetCommonPrefix_MultipleStringsWithCommonPrefixAndOneStringWithCommonPrefixOverlappingAtStartAndEnd_ReturnsCommonPrefix() {
@@ -9413,16 +8418,6 @@ public class StringUtilsTest {
         String result = stringUtils.getCommonPrefix(strs);
 
         assertEquals("ab", result);
-    }
-
-    //@Test
-    @DisplayName("Returns common prefix when input array contains multiple strings with common prefix and one string with common prefix overlapping at the start and end but not in the middle")
-    void testGetCommonPrefix_MultipleStringsWithCommonPrefixAndOneStringWithCommonPrefixOverlappingAtStartAndEndButNotInMiddle_ReturnsCommonPrefix() {
-        String[] strs = {"abcde", "abxyz", "axyz"};
-
-        String result = stringUtils.getCommonPrefix(strs);
-
-        assertEquals("", result);
     }
 
     @Test
@@ -9749,10 +8744,6 @@ public class StringUtilsTest {
         assertFalse(StringUtils.isAlphanumeric("abc123#"));
     }
 
-    //@Test
-    void testIsAlphanumeric_LargeInput_ReturnsTrue() {
-        assertTrue(StringUtils.isAlphanumeric("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse"));
-    }
 
     @Test
     void testAppendIfMissing_NullString() {
@@ -9846,14 +8837,6 @@ public class StringUtilsTest {
         assertEquals(expected, actual);
     }
 
-    //@Test
-    void testAppendIfMissing_AppendSuffixWithEmptySuffixes() {
-        String str = "abc";
-        String suffix = "xyz";
-        String expected = "abcxyz";
-        String actual = stringUtils.appendIfMissing(str, suffix, "");
-        assertEquals(expected, actual);
-    }
 
     @Test
     void testAppendIfMissing_StringEndsWithSuffixAndNullSuffixes() {
@@ -10148,66 +9131,6 @@ public class StringUtilsTest {
         assertFalse(stringUtils.startsWith(str, prefix));
     }
 
-//    @Test
-//    void testStartsWithCaseInsensitive() {
-//        CharSequence str = "ABCDEF";
-//        CharSequence prefix = "abc";
-//        assertTrue(stringUtils.startsWith(str, prefix, true));
-//    }
-
-    //@Test
-    void testStartsWithUnicodeNormalization() {
-        CharSequence str = "Müller";
-        CharSequence prefix = "Mu";
-        assertTrue(stringUtils.startsWith(str, prefix));
-    }
-
-//    @Test
-//    void testStartsWithUnicodeNormalizationCaseInsensitive() {
-//        CharSequence str = "Müller";
-//        CharSequence prefix = "mu";
-//        assertTrue(stringUtils.startsWith(str, prefix, true));
-//    }
-
-    //@Test
-    void testReplaceAll() {
-        // Test with null text
-        assertNull(stringUtils.replaceAll(null, "a", "b"));
-
-        // Test with null regex
-        assertEquals("abc", stringUtils.replaceAll("abc", null, "d"));
-
-        // Test with null replacement
-        assertEquals("abc", stringUtils.replaceAll("abc", "a", null));
-
-        // Test with empty text
-        assertEquals("", stringUtils.replaceAll("", "a", "b"));
-
-        // Test with empty regex
-        assertEquals("abc", stringUtils.replaceAll("abc", "", "d"));
-
-        // Test with empty replacement
-        assertEquals("abc", stringUtils.replaceAll("abc", "a", ""));
-
-        // Test with no replacements
-        assertEquals("abc", stringUtils.replaceAll("abc", "d", "e"));
-
-        // Test with single replacement
-        assertEquals("dbc", stringUtils.replaceAll("abc", "a", "d"));
-
-        // Test with multiple replacements
-        assertEquals("dbce", stringUtils.replaceAll("abca", "a", "d"));
-
-        // Test with regex special characters
-        assertEquals("d.b.c", stringUtils.replaceAll("a.b.c", "[a-z]", "d"));
-
-        // Test with regex special characters in replacement
-        assertEquals("dddc", stringUtils.replaceAll("abc", "[a-z]", "d."));
-
-        // Test with DOTALL option
-        assertEquals("dbce", stringUtils.replaceAll("a\na", "(?s)a", "d"));
-    }
-
     @Test
     void testLastIndexOfAny_nullString() {
         assertEquals(-1, stringUtils.lastIndexOfAny(null, "ab", "cd"));
@@ -10218,10 +9141,6 @@ public class StringUtilsTest {
         assertEquals(-1, stringUtils.lastIndexOfAny("zzabyycdxx", null));
     }
 
-    //@Test
-    void testLastIndexOfAny_nullSearchString() {
-        assertEquals(-1, stringUtils.lastIndexOfAny("zzabyycdxx", "ab", null));
-    }
 
     @Test
     void testLastIndexOfAny_emptySearchString() {
@@ -10331,11 +9250,7 @@ public class StringUtilsTest {
         assertEquals(2, result);
     }
 
-    //@Test
-    void testIndexOf_SearchSeqFoundAtEnd_ReturnsCorrectIndex() {
-        int result = stringUtils.indexOf("aabaabaa", "aa");
-        assertEquals(5, result);
-    }
+
 
     @Test
     void testIndexOf_SearchSeqFoundMultipleTimes_ReturnsFirstIndex() {
@@ -10385,11 +9300,6 @@ public class StringUtilsTest {
         assertEquals(2, result);
     }
 
-    //@Test
-    void testIndexOf_SearchCharFoundAtEnd_ReturnsCorrectIndex() {
-        int result = stringUtils.indexOf("aabaabaa", 'a');
-        assertEquals(7, result);
-    }
 
     @Test
     void testIndexOf_EmptySeq_ReturnsNegativeOne() {

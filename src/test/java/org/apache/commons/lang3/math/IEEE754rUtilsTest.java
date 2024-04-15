@@ -29,7 +29,6 @@ import org.junit.jupiter.api.Test;
 
 public class IEEE754rUtilsTest {
 
-
     @Test
     @DisplayName("Test for empty array")
     void testMaxEmptyArray1() {
@@ -285,11 +284,6 @@ public class IEEE754rUtilsTest {
         assertThrows(IllegalArgumentException.class, () -> IEEE754rUtils.min(emptyArray));
     }
 
-//    @Test
-//    void testMinWithArrayNull() {
-//        assertThrows(NullPointerException.class, () -> IEEE754rUtils.min(null));
-//    }
-
     @Test
     void testMinWithTwoValues() {
         double a = 3.5;
@@ -341,11 +335,6 @@ public class IEEE754rUtilsTest {
         float[] emptyArray = {};
         assertThrows(IllegalArgumentException.class, () -> IEEE754rUtils.min(emptyArray));
     }
-
-//    @Test
-//    void testMinWithFloatArrayNull() {
-//        assertThrows(NullPointerException.class, () -> IEEE754rUtils.min(null));
-//    }
 
     @Test
     void testMinWithTwoFloatValues() {

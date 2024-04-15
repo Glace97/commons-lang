@@ -29,75 +29,51 @@ import java.io.StringWriter;
 import java.io.Writer;
 
 public class OctalUnescaperTest {
-        private OctalUnescaper octalUnescaper;
-    
-        @BeforeEach
-        void setUp() {
-            octalUnescaper = new OctalUnescaper();
-        }
+    private OctalUnescaper octalUnescaper;
 
-    //@Test
-        void testTranslateSingleDigitOctal() throws IOException {
-            Writer writer = new StringWriter();
-            int result = octalUnescaper.translate("\\0", 0, writer);
-            assertEquals(2, result);
-            assertEquals(0, writer.toString());
-        }
+    @BeforeEach
+    void setUp() {
+        octalUnescaper = new OctalUnescaper();
+    }
 
-    //@Test
-        void testTranslateDoubleDigitOctal() throws IOException {
-            Writer writer = new StringWriter();
-            int result = octalUnescaper.translate("\\77", 0, writer);
-            assertEquals(3, result);
-            assertEquals(63, writer.toString());
-        }
+    @Test
+    void testTranslateInvalidOctal() throws IOException {
+        Writer writer = new StringWriter();
+        int result = octalUnescaper.translate("\\8", 0, writer);
+        assertEquals(0, result);
+        assertEquals("", writer.toString());
+    }
 
-    //@Test
-        void testTranslateTripleDigitOctal() throws IOException {
-            Writer writer = new StringWriter();
-            int result = octalUnescaper.translate("\\377", 0, writer);
-            assertEquals(4, result);
-            assertEquals(255, writer.toString());
-        }
-    
-        @Test
-        void testTranslateInvalidOctal() throws IOException {
-            Writer writer = new StringWriter();
-            int result = octalUnescaper.translate("\\8", 0, writer);
-            assertEquals(0, result);
-            assertEquals("", writer.toString());
-        }
-    
-        @Test
-        void testTranslateInvalidEscapeSequence() throws IOException {
-            Writer writer = new StringWriter();
-            int result = octalUnescaper.translate("\\x", 0, writer);
-            assertEquals(0, result);
-            assertEquals("", writer.toString());
-        }
-    
-        @Test
-        void testTranslateNoBackslash() throws IOException {
-            Writer writer = new StringWriter();
-            int result = octalUnescaper.translate("0", 0, writer);
-            assertEquals(0, result);
-            assertEquals("", writer.toString());
-        }
-    
-        @Test
-        void testTranslateBackslashAtEnd() throws IOException {
-            Writer writer = new StringWriter();
-            int result = octalUnescaper.translate("abc\\", 3, writer);
-            assertEquals(0, result);
-            assertEquals("", writer.toString());
-        }
-    
-        @Test
-        void testTranslateBackslashAtStart() throws IOException {
-            Writer writer = new StringWriter();
-            int result = octalUnescaper.translate("\\abc", 0, writer);
-            assertEquals(0, result);
-            assertEquals("", writer.toString());
-        }
+    @Test
+    void testTranslateInvalidEscapeSequence() throws IOException {
+        Writer writer = new StringWriter();
+        int result = octalUnescaper.translate("\\x", 0, writer);
+        assertEquals(0, result);
+        assertEquals("", writer.toString());
+    }
+
+    @Test
+    void testTranslateNoBackslash() throws IOException {
+        Writer writer = new StringWriter();
+        int result = octalUnescaper.translate("0", 0, writer);
+        assertEquals(0, result);
+        assertEquals("", writer.toString());
+    }
+
+    @Test
+    void testTranslateBackslashAtEnd() throws IOException {
+        Writer writer = new StringWriter();
+        int result = octalUnescaper.translate("abc\\", 3, writer);
+        assertEquals(0, result);
+        assertEquals("", writer.toString());
+    }
+
+    @Test
+    void testTranslateBackslashAtStart() throws IOException {
+        Writer writer = new StringWriter();
+        int result = octalUnescaper.translate("\\abc", 0, writer);
+        assertEquals(0, result);
+        assertEquals("", writer.toString());
+    }
 
 }

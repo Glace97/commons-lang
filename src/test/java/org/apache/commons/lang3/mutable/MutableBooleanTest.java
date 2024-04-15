@@ -104,12 +104,6 @@ public class MutableBooleanTest {
         assertEquals(Boolean.FALSE.hashCode(), mutableBoolean.hashCode());
     }
 
-    //@Test
-    void testHashCodeWithNullValue() {
-        mutableBoolean = new MutableBoolean((Boolean) null);
-        assertEquals(Boolean.FALSE.hashCode(), mutableBoolean.hashCode());
-    }
-
     @Test
     void testHashCodeForSameTrueValue() {
         mutableBoolean = new MutableBoolean(true);
@@ -180,25 +174,10 @@ public class MutableBooleanTest {
         assertFalse(mutableBooleanTrue.equals(mutableBooleanFalse));
     }
 
-//    @Test
-//    public void testEqualsWithNullObject() {
-//        assertFalse(mutableBooleanTrue.equals(mutableBooleanNull));
-//    }
-
     @Test
     public void testEqualsWithDifferentClassObject() {
         assertFalse(mutableBooleanTrue.equals("true"));
     }
-
-//    @Test
-//    public void testEqualsWithCopyOfSameObject() {
-//        assertTrue(mutableBooleanTrue.equals(mutableBooleanTrueCopy));
-//    }
-//
-//    @Test
-//    public void testEqualsWithCopyOfDifferentObject() {
-//        assertTrue(mutableBooleanFalse.equals(mutableBooleanFalseCopy));
-//    }
 
 
     @Test
@@ -332,10 +311,5 @@ public class MutableBooleanTest {
         assertEquals("false", mutableBoolean.toString());
     }
 
-    //@Test
-    void testToStringWithNullValue() {
-        MutableBoolean mutableBoolean = new MutableBoolean((Boolean) null);
-        assertEquals("false", mutableBoolean.toString());
-    }
 
 }

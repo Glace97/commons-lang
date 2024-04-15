@@ -47,46 +47,7 @@ public class HashCodeBuilderTest {
         assertEquals(3, builder.hashCode());
     }
 
-    //@Test
-    void testHashCode() {
-        HashCodeBuilder builder = new HashCodeBuilder();
-        builder.append(1);
-        builder.append(2.0);
-        builder.append("test");
-        builder.append(true);
-        assertEquals(185617, builder.hashCode());
-    }
 
-    //@Test
-    void testHashCodeWithNullValues() {
-        HashCodeBuilder builder = new HashCodeBuilder();
-        builder.append(Optional.ofNullable(null));
-        assertEquals(17, builder.hashCode());
-    }
-
-    //@Test
-    void testHashCodeWithArrays() {
-        HashCodeBuilder builder = new HashCodeBuilder();
-        builder.append(new int[]{1, 2, 3});
-        builder.append(new String[]{"a", "b", "c"});
-        assertEquals(216183, builder.hashCode());
-    }
-
-//    @Test
-//    void testHashCodeWithCollections() {
-//        HashCodeBuilder builder = new HashCodeBuilder();
-//        builder.append(Set.of(1, 2, 3));
-//        builder.append(List.of("a", "b", "c"));
-//        assertEquals(234138, builder.hashCode());
-//    }
-
-    //@Test
-    void testHashCodeWithObjects() {
-        HashCodeBuilder builder = new HashCodeBuilder();
-        builder.append(new Person("John", 25));
-        builder.append(new Person("Jane", 30));
-        assertEquals(1744, builder.hashCode());
-    }
 
     private static class Person {
         private String name;
@@ -239,21 +200,12 @@ public class HashCodeBuilderTest {
         assertFalse(builder1.equals(builder2));
     }
     
-    //@Test
-    void testEquals_DifferentMultiplierValue() {
-        HashCodeBuilder builder1 = new HashCodeBuilder();
-        HashCodeBuilder builder2 = new HashCodeBuilder(17, 41);
-        assertFalse(builder1.equals(builder2));
-    }
+
     @Test
     void testReflectionHashCode_withNullObject_shouldThrowNullPointerException() {
         assertThrows(NullPointerException.class, () -> HashCodeBuilder.reflectionHashCode(null, true));
     }
     
-//    @Test
-//    void testReflectionHashCode_withNullExcludeFields_shouldNotThrowException() {
-//        HashCodeBuilder.reflectionHashCode(new Object(), (Collection<String>) null);
-//    }
 
     @Test
     void testReflectionHashCode_withNullExcludeFields_shouldNotThrowNullPointerException() {
@@ -298,11 +250,7 @@ public class HashCodeBuilderTest {
         assertEquals(hashCode, HashCodeBuilder.reflectionHashCode(new Object(), "field1", "field2"));
     }
     
-//    @Test
-//    void testReflectionHashCode_withReflectUpToClass_shouldReturnHashCode() {
-//        int hashCode = HashCodeBuilder.reflectionHashCode(new Object(), true, Object.class);
-//        assertEquals(hashCode, HashCodeBuilder.reflectionHashCode(new Object(), true, Object.class));
-//    }
+
     
     @Test
     void testReflectionHashCode_withInvalidFieldAccess_shouldNotThrowException() {
@@ -316,29 +264,7 @@ public class HashCodeBuilderTest {
         int hashCode = HashCodeBuilder.reflectionHashCode(object, true);
         assertNotNull(hashCode);
     }
-//    @Test
-//    void testAppendSuper() {
-//        int superHashCode = 123456;
-//        HashCodeBuilder result = hashCodeBuilder.appendSuper(superHashCode);
-//        assertEquals(hashCodeBuilder, result);
-//        assertEquals(superHashCode, hashCodeBuilder.iTotal);
-//    }
-    
-//    @Test
-//    void testAppendSuperWithNegativeSuperHashCode() {
-//        int superHashCode = -123456;
-//        HashCodeBuilder result = hashCodeBuilder.appendSuper(superHashCode);
-//        assertEquals(hashCodeBuilder, result);
-//        assertEquals(superHashCode, hashCodeBuilder.iTotal);
-//    }
-    
-//    @Test
-//    void testAppendSuperWithZeroSuperHashCode() {
-//        int superHashCode = 0;
-//        HashCodeBuilder result = hashCodeBuilder.appendSuper(superHashCode);
-//        assertEquals(hashCodeBuilder, result);
-//        assertEquals(superHashCode, hashCodeBuilder.iTotal);
-//    }
+
 
     @Test
     void testBuild() {
@@ -391,13 +317,7 @@ public class HashCodeBuilderTest {
         assertNotEquals(hashCode1, hashCode2);
         assertNotEquals(builder1.hashCode(), builder2.hashCode());
     }
-    //@Test
-    void testGetRegistry() {
-      Set<IDKey> registry = HashCodeBuilder.getRegistry();
-      assertNotNull(registry);
-      assertTrue(registry.isEmpty());
-    }
-    
+
     @Test
     void testGetRegistryThreadLocal() {
       Set<IDKey> registry1 = HashCodeBuilder.getRegistry();
@@ -446,21 +366,5 @@ public class HashCodeBuilderTest {
         assertEquals(expected, actual);
     }
 
-    //@Test
-    void returnsSpecifiedInitialValue() {
-        int expected = 13;
-        HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();
-        int actual = hashCodeBuilder.toHashCode();
-        assertEquals(expected, actual);
-    }
-    
-    //@Test
-    @DisplayName("Returns specified multiplier value")
-    void returnsSpecifiedMultiplierValue() {
-        int expected = 31;
-        HashCodeBuilder hashCodeBuilder = new HashCodeBuilder();
-        int actual = hashCodeBuilder.toHashCode();
-        assertEquals(expected, actual);
-    }
 
 }

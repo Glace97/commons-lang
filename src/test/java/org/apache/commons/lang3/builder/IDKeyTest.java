@@ -83,22 +83,7 @@ public class IDKeyTest {
         assertTrue(result);
     }
     
-//    @Test
-//    @DisplayName("should return false when comparing two IDKeys with different ids")
-//    void testEqualsDifferentId() {
-//        // Arrange
-//        Object value = new Object();
-//        IDKey key1 = new IDKey(value);
-//        IDKey key2 = new IDKey(value);
-//        key2.id = 123;
-//
-//        // Act
-//        boolean result = key1.equals(key2);
-//
-//        // Assert
-//        Assertions.assertFalse(result);
-//    }
-    
+
     @Test
     @DisplayName("should return false when comparing two IDKeys with different values")
     void testEqualsDifferentValue() {

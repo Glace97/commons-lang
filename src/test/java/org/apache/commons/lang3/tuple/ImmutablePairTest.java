@@ -33,25 +33,6 @@ public class ImmutablePairTest {
         pair = new ImmutablePair<>("Hello", 123);
     }
 
-//    @Test
-//    void testRightWithNonNullValue() {
-//
-//        pair = ImmutablePair.right(10);
-//        Assertions.assertNull(pair.getLeft());
-//        Assertions.assertEquals(10, pair.getRight());
-//    }
-//
-//    @Test
-//    void testRightWithNullValue() {
-//        pair = ImmutablePair.right(null);
-//        Assertions.assertNull(pair.getLeft());
-//        Assertions.assertNull(pair.getRight());
-//    }
-
-    //@Test
-    void getLeft_shouldReturnLeftValue() {
-        assertEquals(10, pair.getLeft());
-    }
 
     @Test
     void getLeft_shouldReturnNullIfLeftIsNull() {
@@ -91,88 +72,6 @@ public class ImmutablePairTest {
         assertEquals(0, array.length);
     }
 
-//    @Test
-//    void testSerializationVersion() {
-//        ImmutablePair<?, ?> pair = ImmutablePair.nullPair();
-//
-//        assertEquals(4954918890077093841L, pair.serialVersionUID);
-//    }
-//
-//    @Test
-//    void testLeftWithNonNullValue() {
-//        // Arrange
-//        String expectedLeft = "Hello";
-//
-//        // Act
-//        ImmutablePair<String, Integer> pair = ImmutablePair.left(expectedLeft);
-//
-//        // Assert
-//        assertEquals(expectedLeft, pair.left);
-//        assertNull(pair.right);
-//    }
-//
-//    @Test
-//    void testLeftWithNullValue() {
-//        // Arrange
-//        String expectedLeft = null;
-//
-//        // Act
-//        ImmutablePair<String, Integer> pair = ImmutablePair.left(expectedLeft);
-//
-//        // Assert
-//        assertNull(pair.left);
-//        assertNull(pair.right);
-//    }
-//
-//    @Test
-//    void testLeftWithNonNullValueAndNonNullRightValue() {
-//        // Arrange
-//        String expectedLeft = "Hello";
-//        Integer expectedRight = 10;
-//
-//        // Act
-//        ImmutablePair<String, Integer> pair = ImmutablePair.left(expectedLeft).right(expectedRight);
-//
-//        // Assert
-//        assertEquals(expectedLeft, pair.left);
-//        assertEquals(expectedRight, pair.right);
-//    }
-//
-//    @Test
-//    void testLeftWithNonNullValueAndNullRightValue() {
-//        // Arrange
-//        String expectedLeft = "Hello";
-//
-//        // Act
-//        ImmutablePair<String, Integer> pair = ImmutablePair.left(expectedLeft).right(null);
-//
-//        // Assert
-//        assertEquals(expectedLeft, pair.left);
-//        assertNull(pair.right);
-//    }
-//
-//    @Test
-//    void testLeftWithNullValueAndNonNullRightValue() {
-//        // Arrange
-//        Integer expectedRight = 10;
-//
-//        // Act
-//        ImmutablePair<String, Integer> pair = ImmutablePair.<String, Integer>left(null).right(expectedRight);
-//
-//        // Assert
-//        assertNull(pair.left);
-//        assertEquals(expectedRight, pair.right);
-//    }
-//
-//    @Test
-//    void testLeftWithNullValueAndNullRightValue() {
-//        // Act
-//        ImmutablePair<String, Integer> pair = ImmutablePair.<String, Integer>left(null).right(null);
-//
-//        // Assert
-//        assertNull(pair.left);
-//        assertNull(pair.right);
-//    }
 
     @Test
     void testConstructorWithNonNullValues() {
@@ -278,18 +177,7 @@ public class ImmutablePairTest {
         assertNull(pair.right);
     }
 
-    //@Test
-    void shouldReturnNullPairWhenBothValuesAreNull() {
-        // Arrange
-        Integer left = null;
-        String right = null;
 
-        // Act
-        ImmutablePair<Integer, String> pair = ImmutablePair.of(left, right);
-
-        // Assert
-        assertNull(pair);
-    }
 
     @Test
     void shouldCreatePairFromMapEntry() {
@@ -304,17 +192,6 @@ public class ImmutablePairTest {
         assertEquals(entry.getValue(), pair.right);
     }
 
-    //@Test
-    void shouldReturnNullPairWhenMapEntryIsNull() {
-        // Arrange
-        Map.Entry<Integer, String> entry = null;
-
-        // Act
-        ImmutablePair<Integer, String> pair = ImmutablePair.of(entry);
-
-        // Assert
-        assertNull(pair);
-    }
 
     @Test
     void testEmptyArray() {
@@ -323,12 +200,6 @@ public class ImmutablePairTest {
         assertEquals(0, emptyArray.length);
     }
 
-//    @Test
-//    void testNullPair() {
-//        ImmutablePair<?, ?> nullPair = ImmutablePair.NULL;
-//        assertNull(nullPair.left);
-//        assertNull(nullPair.right);
-//    }
 
     @Test
     void testCreatePairWithNulls() {
@@ -373,17 +244,6 @@ public class ImmutablePairTest {
         assertNull(nullPair.getRight());
     }
 
-//    @Test
-//    void testGetRight_EmptyArray() {
-//        ImmutablePair<String, Integer>[] emptyArray = ImmutablePair.EMPTY_ARRAY;
-//        assertEquals(0, emptyArray.length);
-//    }
-//
-//    @Test
-//    void testGetRight_SerialVersionUID() {
-//        long serialVersionUID = 4954918890077093841L;
-//        assertEquals(serialVersionUID, pair.serialVersionUID);
-//    }
 
     @Test
     void testGetRight_Left() {

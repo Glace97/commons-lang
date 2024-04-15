@@ -522,11 +522,6 @@ public class MutableShortTest {
     }
 
     //@Test
-    void testEquals_sameValueDifferentTypes() {
-        MutableShort mutableShort1 = new MutableShort((short) 5);
-        MutableShort mutableShort2 = new MutableShort((byte) 5);
-        assertFalse(mutableShort1.equals(mutableShort2));
-    }
 
     @Test
     void testEquals_differentValueDifferentTypes() {
@@ -535,29 +530,6 @@ public class MutableShortTest {
         assertFalse(mutableShort1.equals(mutableShort2));
     }
 
-//    @Test
-//    void testAddNumber() {
-//        mutableShort.add(NumberUtils.LONG_ONE);
-//        assertEquals(1, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void testAddShort() {
-//        mutableShort.add((short) 5);
-//        assertEquals(5, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void testAddZero() {
-//        mutableShort.add(NumberUtils.LONG_ZERO);
-//        assertEquals(0, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void testAddNegativeNumber() {
-//        mutableShort.add(NumberUtils.LONG_MINUS_ONE);
-//        assertEquals(-1, mutableShort.getValue());
-//    }
 
     @Test
     void testAddMaxValue() {
@@ -571,31 +543,6 @@ public class MutableShortTest {
         assertEquals(Short.MIN_VALUE, mutableShort.getValue());
     }
 
-//    @Test
-//    void testAddString() {
-//        assertThrows(NumberFormatException.class, () -> mutableShort.add("abc"));
-//    }
-//
-//    @Test
-//    void testIncrement() {
-//        mutableShort.increment();
-//        assertEquals(1, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void testIncrementMultipleTimes() {
-//        mutableShort.increment();
-//        mutableShort.increment();
-//        mutableShort.increment();
-//        assertEquals(3, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void testIncrementWithNegativeValue() {
-//        mutableShort = new MutableShort(-1);
-//        mutableShort.increment();
-//        assertEquals(0, mutableShort.getValue());
-//    }
 
     @Test
     void testIncrementMaxValue() {
@@ -604,19 +551,6 @@ public class MutableShortTest {
         assertEquals(Short.MIN_VALUE, mutableShort.getValue());
     }
 
-//    @Test
-//    void testIncrementMinValue() {
-//        mutableShort = new MutableShort(Short.MIN_VALUE);
-//        mutableShort.increment();
-//        assertEquals(Short.MIN_VALUE + 1, mutableShort.getValue());
-//    }
-
-//    @Test
-//    void testIncrementWithStringValue() {
-//        mutableShort = new MutableShort("5");
-//        mutableShort.increment();
-//        assertEquals(6, mutableShort.getValue());
-//    }
 
     @Test
     void testIncrementWithNonNumericStringValue() {
@@ -634,17 +568,6 @@ public class MutableShortTest {
         });
     }
 
-//    @Test
-//    void testSetValueWithNumber() {
-//        mutableShort.setValue(10);
-//        assertEquals(10, mutableShort.getValue());
-//
-//        mutableShort.setValue(0);
-//        assertEquals(0, mutableShort.getValue());
-//
-//        mutableShort.setValue(-10);
-//        assertEquals(-10, mutableShort.getValue());
-//    }
 
     @Test
     void testSetValueWithShort() {
@@ -661,37 +584,12 @@ public class MutableShortTest {
         assertEquals(value, mutableShort.getValue());
     }
 
-//    @Test
-//    void testSetValueWithString() {
-//        String value = "10";
-//        mutableShort.setValue(value);
-//        assertEquals(10, mutableShort.getValue());
-//
-//        value = "0";
-//        mutableShort.setValue(value);
-//        assertEquals(0, mutableShort.getValue());
-//
-//        value = "-10";
-//        mutableShort.setValue(value);
-//        assertEquals(-10, mutableShort.getValue());
-//    }
 
     @Test
     void testSetValueWithNull() {
         assertThrows(NullPointerException.class, () -> mutableShort.setValue((Number) null));
     }
 
-//    @Test
-//    void testSetValueWithInvalidString() {
-//        String value = "abc";
-//        assertThrows(NumberFormatException.class, () -> mutableShort.setValue(value));
-//    }
-//
-//    @Test
-//    void decrement_shouldDecrementValueByOne() {
-//        mutableShort.decrement();
-//        assertEquals(9, mutableShort.getValue());
-//    }
 
     @Test
     void decrement_shouldHandleMinValue() {
@@ -700,78 +598,6 @@ public class MutableShortTest {
         assertEquals(Short.MAX_VALUE, mutableShort.getValue());
     }
 
-//    @Test
-//    void decrement_shouldHandleMaxValue() {
-//        mutableShort = new MutableShort(Short.MAX_VALUE);
-//        mutableShort.decrement();
-//        assertEquals(Short.MAX_VALUE - 1, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void decrement_shouldHandleZeroValue() {
-//        mutableShort = new MutableShort(0);
-//        mutableShort.decrement();
-//        assertEquals(-1, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void decrement_shouldHandleNegativeValue() {
-//        mutableShort = new MutableShort(-10);
-//        mutableShort.decrement();
-//        assertEquals(-11, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void decrement_shouldHandleStringRepresentation() {
-//        mutableShort = new MutableShort("10");
-//        mutableShort.decrement();
-//        assertEquals(9, mutableShort.getValue());
-//    }
-
-    //@Test
-    void decrement_shouldThrowNumberFormatExceptionForInvalidString() {
-        mutableShort = new MutableShort("abc");
-        assertThrows(NumberFormatException.class, () -> mutableShort.decrement());
-    }
-
-//    @Test
-//    void testGetAndAddWithPositiveOperand() {
-//        mutableShort = new MutableShort((short) 10);
-//
-//        short result1 = mutableShort.getAndAdd((short) 5);
-//        assertEquals(10, result1);
-//        assertEquals(15, mutableShort.getValue());
-//
-//        short result2 = mutableShort.getAndAdd((short) 2);
-//        assertEquals(15, result2);
-//        assertEquals(17, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void testGetAndAddWithNegativeOperand() {
-//        mutableShort = new MutableShort((short) 10);
-//
-//        short result1 = mutableShort.getAndAdd((short) -5);
-//        assertEquals(10, result1);
-//        assertEquals(5, mutableShort.getValue());
-//
-//        short result2 = mutableShort.getAndAdd((short) -2);
-//        assertEquals(5, result2);
-//        assertEquals(3, mutableShort.getValue());
-//    }
-//
-//    @Test
-//    void testGetAndAddWithZeroOperand() {
-//        mutableShort = new MutableShort((short) 10);
-//
-//        short result1 = mutableShort.getAndAdd((short) 0);
-//        assertEquals(10, result1);
-//        assertEquals(10, mutableShort.getValue());
-//
-//        short result2 = mutableShort.getAndAdd((short) 0);
-//        assertEquals(10, result2);
-//        assertEquals(10, mutableShort.getValue());
-//    }
 
     @Test
     void testGetAndAddWithMaxValueOperand() {
@@ -832,25 +658,6 @@ public class MutableShortTest {
         assertThrows(NumberFormatException.class, () -> new MutableShort(value));
     }
 
-//    @Test
-//    @DisplayName("toString() should return '0' for a newly created MutableShort object")
-//    void testToString() {
-//        MutableShort mutableShort = new MutableShort();
-//        assertEquals("0", mutableShort.toString());
-//    }
-//
-//    @Test
-//    @DisplayName("toString() should return the string representation of the given Number parameter")
-//    void testToString() {
-//        MutableShort mutableShort = new MutableShort((short) 10);
-//        assertEquals("10", mutableShort.toString());
-//    }
-//
-//    @Test
-//    @DisplayName("toString() should throw NullPointerException if the Number parameter is null")
-//    void testToStringWithNull() {
-//        assertThrows(NullPointerException.class, () -> new MutableShort(null));
-//    }
 
     @Test
     @DisplayName("toString() should return the string representation of the given short parameter")
@@ -913,33 +720,6 @@ public class MutableShortTest {
         assertThrows(NumberFormatException.class, () -> new MutableShort("abc").doubleValue());
     }
 
-//    @Test
-//    void testAddAndGetWithNumber() {
-//        MutableShort mutableShort = new MutableShort();
-//        short result = mutableShort.addAndGet(NumberUtils.BYTE_ONE);
-//        assertEquals(NumberUtils.BYTE_ONE, result);
-//    }
-//
-//    @Test
-//    void testAddAndGetWithShort() {
-//        MutableShort mutableShort = new MutableShort();
-//        short result = mutableShort.addAndGet(NumberUtils.BYTE_ONE);
-//        assertEquals(NumberUtils.BYTE_ONE, result);
-//    }
-//
-//    @Test
-//    void testAddAndGetWithZero() {
-//        MutableShort mutableShort = new MutableShort();
-//        short result = mutableShort.addAndGet(NumberUtils.BYTE_ZERO);
-//        assertEquals(NumberUtils.BYTE_ZERO, result);
-//    }
-//
-//    @Test
-//    void testAddAndGetWithNegativeNumber() {
-//        MutableShort mutableShort = new MutableShort();
-//        short result = mutableShort.addAndGet(NumberUtils.BYTE_MINUS_ONE);
-//        assertEquals(Optional.of(NumberUtils.BYTE_MINUS_ONE), result);
-//    }
 
     @Test
     void testAddAndGetWithMaxValue() {
@@ -955,18 +735,5 @@ public class MutableShortTest {
         assertEquals(Short.MAX_VALUE, result);
     }
 
-//    @Test
-//    void testAddAndGetWithMaxValueAndOverflow() {
-//        MutableShort mutableShort = new MutableShort(Short.MAX_VALUE);
-//        short result = mutableShort.addAndGet(NumberUtils.BYTE_MAX);
-//        assertEquals(Short.MIN_VALUE, result);
-//    }
-//
-//    @Test
-//    void testAddAndGetWithMinValueAndUnderflow() {
-//        MutableShort mutableShort = new MutableShort(Short.MIN_VALUE);
-//        short result = mutableShort.addAndGet(NumberUtils.BYTE_MIN);
-//        assertEquals(Short.MAX_VALUE, result);
-//    }
 
 }

@@ -257,81 +257,12 @@ public class NumberUtilsTest {
         assertEquals(10, result);
     }
 
-//    @Test
-//    void testWithDecimalsParsing_AllDigits_ReturnsTrue() {
-//        String str = "123";
-//        int beginIdx = 0;
-//        boolean expected = true;
-//
-//        boolean actual = NumberUtils.withDecimalsParsing(str, beginIdx);
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    void testWithDecimalsParsing_OneDecimalPoint_ReturnsTrue() {
-//        String str = "12.3";
-//        int beginIdx = 0;
-//        boolean expected = true;
-//
-//        boolean actual = NumberUtils.withDecimalsParsing(str, beginIdx);
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    void testWithDecimalsParsing_MultipleDecimalPoints_ReturnsFalse() {
-//        String str = "12.3.4";
-//        int beginIdx = 0;
-//        boolean expected = false;
-//
-//        boolean actual = NumberUtils.withDecimalsParsing(str, beginIdx);
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    void testWithDecimalsParsing_InvalidCharacter_ReturnsFalse() {
-//        String str = "12a3";
-//        int beginIdx = 0;
-//        boolean expected = false;
-//
-//        boolean actual = NumberUtils.withDecimalsParsing(str, beginIdx);
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    void testWithDecimalsParsing_EmptyString_ReturnsTrue() {
-//        String str = "";
-//        int beginIdx = 0;
-//        boolean expected = true;
-//
-//        boolean actual = NumberUtils.withDecimalsParsing(str, beginIdx);
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    void testWithDecimalsParsing_BeginIndexGreaterThanStringLength_ReturnsTrue() {
-//        String str = "123";
-//        int beginIdx = 4;
-//        boolean expected = true;
-//
-//        boolean actual = NumberUtils.withDecimalsParsing(str, beginIdx);
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
 
     @Test
     void testCreateDouble_NullInput() {
         assertNull(NumberUtils.createDouble(null));
     }
 
-    //@Test
-    void testCreateDouble_EmptyString() {
-        assertEquals(0.0d, NumberUtils.createDouble(""));
-    }
 
     @Test
     void testCreateDouble_WholeNumber() {
@@ -356,21 +287,6 @@ public class NumberUtilsTest {
     @Test
     void shouldReturnTrueForValidPositiveIntegerString() {
         assertTrue(NumberUtils.isDigits("123"));
-    }
-
-    //@Test
-    void shouldReturnTrueForValidNegativeIntegerString() {
-        assertTrue(NumberUtils.isDigits("-123"));
-    }
-
-    //@Test
-    void shouldReturnTrueForValidPositiveDecimalString() {
-        assertTrue(NumberUtils.isDigits("123.45"));
-    }
-
-    //@Test
-    void shouldReturnTrueForValidNegativeDecimalString() {
-        assertTrue(NumberUtils.isDigits("-123.45"));
     }
 
     @Test
@@ -424,12 +340,6 @@ public class NumberUtilsTest {
         Assertions.assertEquals(Byte.MIN_VALUE, result);
     }
 
-//    @Test
-//    void testToScaledBigDecimal_NullInput_ReturnsZero() {
-//        BigDecimal result = NumberUtils.toScaledBigDecimal(null);
-//        assertEquals(BigDecimal.ZERO, result);
-//    }
-
     @Test
     void testToScaledBigDecimal_DefaultScaleAndRoundingMode() {
         BigDecimal value = new BigDecimal("12.3456789");
@@ -438,13 +348,6 @@ public class NumberUtilsTest {
         assertEquals(expected, result);
     }
 
-//    @Test
-//    void testToScaledBigDecimal_SpecifiedScaleAndRoundingMode() {
-//        BigDecimal value = new BigDecimal("12.3456789");
-//        BigDecimal expected = new BigDecimal("12.346");
-//        BigDecimal result = NumberUtils.toScaledBigDecimal(value, 3, RoundingMode.HALF_UP);
-//        assertEquals(expected, result);
-//    }
 
     @Test
     void testToScaledBigDecimal_DoubleInput_NullInput_ReturnsZero() {
@@ -459,14 +362,6 @@ public class NumberUtilsTest {
         BigDecimal result = NumberUtils.toScaledBigDecimal(value);
         assertEquals(expected, result);
     }
-
-//    @Test
-//    void testToScaledBigDecimal_DoubleInput_SpecifiedScaleAndRoundingMode() {
-//        Double value = 12.3456789;
-//        BigDecimal expected = new BigDecimal("12.346");
-//        BigDecimal result = NumberUtils.toScaledBigDecimal(value, 3, RoundingMode.HALF_UP);
-//        assertEquals(expected, result);
-//    }
 
     @Test
     void testToScaledBigDecimal_FloatInput_NullInput_ReturnsZero() {
@@ -594,11 +489,6 @@ public class NumberUtilsTest {
         assertEquals(-1, NumberUtils.max(array));
     }
 
-    //@Test
-    void testMaxByteWithEmptyArray() {
-        byte[] array = {};
-        assertEquals(0, NumberUtils.max(array));
-    }
 
     @Test
     void testMaxByteWithSingleValue() {
@@ -642,12 +532,6 @@ public class NumberUtilsTest {
         assertEquals(Double.NaN, NumberUtils.max(array));
     }
 
-    //@Test
-    void testMaxDoubleWithEmptyArray() {
-        double[] array = {};
-        assertEquals(0.0, NumberUtils.max(array));
-    }
-
     @Test
     void testMaxDoubleWithSingleValue() {
         double[] array = {100.0};
@@ -672,12 +556,6 @@ public class NumberUtilsTest {
         assertEquals(Double.MIN_VALUE, NumberUtils.max(array));
     }
 
-    //@Test
-    void testMaxDoubleWithMixedValues() {
-        double[] array = {1.0, 2.0, 3.0, 4.0, 5.0, Double.NaN};
-        assertEquals(5.0, NumberUtils.max(array));
-    }
-
     @Test
     void testMaxFloat() {
         float[] array = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f};
@@ -690,11 +568,6 @@ public class NumberUtilsTest {
         assertEquals(Float.NaN, NumberUtils.max(array));
     }
 
-    //@Test
-    void testMaxFloatWithEmptyArray() {
-        float[] array = {};
-        assertEquals(0.0f, NumberUtils.max(array));
-    }
 
     @Test
     void testMaxFloatWithSingleValue() {
@@ -720,11 +593,6 @@ public class NumberUtilsTest {
         assertEquals(Float.MIN_VALUE, NumberUtils.max(array));
     }
 
-    //@Test
-    void testMaxFloatWithMixedValues() {
-        float[] array = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, Float.NaN};
-        assertEquals(5.0f, NumberUtils.max(array));
-    }
 
     @Test
     void testMaxInt() {
@@ -736,12 +604,6 @@ public class NumberUtilsTest {
     void testMaxIntWithNegativeValues() {
         int[] array = {-5, -4, -3, -2, -1};
         assertEquals(-1, NumberUtils.max(array));
-    }
-
-    //@Test
-    void testMaxIntWithEmptyArray() {
-        int[] array = {};
-        assertEquals(0, NumberUtils.max(array));
     }
 
     @Test
@@ -786,12 +648,6 @@ public class NumberUtilsTest {
         assertEquals(-1L, NumberUtils.max(array));
     }
 
-    //@Test
-    void testMaxLongWithEmptyArray() {
-        long[] array = {};
-        assertEquals(0L, NumberUtils.max(array));
-    }
-
     @Test
     void testMaxLongWithSingleValue() {
         long[] array = {100L};
@@ -832,12 +688,6 @@ public class NumberUtilsTest {
     void testMaxShortWithNegativeValues() {
         short[] array = {-5, -4, -3, -2, -1};
         assertEquals(-1, NumberUtils.max(array));
-    }
-
-    //@Test
-    void testMaxShortWithEmptyArray() {
-        short[] array = {};
-        assertEquals(0, NumberUtils.max(array));
     }
 
     @Test
@@ -964,12 +814,6 @@ public class NumberUtilsTest {
     @DisplayName("Invalid scientific notation should return false")
     void testIsCreatableWithInvalidScientificNotation() {
         assertFalse(NumberUtils.isCreatable("1.23E4.5"));
-    }
-
-    //@Test
-    @DisplayName("Invalid type qualifier should return false")
-    void testIsCreatableWithInvalidTypeQualifier() {
-        assertFalse(NumberUtils.isCreatable("123F"));
     }
 
     @Test
@@ -1205,16 +1049,6 @@ public class NumberUtilsTest {
         assertFalse(numberUtils.isParsable("-0x123"));
     }
 
-    //@Test
-    void testIsParsableWithValidPositiveOctalString() {
-        assertFalse(numberUtils.isParsable("0123"));
-    }
-
-    //@Test
-    void testIsParsableWithValidNegativeOctalString() {
-        assertFalse(numberUtils.isParsable("-0123"));
-    }
-
     @Test
     void testIsParsableWithStringEndingWithDecimalPoint() {
         assertFalse(numberUtils.isParsable("123."));
@@ -1228,13 +1062,6 @@ public class NumberUtilsTest {
     @Test
     void testCreateFloat_NullString_ReturnsNull() {
         String str = null;
-        Float result = numberUtils.createFloat(str);
-        Assertions.assertNull(result);
-    }
-
-    // @Test
-    void testCreateFloat_EmptyString_ReturnsNull() {
-        String str = "";
         Float result = numberUtils.createFloat(str);
         Assertions.assertNull(result);
     }
@@ -1285,43 +1112,10 @@ public class NumberUtilsTest {
         assertEquals(expected, result);
     }
 
-    // Tests for toFloat(String str, float defaultValue)
-//    @Test
-//    void shouldReturnDefaultValueIfStringIsNull() {
-//        String str = null;
-//
-//        float result = NumberUtils.toFloat(str, defaultValue);
-//
-//        assertEquals(defaultValue, result);
-//    }
-//
-//    @Test
-//    void shouldReturnDefaultValueIfStringIsEmpty() {
-//        String str = "";
-//
-//        float result = NumberUtils.toFloat(str, defaultValue);
-//
-//        assertEquals(defaultValue, result);
-//    }
-//
-//    @Test
-//    void shouldReturnFloatValueIfStringCanBeParsed() {
-//        String str = "1.5";
-//        float expected = 1.5f;
-//
-//        float result = NumberUtils.toFloat(str, defaultValue);
-//
-//        assertEquals(expected, result);
-//    }
 
     @Test
     void testCreateIntegerWithNullString() {
         assertNull(numberUtils.createInteger(null));
-    }
-
-    //@Test
-    void testCreateIntegerWithEmptyString() {
-        assertEquals(0, numberUtils.createInteger(""));
     }
 
     @Test
@@ -1332,11 +1126,6 @@ public class NumberUtilsTest {
     @Test
     void testCreateIntegerWithValidNegativeIntegerString() {
         assertEquals(-123, numberUtils.createInteger("-123"));
-    }
-
-    //@Test
-    void testCreateIntegerWithValidHexadecimalString() {
-        assertEquals(43775, numberUtils.createInteger("0xABEF"));
     }
 
     @Test

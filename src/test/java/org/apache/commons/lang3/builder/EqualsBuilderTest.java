@@ -44,96 +44,6 @@ public class EqualsBuilderTest {
         equalsBuilder = new EqualsBuilder();
     }
 
-    //    @Test
-//    void testIsEquals_ReturnsTrue_WhenFieldsAreEqual() {
-//        // Arrange
-//        Object obj1 = new Object();
-//        Object obj2 = new Object();
-//
-//        // Act
-//        boolean isEquals = equalsBuilder.isEquals(obj1, obj2);
-//
-//        // Assert
-//        assertTrue(isEquals);
-//    }
-//
-//    @Test
-//    void testIsEquals_ReturnsFalse_WhenFieldsAreNotEqual() {
-//        // Arrange
-//        Object obj1 = new Object();
-//        Object obj2 = new Object();
-//
-//        // Act
-//        boolean isEquals = equalsBuilder.isEquals(obj1, obj2);
-//
-//        // Assert
-//        assertFalse(isEquals);
-//    }
-//
-//    @Test
-//    void testIsEquals_ReturnsTrue_WhenFieldsHaveSameHashCode() {
-//        // Arrange
-//        Object obj1 = new Object();
-//        Object obj2 = new Object();
-//
-//        // Act
-//        boolean isEquals = equalsBuilder.isEquals(obj1, obj2);
-//
-//        // Assert
-//        assertTrue(isEquals);
-//    }
-//
-//    @Test
-//    void testIsEquals_ReturnsFalse_WhenFieldsHaveDifferentHashCode() {
-//        // Arrange
-//        Object obj1 = new Object();
-//        Object obj2 = new Object();
-//
-//        // Act
-//        boolean isEquals = equalsBuilder.isEquals(obj1, obj2);
-//
-//        // Assert
-//        assertFalse(isEquals);
-//    }
-//
-//    @Test
-//    void testIsEquals_ReturnsTrue_WhenFieldsAreNull() {
-//        // Arrange
-//        Object obj1 = null;
-//        Object obj2 = null;
-//
-//        // Act
-//        boolean isEquals = equalsBuilder.isEquals(obj1, obj2);
-//
-//        // Assert
-//        assertTrue(isEquals);
-//    }
-//
-//    @Test
-//    void testIsEquals_ReturnsFalse_WhenOneFieldIsNull() {
-//        // Arrange
-//        Object obj1 = new Object();
-//        Object obj2 = null;
-//
-//        // Act
-//        boolean isEquals = equalsBuilder.isEquals(obj1, obj2);
-//
-//        // Assert
-//        assertFalse(isEquals);
-//    }
-//
-//    @Test
-//    void testIsEquals_ReturnsFalse_WhenFieldsHaveDifferentTypes() {
-//        // Arrange
-//        Object obj1 = new Object();
-//        String obj2 = "test";
-//
-//        // Act
-//        boolean isEquals = equalsBuilder.isEquals(obj1, obj2);
-//
-//        // Assert
-//        assertFalse(isEquals);
-//    }
     @Test
     public void testSetEqualsTrue() {
         equalsBuilder.setEquals(true);
@@ -152,27 +62,6 @@ public class EqualsBuilderTest {
         equalsBuilder.setEquals(false);
         assertFalse(equalsBuilder.isEquals());
     }
-
-    //@Test
-    public void testSetEqualsThreadSafety() {
-        boolean initialValue = equalsBuilder.isEquals();
-        Thread thread1 = new Thread(() -> {
-            equalsBuilder.setEquals(true);
-        });
-        Thread thread2 = new Thread(() -> {
-            equalsBuilder.setEquals(false);
-        });
-        thread1.start();
-        thread2.start();
-        try {
-            thread1.join();
-            thread2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        assertEquals(initialValue, equalsBuilder.isEquals());
-    }
-
 
     @Test
     void testGetRegisterPair_SameObjects_ReturnsSamePair() {
@@ -396,114 +285,11 @@ public class EqualsBuilderTest {
         assertFalse(EqualsBuilder.reflectionEquals(object1, object2));
     }
 
-//    @Test
-//    void testReflectionEquals_DifferentFields() {
-//        Person person1 = new Person("John", 25);
-//        Person person2 = new Person("John", 30);
-//        assertFalse(EqualsBuilder.reflectionEquals(person1, person2));
-//    }
-
-//    @Test
-//    void testReflectionEquals_SameFields() {
-//        Person person1 = new Person("John", 25);
-//        Person person2 = new Person("John", 25);
-//        assertTrue(EqualsBuilder.reflectionEquals(person1, person2));
-//    }
-
-//    @Test
-//    void testReflectionEquals_ExcludeFields() {
-//        Person person1 = new Person("John", 25);
-//        Person person2 = new Person("John", 30);
-//        assertTrue(EqualsBuilder.reflectionEquals(person1, person2, "age"));
-//    }
-
-    //    @Test
-//    void testReflectionEquals_RecursiveFields() {
-//        Book book1 = new Book("Title", new Author("John Doe"));
-//        Book book2 = new Book("Title", new Author("Jane Smith"));
-//        assertFalse(EqualsBuilder.reflectionEquals(book1, book2));
-//        assertTrue(EqualsBuilder.reflectionEquals(book1, book2, true, Book.class, true));
-//    }
-//    @Test
-//    public void testSetReflectUpToClass() {
-//        EqualsBuilder builder = new EqualsBuilder();
-//
-//        // Test reflectUpToClass set to null
-//        assertNull(builder.reflectUpToClass);
-//
-//        // Test reflectUpToClass set to a class
-//        Class<?> reflectUpToClass = String.class;
-//        builder.setReflectUpToClass(reflectUpToClass);
-//        assertEquals(reflectUpToClass, builder.reflectUpToClass);
-//    }
-//
-//    @Test
-//    public void testSetReflectUpToClassMultipleTimes() {
-//        EqualsBuilder builder = new EqualsBuilder();
-//
-//        // Test reflectUpToClass set multiple times
-//        Class<?> reflectUpToClass1 = String.class;
-//        Class<?> reflectUpToClass2 = Integer.class;
-//        builder.setReflectUpToClass(reflectUpToClass1);
-//        assertEquals(reflectUpToClass1, builder.reflectUpToClass);
-//        builder.setReflectUpToClass(reflectUpToClass2);
-//        assertEquals(reflectUpToClass2, builder.reflectUpToClass);
-//    }
-//
-//    @Test
-//    public void testSetReflectUpToClassWithSubclass() {
-//        EqualsBuilder builder = new EqualsBuilder();
-//
-//        // Test reflectUpToClass set to a superclass and a subclass
-//        Class<?> reflectUpToClass = Number.class;
-//        builder.setReflectUpToClass(reflectUpToClass);
-//        assertEquals(reflectUpToClass, builder.reflectUpToClass);
-//
-//        Class<?> subclass = Integer.class;
-//        builder.setReflectUpToClass(subclass);
-//        assertEquals(subclass, builder.reflectUpToClass);
-//    }
-//
-//    @Test
-//    public void testSetReflectUpToClassWithInterface() {
-//        EqualsBuilder builder = new EqualsBuilder();
-//
-//        // Test reflectUpToClass set to an interface
-//        Class<?> reflectUpToClass = List.class;
-//        builder.setReflectUpToClass(reflectUpToClass);
-//        assertEquals(reflectUpToClass, builder.reflectUpToClass);
-//    }
-//
-//    @Test
-//    public void testSetReflectUpToClassWithInvalidClass() {
-//        EqualsBuilder builder = new EqualsBuilder();
-//
-//        // Test reflectUpToClass set to an invalid class
-//        Class<?> invalidClass = null;
-//        builder.setReflectUpToClass(invalidClass);
-//        assertNull(builder.reflectUpToClass);
-//    }
-
-
-    //@Test
-    void testIsRegistered_whenObjectsAreEqual_shouldReturnTrue() {
-        Object obj1 = new Object();
-        Object obj2 = obj1;
-        assertTrue(EqualsBuilder.isRegistered(obj1, obj2));
-    }
-
     @Test
     void testIsRegistered_whenObjectsAreNotEqual_shouldReturnFalse() {
         Object obj1 = new Object();
         Object obj2 = new Object();
         assertFalse(EqualsBuilder.isRegistered(obj1, obj2));
-    }
-
-    //@Test
-    void testIsRegistered_whenObjectsAreSwapped_shouldReturnTrue() {
-        Object obj1 = new Object();
-        Object obj2 = new Object();
-        assertTrue(EqualsBuilder.isRegistered(obj2, obj1));
     }
 
     @Test
@@ -541,16 +327,6 @@ public class EqualsBuilderTest {
         EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
 
         assertTrue(result.isEquals());
-    }
-
-    //@Test
-    void reflectionAppend_BothObjectsAreNotEqual_ShouldReturnFalse() {
-        Object lhs = new Object();
-        Object rhs = new Object();
-
-        EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
-
-        assertFalse(result.isEquals());
     }
 
     @Test
@@ -593,16 +369,6 @@ public class EqualsBuilderTest {
         assertFalse(result.isEquals());
     }
 
-    //@Test
-    void reflectionAppend_ObjectsAreOfRelatedClassesWithNoIvars_ShouldReturnTrue() {
-        ClassA lhs = new ClassA();
-        ClassB rhs = new ClassB();
-
-        EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
-
-        assertTrue(result.isEquals());
-    }
-
     @Test
     void reflectionAppend_ObjectsAreOfRelatedClassesWithIvars_ShouldReturnFalse() {
         ClassC lhs = new ClassC();
@@ -613,18 +379,6 @@ public class EqualsBuilderTest {
         assertFalse(result.isEquals());
     }
 
-    //
-    //@Test
-    void reflectionAppend_ObjectsAreOfRelatedClassesWithTransientIvars_ShouldReturnTrue() {
-        ClassE lhs = new ClassE();
-        ClassF rhs = new ClassF();
-
-        EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
-
-        assertTrue(result.isEquals());
-    }
-
-    //
     @Test
     void reflectionAppend_ObjectsAreOfRelatedClassesWithTransientIvarsAndTestTransientsIsFalse_ShouldReturnFalse() {
         equalsBuilder.setTestTransients(false);
@@ -634,17 +388,6 @@ public class EqualsBuilderTest {
         EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
 
         assertFalse(result.isEquals());
-    }
-
-    //@Test
-    void reflectionAppend_ObjectsAreOfRelatedClassesWithExcludedFields_ShouldReturnTrue() {
-        equalsBuilder.setExcludeFields(new String[]{"field2"});
-        ClassA lhs = new ClassA();
-        ClassB rhs = new ClassB();
-
-        EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
-
-        assertTrue(result.isEquals());
     }
 
     @Test
@@ -659,18 +402,6 @@ public class EqualsBuilderTest {
         assertFalse(result.isEquals());
     }
 
-    //@Test
-    void reflectionAppend_ObjectsAreOfRelatedClassesWithBypassReflectionClasses_ShouldReturnTrue() {
-        equalsBuilder.setBypassReflectionClasses(Arrays.asList(ClassA.class, ClassB.class));
-        ClassA lhs = new ClassA();
-        ClassB rhs = new ClassB();
-        rhs.field1 = 100;
-
-        EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
-
-        assertTrue(result.isEquals());
-    }
-
     @Test
     void reflectionAppend_ObjectsAreOfRelatedClassesWithNonBypassReflectionClasses_ShouldReturnFalse() {
         equalsBuilder.setBypassReflectionClasses(Arrays.asList(ClassA.class, ClassB.class));
@@ -681,29 +412,6 @@ public class EqualsBuilderTest {
 
         assertFalse(result.isEquals());
     }
-
-//    @Test
-//    void reflectionAppend_ObjectsAreOfRelatedClassesWithReflectUpToClass_ShouldReturnTrue() {
-//        equalsBuilder.reflectUpToClass = ClassB.class;
-//        ClassA lhs = new ClassA();
-//        ClassB rhs = new ClassB();
-//        rhs.field1 = 100;
-//
-//        EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
-//
-//        assertTrue(result.isEquals());
-//    }
-//
-//    @Test
-//    void reflectionAppend_ObjectsAreOfRelatedClassesWithNonReflectUpToClass_ShouldReturnFalse() {
-//        equalsBuilder.reflectUpToClass = ClassB.class;
-//        ClassA lhs = new ClassA();
-//        ClassC rhs = new ClassC();
-//
-//        EqualsBuilder result = equalsBuilder.reflectionAppend(lhs, rhs);
-//
-//        assertFalse(result.isEquals());
-//    }
 
     private static class ClassA {
         private int field1;
@@ -731,121 +439,6 @@ public class EqualsBuilderTest {
         private transient int field3;
     }
 
-//    @Test
-//    @DisplayName("When testRecursive is set to true, it should return the EqualsBuilder instance with testRecursive set to true")
-//    void testSetTestRecursiveTrue() {
-//        EqualsBuilder result = equalsBuilder.setTestRecursive(true);
-//        assertTrue(result.testRecursive);
-//    }
-//
-//    @Test
-//    @DisplayName("When testRecursive is set to false, it should return the EqualsBuilder instance with testRecursive set to false")
-//    void testSetTestRecursiveFalse() {
-//        EqualsBuilder result = equalsBuilder.setTestRecursive(false);
-//        assertFalse(result.testRecursive);
-//    }
-//
-//    @Test
-//    void testSetTestTransients_true() {
-//        EqualsBuilder equalsBuilder = new EqualsBuilder();
-//        equalsBuilder.setTestTransients(true);
-//        assertTrue(equalsBuilder.testTransients);
-//    }
-//
-//    @Test
-//    void testSetTestTransients_false() {
-//        EqualsBuilder equalsBuilder = new EqualsBuilder();
-//        equalsBuilder.setTestTransients(false);
-//        assertFalse(equalsBuilder.testTransients);
-//    }
-//
-//    @Test
-//    void testSetTestTransients_defaultValue() {
-//        EqualsBuilder equalsBuilder = new EqualsBuilder();
-//        assertFalse(equalsBuilder.testTransients);
-//    }
-//
-//    @Test
-//    void testSetTestTransients_multipleCalls() {
-//        EqualsBuilder equalsBuilder = new EqualsBuilder();
-//        equalsBuilder.setTestTransients(true);
-//        equalsBuilder.setTestTransients(false);
-//        assertFalse(equalsBuilder.testTransients);
-//    }
-//
-//
-//    @Test
-//    void setExcludeFields_shouldSetExcludeFields() {
-//        // Arrange
-//        String[] excludeFields = new String[]{"field1", "field2"};
-//
-//        // Act
-//        EqualsBuilder result = equalsBuilder.setExcludeFields(excludeFields);
-//
-//        // Assert
-//        assertSame(excludeFields, result.excludeFields);
-//    }
-//
-//    @Test
-//    void setExcludeFields_shouldReplacePreviousExcludeFields() {
-//        // Arrange
-//        equalsBuilder.excludeFields = new String[]{"field1"};
-//
-//        // Act
-//        EqualsBuilder result = equalsBuilder.setExcludeFields("field2");
-//
-//        // Assert
-//        assertArrayEquals(new String[]{"field2"}, result.excludeFields);
-//    }
-//
-//    @Test
-//    void setExcludeFields_shouldSetNullIfNoExcludeFieldsProvided() {
-//        // Arrange
-//        equalsBuilder.excludeFields = new String[]{"field1"};
-//
-//        // Act
-//        EqualsBuilder result = equalsBuilder.setExcludeFields();
-//
-//        // Assert
-//        assertNull(result.excludeFields);
-//    }
-//
-//    @Test
-//    void setExcludeFields_shouldNotModifyOriginalExcludeFieldsArray() {
-//        // Arrange
-//        equalsBuilder.excludeFields = new String[]{"field1"};
-//
-//        // Act
-//        equalsBuilder.setExcludeFields("field2");
-//
-//        // Assert
-//        assertArrayEquals(new String[]{"field1"}, equalsBuilder.excludeFields);
-//    }
-//
-//    @Test
-//    void setExcludeFields_shouldCreateNewArrayIfOriginalExcludeFieldsIsNull() {
-//        // Arrange
-//        equalsBuilder.excludeFields = null;
-//
-//        // Act
-//        EqualsBuilder result = equalsBuilder.setExcludeFields("field1");
-//
-//        // Assert
-//        assertArrayEquals(new String[]{"field1"}, result.excludeFields);
-//    }
-//
-//    @Test
-//    void setExcludeFields_shouldSetEmptyArrayIfOriginalExcludeFieldsIsNullAndNoFieldsProvided() {
-//        // Arrange
-//        equalsBuilder.excludeFields = null;
-//
-//        // Act
-//        EqualsBuilder result = equalsBuilder.setExcludeFields();
-//
-//        // Assert
-//        assertArrayEquals(new String[0], result.excludeFields);
-//    }
-
     @Test
     void appendSuper_ReturnsSameInstance() {
         EqualsBuilder result = equalsBuilder.appendSuper(true);
@@ -856,13 +449,6 @@ public class EqualsBuilderTest {
     void appendSuper_SetIsEqualsToFalse() {
         equalsBuilder.appendSuper(false);
         assertFalse(equalsBuilder.isEquals());
-    }
-
-    //@Test
-    void appendSuper_SetIsEqualsToTrue() {
-        equalsBuilder.setEquals(false);
-        equalsBuilder.appendSuper(true);
-        assertTrue(equalsBuilder.isEquals());
     }
 
     @Test
@@ -907,64 +493,6 @@ public class EqualsBuilderTest {
         // Test logic here
     }
 
-//    @Test
-//    void setBypassReflectionClasses_shouldSetBypassReflectionClasses() {
-//        List<Class<?>> bypassReflectionClasses = Arrays.asList(String.class, Integer.class);
-//
-//        equalsBuilder.setBypassReflectionClasses(bypassReflectionClasses);
-//
-//        assertEquals(bypassReflectionClasses, equalsBuilder.bypassReflectionClasses);
-//    }
-//
-////    @Test
-//    void setBypassReflectionClasses_shouldSetEmptyListWhenGivenNull() {
-//        equalsBuilder.setBypassReflectionClasses(null);
-//
-//        assertNotNull(equalsBuilder.bypassReflectionClasses);
-//        assertTrue(equalsBuilder.bypassReflectionClasses.isEmpty());
-//    }
-//
-//    @Test
-//    void setBypassReflectionClasses_shouldSetEmptyListWhenGivenEmptyList() {
-//        equalsBuilder.setBypassReflectionClasses(Collections.emptyList());
-//
-//        assertNotNull(equalsBuilder.bypassReflectionClasses);
-//        assertTrue(equalsBuilder.bypassReflectionClasses.isEmpty());
-//    }
-
-//    @Test
-//    void setBypassReflectionClasses_shouldNotModifyOriginalList() {
-//        List<Class<?>> bypassReflectionClasses = Arrays.asList(String.class, Integer.class);
-//
-//        equalsBuilder.setBypassReflectionClasses(bypassReflectionClasses);
-//        bypassReflectionClasses.clear();
-//
-//        assertNotEquals(bypassReflectionClasses, equalsBuilder.bypassReflectionClasses);
-//    }
-
-    //@Test
-    void getRegistry_shouldReturnEmptySet_whenNoObjectsTraversed() {
-        Set<Pair<IDKey, IDKey>> registry = EqualsBuilder.getRegistry();
-
-        assertNotNull(registry);
-        assertTrue(registry.isEmpty());
-    }
-
-    //@Test
-    void getRegistry_shouldReturnRegisteredObjects_whenObjectsTraversed() throws NoSuchFieldException, IllegalAccessException {
-        Field registryField = EqualsBuilder.class.getDeclaredField("REGISTRY");
-        registryField.setAccessible(true);
-        ThreadLocal<Set<Pair<IDKey, IDKey>>> registryThreadLocal = (ThreadLocal<Set<Pair<IDKey, IDKey>>>) registryField.get(null);
-
-        Set<Pair<IDKey, IDKey>> registry = registryThreadLocal.get();
-        registry.add(Pair.of(new IDKey("object1"), new IDKey("object2")));
-
-        Set<Pair<IDKey, IDKey>> result = EqualsBuilder.getRegistry();
-
-        assertNotNull(result);
-        assertEquals(registry, result);
-    }
-
     @Test
     void getRegistry_shouldReturnDifferentSetForEachThread() throws InterruptedException {
         Set<Pair<IDKey, IDKey>> registry1 = EqualsBuilder.getRegistry();
@@ -976,25 +504,6 @@ public class EqualsBuilderTest {
         thread.start();
         thread.join();
     }
-
-    //@Test
-    void getRegistry_shouldReturnEmptySetAfterClearing() throws NoSuchFieldException, IllegalAccessException {
-        Field registryField = EqualsBuilder.class.getDeclaredField("REGISTRY");
-        registryField.setAccessible(true);
-        ThreadLocal<Set<Pair<IDKey, IDKey>>> registryThreadLocal = (ThreadLocal<Set<Pair<IDKey, IDKey>>>) registryField.get(null);
-
-        Set<Pair<IDKey, IDKey>> registry = registryThreadLocal.get();
-        registry.add(Pair.of(new IDKey("object1"), new IDKey("object2")));
-
-        EqualsBuilder.getRegistry(); // Clear registry
-
-        Set<Pair<IDKey, IDKey>> result = registryThreadLocal.get();
-
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
-    }
-
-    // Add more test cases for edge cases and high coverage
 
 
 }

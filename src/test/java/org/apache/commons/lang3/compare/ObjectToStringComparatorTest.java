@@ -67,34 +67,9 @@ public class ObjectToStringComparatorTest {
         assertEquals(-1, comparator.compare("test", null));
     }
     
-    //@Test
-    void testCompareFirstStringBeforeSecond() {
-        assertEquals(-1, comparator.compare("abc", "def"));
-    }
-    
-    //@Test
-    void testCompareFirstStringAfterSecond() {
-        assertEquals(1, comparator.compare("def", "abc"));
-    }
-    
-    //@Test
-    void testCompareCaseInsensitive() {
-        assertEquals(0, comparator.compare("ABC", "abc"));
-    }
-    
     @Test
     void testCompareEmptyStrings() {
         assertEquals(0, comparator.compare("", ""));
     }
     
-    //@Test
-    void testCompareEmptyFirstString() {
-        assertEquals(-1, comparator.compare("", "test"));
-    }
-    
-    //@Test
-    void testCompareEmptySecondString() {
-        assertEquals(1, comparator.compare("test", ""));
-    }
-
 }

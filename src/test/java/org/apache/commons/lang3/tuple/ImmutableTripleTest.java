@@ -38,12 +38,6 @@ public class ImmutableTripleTest {
         Assertions.assertEquals("hello", triple2.getLeft());
     }
 
-    //@Test
-    void testNullTriple() {
-        ImmutableTriple<?, ?, ?> result = ImmutableTriple.nullTriple();
-        assertEquals(NULL, result);
-    }
-
     @Test
     void testEmptyArray2() {
         ImmutableTriple<?, ?, ?>[] result = EMPTY_ARRAY;
@@ -69,12 +63,6 @@ public class ImmutableTripleTest {
     }
     // Your Java code here
 
-    //    @Test
-//    @DisplayName("returns the middle value of the triple")
-//    void returnsMiddleValue() {
-//        assertEquals(10, triple.getMiddle());
-//    }
-//
     @Test
     @DisplayName("returns null if the middle value is null")
     void returnsNullIfMiddleValueIsNull() {

@@ -50,14 +50,6 @@ public class CalendarUtilsTest {
         calendarUtils = new CalendarUtils(calendar);
     }
 
-    //@Test
-    void shouldReturnCurrentYear() {
-        int expectedYear = Calendar.getInstance().get(Calendar.YEAR);
-        int actualYear = calendarUtils.getYear();
-
-        assertEquals(expectedYear, actualYear);
-    }
-
     @BeforeEach
     void setUp() {
         calendarUtils = CalendarUtils.getInstance();
@@ -68,30 +60,12 @@ public class CalendarUtilsTest {
         assertNotNull(calendarUtils);
     }
 
-//    @Test
-//    void shouldReturnInstanceWithDefaultTimeZone() {
-//        assertEquals(Calendar.getInstance().getTimeZone(), calendarUtils.calendar.getTimeZone());
-//    }
-//
-//    @Test
-//    void shouldReturnInstanceWithDefaultFormatLocale() {
-//        assertEquals(Locale.getDefault(Locale.Category.FORMAT), calendarUtils.locale);
-//    }
 
     @Test
     void shouldReturnNonNullInstanceWithLocale() {
         assertNotNull(calendarUtils);
     }
 
-//    @Test
-//    void shouldReturnInstanceWithDefaultTimeZoneWithLocale() {
-//        assertEquals(Calendar.getInstance().getTimeZone(), calendarUtils.calendar.getTimeZone());
-//    }
-//
-//    @Test
-//    void shouldReturnInstanceWithSpecifiedLocale() {
-//        assertEquals(testLocale, calendarUtils.locale);
-//    }
 
     @Test
     void shouldReturnArrayOfMonthNames() {

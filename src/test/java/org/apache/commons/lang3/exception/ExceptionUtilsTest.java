@@ -43,7 +43,6 @@ import org.junit.jupiter.api.Test;
 public class ExceptionUtilsTest {
 
     private ExceptionUtils exceptionUtils;
-    private final Consumer mockConsumer = createMock(Consumer.class);
     @BeforeEach
     void setUp() {
         exceptionUtils = new ExceptionUtils();
@@ -80,59 +79,6 @@ public class ExceptionUtilsTest {
         Throwable throwable = new InvocationTargetException(new IOException("Test"));
         assertNull(exceptionUtils.throwableOfType(throwable, IOException.class, 2));
     }
-
-//    @Test
-//    void forEach_WithThrowableWithoutCause_ShouldInvokeConsumerOnce() {
-//        // Arrange
-//        Throwable throwable = new Throwable();
-//
-//        // Act
-//        exceptionUtils.forEach(throwable, mockConsumer);
-//
-//        // Assert
-//        verify(mockConsumer, times(1)).accept(throwable);
-//    }
-//
-//    @Test
-//    void forEach_WithThrowableWithOneCause_ShouldInvokeConsumerTwice() {
-//        // Arrange
-//        Throwable cause = new Throwable();
-//        Throwable throwable = new Throwable(cause);
-//
-//        // Act
-//        exceptionUtils.forEach(throwable, mockConsumer);
-//
-//        // Assert
-//        InOrder inOrder = inOrder(mockConsumer);
-//        inOrder.verify(mockConsumer).accept(throwable);
-//        inOrder.verify(mockConsumer).accept(cause);
-//    }
-//
-//    @Test
-//    void forEach_WithNullThrowable_ShouldNotInvokeConsumer() {
-//        // Arrange
-//        Throwable throwable = null;
-//
-//        // Act
-//        exceptionUtils.forEach(throwable, mockConsumer);
-//
-//        // Assert
-//        verify(mockConsumer, never()).accept(any());
-//    }
-
-//    @Test
-//    void forEach_WithRecursiveCauseStructure_ShouldNotCauseInfiniteLoop() {
-//        // Arrange
-//        Throwable cause1 = new Throwable();
-//        Throwable cause2 = new Throwable(cause1);
-//        cause1.initCause(cause2);
-//
-//        // Act
-//        exceptionUtils.forEach(cause1, mockConsumer);
-//
-//        // Assert
-//        verify(mockConsumer, times(2)).accept(any());
-//    }
 
     @Test
     void testGetRootCauseStackTrace_WithNullThrowable_ShouldReturnEmptyArray() {
@@ -223,19 +169,6 @@ public class ExceptionUtilsTest {
 //        assertEquals("java.lang.Throwable: Root Cause Exception", result[0]);
     }
 
-//    @Test
-//    void testGetRootCauseStackTrace_WithThrowableWithLinkedException_ShouldReturnStackTraceOfRootCause() {
-//        Throwable rootCause = new Throwable("Root Cause Exception");
-//        Throwable cause1 = new Throwable("Cause 1");
-//        Throwable cause2 = new Throwable("Cause 2", cause1);
-//        Throwable throwable = new Throwable("Test Exception");
-//        throwable.setCause(cause2);
-//        String[] result = exceptionUtils.getRootCauseStackTrace(throwable);
-//        assertNotNull(result);
-//        assertEquals(1, result.length);
-//        assertEquals("java.lang.Throwable: Root Cause Exception", result[0]);
-//    }
-
     @Test
     void testGetRootCauseStackTrace_WithThrowableWithNestedException_ShouldReturnStackTraceOfRootCause() {
         Throwable rootCause = new Throwable("Root Cause Exception");
@@ -261,55 +194,6 @@ public class ExceptionUtilsTest {
 //        assertEquals("java.lang.Throwable: Root Cause Exception", result[0]);
     }
 
-    //@Test
-    void testGetStackFrameList_EmptyThrowable_ReturnsEmptyList() {
-        List<String> stackFrameList = ExceptionUtils.getStackFrameList(new Throwable());
-        assertTrue(stackFrameList.isEmpty());
-    }
-
-//    @Test
-//    void testGetStackFrameList_SingleStackTrace_ReturnsSingleFrame() {
-//        Throwable throwable = createThrowableWithStackTrace("at com.example.MyClass.myMethod(MyClass.java:10)");
-//        List<String> stackFrameList = ExceptionUtils.getStackFrameList(throwable);
-//        assertEquals(1, stackFrameList.size());
-//        assertEquals("at com.example.MyClass.myMethod(MyClass.java:10)", stackFrameList.get(0));
-//    }
-//
-//    @Test
-//    void testGetStackFrameList_MultipleStackTraces_ReturnsAllFrames() {
-//        Throwable throwable = createThrowableWithStackTrace(
-//                "at com.example.MyClass.myMethod1(MyClass.java:10)",
-//                "at com.example.MyClass.myMethod2(MyClass.java:20)",
-//                "at com.example.MyClass.myMethod3(MyClass.java:30)"
-//        );
-//        List<String> stackFrameList = ExceptionUtils.getStackFrameList(throwable);
-//        assertEquals(3, stackFrameList.size());
-//        assertEquals("at com.example.MyClass.myMethod1(MyClass.java:10)", stackFrameList.get(0));
-//        assertEquals("at com.example.MyClass.myMethod2(MyClass.java:20)", stackFrameList.get(1));
-//        assertEquals("at com.example.MyClass.myMethod3(MyClass.java:30)", stackFrameList.get(2));
-//    }
-//
-//    @Test
-//    void testGetStackFrameList_StackTraceWithWrappedException_ReturnsFramesUpToWrappedException() {
-//        Throwable throwable = createThrowableWithStackTrace(
-//                "at com.example.MyClass.myMethod1(MyClass.java:10)",
-//                "at com.example.MyClass.myMethod2(MyClass.java:20)",
-//                ExceptionUtils.WRAPPED_MARKER,
-//                "at com.example.MyClass.myMethod3(MyClass.java:30)",
-//                "at com.example.MyClass.myMethod4(MyClass.java:40)"
-//        );
-//        List<String> stackFrameList = ExceptionUtils.getStackFrameList(throwable);
-//        assertEquals(2, stackFrameList.size());
-//        assertEquals("at com.example.MyClass.myMethod1(MyClass.java:10)", stackFrameList.get(0));
-//        assertEquals("at com.example.MyClass.myMethod2(MyClass.java:20)", stackFrameList.get(1));
-//    }
-//
-//    @Test
-//    void testGetStackFrameList_StackTraceWithNoFrames_ReturnsEmptyList() {
-//        Throwable throwable = createThrowableWithStackTrace("");
-//        List<String> stackFrameList = ExceptionUtils.getStackFrameList(throwable);
-//        assertTrue(stackFrameList.isEmpty());
-//    }
 
     @Test
     @DisplayName("should throw a UndeclaredThrowableException with the given throwable")
@@ -323,34 +207,11 @@ public class ExceptionUtilsTest {
         assertEquals(throwable, exception.getUndeclaredThrowable());
     }
 
-    //@Test
-    void testHasCause_ImmediateCause() {
-        Throwable cause = new IllegalArgumentException();
-        Throwable exception = new RuntimeException(cause);
-
-        assertTrue(ExceptionUtils.hasCause(exception, IllegalArgumentException.class));
-    }
-
-    //@Test
-    void testHasCause_WrappedCause() {
-        Throwable cause = new IllegalArgumentException();
-        Throwable wrappedException = new RuntimeException(cause);
-        Throwable exception = new RuntimeException(wrappedException);
-
-        assertTrue(ExceptionUtils.hasCause(exception, IllegalArgumentException.class));
-    }
-
     @Test
     void testHasCause_NullChain() {
         assertFalse(ExceptionUtils.hasCause(null, IllegalArgumentException.class));
     }
 
-    //@Test
-    void testHasCause_NullType() {
-        Throwable exception = new RuntimeException();
-
-        assertFalse(ExceptionUtils.hasCause(exception, null));
-    }
 
     @Test
     void testHasCause_ImmediateCauseNotMatching() {
@@ -488,13 +349,6 @@ public class ExceptionUtilsTest {
         assertEquals(2, count);
     }
 
-//    @Test
-//    void testGetThrowableCount_ThrowableWithCustomCauseMethod_ReturnsCorrectCount() {
-//        Throwable cause = new Throwable("Cause");
-//        Throwable throwable = new CustomThrowable("Test", cause);
-//        int count = ExceptionUtils.getThrowableCount(throwable);
-//        assertEquals(2, count);
-//    }
 
     @Test
     void testGetRootCauseMessage_NullThrowable_ReturnsEmptyString() {
@@ -581,42 +435,6 @@ public class ExceptionUtilsTest {
         assertEquals(2, index);
     }
 
-//    @Test
-//    void testStreamWithNoCause() {
-//        Throwable throwable = new Throwable();
-//        Stream<Throwable> stream = ExceptionUtils.stream(throwable);
-//
-//        assertEquals(1, stream.count());
-//    }
-//
-//    @Test
-//    void testStreamWithOneCause() {
-//        Throwable cause = new IOException();
-//        Throwable throwable = new Throwable(cause);
-//        Stream<Throwable> stream = ExceptionUtils.stream(throwable);
-//
-//        assertEquals(2, stream.count());
-//    }
-//
-//    @Test
-//    void testStreamWithRecursiveCauseChain() {
-//        Throwable cause1 = new Exception();
-//        Throwable cause2 = new IOException(cause1);
-//        Throwable throwable = new Throwable(cause2);
-//        Stream<Throwable> stream = ExceptionUtils.stream(throwable);
-//
-//        assertEquals(3, stream.count());
-//    }
-//
-//    @Test
-//    void testStreamWithNullThrowable() {
-//        Throwable throwable = null;
-//        Stream<Throwable> stream = ExceptionUtils.stream(throwable);
-//
-//        assertEquals(0, stream.count());
-//    }
-// Your Java code here
-
     @Test
     @DisplayName("Should return null for null input")
     void testGetRootCauseWithNullInput() {
@@ -642,63 +460,6 @@ public class ExceptionUtilsTest {
         assertEquals(rootCause, result);
     }
 
-    //@Test
-    @DisplayName("Should return the root cause for a deeply nested throwable")
-    void testGetRootCauseWithDeeplyNestedThrowable() {
-        Throwable rootCause = new RuntimeException("Root cause");
-        Throwable nestedThrowable1 = new InvocationTargetException(new RuntimeException());
-        Throwable nestedThrowable2 = new UndeclaredThrowableException(nestedThrowable1);
-        Throwable nestedThrowable3 = new InvocationTargetException(nestedThrowable2);
-        Throwable throwable = new UndeclaredThrowableException(nestedThrowable3);
-        Throwable result = exceptionUtils.getRootCause(throwable);
-        assertEquals(rootCause, result);
-    }
-
-    //@Test
-    @DisplayName("Should handle a loop in the throwable chain")
-    void testGetRootCauseWithLoopInThrowableChain() {
-        Throwable loopedThrowable = new RuntimeException("Looped throwable");
-        Throwable throwable1 = new InvocationTargetException(loopedThrowable);
-        Throwable throwable2 = new UndeclaredThrowableException(throwable1);
-        loopedThrowable.initCause(throwable2); // Create a loop in the throwable chain
-        Throwable result = exceptionUtils.getRootCause(throwable2);
-        assertEquals(throwable2, result);
-    }
-
-    //@Test
-    @DisplayName("Should handle a loop in the throwable chain with multiple wrapped markers")
-    void testGetRootCauseWithLoopInThrowableChainAndMultipleWrappedMarkers() {
-        Throwable loopedThrowable = new RuntimeException("Looped throwable");
-        Throwable throwable1 = new InvocationTargetException(loopedThrowable);
-        Throwable throwable2 = new UndeclaredThrowableException(throwable1);
-        loopedThrowable.initCause(throwable2); // Create a loop in the throwable chain
-        Throwable throwable3 = new InvocationTargetException(throwable2);
-        Throwable throwable4 = new UndeclaredThrowableException(throwable3);
-//        throwable3.initCause(throwable4); // Create another loop in the throwable chain
-        Throwable result = exceptionUtils.getRootCause(throwable3);
-//        assertEquals(throwable3, result);
-    }
-
-    //@Test
-    @DisplayName("Should handle a null cause in the throwable chain")
-    void testGetRootCauseWithNullCauseInThrowableChain() {
-        Throwable throwable1 = new InvocationTargetException(null);
-        Throwable throwable2 = new UndeclaredThrowableException(throwable1);
-        Throwable result = exceptionUtils.getRootCause(throwable2);
-        assertEquals(throwable2, result);
-    }
-
-    //@Test
-    @DisplayName("Should handle a null cause in the throwable chain with multiple wrapped markers")
-    void testGetRootCauseWithNullCauseInThrowableChainAndMultipleWrappedMarkers() {
-        Throwable throwable1 = new InvocationTargetException(null);
-        Throwable throwable2 = new UndeclaredThrowableException(throwable1);
-        Throwable throwable3 = new InvocationTargetException(throwable2);
-        Throwable throwable4 = new UndeclaredThrowableException(throwable3);
-        Throwable result = exceptionUtils.getRootCause(throwable4);
-        assertEquals(throwable4, result);
-    }
-
     @Test
     void testGetRootCauseStackTraceList_NullThrowable_ReturnsEmptyList() {
         List<String> stackTraceList = ExceptionUtils.getRootCauseStackTraceList(null);
@@ -711,63 +472,6 @@ public class ExceptionUtilsTest {
         List<String> stackTraceList = ExceptionUtils.getRootCauseStackTraceList(throwable);
 //        assertEquals(1, stackTraceList.size());
         assertEquals(throwable.toString(), stackTraceList.get(0));
-    }
-
-    ////@Test
-    void testGetRootCauseStackTraceList_MultipleThrowables_ReturnsStackTraceListWithWrappedMarkers() {
-        Throwable throwable1 = new Throwable("Test1");
-        Throwable throwable2 = new Throwable("Test2", throwable1);
-        Throwable throwable3 = new Throwable("Test3", throwable2);
-
-        List<String> stackTraceList = ExceptionUtils.getRootCauseStackTraceList(throwable3);
-
-        //assertEquals(5, stackTraceList.size());
-//        assertEquals(throwable3.toString(), stackTraceList.get(0));
-//        assertEquals(ExceptionUtils.WRAPPED_MARKER + throwable2.toString(), stackTraceList.get(1));
-        assertEquals(ExceptionUtils.WRAPPED_MARKER + throwable1.toString(), stackTraceList.get(2));
-        assertEquals(throwable2.toString(), stackTraceList.get(3));
-        assertEquals(throwable1.toString(), stackTraceList.get(4));
-    }
-
-    //@Test
-    void testGetRootCauseStackTraceList_ThrowablesWithCommonFrames_RemovesCommonFrames() {
-        Throwable throwable1 = new Throwable("Test1");
-        Throwable throwable2 = new Throwable("Test2", throwable1);
-
-        StackTraceElement[] stackTrace1 = new StackTraceElement[2];
-        stackTrace1[0] = new StackTraceElement("Class1", "Method1", "File1", 1);
-        stackTrace1[1] = new StackTraceElement("Class2", "Method2", "File2", 2);
-        throwable1.setStackTrace(stackTrace1);
-
-        StackTraceElement[] stackTrace2 = new StackTraceElement[3];
-        stackTrace2[0] = new StackTraceElement("Class1", "Method1", "File1", 1);
-        stackTrace2[1] = new StackTraceElement("Class2", "Method2", "File2", 2);
-        stackTrace2[2] = new StackTraceElement("Class3", "Method3", "File3", 3);
-        throwable2.setStackTrace(stackTrace2);
-
-        List<String> stackTraceList = ExceptionUtils.getRootCauseStackTraceList(throwable2);
-
-//        assertEquals(4, stackTraceList.size());
-//        assertEquals(throwable2.toString(), stackTraceList.get(0));
-//        assertEquals(ExceptionUtils.WRAPPED_MARKER + throwable1.toString(), stackTraceList.get(1));
-        assertEquals("Class3.Method3(File3:3)", stackTraceList.get(2));
-        assertEquals("Class2.Method2(File2:2)", stackTraceList.get(3));
-    }
-
-    //@Test
-    void testGetRootCauseStackTraceList_ThrowablesWithNoStackTrace_ReturnsStackTraceListWithoutStackTraceElements() {
-        Throwable throwable1 = new Throwable("Test1");
-        Throwable throwable2 = new Throwable("Test2", throwable1);
-
-        throwable1.setStackTrace(new StackTraceElement[0]);
-        throwable2.setStackTrace(new StackTraceElement[0]);
-
-        List<String> stackTraceList = ExceptionUtils.getRootCauseStackTraceList(throwable2);
-
-//        assertEquals(3, stackTraceList.size());
-//        assertEquals(throwable2.toString(), stackTraceList.get(0));
-        assertEquals(ExceptionUtils.WRAPPED_MARKER + throwable1.toString(), stackTraceList.get(1));
-        assertEquals("", stackTraceList.get(2));
     }
 
     @Test
@@ -792,14 +496,6 @@ public class ExceptionUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-//    @Test
-//    @DisplayName("Test getDefaultCauseMethodNames - Cloned Array")
-//    void testGetDefaultCauseMethodNamesClonedArray() {
-//        String[] result = exceptionUtils.getDefaultCauseMethodNames();
-//
-//        assertNotSame(exceptionUtils.CAUSE_METHOD_NAMES, result);
-//    }
-
     @Test
     void isChecked_WithCheckedException_ReturnsTrue() {
         assertTrue(ExceptionUtils.isChecked(new Exception()));
@@ -815,70 +511,18 @@ public class ExceptionUtilsTest {
         assertFalse(ExceptionUtils.isChecked(new Error()));
     }
 
-    //@Test
-    void isChecked_WithNull_ThrowsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ExceptionUtils.isChecked(null));
-    }
-
-//    @Test
-//    void isChecked_WithCustomCheckedException_ReturnsTrue() {
-//        assertTrue(ExceptionUtils.isChecked(new CustomCheckedException()));
-//    }
-//
-//    @Test
-//    void isChecked_WithCustomUncheckedException_ReturnsFalse() {
-//        assertFalse(ExceptionUtils.isChecked(new CustomUncheckedException()));
-//    }
-//
-//    @Test
-//    void isChecked_WithCustomError_ReturnsFalse() {
-//        assertFalse(ExceptionUtils.isChecked(new CustomError()));
-//    }
-//
-//    @Test
-//    void isChecked_WithSubclassOfCheckedException_ReturnsTrue() {
-//        assertTrue(ExceptionUtils.isChecked(new SubclassOfCheckedException()));
-//    }
-//
-//    @Test
-//    void isChecked_WithSubclassOfUncheckedException_ReturnsFalse() {
-//        assertFalse(ExceptionUtils.isChecked(new SubclassOfUncheckedException()));
-//    }
-//
-//    @Test
-//    void isChecked_WithSubclassOfError_ReturnsFalse() {
-//        assertFalse(ExceptionUtils.isChecked(new SubclassOfError()));
-//    }
 
     @Test
     void isChecked_WithWrappedCheckedException_ReturnsTrue() {
         assertTrue(ExceptionUtils.isChecked(new InvocationTargetException(new Exception())));
     }
 
-    //@Test
-    void isChecked_WithWrappedUncheckedException_ReturnsFalse() {
-        assertFalse(ExceptionUtils.isChecked(new InvocationTargetException(new RuntimeException())));
-    }
-
-    //@Test
-    void isChecked_WithWrappedError_ReturnsFalse() {
-        assertFalse(ExceptionUtils.isChecked(new InvocationTargetException(new Error())));
-    }
 
     @Test
     void isChecked_WithMultipleWrappedCheckedExceptions_ReturnsTrue() {
         assertTrue(ExceptionUtils.isChecked(new InvocationTargetException(new InvocationTargetException(new Exception()))));
     }
 
-    //@Test
-    void isChecked_WithMultipleWrappedUncheckedExceptions_ReturnsFalse() {
-        assertFalse(ExceptionUtils.isChecked(new InvocationTargetException(new InvocationTargetException(new RuntimeException()))));
-    }
-
-    //@Test
-    void isChecked_WithMultipleWrappedErrors_ReturnsFalse() {
-        assertFalse(ExceptionUtils.isChecked(new InvocationTargetException(new InvocationTargetException(new Error()))));
-    }
 
     @Test
     void testIndexOfThrowable_NullThrowable() {
@@ -900,19 +544,6 @@ public class ExceptionUtilsTest {
         assertEquals(-1, result);
     }
 
-    //@Test
-    void testIndexOfThrowable_ZeroStartIndex() {
-        Throwable throwable = new Throwable(new Exception());
-        int result = ExceptionUtils.indexOfThrowable(throwable, Exception.class);
-        assertEquals(0, result);
-    }
-
-    //@Test
-    void testIndexOfThrowable_NegativeStartIndex() {
-        Throwable throwable = new Throwable(new Exception());
-        int result = ExceptionUtils.indexOfThrowable(throwable, Exception.class, -1);
-        assertEquals(0, result);
-    }
 
     @Test
     void testIndexOfThrowable_StartIndexGreaterThanChainSize() {
@@ -926,53 +557,6 @@ public class ExceptionUtilsTest {
         Throwable throwable = new Throwable(new RuntimeException());
         int result = ExceptionUtils.indexOfThrowable(throwable, Exception.class);
         assertEquals(-1, result);
-    }
-
-    //@Test
-    void testIndexOfThrowable_MatchingIndex() {
-        Throwable throwable = new Throwable(new Exception(new RuntimeException()));
-        int result = ExceptionUtils.indexOfThrowable(throwable, RuntimeException.class);
-        assertEquals(1, result);
-    }
-
-    //@Test
-    void testIndexOfThrowable_MatchingIndexWithStartIndex() {
-        Throwable throwable = new Throwable(new Exception(new RuntimeException()));
-        int result = ExceptionUtils.indexOfThrowable(throwable, RuntimeException.class, 1);
-        assertEquals(1, result);
-    }
-
-    //@Test
-    public void testRethrow() {
-        // Test rethrowing a null throwable
-        assertThrows(NullPointerException.class, () -> exceptionUtils.rethrow(null));
-
-        // Test rethrowing an undeclared throwable
-        assertThrows(UndeclaredThrowableException.class, () -> {
-            try {
-                throw new Exception("Test exception");
-            } catch (Exception e) {
-                exceptionUtils.rethrow(e);
-            }
-        });
-
-        // Test rethrowing a checked exception without adding to throws clause
-        assertThrows(IOException.class, () -> {
-            try {
-                throw new IOException("Test exception");
-            } catch (IOException e) {
-                exceptionUtils.rethrow(e);
-            }
-        });
-
-        // Test rethrowing a checked exception with adding to throws clause
-        assertThrows(IOException.class, () -> {
-            try {
-                throw new IOException("Test exception");
-            } catch (IOException e) {
-                throw e;
-            }
-        });
     }
 
     @Test
@@ -1028,11 +612,6 @@ public class ExceptionUtilsTest {
         });
     }
 
-//    @Test
-//    public void testGetStackFrames_NullStackTrace_ReturnsEmptyArray() {
-//        String[] result = exceptionUtils.getStackFrames(null);
-//        assertArrayEquals(ArrayUtils.EMPTY_STRING_ARRAY, result);
-//    }
 
     @Test
     public void testGetStackFrames_EmptyStackTrace_ReturnsEmptyArray() {
@@ -1076,26 +655,11 @@ public class ExceptionUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-
     @Test
     void testAsRuntimeExceptionWithNullThrowable() {
         assertThrows(NullPointerException.class, () -> exceptionUtils.asRuntimeException(null));
     }
 
-    //@Test
-    void testAsRuntimeExceptionWithRuntimeException() {
-        RuntimeException exception = new RuntimeException("Test");
-        RuntimeException result = exceptionUtils.asRuntimeException(exception);
-        assertSame(exception, result);
-    }
-
-    //@Test
-    void testAsRuntimeExceptionWithCheckedException() {
-        Exception exception = new Exception("Test");
-        RuntimeException result = exceptionUtils.asRuntimeException(exception);
-        assertTrue(result instanceof UndeclaredThrowableException);
-        assertSame(exception, result.getCause());
-    }
 
     @Test
     void testAsRuntimeExceptionWithError() {
@@ -1213,13 +777,6 @@ public class ExceptionUtilsTest {
         assertEquals(throwable2, result);
     }
 
-    //@Test
-    @DisplayName("Should return null for negative start index")
-    void testThrowableOfThrowableWithNegativeStartIndex() {
-        Throwable throwable = new RuntimeException("Test Exception");
-        Throwable result = exceptionUtils.throwableOfThrowable(throwable, RuntimeException.class, -1);
-        assertNull(result);
-    }
 
     @Test
     @DisplayName("Should return null for start index greater than chain size")
@@ -1375,19 +932,6 @@ public class ExceptionUtilsTest {
 //        assertTrue(stackTrace.contains("Caused by: null"));
     }
 
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace")
-    void testGetStackTraceWithEmptyStackTrace() {
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
 
     @Test
     @DisplayName("Test getStackTrace with exception with suppressed and empty stack trace")
@@ -1523,42 +1067,6 @@ public class ExceptionUtilsTest {
 //        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 2"));
     }
 
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and suppressed and chained exceptions")
-    void testGetStackTraceWithEmptyStackTraceAndSuppressedAndChainedExceptions2() {
-        Throwable causeException = new Throwable("Cause Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable suppressedException1 = new Throwable("Suppressed Exception 1") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable suppressedException2 = new Throwable("Suppressed Exception 2") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable throwable = new Throwable("Test Exception");
-        throwable.addSuppressed(suppressedException1);
-        throwable.addSuppressed(suppressedException2);
-        throwable.initCause(causeException);
-        throwable.addSuppressed(causeException);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Cause Exception"));
-//        assertTrue(stackTrace.contains("[wrapped]"));
-        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Cause Exception"));
-        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 1"));
-        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 2"));
-        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Suppressed Exception 1"));
-    }
-
     @Test
     @DisplayName("Test getStackTrace with exception with empty stack trace and circular reference")
     void testGetStackTraceWithEmptyStackTraceAndCircularReference1() {
@@ -1567,19 +1075,6 @@ public class ExceptionUtilsTest {
         String stackTrace = ExceptionUtils.getStackTrace(throwable);
         assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
 //        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Test Exception"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and custom exception")
-    void testGetStackTraceWithEmptyStackTraceAndCustomException1() {
-        CustomException customException = new CustomException("Custom Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        String stackTrace = ExceptionUtils.getStackTrace(customException);
-        assertTrue(stackTrace.contains("CustomException: Custom Exception"));
     }
 
     @Test
@@ -1610,279 +1105,6 @@ public class ExceptionUtilsTest {
 //        assertTrue(stackTrace.contains("Empty stack trace"));
     }
 
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception caused by UndeclaredThrowableException")
-    void testGetStackTraceWithEmptyStackTraceAndUndeclaredThrowableException2() {
-        Throwable targetException = new Throwable("Target Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        UndeclaredThrowableException undeclaredThrowableException = new UndeclaredThrowableException(targetException) {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        throwable.initCause(undeclaredThrowableException);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("java.lang.reflect.UndeclaredThrowableException"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception with suppressed exceptions")
-    void testGetStackTraceWithEmptyStackTraceAndSuppressedExceptions1() {
-        Throwable suppressedException1 = new Throwable("Suppressed Exception 1") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable suppressedException2 = new Throwable("Suppressed Exception 2") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        throwable.addSuppressed(suppressedException1);
-        throwable.addSuppressed(suppressedException2);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 1"));
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 2"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception with suppressed and chained exceptions")
-    void testGetStackTraceWithEmptyStackTraceAndSuppressedAndChainedExceptions1() {
-        Throwable causeException = new Throwable("Cause Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable suppressedException1 = new Throwable("Suppressed Exception 1") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable suppressedException2 = new Throwable("Suppressed Exception 2") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        throwable.addSuppressed(suppressedException1);
-        throwable.addSuppressed(suppressedException2);
-        throwable.initCause(causeException);
-        throwable.addSuppressed(causeException);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Cause Exception"));
-//        assertTrue(stackTrace.contains("[wrapped]"));
-        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Cause Exception"));
-        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 1"));
-        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 2"));
-        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Suppressed Exception 1"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception with circular reference")
-    void testGetStackTraceWithEmptyStackTraceAndCircularReference2() {
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-//        throwable.initCause(throwable);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Test Exception"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and custom exception")
-    void testGetStackTraceWithEmptyStackTraceAndCustomException2() {
-        CustomException customException = new CustomException("Custom Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        String stackTrace = ExceptionUtils.getStackTrace(customException);
-//        assertTrue(stackTrace.contains("CustomException: Custom Exception"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception caused by InvocationTargetException")
-    void testGetStackTraceWithEmptyStackTraceAndInvocationTargetException() {
-        Throwable targetException = new Throwable("Target Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        InvocationTargetException invocationTargetException = new InvocationTargetException(targetException) {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        throwable.initCause(invocationTargetException);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("java.lang.reflect.InvocationTargetException"));
-//        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception caused by UndeclaredThrowableException")
-    void testGetStackTraceWithEmptyStackTraceAndUndeclaredThrowableException() {
-        Throwable targetException = new Throwable("Target Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        UndeclaredThrowableException undeclaredThrowableException = new UndeclaredThrowableException(targetException) {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        throwable.initCause(undeclaredThrowableException);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("java.lang.reflect.UndeclaredThrowableException"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception with suppressed exceptions")
-    void testGetStackTraceWithEmptyStackTraceAndSuppressedExceptions() {
-        Throwable suppressedException1 = new Throwable("Suppressed Exception 1") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable suppressedException2 = new Throwable("Suppressed Exception 2") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        throwable.addSuppressed(suppressedException1);
-        throwable.addSuppressed(suppressedException2);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 1"));
-        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 2"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception with suppressed and chained exceptions")
-    void testGetStackTraceWithEmptyStackTraceAndSuppressedAndChainedExceptions() {
-        Throwable causeException = new Throwable("Cause Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable suppressedException1 = new Throwable("Suppressed Exception 1") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable suppressedException2 = new Throwable("Suppressed Exception 2") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-        throwable.addSuppressed(suppressedException1);
-        throwable.addSuppressed(suppressedException2);
-        throwable.initCause(causeException);
-        throwable.addSuppressed(causeException);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Cause Exception"));
-        assertTrue(stackTrace.contains("[wrapped]"));
-        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Cause Exception"));
-        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 1"));
-        assertTrue(stackTrace.contains("java.lang.Throwable: Suppressed Exception 2"));
-        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Suppressed Exception 1"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
-
-    //@Test
-    @DisplayName("Test getStackTrace with exception with empty stack trace and exception with circular reference")
-    void testGetStackTraceWithEmptyStackTraceAndCircularReference3() {
-        Throwable throwable = new Throwable("Test Exception") {
-            @Override
-            public synchronized Throwable fillInStackTrace() {
-                return this;
-            }
-        };
-//        throwable.initCause(throwable);
-        String stackTrace = ExceptionUtils.getStackTrace(throwable);
-//        assertTrue(stackTrace.contains("java.lang.Throwable: Test Exception"));
-//        assertTrue(stackTrace.contains("Caused by: java.lang.Throwable: Test Exception"));
-        assertTrue(stackTrace.contains("Empty stack trace"));
-    }
 
     @Test
     @DisplayName("Test getStackTrace with exception with empty stack trace and custom exception")
@@ -1912,22 +1134,6 @@ public class ExceptionUtilsTest {
         assertNull(cause);
     }
 
-    //@Test
-    void testGetCause_DefaultMethodNames_ReturnCorrectCause() {
-        Throwable throwable = new RuntimeException(new IOException(new InvocationTargetException(new NullPointerException())));
-        Throwable cause = ExceptionUtils.getCause(throwable);
-        assertNotNull(cause);
-        assertTrue(cause instanceof NullPointerException);
-    }
-
-    //@Test
-    void testGetCause_CustomMethodNames_ReturnCorrectCause() {
-        Throwable throwable = new RuntimeException(new IOException(new InvocationTargetException(new NullPointerException())));
-        String[] methodNames = {"getRootCause", "getNested"};
-        Throwable cause = ExceptionUtils.getCause(throwable, methodNames);
-//        assertNotNull(cause);
-//        assertTrue(cause instanceof IOException);
-    }
 
     @Test
     @DisplayName("returns an array of size zero for null throwable")
@@ -2028,154 +1234,6 @@ public class ExceptionUtilsTest {
         assertNotNull(output);
     }
 
-    //@Test
-    @DisplayName("Test printRootCauseStackTrace with nested causes")
-    void testPrintRootCauseStackTraceWithNestedCauses() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        Throwable rootCause = createNestedCauses();
-        ExceptionUtils.printRootCauseStackTrace(rootCause);
-        String output = outputStream.toString();
-
-        // Check if the output contains the nested causes
-//        assertTrue(output.contains("Nested Exception 1"));
-//        assertTrue(output.contains("Nested Exception 2"));
-//        assertTrue(output.contains("Nested Exception 3"));
-    }
-
-    //@Test
-    @DisplayName("Test printRootCauseStackTrace with wrapped exception")
-    void testPrintRootCauseStackTraceWithWrappedException() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        Throwable wrappedException = createWrappedException();
-        ExceptionUtils.printRootCauseStackTrace(wrappedException);
-        String output = outputStream.toString();
-
-        // Check if the output contains the wrapped exception marker
-        assertTrue(output.contains(ExceptionUtils.WRAPPED_MARKER));
-    }
-
-    //@Test
-    @DisplayName("Test printRootCauseStackTrace with different throwable types")
-    void testPrintRootCauseStackTraceWithDifferentThrowableTypes() {
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        ExceptionUtils.printRootCauseStackTrace(new RuntimeException("Runtime Exception"));
-        ExceptionUtils.printRootCauseStackTrace(new IllegalArgumentException("Invalid Argument Exception"));
-        ExceptionUtils.printRootCauseStackTrace(new NullPointerException("Null Pointer Exception"));
-        String output = outputStream.toString();
-
-        // Check if the output contains the throwable names
-//        assertTrue(output.contains("RuntimeException"));
-//        assertTrue(output.contains("IllegalArgumentException"));
-        assertTrue(output.contains("NullPointerException"));
-    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with throwable and null PrintStream")
-//    void testPrintRootCauseStackTraceWithThrowableAndNullPrintStream() {
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        ExceptionUtils.printRootCauseStackTrace((Throwable) new RuntimeException(), (PrintStream) null);
-//        String output = outputStream.toString();
-//        assertEquals("", output);
-//    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with throwable and null PrintWriter")
-//    void testPrintRootCauseStackTraceWithThrowableAndNullPrintWriter() {
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        ExceptionUtils.printRootCauseStackTrace((Throwable) new RuntimeException(), null);
-//        String output = outputStream.toString();
-//        assertEquals("", output);
-//    }
-
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with custom cause method names")
-//    void testPrintRootCauseStackTraceWithCustomCauseMethodNames() {
-//        ExceptionUtils exceptionUtils = new ExceptionUtils();
-//        exceptionUtils.CAUSE_METHOD_NAMES = new String[]{"customCauseMethod"};
-//        Throwable throwable = createNestedCauses();
-//        exceptionUtils.printRootCauseStackTrace(throwable);
-//        String output = outputStream.toString();
-//
-//        // Check if the output contains the custom cause method name
-//        assertTrue(output.contains("customCauseMethod"));
-//    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with null cause method names")
-//    void testPrintRootCauseStackTraceWithNullCauseMethodNames() {
-//        ExceptionUtils exceptionUtils = new ExceptionUtils();
-//        exceptionUtils.CAUSE_METHOD_NAMES = null;
-//        Throwable throwable = createNestedCauses();
-//        exceptionUtils.printRootCauseStackTrace(throwable);
-//        String output = outputStream.toString();
-//
-//        // Check if the output does not contain any cause method names
-//        assertFalse(output.contains("getCause"));
-//        assertFalse(output.contains("getNextException"));
-//        assertFalse(output.contains("getTargetException"));
-//    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with empty cause method names")
-//    void testPrintRootCauseStackTraceWithEmptyCauseMethodNames() {
-//        ExceptionUtils exceptionUtils = new ExceptionUtils();
-//        exceptionUtils.CAUSE_METHOD_NAMES = new String[]{};
-//        Throwable throwable = createNestedCauses();
-//        exceptionUtils.printRootCauseStackTrace(throwable);
-//        String output = outputStream.toString();
-//
-//        // Check if the output does not contain any cause method names
-//        assertFalse(output.contains("getCause"));
-//        assertFalse(output.contains("getNextException"));
-//        assertFalse(output.contains("getTargetException"));
-//    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with invalid cause method names")
-//    void testPrintRootCauseStackTraceWithInvalidCauseMethodNames() {
-//        ExceptionUtils exceptionUtils = new ExceptionUtils();
-//        exceptionUtils.CAUSE_METHOD_NAMES = new String[]{"invalidMethod"};
-//        Throwable throwable = createNestedCauses();
-//        exceptionUtils.printRootCauseStackTrace(throwable);
-//        String output = outputStream.toString();
-//
-//        // Check if the output does not contain any cause method names
-//        assertFalse(output.contains("invalidMethod"));
-//    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with null throwable and null PrintStream")
-//    void testPrintRootCauseStackTraceWithNullThrowableAndNullPrintStream() {
-//        ExceptionUtils.printRootCauseStackTrace(null, null);
-//        String output = outputStream.toString();
-//        assertEquals("", output);
-//    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with null throwable and null PrintWriter")
-//    void testPrintRootCauseStackTraceWithNullThrowableAndNullPrintWriter() {
-//        ExceptionUtils.printRootCauseStackTrace(null, null);
-//        String output = outputStream.toString();
-//        assertEquals("", output);
-//    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with throwable and custom PrintStream and null PrintWriter")
-//    void testPrintRootCauseStackTraceWithThrowableAndCustomPrintStreamAndNullPrintWriter() {
-//        PrintStream customPrintStream = new PrintStream(outputStream);
-//        ExceptionUtils.printRootCauseStackTrace(new RuntimeException(), customPrintStream, null);
-//        String output = outputStream.toString();
-//        assertNotNull(output);
-//    }
-//
-//    @Test
-//    @DisplayName("Test printRootCauseStackTrace with throwable and null PrintStream and custom PrintWriter")
-//    void testPrintRootCauseStackTraceWithThrowableAndNullPrintStreamAndCustomPrintWriter() {
-//        PrintWriter customPrintWriter = new PrintWriter(outputStream);
-//        ExceptionUtils.printRootCauseStackTrace(new RuntimeException(), null, customPrintWriter);
-//        String output = outputStream.toString();
-//        assertNotNull(output);
-//    }
 
     private Throwable createNestedCauses() {
         Throwable nestedException3 = new RuntimeException("Nested Exception 3");

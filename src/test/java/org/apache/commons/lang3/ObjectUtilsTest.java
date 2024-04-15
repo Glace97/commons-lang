@@ -88,10 +88,6 @@ public class ObjectUtilsTest {
         assertEquals(expectedHashCode, ObjectUtils.hashCodeMulti(object1, object2));
     }
 
-    //@Test
-    void testHashCodeMultiWithNullObject() {
-        assertEquals(1, ObjectUtils.hashCodeMulti((Object) null));
-    }
 
     @Test
     void testHashCodeMultiWithSameObjects() {
@@ -110,41 +106,12 @@ public class ObjectUtilsTest {
         assertNotEquals(hashCode1, hashCode2);
     }
 
-//    @Test
-//    void testWait_ZeroDuration() {
-//        assertDoesNotThrow(() -> ObjectUtils.wait(testObject, Duration.ZERO));
-//    }
-//
-//    @Test
-//    void testWait_PositiveDuration() {
-//        assertDoesNotThrow(() -> ObjectUtils.wait(testObject, Duration.ofSeconds(1)));
-////    }
-//
-//    @Test
-//    void testWait_NegativeDuration() {
-//        assertThrows(IllegalArgumentException.class, () -> ObjectUtils.wait(testObject, Duration.ofSeconds(-1)));
-//    }
 
     @Test
     void testWait_NullObject() {
         assertThrows(NullPointerException.class, () -> ObjectUtils.wait(null, Duration.ofSeconds(1)));
     }
 
-//    @Test
-//    void testWait_Interrupted() throws InterruptedException {
-//        Thread thread = new Thread(() -> {
-//            try {
-//                ObjectUtils.wait(testObject, Duration.ofSeconds(2));
-//            } catch (InterruptedException e) {
-//                // Do nothing
-//            }
-//        });
-//        thread.start();
-//        Thread.sleep(1000);
-//        thread.interrupt();
-//        thread.join();
-//        assertTrue(thread.isInterrupted());
-//    }
 
     @Test
     void testWait_IllegalMonitorState() {
@@ -315,26 +282,6 @@ public class ObjectUtilsTest {
         Assertions.assertNull(result);
     }
 
-//    @Test
-//    void testMode1(Object[] items, Object expected) {
-//        Object result = objectUtils.mode(items);
-//        Assertions.assertEquals(expected, result);
-//    }
-
-
-
-    //@Test
-    void testIdentityToStringWithNonNullObject() throws IOException {
-        Appendable appendable = mock(Appendable.class);
-        Object object = new Object();
-
-        objectUtils.identityToString(appendable, object);
-
-        verify(appendable).append(object.getClass().getName());
-        verify(appendable).append("@");
-        verify(appendable).append(Integer.toHexString(System.identityHashCode(object)));
-    }
-
     @Test
     void testIdentityToStringWithNullObject() {
         Appendable appendable = mock(Appendable.class);
@@ -387,31 +334,7 @@ public class ObjectUtilsTest {
         assertThrows(NullPointerException.class, () -> objectUtils.identityToString(appendable, object));
     }
 
-    //@Test
-    void testIdentityToStringWithNonNullObjectAndNonNullReturn() throws IOException {
-        Appendable appendable = mock(Appendable.class);
-        Object object = new Object();
 
-        when(appendable.append(anyString())).thenReturn(appendable);
-
-        objectUtils.identityToString(appendable, object);
-
-        verify(appendable).append(object.getClass().getName());
-        verify(appendable).append("@");
-        verify(appendable).append(Integer.toHexString(System.identityHashCode(object)));
-    }
-
-    //@Test
-    void testIdentityToStringWithNonNullObjectAndNullObject() throws IOException {
-        Appendable appendable = mock(Appendable.class);
-        Object object = ObjectUtils.NULL;
-
-        objectUtils.identityToString(appendable, object);
-
-        verify(appendable).append(object.getClass().getName());
-        verify(appendable).append("@");
-        verify(appendable).append(Integer.toHexString(System.identityHashCode(object)));
-    }
 
     @Test
     void testIdentityToStringWithNullObjectAndNullObject() throws IOException {
@@ -421,17 +344,7 @@ public class ObjectUtilsTest {
         assertThrows(NullPointerException.class, () -> objectUtils.identityToString(appendable, object));
     }
 
-    //@Test
-    void testIdentityToStringWithNullObjectAndNonNullObject() throws IOException {
-        Appendable appendable = mock(Appendable.class);
-        Object object = ObjectUtils.NULL;
 
-        objectUtils.identityToString(appendable, object);
-
-        verify(appendable).append(object.getClass().getName());
-        verify(appendable).append("@");
-        verify(appendable).append(Integer.toHexString(System.identityHashCode(object)));
-    }
 
     @Test
     void testIdentityToStringWithNonNullObjectAndNullObjectAndNonNullAppendable() throws IOException {
@@ -457,27 +370,7 @@ public class ObjectUtilsTest {
         assertThrows(NullPointerException.class, () -> objectUtils.identityToString(appendable, object));
     }
 
-    // @Test
-    void testIdentityToStringWithNullObjectAndNonNullObjectAndNonNullAppendable1() throws IOException {
-        Appendable appendable = mock(Appendable.class);
-        Object object = ObjectUtils.NULL;
 
-        objectUtils.identityToString(appendable, object);
-
-        verify(appendable).append(object.getClass().getName());
-        verify(appendable).append("@");
-        verify(appendable).append(Integer.toHexString(System.identityHashCode(object)));
-    }
-
-    //@Test
-    void testIdentityToStringWithNonNullObjectAndNullObjectAndIOException() throws IOException {
-        Appendable appendable = mock(Appendable.class);
-        Object object = null;
-
-        doThrow(new IOException()).when(appendable).append(anyString());
-
-        assertThrows(IOException.class, () -> objectUtils.identityToString(appendable, object));
-    }
 
     @Test
     void testIdentityToStringWithNonNullObjectAndNonNullObjectAndIOException() throws IOException {
@@ -537,17 +430,7 @@ public class ObjectUtilsTest {
         assertThrows(NullPointerException.class, () -> objectUtils.identityToString(appendable, object));
     }
 
-    //@Test
-    void testIdentityToStringWithNullObjectAndNonNullObjectAndNonNullAppendable() throws IOException {
-        Appendable appendable = mock(Appendable.class);
-        Object object = ObjectUtils.NULL;
 
-        objectUtils.identityToString(appendable, object);
-
-        verify(appendable).append(object.getClass().getName());
-        verify(appendable).append("@");
-        verify(appendable).append(Integer.toHexString(System.identityHashCode(object)));
-    }
 
     @Test
     void testIdentityToStringWithNonNullObjectAndNullObjectAndIOExceptionAndNullReturn() throws IOException {
@@ -697,55 +580,7 @@ public class ObjectUtilsTest {
         assertThrows(NullPointerException.class, () -> objectUtils.identityToString(appendable, object));
     }
 
-    //@Test
-    void testMedianWithIntegers() {
-        assertEquals(2, ObjectUtils.median(1, 2, 3));
-        assertEquals(3, ObjectUtils.median(1, 2, 3, 4));
-        assertEquals(5, ObjectUtils.median(5));
-        assertEquals(0, ObjectUtils.median(-1, 0, 1));
-        assertEquals(-10, ObjectUtils.median(-20, -10, 0, 10, 20));
-    }
 
-    //@Test
-    void testMedianWithDoubles() {
-        assertEquals(2.5, ObjectUtils.median(1.5, 2.5, 3.5));
-        assertEquals(3.5, ObjectUtils.median(1.5, 2.5, 3.5, 4.5));
-        assertEquals(5.0, ObjectUtils.median(5.0));
-        assertEquals(0.0, ObjectUtils.median(-1.0, 0.0, 1.0));
-        assertEquals(-10.0, ObjectUtils.median(-20.0, -10.0, 0.0, 10.0, 20.0));
-    }
-
-    //@Test
-    void testMedianWithStrings() {
-        assertEquals("b", ObjectUtils.median("a", "b", "c"));
-        assertEquals("c", ObjectUtils.median("a", "b", "c", "d"));
-        assertEquals("e", ObjectUtils.median("e"));
-        assertEquals("a", ObjectUtils.median("a", "b", "c", "d", "e", "f", "g"));
-    }
-
-    //@Test
-    void testMedianWithNull() {
-        assertThrows(NullPointerException.class, () -> ObjectUtils.median((Integer) null));
-        assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median());
-        assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median(1, null, 3));
-    }
-
-    //@Test
-    void testMedianWithComparator() {
-        Comparator<String> stringLengthComparator = Comparator.comparing(String::length);
-        assertEquals("b", ObjectUtils.median(stringLengthComparator, "aa", "b", "ccc"));
-        assertEquals("ccc", ObjectUtils.median(stringLengthComparator, "aa", "b", "ccc", "dddd"));
-        assertEquals("e", ObjectUtils.median(stringLengthComparator, "e"));
-        assertEquals("a", ObjectUtils.median(stringLengthComparator, "a", "bb", "ccc", "dddd", "eeeee", "ffffff", "ggggggg"));
-    }
-
-    //@Test
-    void testMedianWithComparatorAndNull() {
-        Comparator<String> stringLengthComparator = Comparator.comparing(String::length);
-        assertThrows(NullPointerException.class, () -> ObjectUtils.median(stringLengthComparator, (String) null));
-        assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median(stringLengthComparator));
-        assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median(stringLengthComparator, "a", null, "ccc"));
-    }
 
     @Test
     void testConstByteInRange() {
@@ -808,65 +643,9 @@ public class ObjectUtilsTest {
         assertTrue(objectUtils.anyNull(null, "abc", null, new Object()));
     }
 
-    //@Test
-    void testAnyNull_withEmptyArray_shouldReturnTrue() {
-        assertTrue(objectUtils.anyNull());
-    }
-
     @Test
     void testAnyNull_withNullArray_shouldReturnTrue() {
         assertTrue(objectUtils.anyNull((Object[]) null));
-    }
-
-
-    //@Test
-    void testGetClass() {
-        // Test with null input
-        Class<Null> nullClass = ObjectUtils.getClass(null);
-        Assertions.assertNull(nullClass);
-
-        // Test with primitive types
-        Class<Boolean> booleanClass = ObjectUtils.getClass(true);
-        Assertions.assertEquals(boolean.class, booleanClass);
-
-        Class<Byte> byteClass = ObjectUtils.getClass((byte) 1);
-        Assertions.assertEquals(byte.class, byteClass);
-
-        Class<Character> charClass = ObjectUtils.getClass('a');
-        Assertions.assertEquals(char.class, charClass);
-
-        Class<Short> shortClass = ObjectUtils.getClass((short) 1);
-        Assertions.assertEquals(short.class, shortClass);
-
-        Class<Integer> intClass = ObjectUtils.getClass(1);
-        Assertions.assertEquals(int.class, intClass);
-
-        Class<Long> longClass = ObjectUtils.getClass(1L);
-        Assertions.assertEquals(long.class, longClass);
-
-        Class<Float> floatClass = ObjectUtils.getClass(1.0f);
-        Assertions.assertEquals(float.class, floatClass);
-
-        Class<Double> doubleClass = ObjectUtils.getClass(1.0);
-        Assertions.assertEquals(double.class, doubleClass);
-
-        // Test with array types
-        Class<int[]> intArrayClass = ObjectUtils.getClass(new int[0]);
-        Assertions.assertEquals(int[].class, intArrayClass);
-
-        Class<String[]> stringArrayClass = ObjectUtils.getClass(new String[0]);
-        Assertions.assertEquals(String[].class, stringArrayClass);
-
-        // Test with generic types
-        Class<ArrayList<String>> arrayListClass = ObjectUtils.getClass(new ArrayList<String>());
-        Assertions.assertEquals(ArrayList.class, arrayListClass);
-
-        Class<HashMap<String, Integer>> hashMapClass = ObjectUtils.getClass(new HashMap<String, Integer>());
-        Assertions.assertEquals(HashMap.class, hashMapClass);
-
-//        // Test with custom class
-//        Class<CustomClass> customClass = ObjectUtils.getClass(new CustomClass());
-//        Assertions.assertEquals(CustomClass.class, customClass);
     }
 
     @Test
@@ -909,12 +688,6 @@ public class ObjectUtilsTest {
     @Test
     void testRequireNonEmpty_emptyOptional() {
         Optional<String> obj = Optional.empty();
-        assertThrows(IllegalArgumentException.class, () -> objectUtils.requireNonEmpty(obj));
-    }
-
-    //@Test
-    void testRequireNonEmpty_emptyStream() {
-        Stream<String> obj = Stream.empty();
         assertThrows(IllegalArgumentException.class, () -> objectUtils.requireNonEmpty(obj));
     }
 
@@ -1002,30 +775,6 @@ public class ObjectUtilsTest {
         assertFalse(ObjectUtils.notEqual(object1, object2));
     }
 
-//    @Test
-//    void testCloneIfPossible_withCloneableInterface_shouldReturnClone() {
-//        // Arrange
-//        CloneableClass obj = new CloneableClass();
-//
-//        // Act
-//        CloneableClass clone = objectUtils.cloneIfPossible(obj);
-//
-//        // Assert
-//        assertNotSame(obj, clone);
-//        assertEquals(obj, clone);
-//    }
-//
-//    @Test
-//    void testCloneIfPossible_withNonCloneableInterface_shouldReturnSameObject() {
-//        // Arrange
-//        NonCloneableClass obj = new NonCloneableClass();
-//
-//        // Act
-//        NonCloneableClass clone = objectUtils.cloneIfPossible(obj);
-//
-//        // Assert
-//        assertSame(obj, clone);
-//    }
 
     @Test
     void testCloneIfPossible_withNullObject_shouldReturnNull() {
@@ -1069,30 +818,6 @@ public class ObjectUtilsTest {
         assertEquals(obj, clone);
     }
 
-//    @Test
-//    void testCloneIfPossible_withCustomCloneableClass_shouldReturnClone() {
-//        // Arrange
-//        CustomCloneableClass obj = new CustomCloneableClass();
-//
-//        // Act
-//        CustomCloneableClass clone = objectUtils.cloneIfPossible(obj);
-//
-//        // Assert
-//        assertNotSame(obj, clone);
-//        assertEquals(obj, clone);
-//    }
-//
-//    @Test
-//    void testCloneIfPossible_withCustomNonCloneableClass_shouldReturnSameObject() {
-//        // Arrange
-//        CustomNonCloneableClass obj = new CustomNonCloneableClass();
-//
-//        // Act
-//        CustomNonCloneableClass clone = objectUtils.cloneIfPossible(obj);
-//
-//        // Assert
-//        assertSame(obj, clone);
-//    }
 
     @Test
     @DisplayName("should return null for null input")
@@ -1130,12 +855,6 @@ public class ObjectUtilsTest {
         assertEquals(5, ObjectUtils.max(-1, -3, 5));
     }
 
-//    @Test
-//    @DisplayName("should return the maximum value for non-null input with mixed integer and floating-point values")
-//    void testMaxWithMixedIntegerAndFloatingPointValues() {
-//        assertEquals(5.5, ObjectUtils.max(2.3, 5.5, 4));
-//    }
-
     @Test
     void testAllNull_withNullValues_shouldReturnTrue() {
         assertTrue(ObjectUtils.allNull((Object[]) null));
@@ -1161,44 +880,10 @@ public class ObjectUtilsTest {
         assertFalse(ObjectUtils.allNull(null, "test", null));
     }
 
-    //@Test
-    void testAllNull_withArrayContainingNullObject_shouldReturnFalse() {
-        assertFalse(ObjectUtils.allNull(new Object[]{null}));
-    }
-
     @Test
     void testAllNull_withArrayContainingNonNullObject_shouldReturnFalse() {
         assertFalse(ObjectUtils.allNull(new Object[]{"test"}));
     }
-
-//    @Test
-//    void testGetFirstNonNull() {
-//        // Test case 1: No suppliers provided, expect null
-//        assertNull(ObjectUtils.getFirstNonNull());
-//
-//        // Test case 2: Single supplier returns null, expect null
-//        Supplier<String> supplier1 = () -> null;
-//        assertNull(ObjectUtils.getFirstNonNull(supplier1));
-//
-//        // Test case 3: Single supplier returns non-null value, expect the value
-//        Supplier<String> supplier2 = () -> "Hello";
-//        assertEquals("Hello", ObjectUtils.getFirstNonNull(supplier2));
-//
-//        // Test case 4: Multiple suppliers, first supplier returns non-null value, expect the value
-//        Supplier<String> supplier3 = () -> "Hello";
-//        Supplier<String> supplier4 = () -> "World";
-//        assertEquals("Hello", ObjectUtils.getFirstNonNull(supplier3, supplier4));
-//
-//        // Test case 5: Multiple suppliers, all suppliers return null, expect null
-//        Supplier<String> supplier5 = () -> null;
-//        Supplier<String> supplier6 = () -> null;
-//        assertNull(ObjectUtils.getFirstNonNull(supplier5, supplier6));
-//
-//        // Test case 6: Multiple suppliers, first supplier returns null, second supplier returns non-null value, expect the value
-//        Supplier<String> supplier7 = () -> null;
-//        Supplier<String> supplier8 = () -> "World";
-//        assertEquals("World", ObjectUtils.getFirstNonNull(supplier7, supplier8));
-//    }
 
     @Test
     public void testCONSTBoolean() {
@@ -1309,13 +994,6 @@ public class ObjectUtilsTest {
         assertNull(ObjectUtils.clone(null));
     }
 
-    // @Test
-    void testClone_shouldReturnSameInstanceForNonCloneableObjects() {
-        Object obj = new Object();
-        Object clonedObj = ObjectUtils.clone(obj);
-        assertSame(obj, clonedObj);
-    }
-
     @Test
     void testClone_shouldReturnClonedArrayForArray() {
         int[] arr = new int[]{1, 2, 3};
@@ -1324,29 +1002,6 @@ public class ObjectUtilsTest {
         assertNotSame(arr, clonedArr);
     }
 
-//    @Test
-//    void testClone_shouldReturnClonedObjectForCloneableObjects() {
-//        CloneableObject obj = new CloneableObject();
-//        CloneableObject clonedObj = ObjectUtils.clone(obj);
-//        assertNotNull(clonedObj);
-//        assertNotSame(obj, clonedObj);
-//        assertEquals(obj.getValue(), clonedObj.getValue());
-//    }
-//
-//    @Test
-//    void testClone_shouldThrowCloneFailedExceptionForNonCloneableTypes() {
-//        assertThrows(CloneFailedException.class, () -> ObjectUtils.clone(new NonCloneableObject()));
-//    }
-//
-//    @Test
-//    void testClone_shouldThrowCloneFailedExceptionForInaccessibleCloneMethod() {
-//        assertThrows(CloneFailedException.class, () -> ObjectUtils.clone(new InaccessibleCloneableObject()));
-//    }
-//
-//    @Test
-//    void testClone_shouldThrowCloneFailedExceptionForExceptionInCloneMethod() {
-//        assertThrows(CloneFailedException.class, () -> ObjectUtils.clone(new ExceptionInCloneMethodObject()));
-//    }
 
     @Test
     @DisplayName("Should return the provided value unchanged")
@@ -1401,14 +1056,6 @@ public class ObjectUtilsTest {
         assertDoesNotThrow(() -> ObjectUtils.CONST_SHORT(value));
     }
 
-    //@Test
-    public void testHashCodeHex_NullObject_ReturnsNull() {
-        Object object = null;
-
-        String result = objectUtils.hashCodeHex(object);
-
-        assertEquals(null, result);
-    }
 
     @Test
     public void testHashCodeHex_NonNullObject_ReturnsHexadecimalString() {
@@ -1443,31 +1090,6 @@ public class ObjectUtilsTest {
         assertEquals(Integer.toHexString(object1.hashCode()), result1);
         assertEquals(Integer.toHexString(object2.hashCode()), result2);
         assertEquals(false, result1.equals(result2));
-    }
-
-//    @Test
-//    public void testHashCodeHex_SameHashCode_ReturnsSameResult() {
-//        Object object1 = new Object();
-//        Object object2 = new Object();
-//
-//        int hashCode = object1.hashCode();
-//        object2.hashCode = hashCode;
-//
-//        String result1 = objectUtils.hashCodeHex(object1);
-//        String result2 = objectUtils.hashCodeHex(object2);
-//
-//        assertEquals(Integer.toHexString(hashCode), result1);
-//        assertEquals(Integer.toHexString(hashCode), result2);
-//        assertEquals(result1, result2);
-//    }
-
-    // @Test
-    public void testHashCodeHex_NullValue_ReturnsNull() {
-        Object object = ObjectUtils.NULL;
-
-        String result = objectUtils.hashCodeHex(object);
-
-        assertEquals(null, result);
     }
 
 
@@ -1729,16 +1351,6 @@ public class ObjectUtilsTest {
         assertFalse(result);
     }
 
-    //@Test
-    @DisplayName("should return false when object has an unsupported type")
-    void shouldReturnFalseWhenObjectHasUnsupportedType() {
-        Object object = new Object();
-
-        boolean result = ObjectUtils.isNotEmpty(object);
-
-        assertFalse(result);
-    }
-
     @Test
     void testAllNotNullWithNullValues() {
         assertFalse(ObjectUtils.allNotNull(null));
@@ -1844,24 +1456,6 @@ public class ObjectUtilsTest {
         assertEquals(expected, actual);
     }
 
-    //@Test
-    @DisplayName("Test toString with Supplier object input")
-    public void testToStringWithSupplierInput() {
-        Supplier<Object> obj = () -> "bat";
-        String expected = "bat";
-        String actual = objectUtils.toString(obj);
-        assertEquals(expected, actual);
-    }
-
-//    @Test
-//    @DisplayName("Test toString with Supplier object input and supplier")
-//    public void testToStringWithSupplierInputAndSupplier() {
-//        Supplier<Object> obj = () -> null;
-//        Supplier<String> supplier = () -> "null";
-//        String expected = "null";
-//        String actual = objectUtils.toString(obj, supplier);
-//        assertEquals(expected, actual);
-//    }
 
     @Test
     void testIsEmpty_Null() {
@@ -2000,69 +1594,5 @@ public class ObjectUtilsTest {
         Integer min = ObjectUtils.min(5);
         assertEquals(5, min);
     }
-//
-//    @Test
-//    void getIfNull_NullObjectAndNullDefaultSupplier_ReturnsNull() {
-//        Object nullObject = null;
-//        Supplier<Object> nullSupplier = null;
-//        Object result = ObjectUtils.getIfNull(nullObject, nullSupplier);
-//        assertNull(result);
-//    }
-//
-//    @Test
-//    void getIfNull_NullObjectAndSupplierReturnsNull_ReturnsNull() {
-//        Object nullObject = null;
-//        Supplier<Object> supplier = () -> null;
-//        Object result = ObjectUtils.getIfNull(nullObject, supplier);
-//        assertNull(result);
-//    }
-//
-//    @Test
-//    void getIfNull_NullObjectAndSupplierReturnsEmptyString_ReturnsEmptyString() {
-//        Object nullObject = null;
-//        Supplier<Object> supplier = () -> "";
-//        Object result = ObjectUtils.getIfNull(nullObject, supplier);
-//        assertEquals("", result);
-//    }
-//
-//    @Test
-//    void getIfNull_NullObjectAndSupplierReturnsZZ_ReturnsZZ() {
-//        Object nullObject = null;
-//        Supplier<Object> supplier = () -> "zz";
-//        Object result = ObjectUtils.getIfNull(nullObject, supplier);
-//        assertEquals("zz", result);
-//    }
-//
-//    @Test
-//    void getIfNull_NonNullObjectAndNullDefaultSupplier_ReturnsObject() {
-//        Object nonNullObject = "abc";
-//        Supplier<Object> nullSupplier = null;
-//        Object result = ObjectUtils.getIfNull(nonNullObject, nullSupplier);
-//        assertEquals("abc", result);
-//    }
-//
-//    @Test
-//    void getIfNull_NonNullObjectAndSupplierReturnsNull_ReturnsObject() {
-//        Object nonNullObject = "abc";
-//        Supplier<Object> supplier = () -> null;
-//        Object result = ObjectUtils.getIfNull(nonNullObject, supplier);
-//        assertEquals("abc", result);
-//    }
-//
-//    @Test
-//    void getIfNull_NonNullObjectAndSupplierReturnsEmptyString_ReturnsObject() {
-//        Object nonNullObject = "abc";
-//        Supplier<Object> supplier = () -> "";
-//        Object result = ObjectUtils.getIfNull(nonNullObject, supplier);
-//        assertEquals("abc", result);
-//    }
-//
-//    @Test
-//    void getIfNull_NonNullObjectAndSupplierReturnsZZ_ReturnsObject() {
-//        Object nonNullObject = "abc";
-//        Supplier<Object> supplier = () -> "zz";
-//        Object result = ObjectUtils.getIfNull(nonNullObject, supplier);
-//        assertEquals("abc", result);
-//    }
 
 }

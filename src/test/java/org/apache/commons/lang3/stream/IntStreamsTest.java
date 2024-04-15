@@ -32,50 +32,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.stream.IntStream;
 
 public class IntStreamsTest {
-    //@Test
-    void testRangeClosedWithPositiveNumber() {
-        int endInclusive = 5;
-        IntStream result = IntStreams.rangeClosed(endInclusive);
-        assertNotNull(result);
-        assertEquals(endInclusive + 1, result.count());
-        assertTrue(result.allMatch(n -> n >= 0 && n <= endInclusive));
-    }
 
-    //@Test
-    void testRangeClosedWithZero() {
-        int endInclusive = 0;
-        IntStream result = IntStreams.rangeClosed(endInclusive);
-        assertNotNull(result);
-        assertEquals(endInclusive + 1, result.count());
-        assertTrue(result.allMatch(n -> n >= 0 && n <= endInclusive));
-    }
-
-    //@Test
-    void testRangeClosedWithNegativeNumber() {
-        int endInclusive = -5;
-        IntStream result = IntStreams.rangeClosed(endInclusive);
-        assertNotNull(result);
-        assertEquals(Math.abs(endInclusive) + 1, result.count());
-        assertTrue(result.allMatch(n -> n >= endInclusive && n <= 0));
-    }
-    
-    //@Test
-    void testRangeClosedWithMaxInt() {
-        int endInclusive = Integer.MAX_VALUE;
-        IntStream result = IntStreams.rangeClosed(endInclusive);
-        assertNotNull(result);
-        assertEquals(endInclusive + 1, result.count());
-        assertTrue(result.allMatch(n -> n >= 0 && n <= endInclusive));
-    }
-    
-    //@Test
-    void testRangeClosedWithMinInt() {
-        int endInclusive = Integer.MIN_VALUE;
-        IntStream result = IntStreams.rangeClosed(endInclusive);
-        assertNotNull(result);
-        assertEquals(Math.abs(endInclusive) + 1, result.count());
-        assertTrue(result.allMatch(n -> n >= endInclusive && n <= 0));
-    }
     @Test
     @DisplayName("Testing range method with endExclusive = 0")
     void testRangeWithZeroEndExclusive() {
@@ -89,13 +46,6 @@ public class IntStreamsTest {
     void testRangeWithPositiveEndExclusive1(int endExclusive) {
         IntStream result = IntStreams.range(endExclusive);
         assertEquals(endExclusive, result.count());
-    }
-
-    //@ParameterizedTest
-    @ValueSource(ints = {-10, -1})
-    @DisplayName("Testing range method with negative endExclusive")
-    void testRangeWithNegativeEndExclusive2(int endExclusive) {
-        assertThrows(IllegalArgumentException.class, () -> IntStreams.range(endExclusive));
     }
 
 }

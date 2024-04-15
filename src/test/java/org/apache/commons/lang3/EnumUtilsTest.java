@@ -60,19 +60,6 @@ public class EnumUtilsTest {
         });
     }
 
-    //@Test
-    void testIsValidEnumIgnoreCase_EmptyEnumClass_ThrowsIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            EnumUtils.isValidEnumIgnoreCase(EmptyEnum.class, "VALUE1");
-        });
-    }
-
-//    @Test
-//    void testIsValidEnumIgnoreCase_EnumClassNotDefined_ThrowsIllegalArgumentException() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            EnumUtils.isValidEnumIgnoreCase(NonEnumClass.class, "VALUE1");
-//        });
-//    }
 
     @Test
     void testIsValidEnumIgnoreCase_DifferentCasing_ReturnsTrue() {
@@ -84,37 +71,12 @@ public class EnumUtilsTest {
         assertFalse(EnumUtils.isValidEnumIgnoreCase(TestEnum.class, "V@LUE1"));
     }
 
-//    @Test
-//    void testIsValidEnumIgnoreCase_NullElementsInEnum_ThrowsNullPointerException() {
-//        assertThrows(NullPointerException.class, () -> {
-//            EnumUtils.isValidEnumIgnoreCase(NullElementsEnum.class, "VALUE1");
-//        });
-//    }
 
     @Test
     void testIsValidEnumIgnoreCase_ValidEnumNameInEmptyEnum_ReturnsFalse() {
         assertFalse(EnumUtils.isValidEnumIgnoreCase(EmptyEnum.class, "VALUE1"));
     }
 
-//    @Test
-//    void testIsValidEnumIgnoreCase_ValidEnumNameInNonEnumClass_ReturnsFalse() {
-//        assertFalse(EnumUtils.isValidEnumIgnoreCase(NonEnumClass.class, "VALUE1"));
-//    }
-
-//    @Test
-//    @DisplayName("should return true for valid enum names")
-//    void shouldReturnTrueForValidEnumNames1() {
-//        String enumName = enumValue.name();
-//        boolean isValid = EnumUtils.isValidEnum(EnumClass.class, enumName);
-//        Assertions.assertTrue(isValid);
-//    }
-//
-//    @Test
-//    @DisplayName("should return false for invalid enum names")
-//    void shouldReturnFalseForInvalidEnumNames(String enumName) {
-//        boolean isValid = EnumUtils.isValidEnum(EnumClass.class, enumName);
-//        Assertions.assertFalse(isValid);
-//    }
 
     @Test
     @DisplayName("should return false for null enum name")
@@ -270,24 +232,6 @@ public class EnumUtilsTest {
         assertTrue(result.isEmpty());
     }
 
-    //@Test
-    void processBitVectors_shouldReturnEmptySet_whenValuesIsNull() {
-        EnumSet result = EnumUtils.processBitVectors(TestEnum.class, null);
-        assertTrue(result.isEmpty());
-    }
-
-    //@Test
-    void processBitVectors_shouldReturnEmptySet_whenEnumClassIsNotDefined() {
-        EnumSet result = EnumUtils.processBitVectors(null, 1L);
-        assertTrue(result.isEmpty());
-    }
-//
-//    @Test
-//    void processBitVectors_shouldReturnEmptySet_whenEnumClassIsNotEnumType() {
-//        EnumSet result = EnumUtils.processBitVectors(String.class, 1L);
-//        assertTrue(result.isEmpty());
-//    }
-
     @Test
     void processBitVectors_shouldReturnEmptySet_whenValuesDoNotRepresentAnyEnumValues() {
         EnumSet result = EnumUtils.processBitVectors(TestEnum.class, 0L);
@@ -305,13 +249,6 @@ public class EnumUtilsTest {
     void processBitVectors_shouldReturnSetWithAllEnumValues_whenValueRepresentsAllEnumValues() {
         EnumSet result = EnumUtils.processBitVectors(TestEnum.class, 3L);
         assertTrue(result.contains(TestEnum.VALUE1));
-        assertTrue(result.contains(TestEnum.VALUE2));
-    }
-
-    //@Test
-    void processBitVectors_shouldReturnSetWithEnumValue_whenValueRepresentsEnumValueWithLargerOrdinal() {
-        EnumSet result = EnumUtils.processBitVectors(TestEnum.class, 4L);
-        assertFalse(result.contains(TestEnum.VALUE1));
         assertTrue(result.contains(TestEnum.VALUE2));
     }
 
@@ -343,15 +280,6 @@ public class EnumUtilsTest {
         assertArrayEquals(new long[]{6L}, bitVectors);
     }
 
-//    @Test
-//    @DisplayName("should throw NullPointerException if enumClass is null")
-//    void shouldThrowNullPointerExceptionIfEnumClassIsNull() {
-//        // Arrange
-//        Enum<TestEnum> enumClass = null;
-//
-//        // Act and Assert
-//        assertThrows(NullPointerException.class, () -> EnumUtils.generateBitVectors(enumClass, TestEnum.VALUE1));
-//    }
 
     @Test
     @DisplayName("should throw NullPointerException if values is null")
@@ -363,16 +291,6 @@ public class EnumUtilsTest {
         assertThrows(NullPointerException.class, () -> EnumUtils.generateBitVectors(TestEnum.class, values));
     }
 
-//    @Test
-//    @DisplayName("should throw IllegalArgumentException if enumClass is not an enum class")
-//    void shouldThrowIllegalArgumentExceptionIfEnumClassIsNotEnumClass() {
-//        // Arrange
-//        class NotAnEnumClass {
-//        }
-//
-//        // Act and Assert
-//        assertThrows(IllegalArgumentException.class, () -> EnumUtils.generateBitVectors(NotAnEnumClass.class, TestEnum.VALUE1));
-//    }
 
     @Test
     @DisplayName("should throw IllegalArgumentException if any value is null")
@@ -417,104 +335,12 @@ public class EnumUtilsTest {
         Assertions.assertEquals(TestEnum.VALUE2, result);
     }
 
-    //@Test
-    void testProcessBitVector() {
-        // Test for a valid bit vector representing an empty set
-        EnumSet<EnumClass> result1 = EnumUtils.processBitVector(EnumClass.class, 0L);
-        assertTrue(result1.isEmpty());
-
-        // Test for a valid bit vector representing a set with one enum value
-        EnumSet<EnumClass> result2 = EnumUtils.processBitVector(EnumClass.class, 1L);
-        assertTrue(result2.contains(EnumClass.VALUE1));
-        assertEquals(1, result2.size());
-
-        // Test for a valid bit vector representing a set with multiple enum values
-        EnumSet<EnumClass> result3 = EnumUtils.processBitVector(EnumClass.class, 7L);
-        assertTrue(result3.contains(EnumClass.VALUE1));
-        assertTrue(result3.contains(EnumClass.VALUE2));
-        assertTrue(result3.contains(EnumClass.VALUE3));
-        assertEquals(3, result3.size());
-
-        // Test for a valid bit vector representing a set with all enum values
-        EnumSet<EnumClass> result4 = EnumUtils.processBitVector(EnumClass.class, 15L);
-        assertTrue(result4.contains(EnumClass.VALUE1));
-        assertTrue(result4.contains(EnumClass.VALUE2));
-        assertTrue(result4.contains(EnumClass.VALUE3));
-        assertTrue(result4.contains(EnumClass.VALUE4));
-        assertEquals(4, result4.size());
-
-        // Test for a valid bit vector representing a set with the maximum number of enum values
-        EnumSet<EnumClass> result5 = EnumUtils.processBitVector(EnumClass.class, 4294967295L);
-        assertEquals(EnumClass.values().length, result5.size());
-
-        // Test for a valid bit vector representing a set with no enum values
-        EnumSet<EnumClass> result6 = EnumUtils.processBitVector(EnumClass.class, -1L);
-        assertTrue(result6.isEmpty());
-
-        // Test for a valid bit vector representing a set with an enum value that is not in the enum class
-        EnumSet<EnumClass> result7 = EnumUtils.processBitVector(EnumClass.class, 8L);
-        assertFalse(result7.contains(EnumClass.VALUE1));
-        assertFalse(result7.contains(EnumClass.VALUE2));
-        assertFalse(result7.contains(EnumClass.VALUE3));
-        assertFalse(result7.contains(EnumClass.VALUE4));
-        assertEquals(0, result7.size());
-
-        // Test for a null enum class
-        assertThrows(NullPointerException.class, () -> EnumUtils.processBitVector(null, 1L));
-
-        // Test for an enum class with more than 64 values
-        //assertThrows(IllegalArgumentException.class, () -> EnumUtils.processBitVector(EnumClassWithTooManyValues.class, 1L));
-    }
 
     // Define the enum class for testing
     enum EnumClass {
         VALUE1, VALUE2, VALUE3, VALUE4
     }
 
-//    @Test
-//    void generateBitVector_withEnumClassAndValues_shouldReturnBitVector() {
-//        // Arrange
-//        EnumUtilsTestEnum[] values = EnumUtilsTestEnum.values();
-//
-//        // Act
-//        long bitVector = EnumUtils.generateBitVector(EnumUtilsTestEnum.class, values);
-//
-//        // Assert
-//        Assertions.assertTrue(bitVector > 0);
-//    }
-//
-//    @Test
-//    void generateBitVector_withEnumClassAndEmptyValues_shouldReturnZero() {
-//        // Arrange
-//        EnumUtilsTestEnum[] values = {};
-//
-//        // Act
-//        long bitVector = EnumUtils.generateBitVector(EnumUtilsTestEnum.class, values);
-//
-//        // Assert
-//        Assertions.assertEquals(0, bitVector);
-//    }
-//
-//    @Test
-//    void generateBitVector_withEnumClassAndNullValues_shouldThrowNullPointerException() {
-//        // Arrange
-//        EnumUtilsTestEnum[] values = null;
-//
-//        // Act & Assert
-//        Assertions.assertThrows(NullPointerException.class, () -> EnumUtils.generateBitVector(EnumUtilsTestEnum.class, values));
-//    }
-//
-//    @Test
-//    void generateBitVector_withEnumClassAndValuesExceeding64_shouldThrowIllegalArgumentException() {
-//        // Arrange
-//        EnumUtilsTestEnum[] values = EnumUtilsTestEnum.values();
-//        EnumUtilsTestEnum[] valuesExceeding64 = new EnumUtilsTestEnum[values.length + 1];
-//        System.arraycopy(values, 0, valuesExceeding64, 0, values.length);
-//        valuesExceeding64[values.length] = EnumUtilsTestEnum.EXTRA_VALUE;
-//
-//        // Act & Assert
-//        Assertions.assertThrows(IllegalArgumentException.class, () -> EnumUtils.generateBitVector(EnumUtilsTestEnum.class, valuesExceeding64));
-//    }
 
     @Test
     void testGetEnumMap() {
@@ -551,99 +377,5 @@ public class EnumUtilsTest {
         VALUE1, VALUE2, VALUE3;
     }
 
-//    @Test
-//    void testGetEnumList_ReturnsList() {
-//        List<TestEnum> enumList = enumUtils.getEnumList(enumClass);
-//        assertNotNull(enumList);
-//        assertTrue(enumList instanceof List);
-//    }
-//
-//    @Test
-//    void testGetEnumList_ReturnsCorrectSize() {
-//        List<TestEnum> enumList = enumUtils.getEnumList(enumClass);
-//        assertEquals(TestEnum.values().length, enumList.size());
-//    }
-//
-//    @Test
-//    void testGetEnumList_ReturnsCorrectElements() {
-//        List<TestEnum> enumList = enumUtils.getEnumList(enumClass);
-//        List<TestEnum> expectedList = Arrays.asList(TestEnum.values());
-//        assertEquals(expectedList, enumList);
-//    }
-//
-//    @Test
-//    void testGetEnumList_ReturnsModifiableList() {
-//        List<TestEnum> enumList = enumUtils.getEnumList(enumClass);
-//        enumList.add(TestEnum.EXTRA_ENUM);
-//        assertTrue(enumList.contains(TestEnum.EXTRA_ENUM));
-//    }
-//
-//    @Test
-//    void testGetEnumList_ThrowsExceptionWhenNullEnumClass() {
-//        assertThrows(NullPointerException.class, () -> {
-//            enumUtils.getEnumList(null);
-//        });
-//    }
-//
-//    @Test
-//    void testGetEnumList_ThrowsExceptionWhenNonEnumClass() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            enumUtils.getEnumList(String.class);
-//        });
-//    }
-//
-//    @Test
-//    void testGetFirstEnumIgnoreCase_EnumNameNull() {
-//        TestEnum result = EnumUtils.getFirstEnumIgnoreCase(TestEnum.class, null, enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_1, result);
-//    }
-//
-//    @Test
-//    void testGetFirstEnumIgnoreCase_EnumClassNull() {
-//        TestEnum result = EnumUtils.getFirstEnumIgnoreCase(null, "ENUM_1", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_1, result);
-//    }
-//
-//    @Test
-//    void testGetFirstEnumIgnoreCase_EnumNameEmpty() {
-//        TestEnum result = EnumUtils.getFirstEnumIgnoreCase(TestEnum.class, "", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_1, result);
-//    }
-//
-//    @Test
-//    void testGetFirstEnumIgnoreCase_EnumClassNotEnum() {
-//        TestEnum result = EnumUtils.getFirstEnumIgnoreCase(String.class, "ENUM_1", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_1, result);
-//    }
-//
-//    @Test
-//    void testGetFirstEnumIgnoreCase_EnumNameNotFound() {
-//        TestEnum result = EnumUtils.getFirstEnumIgnoreCase(TestEnum.class, "ENUM_4", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_1, result);
-//    }
-//
-//    @Test
-//    void testGetFirstEnumIgnoreCase_EnumNameFound() {
-//        TestEnum result = EnumUtils.getFirstEnumIgnoreCase(TestEnum.class, "ENUM_2", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_2, result);
-//    }
-//
-//    @Test
-//    void testGetFirstEnumIgnoreCase_EnumNameIgnoreCaseFound() {
-//        TestEnum result = EnumUtils.getFirstEnumIgnoreCase(TestEnum.class, "enum_3", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_3, result);
-//    }
-//
-//    @Test
-//    void testGetFirstEnumIgnoreCase_AllEnums() {
-//        TestEnum result = EnumUtils.getFirstEnumIgnoreCase(TestEnum.class, "ENUM_2", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_2, result);
-//
-//        result = EnumUtils.getFirstEnumIgnoreCase(TestEnum.class, "ENUM_1", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_1, result);
-//
-//        result = EnumUtils.getFirstEnumIgnoreCase(TestEnum.class, "ENUM_3", enumToString, TestEnum.ENUM_1);
-//        Assertions.assertEquals(TestEnum.ENUM_3, result);
-//    }
 
 }

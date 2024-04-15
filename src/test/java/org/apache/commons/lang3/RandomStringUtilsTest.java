@@ -71,22 +71,7 @@ public class RandomStringUtilsTest {
         String result = RandomStringUtils.randomNumeric(minLength, maxLength);
         assertTrue(result.length() >= minLength && result.length() < maxLength);
     }
-//    @Test
-//    void testRandomAsciiWithCount() {
-//        String randomString = RandomStringUtils.randomAscii(5);
-//        assertNotNull(randomString);
-//        assertEquals(5, randomString.length());
-//        assertTrue(isAscii(randomString));
-//    }
-//
-//    @Test
-//    void testRandomAsciiWithMinMax() {
-//        String randomString = RandomStringUtils.randomAscii(3, 8);
-//        assertNotNull(randomString);
-//        assertTrue(randomString.length() >= 3 && randomString.length() < 8);
-//        assertTrue(isAscii(randomString));
-//    }
-    
+
     @Test
     void testRandomAsciiWithNegativeCount() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -100,82 +85,6 @@ public class RandomStringUtilsTest {
             RandomStringUtils.randomAscii(8, 3);
         });
     }
-//    @Test
-//    void testRandomAlphabeticWithNegativeCount() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            randomStringUtils.randomAlphabetic(-1);
-//        });
-//    }
-//
-//    @Test
-//    void testRandomAlphabeticWithCountZero() {
-//        String randomString = randomStringUtils.randomAlphabetic(0);
-//        assertEquals("", randomString);
-//    }
-//
-//    @Test
-//    void testRandomAlphabeticWithCountOne() {
-//        String randomString = randomStringUtils.randomAlphabetic(1);
-//        assertTrue(Character.isLetter(randomString.charAt(0)));
-//    }
-////
-//    @Test
-//    void testRandomAlphabeticWithCountTen() {
-//        String randomString = randomStringUtils.randomAlphabetic(10);
-//        assertEquals(10, randomString.length());
-//        assertTrue(randomString.matches("[a-zA-Z]+"));
-//    }
-//
-//    @Test
-//    void testRandomAlphabeticWithNegativeMinLengthAndPositiveMaxLength() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            randomStringUtils.randomAlphabetic(-1, 10);
-//        });
-//    }
-//
-//    @Test
-//    void testRandomAlphabeticWithMinLengthZeroAndMaxLengthOne() {
-//        String randomString = randomStringUtils.randomAlphabetic(0, 1);
-//        assertTrue(randomString.length() >= 0 && randomString.length() < 1);
-//        assertTrue(randomString.matches("[a-zA-Z]*"));
-//    }
-//
-//    @Test
-//    void testRandomAlphabeticWithMinLengthOneAndMaxLengthOne() {
-//        String randomString = randomStringUtils.randomAlphabetic(1, 1);
-//        assertEquals(1, randomString.length());
-//        assertTrue(Character.isLetter(randomString.charAt(0)));
-//    }
-//
-//    @Test
-//    void testRandomAlphabeticWithMinLengthTenAndMaxLengthTwenty() {
-//        String randomString = randomStringUtils.randomAlphabetic(10, 20);
-//        assertTrue(randomString.length() >= 10 && randomString.length() < 20);
-//        assertTrue(randomString.matches("[a-zA-Z]+"));
-//    }
-//
-//    @Test
-//    void testRandomAlphabeticWithMinLengthAndMaxLengthEqual() {
-//        String randomString = randomStringUtils.randomAlphabetic(5, 5);
-//        assertEquals(5, randomString.length());
-//        assertTrue(randomString.matches("[a-zA-Z]+"));
-//    }
-//
-//    @Test
-//    void testRandomAlphabeticWithMinLengthGreaterThanMaxLength() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            randomStringUtils.randomAlphabetic(10, 5);
-//        });
-//    }
-////
-//    @Test
-//    void testRandomAlphabeticUniqueness() {
-//        HashSet<String> randomStrings = new HashSet<>();
-//        for (int i = 0; i < 100; i++) {
-//            String randomString = randomStringUtils.randomAlphabetic(10);
-//            assertTrue(randomStrings.add(randomString));
-//        }
-//    }
     @Test
     @DisplayName("Test randomAlphanumeric with positive count")
     void testRandomAlphanumericPositiveCount() {

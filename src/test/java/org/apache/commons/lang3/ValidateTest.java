@@ -111,13 +111,6 @@ public class ValidateTest {
         assertEquals("Custom message", exception.getMessage());
     }
 
-    //@Test
-    void isTrue_shouldThrowExceptionWithCustomMessageAndDoubleValue_whenExpressionIsFalse() {
-        double value = 10.5;
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> validate.isTrue(false, "Value is %f", value));
-        assertEquals("Value is 10.5", exception.getMessage());
-    }
-
     @Test
     void isTrue_shouldThrowExceptionWithCustomMessageAndLongValue_whenExpressionIsFalse() {
         long value = 100;
@@ -399,66 +392,6 @@ public class ValidateTest {
     }
 
 
-//    @Test
-//    void testToSupplier() {
-//        // Test with no values
-//        Supplier<String> supplier1 = validate.toSupplier("Test message");
-//        assertEquals("Test message", supplier1.get());
-//
-//        // Test with one value
-//        Supplier<String> supplier2 = validate.toSupplier("Value: %d", 10);
-//        assertEquals("Value: 10", supplier2.get());
-//
-//        // Test with multiple values
-//        Supplier<String> supplier3 = validate.toSupplier("Name: %s, Age: %d", "John", 25);
-//        assertEquals("Name: John, Age: 25", supplier3.get());
-//
-//        // Test with empty message
-//        Supplier<String> supplier4 = validate.toSupplier("", 100);
-//        assertEquals("", supplier4.get());
-//    }
-
-    // Test function 1
-    void shouldNotThrowExceptionWhenTypesAreAssignable() {
-        assertDoesNotThrow(() -> Validate.isAssignableFrom(Object.class, String.class));
-    }
-
-    // Test function 2
-    void shouldNotThrowExceptionWhenTypesAreSame() {
-        assertDoesNotThrow(() -> Validate.isAssignableFrom(Object.class, Object.class));
-    }
-
-    // Test function 3
-    void shouldNotThrowExceptionWhenSuperTypeIsInterface() {
-        assertDoesNotThrow(() -> Validate.isAssignableFrom(List.class, ArrayList.class));
-    }
-
-    // Test function 4
-    void shouldThrowExceptionWhenTypesAreNotAssignable() {
-        assertThrows(IllegalArgumentException.class, () -> Validate.isAssignableFrom(String.class, Object.class));
-    }
-
-    // Test function 5
-    void shouldThrowExceptionWithDefaultMessage() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Validate.isAssignableFrom(String.class, Object.class));
-        assertEquals("Cannot assign a java.lang.Object to a java.lang.String", exception.getMessage());
-    }
-
-    // Test function 6
-    void shouldThrowExceptionWithCustomMessage() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Validate.isAssignableFrom(String.class, Object.class, "Custom message"));
-        assertEquals("Custom message", exception.getMessage());
-    }
-
-    // Test function 7
-    void shouldThrowExceptionWithFormattedCustomMessage() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> Validate.isAssignableFrom(String.class, Object.class, "Expected type: %s, actual: %s", "String", "Object"));
-        assertEquals("Expected type: String, actual: Object", exception.getMessage());
-    }
-
     @Test
     void testMatchesPattern_ValidInputAndPattern() {
     }
@@ -530,12 +463,6 @@ public class ValidateTest {
         });
     }
 
-//    @Test
-//    void isInstanceOf_shouldThrowExceptionWithFormattedCustomMessage_whenObjectIsNotInstanceOfClass() {
-//        assertThrows(IllegalArgumentException.class, () -> {
-//            validate.isInstanceOf(String.class, 123, "Object is not of type %s, actual: %s", String.class, 123.getClass());
-//        });
-//    }
 
     @Test
     void isInstanceOf_shouldNotThrowExceptionWithFormattedCustomMessage_whenObjectIsInstanceOfClass() {
@@ -544,27 +471,6 @@ public class ValidateTest {
         });
     }
 
-//    @Test
-//    void testNotEmptyCollection() {
-//        // Test with non-empty collection
-//        Collection<Integer> collection1 = List.of(1, 2, 3);
-//        assertSame(collection1, Validate.notEmpty(collection1));
-//
-//        // Test with empty collection
-//        Collection<Integer> collection2 = List.of();
-//        assertThrows(IllegalArgumentException.class, () -> Validate.notEmpty(collection2));
-//    }
-//
-//    @Test
-//    void testNotEmptyMap() {
-//        // Test with non-empty map
-//        Map<String, Integer> map1 = Map.of("a", 1, "b", 2);
-//        assertSame(map1, Validate.notEmpty(map1));
-//
-//        // Test with empty map
-//        Map<String, Integer> map2 = Map.of();
-//        assertThrows(IllegalArgumentException.class, () -> Validate.notEmpty(map2));
-//    }
 
     @Test
     void testNotEmptyCharSequence() {
@@ -588,27 +494,6 @@ public class ValidateTest {
         assertThrows(IllegalArgumentException.class, () -> Validate.notEmpty(array2));
     }
 
-//    @Test
-//    void testNotEmptyCollectionWithCustomMessage() {
-//        // Test with non-empty collection
-//        Collection<Integer> collection1 = List.of(1, 2, 3);
-//        assertSame(collection1, Validate.notEmpty(collection1, "Collection must not be empty"));
-//
-//        // Test with empty collection
-//        Collection<Integer> collection2 = List.of();
-//        assertThrows(IllegalArgumentException.class, () -> Validate.notEmpty(collection2, "Collection must not be empty"));
-//    }
-//
-//    @Test
-//    void testNotEmptyMapWithCustomMessage() {
-//        // Test with non-empty map
-//        Map<String, Integer> map1 = Map.of("a", 1, "b", 2);
-//        assertSame(map1, Validate.notEmpty(map1, "Map must not be empty"));
-//
-//        // Test with empty map
-//        Map<String, Integer> map2 = Map.of();
-//        assertThrows(IllegalArgumentException.class, () -> Validate.notEmpty(map2, "Map must not be empty"));
-//    }
 
     @Test
     void testNotEmptyCharSequenceWithCustomMessage() {

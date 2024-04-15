@@ -27,18 +27,6 @@ import org.junit.jupiter.api.*;
 
 public class MutableIntTest {
 
-
-    //@Test
-    void intValue_shouldReturnZeroForDefaultConstructedMutableInt() {
-        assertEquals(0, mutableInt.intValue());
-    }
-
-//    @Test
-//    void intValue_shouldReturnSameValueAsConstructedMutableInt1(int value) {
-//        mutableInt = new MutableInt(value);
-//        assertEquals(value, mutableInt.intValue());
-//    }
-
     @Test
     void intValue_shouldReturnParsedValueFromString() {
         mutableInt = new MutableInt("10");
@@ -77,26 +65,6 @@ public class MutableIntTest {
         mutableInt = new MutableInt(Integer.MAX_VALUE);
         int result = mutableInt.decrementAndGet();
         Assertions.assertEquals(Integer.MAX_VALUE - 1, result);
-    }
-
-    //@Test
-    public void testDecrementAndGetMinValue() {
-        mutableInt = new MutableInt(Integer.MIN_VALUE);
-        int result = mutableInt.decrementAndGet();
-        Assertions.assertEquals(Integer.MIN_VALUE + 1, result);
-    }
-
-
-    //@Test
-    public void testIncrementAndGet() {
-//        assertEquals(1, mutableInt.incrementAndGet());
-    }
-
-    // @Test
-    public void testIncrementAndGet_multipleTimes() {
-        assertEquals(2, mutableInt.incrementAndGet());
-        assertEquals(3, mutableInt.incrementAndGet());
-        assertEquals(4, mutableInt.incrementAndGet());
     }
 
     @Test
@@ -177,42 +145,6 @@ public class MutableIntTest {
     }
 
 
-    // @Test
-    void subtractInt_shouldSubtractIntFromValue() {
-        mutableInt.subtract(5);
-        Assertions.assertEquals(5, mutableInt.getValue());
-    }
-
-    //@Test
-    //void subtractInt_shouldHandleNegativeResult() {
-        ////mutableInt.subtract(15);
-        //Assertions.assertEquals(-5, mutableInt.getValue());
-    // }
-
-    //@Test
-    void subtractNumber_shouldSubtractNumberFromValue() {
-        mutableInt.subtract(NumberUtils.createNumber("5"));
-        Assertions.assertEquals(5, mutableInt.getValue());
-    }
-
-    //@Test
-    void subtractNumber_shouldHandleNegativeResult() {
-        mutableInt.subtract(NumberUtils.createNumber("15"));
-        Assertions.assertEquals(-5, mutableInt.getValue());
-    }
-
-    //@Test
-    void subtractString_shouldSubtractParsedIntFromValue() {
-        mutableInt.subtract(5);
-        Assertions.assertEquals(5, mutableInt.getValue());
-    }
-
-    //@Test
-    void subtractString_shouldHandleNegativeResult() {
-        mutableInt.subtract(15);
-        Assertions.assertEquals(-5, mutableInt.getValue());
-    }
-
     @Test
     void subtractNullInt_shouldThrowNullPointerException() {
         Assertions.assertThrows(NullPointerException.class, () -> mutableInt.subtract((Integer) null));
@@ -223,20 +155,13 @@ public class MutableIntTest {
         Assertions.assertThrows(NullPointerException.class, () -> mutableInt.subtract((Number) null));
     }
 
-    //@Test
-    void subtractNullString_shouldThrowNullPointerException() {
-        Assertions.assertThrows(NullPointerException.class, () -> mutableInt.subtract(Integer.parseInt((String) null)));
-    }
+
 
     @Test
     void subtractInvalidString_shouldThrowNumberFormatException() {
         Assertions.assertThrows(NumberFormatException.class, () -> mutableInt.subtract(Integer.parseInt("abc")));
     }
 
-    //@Test
-    void testFloatValueReturnsZeroForDefaultValue() {
-        assertEquals(0.0f, mutableInt.floatValue());
-    }
 
     @Test
     void testFloatValueReturnsCorrectValueForPositiveNumber() {
@@ -325,93 +250,8 @@ public class MutableIntTest {
     public void testGetAndDecrementInvalidString() {
         // Test logic here
     }
-//
-//    @Test
-//    void testCompareToLessThan() {
-//        Assertions.assertTrue(mutableInt1.compareTo(mutableInt2) < 0);
-//    }
-//
-//    @Test
-//    void testCompareToGreaterThan() {
-//        Assertions.assertTrue(mutableInt2.compareTo(mutableInt1) > 0);
-//    }
-//
-//    @Test
-//    void testCompareToEquals() {
-//        Assertions.assertEquals(0, mutableInt1.compareTo(mutableInt1));
-//    }
-//
-//    @Test
-//    void testCompareToSameValue() {
-//        MutableInt mutableInt3 = new MutableInt(5);
-//        Assertions.assertEquals(0, mutableInt1.compareTo(mutableInt3));
-//    }
-//
-//    @Test
-//    void testCompareToNull() {
-//        Assertions.assertThrows(NullPointerException.class, () -> mutableInt1.compareTo(null));
-//    }
-//
-//    @Test
-//    void testCompareToMaxValue() {
-//        MutableInt mutableInt3 = new MutableInt(Integer.MAX_VALUE);
-//        Assertions.assertTrue(mutableInt1.compareTo(mutableInt3) < 0);
-//    }
-//
-//    @Test
-//    void testCompareToMinValue() {
-//        MutableInt mutableInt3 = new MutableInt(Integer.MIN_VALUE);
-//        Assertions.assertTrue(mutableInt1.compareTo(mutableInt3) > 0);
-//    }
-
 
     private MutableInt mutableInt;
-
-//    @Test
-//    void testGetAndIncrement_DefaultValue() {
-//        mutableInt = new MutableInt();
-//        int result = mutableInt.getAndIncrement();
-//        Assertions.assertEquals(0, result);
-//        Assertions.assertEquals(1, mutableInt.get());
-//    }
-//
-//    @Test
-//    void testGetAndIncrement_WithNumberValue() {
-//        mutableInt = new MutableInt(10L);
-//        int result = mutableInt.getAndIncrement();
-//        Assertions.assertEquals(10, result);
-//        Assertions.assertEquals(11, mutableInt.get());
-//    }
-//
-//    @Test
-//    void testGetAndIncrement_WithStringValue() {
-//        mutableInt = new MutableInt("5");
-//        int result = mutableInt.getAndIncrement();
-//        Assertions.assertEquals(5, result);
-//        Assertions.assertEquals(6, mutableInt.get());
-//    }
-//
-//    @Test
-//    void testGetAndIncrement_ThreadSafety() throws InterruptedException {
-//        mutableInt = new MutableInt();
-//
-//        Runnable incrementRunnable = () -> {
-//            for (int i = 0; i < 1000; i++) {
-//                mutableInt.getAndIncrement();
-//            }
-//        };
-//
-//        Thread thread1 = new Thread(incrementRunnable);
-//        Thread thread2 = new Thread(incrementRunnable);
-//
-//        thread1.start();
-//        thread2.start();
-//
-//        thread1.join();
-//        thread2.join();
-//
-//        Assertions.assertEquals(2000, mutableInt.get());
-//    }
 
 
     @Test
@@ -449,66 +289,6 @@ public class MutableIntTest {
         MutableInt mutableInt1 = new MutableInt(10);
         MutableInt mutableInt2 = new MutableInt(20);
         Assertions.assertFalse(mutableInt1.equals(mutableInt2));
-    }
-
-    //@Test
-    void testAddInt() {
-        mutableInt.add(3);
-        assertEquals(8, mutableInt.getValue());
-    }
-
-    //@Test
-    void testAddIntNegative() {
-        mutableInt.add(-3);
-        assertEquals(2, mutableInt.getValue());
-    }
-
-    //@Test
-    void testAddZero() {
-        mutableInt.add(0);
-        assertEquals(5, mutableInt.getValue());
-    }
-
-    //@Test
-    void testAddMaxValue() {
-        mutableInt.add(Integer.MAX_VALUE);
-        assertEquals(Integer.MIN_VALUE + 4, mutableInt.getValue());
-    }
-
-    //@Test
-    void testAddMinValue() {
-        mutableInt.add(Integer.MIN_VALUE);
-        assertEquals(Integer.MIN_VALUE + 5, mutableInt.getValue());
-    }
-
-    //@Test
-    void testAddNumber() {
-        mutableInt.add(NumberUtils.createNumber("3"));
-        assertEquals(8, mutableInt.getValue());
-    }
-
-    //@Test
-    void testAddNumberNegative() {
-        mutableInt.add(NumberUtils.createNumber("-3"));
-        assertEquals(2, mutableInt.getValue());
-    }
-
-    //@Test
-    void testAddNumberZero() {
-        mutableInt.add(NumberUtils.createNumber("0"));
-        assertEquals(5, mutableInt.getValue());
-    }
-
-    //@Test
-    void testAddNumberMaxValue() {
-        mutableInt.add(NumberUtils.createNumber(String.valueOf(Integer.MAX_VALUE)));
-        assertEquals(Integer.MIN_VALUE + 4, mutableInt.getValue());
-    }
-
-    // @Test
-    void testAddNumberMinValue() {
-        mutableInt.add(NumberUtils.createNumber(String.valueOf(Integer.MIN_VALUE)));
-        assertEquals(Integer.MIN_VALUE + 5, mutableInt.getValue());
     }
 
     @Test
@@ -654,44 +434,11 @@ public class MutableIntTest {
         });
     }
 
-    // @Test
-    public void testSetValue() {
-        mutableInt.setValue(5);
-        Assertions.assertEquals(5, mutableInt.getValue());
-    }
-
-    // @Test
-    public void testSetValueFromNumber() {
-        mutableInt.setValue(NumberUtils.createNumber("10"));
-        Assertions.assertEquals(10, mutableInt.getValue());
-    }
-
-//    @Test
-//    public void testSetValueFromString() {
-//        mutableInt.setValue("15");
-//        Assertions.assertEquals(15, mutableInt.getValue());
-//    }
-
     @Test
     public void testSetValueFromNull() {
         Assertions.assertThrows(NullPointerException.class, () -> {
             mutableInt.setValue(null);
         });
-    }
-
-    //@Test
-    void testDecrement() {
-        // Initial value is zero
-        assertEquals(0, mutableInt.getValue());
-
-        // Decrement once
-        mutableInt.decrement();
-        assertEquals(-1, mutableInt.getValue());
-
-        // Decrement multiple times
-        mutableInt.decrement();
-        mutableInt.decrement();
-        assertEquals(-3, mutableInt.getValue());
     }
 
 
@@ -755,36 +502,6 @@ public class MutableIntTest {
         Assertions.assertEquals(10, mutableInt.getValue());
     }
 
-//    @Test
-//    void testGetAndAdd_String() {
-//        MutableInt mutableInt = new MutableInt(5);
-//
-//        int result = mutableInt.getAndAdd("3");
-//
-//        Assertions.assertEquals(5, result);
-//        Assertions.assertEquals(8, mutableInt.getValue());
-//    }
-//
-//    @Test
-//    void testGetAndAdd_String_negative() {
-//        MutableInt mutableInt = new MutableInt(-2);
-//
-//        int result = mutableInt.getAndAdd("5");
-//
-//        Assertions.assertEquals(-2, result);
-//        Assertions.assertEquals(3, mutableInt.getValue());
-//    }
-//
-//    @Test
-//    void testGetAndAdd_String_zero() {
-//        MutableInt mutableInt = new MutableInt(0);
-//
-//        int result = mutableInt.getAndAdd("10");
-//
-//        Assertions.assertEquals(0, result);
-//        Assertions.assertEquals(10, mutableInt.getValue());
-//    }
-
 
     @Test
     void testGetValueWithDefaultConstructor() {
@@ -804,11 +521,6 @@ public class MutableIntTest {
         Assertions.assertEquals(20, mutableInt.getValue());
     }
 
-    //@Test
-    void testGetValueWithNullValue() {
-        MutableInt mutableInt = new MutableInt((Number) null);
-        Assertions.assertEquals(0, mutableInt.getValue());
-    }
 
     @Test
     public void testToStringWithZero() {
@@ -840,25 +552,11 @@ public class MutableIntTest {
         assertEquals(String.valueOf(Integer.MIN_VALUE), mutableInt.toString());
     }
 
-    //@Test
-    public void testToStringWithNullValue() {
-        mutableInt = new MutableInt((Number) null);
-        assertEquals("0", mutableInt.toString());
-    }
 
     @Test
     public void testToStringWithStringValue() {
         mutableInt = new MutableInt("10");
         assertEquals("10", mutableInt.toString());
-    }
-
-    // @Test
-    public void testToStringWithInvalidStringValue() {
-        try {
-            mutableInt = new MutableInt("abc");
-        } catch (NumberFormatException e) {
-            assertEquals("0", mutableInt.toString());
-        }
     }
 
     @Test
@@ -904,24 +602,6 @@ public class MutableIntTest {
         double result = mutableInt.doubleValue();
 
         assertEquals((double) Integer.MIN_VALUE, result);
-    }
-
-    //@Test
-    @DisplayName("should add operand to the current value and return the new value")
-    void shouldAddOperandAndReturnNewValue1() {
-        int operand = 5;
-        int expected = 5;
-        int actual = mutableInt.addAndGet(operand);
-        assertEquals(expected, actual);
-    }
-
-    //@Test
-    @DisplayName("should add operand to the current value and return the new value")
-    void shouldAddOperandAndReturnNewValue2() {
-        Number operand = 5;
-        int expected = 5;
-        int actual = mutableInt.addAndGet(operand);
-        assertEquals(expected, actual);
     }
 
     @Test

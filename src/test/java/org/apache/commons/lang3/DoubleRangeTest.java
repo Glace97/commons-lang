@@ -36,57 +36,6 @@ public class DoubleRangeTest {
         assertEquals(15.0, result.getMaximum());
     }
 
-    //@Test
-    void testOf_withNullValues_shouldThrowIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            DoubleRange.of(null, 10.0);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            DoubleRange.of(1.0, null);
-        });
-        assertThrows(IllegalArgumentException.class, () -> {
-            DoubleRange.of(null, null);
-        });
-    }
-    
-//    @Test
-//    void testConstructor_withNullValues_shouldThrowNullPointerException() {
-//        assertThrows(NullPointerException.class, () -> {
-//            new DoubleRange(null, 10.0);
-//        });
-//        assertThrows(NullPointerException.class, () -> {
-//            new DoubleRange(1.0, null);
-//        });
-//        assertThrows(NullPointerException.class, () -> {
-//            new DoubleRange(null, null);
-//        });
-//    }
-//
-//    @Test
-//    void testGetMinimum_withRangeInAscendingOrder_shouldReturnCorrectValue() {
-//        assertEquals(1.0, range.getMinimum());
-//    }
-//
-//    @Test
-//    void testGetMinimum_withRangeInDescendingOrder_shouldReturnCorrectValue() {
-//        DoubleRange range = new DoubleRange(10.0, 1.0);
-//        assertEquals(1.0, range.getMinimum());
-//    }
-//
-//    @Test
-//    void testGetMaximum_withRangeInAscendingOrder_shouldReturnCorrectValue() {
-//        assertEquals(10.0, range.getMaximum());
-//    }
-//
-//    @Test
-//    void testGetMaximum_withRangeInDescendingOrder_shouldReturnCorrectValue() {
-//        range = new DoubleRange(10.0, 1.0);
-//        assertEquals(10.0, range.getMaximum());
-//    }
-
-
-    // Manuellt genererrade
-
     @Test
     void testCreationFromInclusive() {
         DoubleRange range = DoubleRange.of(1.0, 5.0);
@@ -95,18 +44,6 @@ public class DoubleRangeTest {
                 () -> assertEquals(5.0, range.getMaximum())
         );
     }
-
-    //@Test
-    void testCreationWithNullValues() {
-        assertThrows(IllegalArgumentException.class, () -> DoubleRange.of(null, 5.0));
-        assertThrows(IllegalArgumentException.class, () -> DoubleRange.of(1.0, null));
-    }
-
-//    @Test
-//    void testCreationWithNullDoubles() {
-//        assertThrows(NullPointerException.class, () -> new DoubleRange(null, 5.0));
-//        assertThrows(NullPointerException.class, () -> new DoubleRange(1.0, null));
-//    }
 
     @Test
     void testEquality() {

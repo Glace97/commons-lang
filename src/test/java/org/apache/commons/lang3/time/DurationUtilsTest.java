@@ -39,10 +39,6 @@ public class DurationUtilsTest {
         durationUtils = new DurationUtils();
     }
 
-    //@Test
-    void accept_NullConsumer_ThrowsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> DurationUtils.accept(null, Duration.ofSeconds(1)));
-    }
 
     @Test
     void accept_NullDuration_DoesNotThrowException() {
@@ -50,41 +46,6 @@ public class DurationUtilsTest {
         }, null));
     }
 
-//    @Test
-//    void accept_ValidConsumerAndDuration_CallsConsumerWithCorrectValues() {
-//        Duration duration = Duration.ofSeconds(2).plusMillis(500).plusNanos(300);
-//        LongRange expectedRange = LongRange.of(0, 2000);
-//        Integer expectedNanos = 300;
-//
-//        DurationUtils.accept((ms, ns) -> {
-//            assertEquals(expectedRange, LongRange.of(ms));
-//            assertEquals(expectedNanos, ns);
-//        }, duration);
-//    }
-//
-//    //    @Test
-//    void accept_DurationWithZeroMillis_CallsConsumerWithZeroMillisAndNanos() {
-//        Duration duration = Duration.ofNanos(500);
-//        LongRange expectedRange = LongRange.of(0);
-//        Integer expectedNanos = 500;
-//
-//        DurationUtils.accept((ms, ns) -> {
-//            assertEquals(expectedRange, LongRange.of(ms));
-//            assertEquals(expectedNanos, ns);
-//        }, duration);
-//    }
-////
-//    @Test
-//    void accept_DurationWithNegativeMillis_CallsConsumerWithNegativeMillisAndNanos() {
-//        Duration duration = Duration.ofMillis(-200).plusNanos(500);
-//        LongRange expectedRange = LongRange.of(-200);
-//        Integer expectedNanos = 500;
-//
-//        DurationUtils.accept((ms, ns) -> {
-//            assertEquals(expectedRange, LongRange.of(ms));
-//            assertEquals(expectedNanos, ns);
-//        }, duration);
-//    }
     @Test
     @DisplayName("should return duration with positive amount")
     void testToDurationWithPositiveAmount() {
@@ -141,16 +102,6 @@ public class DurationUtilsTest {
         assertThrows(NullPointerException.class, () -> durationUtils.toDuration(amount, timeUnit));
     }
 
-    //@Test
-    @DisplayName("should throw IllegalArgumentException when timeUnit has an exact duration")
-    void testToDurationWithInvalidTimeUnit() {
-        // Arrange
-        long amount = 10;
-        TimeUnit timeUnit = TimeUnit.DAYS;
-
-        // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> durationUtils.toDuration(amount, timeUnit));
-    }
 
     // Your Java code here
     //@Test
@@ -175,18 +126,6 @@ public class DurationUtilsTest {
         Assertions.assertThrows(NullPointerException.class, () -> DurationUtils.since(null));
     }
 
-//    @Test
-//    @DisplayName("should return the correct duration when start instant is a future instant")
-//    void shouldReturnCorrectDurationWhenStartInstantIsFutureInstant() {
-//        Instant start = Instant.now().plus(1, ChronoUnit.SECONDS);
-//        Instant now = Instant.now();
-//        Duration expectedDuration = Duration.between(start, now);
-//        // Mocking Instant.now() to return a fixed value
-//        InstantUtils instantUtils = mock(InstantUtils.class);
-//        when(instantUtils.now()).thenReturn(now);
-//        Duration actualDuration = DurationUtils.since(start, instantUtils);
-//        Assertions.assertEquals(expectedDuration, actualDuration);
-//    }
     @Test
     void testIsPositive_WithPositiveDuration_ReturnsTrue() {
         Duration duration = Duration.ofSeconds(10);
@@ -295,47 +234,6 @@ public class DurationUtilsTest {
         assertEquals(Duration.ZERO, result);
     }
 
-    //@Test
-    @DisplayName("should return Duration.ZERO if duration is negative")
-    void shouldReturnDurationZeroIfNegative() {
-        // Arrange
-        Duration duration = Duration.ofSeconds(-10);
-
-        // Act
-        Duration result = DurationUtils.zeroIfNull(duration);
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(Duration.ZERO, result);
-    }
-
-    //@Test
-    @DisplayName("should return Duration.ZERO if duration is greater than maximum allowed long value as seconds")
-    void shouldReturnDurationZeroIfGreaterThanMaxLongValue() {
-        // Arrange
-        Duration duration = Duration.ofSeconds(Long.MAX_VALUE);
-
-        // Act
-        Duration result = DurationUtils.zeroIfNull(duration);
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(Duration.ZERO, result);
-    }
-
-    //@Test
-    @DisplayName("should return Duration.ZERO if duration is less than minimum allowed long value as seconds")
-    void shouldReturnDurationZeroIfLessThanMinLongValue() {
-        // Arrange
-        Duration duration = Duration.ofSeconds(Long.MIN_VALUE);
-
-        // Act
-        Duration result = DurationUtils.zeroIfNull(duration);
-
-        // Assert
-        assertNotNull(result);
-        assertEquals(Duration.ZERO, result);
-    }
 
     @Test
     @DisplayName("Converts a positive duration to int milliseconds")
@@ -455,15 +353,6 @@ public class DurationUtilsTest {
         assertEquals(ChronoUnit.DAYS, result);
     }
 
-    //@Test
-    void shouldThrowIllegalArgumentException() {
-        TimeUnit timeUnit = null;
-        DurationUtils durationUtils = new DurationUtils();
-        assertThrows(IllegalArgumentException.class, () -> {
-            durationUtils.toChronoUnit(timeUnit);
-        });
-    }
-
     @Test
     public void testGetNanosOfMilli_withNullDuration_shouldReturnZero() {
         int result = DurationUtils.getNanosOfMilli(null);
@@ -474,27 +363,6 @@ public class DurationUtilsTest {
     public void testGetNanosOfMilli_withZeroDuration_shouldReturnZero() {
         int result = DurationUtils.getNanosOfMilli(Duration.ZERO);
         assertEquals(0, result);
-    }
-
-    //@Test
-    public void testGetNanosOfMilli_withPositiveDuration_shouldReturnCorrectValue() {
-        Duration duration = Duration.ofSeconds(5).plusNanos(123456789);
-        int result = DurationUtils.getNanosOfMilli(duration);
-        assertEquals(123456, result);
-    }
-
-    //@Test
-    public void testGetNanosOfMilli_withNegativeDuration_shouldReturnCorrectValue() {
-        Duration duration = Duration.ofSeconds(-5).minusNanos(123456789);
-        int result = DurationUtils.getNanosOfMilli(duration);
-        assertEquals(876544, result);
-    }
-
-    //@Test
-    public void testGetNanosOfMilli_withDurationGreaterThanOneSecond_shouldReturnCorrectValue() {
-        Duration duration = Duration.ofSeconds(10).plusNanos(987654321);
-        int result = DurationUtils.getNanosOfMilli(duration);
-        assertEquals(987654, result);
     }
 
     @Test
@@ -518,13 +386,6 @@ public class DurationUtilsTest {
         assertEquals(999999, result);
     }
 
-    //@Test
-    public void testGetNanosOfMilli_withDurationSlightlyGreaterThanOneMillisecond_shouldReturnCorrectValue() {
-        Duration duration = Duration.ofMillis(1).plusNanos(1);
-        int result = DurationUtils.getNanosOfMilli(duration);
-        assertEquals(0, result);
-    }
-
     @Test
     public void testGetNanosOfMilli_withDurationEqualToOneSecond_shouldReturnZero() {
         Duration duration = Duration.ofSeconds(1);
@@ -538,55 +399,6 @@ public class DurationUtilsTest {
         int result = DurationUtils.getNanosOfMilli(duration);
         assertEquals(999_999, result);
     }
-
-    //@Test
-    public void testGetNanosOfMilli_withDurationSlightlyGreaterThanOneSecond_shouldReturnCorrectValue() {
-        Duration duration = Duration.ofSeconds(1).plusNanos(1);
-        int result = DurationUtils.getNanosOfMilli(duration);
-        assertEquals(0, result);
-    }
-
-//    @Test
-//    void testNow() {
-//        Instant result = DurationUtils.now((start) -> {
-//            assertNotNull(start);
-//        });
-//
-//        assertNotNull(result);
-//    }
-//
-//    @Test
-//    void testNowWithDuration() {
-//        Instant start = Instant.now();
-//        Instant result = DurationUtils.now((startTime) -> {
-//            assertNotNull(startTime);
-//            Duration duration = Duration.between(startTime, Instant.now());
-//            assertTrue(duration.getSeconds() >= 0);
-//        });
-//
-//        assertNotNull(result);
-//        Duration duration = Duration.between(start, result);
-//        assertTrue(duration.getSeconds() >= 0);
-//    }
-//
-//    @Test
-//    void testNowWithException() {
-//        assertThrows(TestException.class, () -> {
-//            DurationUtils.now((start) -> {
-//                throw new TestException();
-//            });
-//        });
-//    }
-//
-//    @Test
-//    void testNowWithLongRange() {
-//        Instant result = DurationUtils.now((start) -> {
-//            LongRange longRange = LongRange.of(0L, 100L);
-//            assertTrue(longRange.contains(start.toEpochMilli()));
-//        });
-//
-//        assertNotNull(result);
-//    }
 
     @Test
     void testGetNanosOfMiili() {
@@ -661,28 +473,5 @@ public class DurationUtilsTest {
             });
         });
     }
-
-    //@Test
-    void testSince() {
-        Instant start = Instant.now();
-
-        // Test case 1: End time is after start time
-        Instant end1 = start.plusSeconds(5);
-        Duration duration1 = DurationUtils.since(end1);
-        assertNotNull(duration1);
-        assertTrue(duration1.getSeconds() >= 5);
-
-        // Test case 2: End time is before start time
-        Instant end2 = start.minusSeconds(5);
-        Duration duration2 = DurationUtils.since(end2);
-        assertNotNull(duration2);
-        assertTrue(duration2.getSeconds() <= -5);
-    }
-
-//    @Test
-//    void testNow() {
-//        Instant instant = DurationUtils.now();
-//        assertNotNull(instant);
-//    }
 
 }

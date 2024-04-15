@@ -39,20 +39,6 @@ public class LongRangeTest {
         Assertions.assertEquals(10L, range.getMaximum());
     }
 
-    //@Test
-    void testOfWithNullLong() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            LongRange.of(1L, null);
-        });
-    }
-
-    //@Test
-    void testOfWithNullLongObject() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            LongRange.of(Long.valueOf(1L), null);
-        });
-    }
-    
     @Test
     void testOfWithReversedOrder() {
         LongRange range = LongRange.of(10L, 1L);

@@ -138,13 +138,6 @@ public class ClassPathUtilsTest {
         assertEquals("java.lang.test.txt", result);
     }
 
-//    @Test
-//    void testToFullyQualifiedName_nullContext() {
-//        assertThrows(NullPointerException.class, () -> {
-//            ClassPathUtils.toFullyQualifiedName(null, "test.txt");
-//        });
-//    }
-
     @Test
     void testToFullyQualifiedName_nullResourceName() {
         assertThrows(NullPointerException.class, () -> {

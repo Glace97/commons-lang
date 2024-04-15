@@ -25,10 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import org.junit.jupiter.api.*;
 
 public class MutableTripleTest {
-    //@Test
-    void testGetLeft() {
-        assertEquals("left", triple.getLeft());
-    }
 
     @Test
     void testGetLeft_Null() {
@@ -54,25 +50,6 @@ public class MutableTripleTest {
         assertEquals(3.14, doubleTriple.getLeft());
     }
 
-    //@Test
-    void setMiddle_shouldSetMiddleElement() {
-        assertNull(triple.middle);
-        triple.setMiddle("middle");
-        assertEquals("middle", triple.middle);
-    }
-
-    //@Test
-    void setMiddle_shouldSetMiddleElementToNull() {
-        triple.setMiddle("middle");
-        assertNotNull(triple.middle);
-        triple.setMiddle(null);
-        assertNull(triple.middle);
-    }
-
-    //@Test
-    public void testGetMiddle() {
-        assertEquals("middle", triple.getMiddle());
-    }
 
     @Test
     public void testGetMiddle_Null() {
@@ -117,35 +94,6 @@ public class MutableTripleTest {
         assertThrows(NullPointerException.class, () -> MutableTriple.ofNonNull(1, "two", null));
     }
 
-    //@Test
-    public void testSetLeft() {
-        // Test setting left to null
-        triple.setLeft(null);
-        Assertions.assertNull(triple.left);
-
-        // Test setting left to a non-null value
-        triple.setLeft("newLeft");
-        Assertions.assertEquals("newLeft", triple.left);
-    }
-
-    //@Test
-    public void testSetLeftEdgeCases() {
-        // Test setting left when it is already null
-        triple.setLeft(null);
-        triple.setLeft("newLeft");
-        Assertions.assertEquals("newLeft", triple.left);
-
-        // Test setting left when it is already a non-null value
-        triple.setLeft("left");
-        triple.setLeft("newLeft");
-        Assertions.assertEquals("newLeft", triple.left);
-    }
-    // Your Java code here
-
-
-    private static final Object NULL_OBJECT = null;
-    private static final Object NON_NULL_OBJECT = new Object();
-
     private MutableTriple<Object, Object, Object> triple;
 
     @Test
@@ -180,13 +128,6 @@ public class MutableTripleTest {
         assertSame(emptyArray1, emptyArray2);
     }
 
-//    @Test
-//    void testGetRight() {
-//        Double expected = 3.0;
-//        Double actual = triple.getRight();
-//        assertEquals(expected, actual);
-//    }
-
     @Test
     void testGetRightWithNull() {
         MutableTriple<Integer, String, Double> nullTriple = new MutableTriple<>(1, "two", null);
@@ -198,14 +139,6 @@ public class MutableTripleTest {
         MutableTriple<Integer, String, Double> emptyTriple = new MutableTriple<>();
         assertNull(emptyTriple.getRight());
     }
-
-//    @Test
-//    void testGetRightAfterSetRight() {
-//        Double expected = 4.0;
-//        triple.setRight(4.0);
-//        Double actual = triple.getRight();
-//        assertEquals(expected, actual);
-//    }
 
     @Test
     void testGetRightAfterSetRightWithNull() {

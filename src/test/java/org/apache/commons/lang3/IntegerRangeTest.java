@@ -31,16 +31,6 @@ public class IntegerRangeTest {
         Assertions.assertNotNull(range);
     }
 
-    //@Test
-    void testOf_withNullValues_shouldThrowIllegalArgumentException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            IntegerRange.of(null, 10);
-        });
-        
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            IntegerRange.of(1, null);
-        });
-    }
     
     @Test
     void testOf_withEqualValues_shouldCreateRangeObjectWithSameMinimumAndMaximum() {

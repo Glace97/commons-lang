@@ -40,21 +40,6 @@ public class ThresholdCircuitBreakerTest {
         boolean result = circuitBreaker.checkState();
         assertTrue(result);
     }
-//    @Test
-//    void testCheckStateReturnsFalseWhenThresholdExceeded() {
-//        circuitBreaker = new ThresholdCircuitBreaker(10);
-//        circuitBreaker.used.set(11);
-//        boolean result = circuitBreaker.checkState();
-//        Assertions.assertFalse(result);
-//    }
-//
-//    @Test
-//    void testCheckStateReturnsTrueWhenThresholdEqualsUsed() {
-//        circuitBreaker = new ThresholdCircuitBreaker(10);
-//        circuitBreaker.used.set(10);
-//        boolean result = circuitBreaker.checkState();
-//        Assertions.assertTrue(result);
-//    }
 
     @Test
     void testCheckStateReturnsTrueWhenThresholdSetToZero() {
@@ -160,33 +145,12 @@ public class ThresholdCircuitBreakerTest {
         assertFalse(circuitBreaker.isOpen());
     }
 
-    //@Test
-    void shouldOpenCircuitBreakerWhenThresholdIsExceeded() {
-        circuitBreaker.incrementAndCheckState(10L);
-        assertTrue(circuitBreaker.isOpen());
-    }
-
     @Test
     void shouldNotOpenCircuitBreakerWhenThresholdIsNotExceeded() {
         circuitBreaker.incrementAndCheckState(5L);
         assertFalse(circuitBreaker.isOpen());
     }
 
-    //@Test
-    void shouldReturnTrueWhenCircuitBreakerIsOpen() {
-        circuitBreaker.open();
-
-        boolean result = circuitBreaker.incrementAndCheckState(5L);
-
-        assertTrue(result);
-    }
-
-    //@Test
-    void shouldReturnFalseWhenCircuitBreakerIsClosed() {
-        boolean result = circuitBreaker.incrementAndCheckState(5L);
-
-        assertFalse(result);
-    }
 
     @Test
     @DisplayName("should return the correct threshold value")

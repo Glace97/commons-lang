@@ -28,17 +28,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 public class MutablePairTest {
-//    @Test
-//    void testGetLeft() {
-//        assertEquals("Hello", pair.getLeft());
-//    }
 
-    //@Test
-    void testSetValue() {
-        MutablePair<Object, Object> pair = new MutablePair<>();
-        assertEquals("hello", pair.setValue("world"));
-        assertEquals("world", pair.right);
-    }
 
     @Test
     void testSetValueWithNull() {
@@ -47,12 +37,6 @@ public class MutablePairTest {
         assertNull(pair.right);
     }
 
-    //@Test
-    void testSetValueReturnsOldValue() {
-        MutablePair<Object, Object> pair = new MutablePair<>();
-        assertEquals(1, pair.setValue(2));
-        assertEquals(2, pair.left);
-    }
 
     @Test
     void testSetValueWithEmptyPair() {
@@ -151,14 +135,6 @@ public class MutablePairTest {
         assertEquals(right, pair.right);
     }
 
-//    @Test
-//    void testOfMethodWithMapEntry() {
-//        Map.Entry<String, Integer> entry = Map.entry("left", 10);
-//        MutablePair<String, Integer> pair = MutablePair.of(entry);
-//        assertEquals(entry.getKey(), pair.left);
-//        assertEquals(entry.getValue(), pair.right);
-//    }
-
     @Test
     void testOfMethodWithNullMapEntry() {
         Map.Entry<String, Integer> entry = null;
@@ -197,10 +173,6 @@ public class MutablePairTest {
         assertArrayEquals(MutablePair.EMPTY_ARRAY, emptyArray, "Empty array should be equal to MutablePair.EMPTY_ARRAY");
     }
 
-//    @Test
-//    void testGetRight() {
-//        assertEquals(10, pair.getRight());
-//    }
 
     @Test
     void testGetRightWithNull() {
@@ -228,31 +200,6 @@ public class MutablePairTest {
         assertNull(emptyPair.getRight());
     }
 
-    //@Test
-    void testGetRightAfterSetLeft() {
-        MutablePair<Object, Object> pair = new MutablePair<>();
-        pair.setLeft("new left");
-        assertEquals(10, pair.getRight());
-    }
-
-    //@Test
-    void testGetRightAfterSetLeftWithNull() {
-        MutablePair<Object, Object> pair = new MutablePair<>();
-        pair.setLeft(null);
-        assertEquals(10, pair.getRight());
-    }
-
-    // Felaktig logik?
-//    @Test
-//    void testSetRight() {
-//        MutablePair<String, Integer> pair = new MutablePair<>("left", 10);
-//
-//        assertNull(pair.right);
-//
-//        pair.setRight("right");
-//
-//        assertEquals("right", pair.right);
-//    }
 
     @Test
     void testSetRight_Null() {

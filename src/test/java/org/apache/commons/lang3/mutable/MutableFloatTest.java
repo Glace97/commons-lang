@@ -75,18 +75,6 @@ public class MutableFloatTest {
     }
 
 
-    //@Test
-    public void testDecrementAndGet() {
-        assertEquals(-1.0f, mutableFloat.decrementAndGet());
-    }
-
-    //@Test
-    public void testDecrementAndGetMultipleTimes() {
-        assertEquals(-1.0f, mutableFloat.decrementAndGet());
-        assertEquals(-2.0f, mutableFloat.decrementAndGet());
-        assertEquals(-3.0f, mutableFloat.decrementAndGet());
-    }
-
     @Test
     public void testDecrementAndGetWithPositiveValue() {
         MutableFloat positiveFloat = new MutableFloat(10.0f);
@@ -135,23 +123,7 @@ public class MutableFloatTest {
         assertEquals(Float.NEGATIVE_INFINITY - 1.0f, negativeInfinityFloat.decrementAndGet());
     }
 
-    //@Test
-    public void testIncrementAndGet() {
-        float result = mutableFloat.incrementAndGet();
-        assertEquals(1.0f, result);
-    }
 
-    //@Test
-    public void testIncrementAndGetMultipleTimes() {
-        float result = mutableFloat.incrementAndGet();
-        assertEquals(1.0f, result);
-
-        result = mutableFloat.incrementAndGet();
-        assertEquals(2.0f, result);
-
-        result = mutableFloat.incrementAndGet();
-        assertEquals(3.0f, result);
-    }
 
     @Test
     public void testIncrementAndGetWithNegativeValue() {
@@ -179,13 +151,6 @@ public class MutableFloatTest {
         mutableFloat = new MutableFloat("2.5");
         float result = mutableFloat.incrementAndGet();
         assertEquals(3.5f, result);
-    }
-
-    //@Test
-    public void testIncrementAndGetWithNullValue() {
-        mutableFloat = new MutableFloat((Number) null);
-        float result = mutableFloat.incrementAndGet();
-        assertEquals(1.0f, result);
     }
 
 
@@ -233,41 +198,7 @@ public class MutableFloatTest {
         assertEquals(expectedHashCode, mutableFloat.hashCode());
     }
 
-    //@Test
-    void testSubtractFloat() {
-        mutableFloat.subtract(5.0f);
-        assertEquals(5.0f, mutableFloat.getValue());
-    }
 
-    //@Test
-    void testSubtractNegativeFloat() {
-        mutableFloat.subtract(-5.0f);
-        assertEquals(15.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    void testSubtractZeroFloat() {
-        mutableFloat.subtract(0.0f);
-        assertEquals(10.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    void testSubtractNumber() {
-        mutableFloat.subtract((Number) 5.0f);
-        assertEquals(5.0f, mutableFloat.getValue());
-    }
-
-//    @Test
-//    void testSubtractNegativeNumber() {
-//        mutableFloat.subtract((Number) - 5.0f);
-//        assertEquals(15.0f, mutableFloat.getValue());
-//    }
-
-    //@Test
-    void testSubtractZeroNumber() {
-        mutableFloat.subtract((Number) 0.0f);
-        assertEquals(10.0f, mutableFloat.getValue());
-    }
 
     @Test
     void testFloatValueWithDefaultConstructor() {
@@ -305,11 +236,6 @@ public class MutableFloatTest {
         assertEquals(0.0f, mutableFloat.floatValue());
     }
 
-//    @Test
-//    void testFloatValueWithExtremeValues2(float value) {
-//        MutableFloat mutableFloat = new MutableFloat(value);
-//        assertEquals(value, mutableFloat.floatValue());
-//    }
 
     @Test
     public void testLongValueWithPositiveValue() {
@@ -367,12 +293,6 @@ public class MutableFloatTest {
         assertEquals(Long.MIN_VALUE, result);
     }
 
-    //@Test
-    public void testLongValueWithNullValue() {
-        mutableFloat = new MutableFloat((Number) null);
-        long result = mutableFloat.longValue();
-        assertEquals(0L, result);
-    }
 
     @Test
     public void testLongValueWithStringValue() {
@@ -392,23 +312,6 @@ public class MutableFloatTest {
         }
     }
 
-    //@Test
-    void testGetAndDecrement() {
-        float result = mutableFloat.getAndDecrement();
-        assertEquals(5.0f, result);
-        assertEquals(4.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    void testGetAndDecrementMultipleTimes() {
-        float result1 = mutableFloat.getAndDecrement();
-        float result2 = mutableFloat.getAndDecrement();
-        float result3 = mutableFloat.getAndDecrement();
-        assertEquals(5.0f, result1);
-        assertEquals(4.0f, result2);
-        assertEquals(3.0f, result3);
-        assertEquals(2.0f, mutableFloat.getValue());
-    }
 
     @Test
     void testGetAndDecrementWithNegativeValue() {
@@ -502,16 +405,6 @@ public class MutableFloatTest {
         assertEquals(-0.5f, mutableFloat.getValue());
     }
 
-    //@Test
-    public void testGetAndIncrementWithLargeValue() {
-        MutableFloat mutableFloat = new MutableFloat(Float.MAX_VALUE);
-
-        float result = mutableFloat.getAndIncrement();
-
-        assertEquals(Float.MAX_VALUE, result);
-        assertEquals(Float.POSITIVE_INFINITY, mutableFloat.getValue());
-    }
-
     @Test
     public void testIsNaNReturnsTrueForNaNValue() {
         // test code here
@@ -582,36 +475,6 @@ public class MutableFloatTest {
         // test code here
     }
 
-//    @Test
-//    void testEquals_SameObject() {
-//        assertEquals(mutableFloat1, mutableFloat1);
-//    }
-//
-//    @Test
-//    void testEquals_NullObject() {
-//        assertNotEquals(mutableFloat1, null);
-//    }
-//
-//    @Test
-//    void testEquals_DifferentClass() {
-//        assertNotEquals(mutableFloat1, "Not a MutableFloat object");
-//    }
-//
-//    @Test
-//    void testEquals_EqualValues() {
-//        assertEquals(mutableFloat1, mutableFloat3);
-//    }
-//
-//    @Test
-//    void testEquals_UnequalValues() {
-//        assertNotEquals(mutableFloat1, mutableFloat2);
-//    }
-//
-//    @Test
-//    void testEquals_SameBitPattern() {
-//        MutableFloat mutableFloat4 = new MutableFloat(Float.intBitsToFloat(Float.floatToIntBits(1.0f)));
-//        assertEquals(mutableFloat1, mutableFloat4);
-//    }
 
     @Test
     void testEquals_NaN() {
@@ -624,80 +487,6 @@ public class MutableFloatTest {
         MutableFloat mutableFloat6 = new MutableFloat(0.0f);
         MutableFloat mutableFloat7 = new MutableFloat(-0.0f);
         assertNotEquals(mutableFloat6, mutableFloat7);
-    }
-
-    //@Test
-    public void testAddFloat() {
-        mutableFloat.add(5.0f);
-        assertEquals(5.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testAddFloatNegativeValue() {
-        mutableFloat.add(-2.5f);
-        assertEquals(-2.5f, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testAddFloatZeroValue() {
-        mutableFloat.add(0.0f);
-        assertEquals(0.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testAddFloatLargeValue() {
-        mutableFloat.add(Float.MAX_VALUE);
-        assertEquals(Float.MAX_VALUE, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testAddFloatSmallValue() {
-        mutableFloat.add(Float.MIN_VALUE);
-        assertEquals(Float.MIN_VALUE, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testAddNumber() {
-        mutableFloat.add(5);
-        assertEquals(5.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testAddNumberNegativeValue() {
-        mutableFloat.add(-2.5);
-        assertEquals(-2.5f, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testAddNumberZeroValue() {
-        mutableFloat.add(0);
-        assertEquals(0.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testAddNumberLargeValue() {
-        mutableFloat.add(Double.MAX_VALUE);
-        assertEquals(Double.MAX_VALUE, Optional.ofNullable(mutableFloat.getValue()));
-    }
-
-    //@Test
-    public void testAddNumberSmallValue() {
-        mutableFloat.add(Double.MIN_VALUE);
-        assertEquals(Double.MIN_VALUE, Optional.ofNullable(mutableFloat.getValue()));
-    }
-
-    //@Test
-    public void testIncrement() {
-        mutableFloat.increment();
-        assertEquals(1.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    public void testIncrementMultipleTimes() {
-        mutableFloat.increment();
-        mutableFloat.increment();
-        mutableFloat.increment();
-        assertEquals(3.0f, mutableFloat.getValue());
     }
 
     @Test
@@ -714,12 +503,6 @@ public class MutableFloatTest {
         assertEquals(1.0f, mutableFloat.getValue());
     }
 
-    //@Test
-    public void testIncrementLargeValue() {
-        mutableFloat = new MutableFloat(Float.MAX_VALUE);
-        mutableFloat.increment();
-        assertEquals(Float.POSITIVE_INFINITY, mutableFloat.getValue());
-    }
 
     @Test
     public void testIncrementSmallValue() {
@@ -767,18 +550,6 @@ public class MutableFloatTest {
         assertFalse(mutableFloat.isInfinite());
     }
 
-    //@Test
-    void testSetValue() {
-        mutableFloat.setValue(5.0f);
-        assertEquals(5.0f, mutableFloat.getValue());
-    }
-
-    //@Test
-    void testSetValueFromNumber() {
-        mutableFloat.setValue(10.5f);
-        assertEquals(10.5f, mutableFloat.getValue());
-    }
-
     @Test
     void testSetValueFromNumberNull() {
         assertThrows(NullPointerException.class, () -> {
@@ -786,29 +557,11 @@ public class MutableFloatTest {
         });
     }
 
-    //@Test
-    void testSetValueFromString() {
-        mutableFloat.setValue(Float.parseFloat("15.75"));
-        assertEquals(15.75f, mutableFloat.getValue());
-    }
-
     @Test
     void testSetValueFromStringInvalidFormat() {
         assertThrows(NumberFormatException.class, () -> {
             mutableFloat.setValue(Float.parseFloat("abc"));
         });
-    }
-
-    //@Test
-    void testSetValueFromNegativeNumber() {
-        mutableFloat.setValue(-20.5f);
-        assertEquals(-20.5f, mutableFloat.getValue());
-    }
-
-    //@Test
-    void testSetValueFromZero() {
-        mutableFloat.setValue(0.0f);
-        assertEquals(0.0f, mutableFloat.getValue());
     }
 
     @Test
@@ -823,12 +576,6 @@ public class MutableFloatTest {
         mutableFloat = new MutableFloat(-5.0f);
         mutableFloat.decrement();
         assertEquals(-6.0f, mutableFloat.getValue(), 0.01);
-    }
-
-    //@Test
-    void testDecrementZeroValue() {
-        mutableFloat.decrement();
-        assertEquals(-1.0f, mutableFloat.getValue(), 0.01);
     }
 
     @Test
@@ -851,23 +598,6 @@ public class MutableFloatTest {
         mutableFloat.decrement();
         assertTrue(Float.isNaN(mutableFloat.getValue()));
     }
-
-    //@Test
-    void testDecrementPositiveInfinityValue() {
-        mutableFloat = new MutableFloat(Float.POSITIVE_INFINITY);
-        mutableFloat.decrement();
-        assertTrue(Float.isInfinite(mutableFloat.getValue()));
-        assertTrue(mutableFloat.getValue() < Float.POSITIVE_INFINITY);
-    }
-
-    //@Test
-    void testDecrementNegativeInfinityValue() {
-        mutableFloat = new MutableFloat(Float.NEGATIVE_INFINITY);
-        mutableFloat.decrement();
-        assertTrue(Float.isInfinite(mutableFloat.getValue()));
-        assertTrue(mutableFloat.getValue() > Float.NEGATIVE_INFINITY);
-    }
-
 
     @Test
     public void testGetAndAddFloat() {
@@ -936,12 +666,6 @@ public class MutableFloatTest {
         assertThrows(NullPointerException.class, () -> mutableFloat.getAndAdd(null));
     }
 
-
-    //@Test
-    public void testGetValue_DefaultValue() {
-        assertEquals(0.0f, mutableFloat.getValue());
-    }
-
     @Test
     public void testGetValue_WithInitialValue() {
         float initialValue = 3.14f;
@@ -1003,14 +727,6 @@ public class MutableFloatTest {
         assertEquals(expected, actual);
     }
 
-    //@Test
-    public void testToStringWithNullValue() {
-        MutableFloat mutableFloat = new MutableFloat((Number) null);
-        String expected = "0.0";
-        String actual = mutableFloat.toString();
-        assertEquals(expected, actual);
-    }
-
     @Test
     public void testToStringWithNaNValue() {
         MutableFloat mutableFloat = new MutableFloat(Float.NaN);
@@ -1031,14 +747,6 @@ public class MutableFloatTest {
     public void testToStringWithNegativeInfinityValue() {
         MutableFloat mutableFloat = new MutableFloat(Float.NEGATIVE_INFINITY);
         String expected = "-Infinity";
-        String actual = mutableFloat.toString();
-        assertEquals(expected, actual);
-    }
-
-    //@Test
-    public void testToStringWithLargeValue() {
-        MutableFloat mutableFloat = new MutableFloat(1.23456789e10f);
-        String expected = "12345678900.0";
         String actual = mutableFloat.toString();
         assertEquals(expected, actual);
     }
@@ -1114,18 +822,6 @@ public class MutableFloatTest {
     public void testToFloatWithStringConstructor() {
         MutableFloat mutableFloat = new MutableFloat("3.14");
         assertEquals(3.14f, mutableFloat.toFloat());
-    }
-
-    // @Test
-    public void testToFloatWithNullValue() {
-        MutableFloat mutableFloat = new MutableFloat((Number) null);
-        assertThrows(NullPointerException.class, mutableFloat::toFloat);
-    }
-
-    //@Test
-    public void testToFloatWithInvalidStringValue() {
-        MutableFloat mutableFloat = new MutableFloat("abc");
-        assertThrows(NumberFormatException.class, mutableFloat::toFloat);
     }
 
     @Test

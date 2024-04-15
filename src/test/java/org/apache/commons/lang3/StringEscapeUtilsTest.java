@@ -25,23 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import org.junit.jupiter.api.*;
 
 public class StringEscapeUtilsTest {
-    //@Test
-    void testEscapeXml10() {
-        // Test escaping special characters
-        assertEquals("&lt;tag&gt;", StringEscapeUtils.escapeXml10("<tag>"));
 
-        // Test escaping control characters
-        assertEquals("&#x3C;tag&#x3E;", StringEscapeUtils.escapeXml10("\u0001tag\u0002"));
-
-        // Test escaping unpaired surrogate characters
-        assertEquals("&#xFFFD;", StringEscapeUtils.escapeXml10("\uD800"));
-
-        // Test escaping characters not allowed in XML 1.0
-        assertEquals("", StringEscapeUtils.escapeXml10("\u0000"));
-        assertEquals("", StringEscapeUtils.escapeXml10("\u001F"));
-        assertEquals("", StringEscapeUtils.escapeXml10("\uFFFE"));
-        assertEquals("", StringEscapeUtils.escapeXml10("\uFFFF"));
-    }
 
     @Test
     void testEscapeXml() {
@@ -108,46 +92,12 @@ public class StringEscapeUtilsTest {
         assertEquals(expected, result);
     }
 
-    //@Test
-    void escapeXml11_nullInput() {
-        assertThrows(NullPointerException.class, () -> {
-            StringEscapeUtils.escapeXml11(null);
-        });
-    }
-    // Your Java code here
 
-    //@Test
-    void testUnescapeCsv() {
-        StringEscapeUtils stringEscapeUtils = new StringEscapeUtils();
-
-        // Test empty string
-        assertEquals("", stringEscapeUtils.unescapeCsv(""));
-
-        // Test string without any special characters
-        assertEquals("Hello World", stringEscapeUtils.unescapeCsv("Hello World"));
-
-        // Test string with quotes and commas
-        assertEquals("Hello, World", stringEscapeUtils.unescapeCsv("\"Hello, World\""));
-        assertEquals("\"Hello\", World", stringEscapeUtils.unescapeCsv("\"\"Hello\", World\""));
-
-        // Test string with quotes, commas, and escape characters
-        assertEquals("\"Hello\", \"World\"", stringEscapeUtils.unescapeCsv("\"\"Hello\", \"World\"\""));
-        assertEquals("\"Hello\", \"World\",", stringEscapeUtils.unescapeCsv("\"\"Hello\", \"World\","));
-
-        // Test string with newline characters
-        assertEquals("Hello\nWorld", stringEscapeUtils.unescapeCsv("\"Hello\nWorld\""));
-        assertEquals("\"Hello\", \"World\"\n", stringEscapeUtils.unescapeCsv("\"\"Hello\", \"World\"\n\""));
-    }
 
 
     private StringEscapeUtils stringEscapeUtils;
 
-    //@Test
-    void testEscapeJson() {
-        assertEquals("He didn\\'t say, \\\"Stop!\\\"", stringEscapeUtils.escapeJson("He didn't say, \"Stop!\""));
-        assertEquals("bread &amp; butter", stringEscapeUtils.escapeJson("bread & butter"));
-        assertEquals("\\u003Cscript\\u003Ealert(\\\"XSS\\\")\\u003C/script\\u003E", stringEscapeUtils.escapeJson("<script>alert(\"XSS\")</script>"));
-    }
+
 
     @Test
     void testEscapeJson_NullInput() {
@@ -164,10 +114,7 @@ public class StringEscapeUtilsTest {
         assertEquals("", stringEscapeUtils.escapeJson(""));
     }
 
-    //@Test
-    void testEscapeJson_OnlySpecialCharacters() {
-        assertEquals("\\\"\\n\\r\\t\\f\\\\", stringEscapeUtils.escapeJson("\"\\n\\r\\t\\f\\"));
-    }
+
 
     @Test
     void testEscapeJson_LargeInput() {
@@ -178,11 +125,7 @@ public class StringEscapeUtilsTest {
         assertEquals(input, stringEscapeUtils.escapeJson(input));
     }
 
-    //@Test
-    void testEscapeJson_EdgeCases() {
-        assertEquals("\\u0000\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\u000b\\f\\u000e\\u000f\\u0010\\u0011\\u0012\\u0013\\u0014\\u0015\\u0016\\u0017\\u0018\\u0019\\u001a\\u001b\\u001c\\u001d\\u001e\\u001f\\ufffe\\uffff",
-                stringEscapeUtils.escapeJson("\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\u000b\f\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f\ufffe\uffff"));
-    }
+
 
 
     @Test
@@ -275,12 +218,6 @@ public class StringEscapeUtilsTest {
         Assertions.assertEquals("<div>Hello, \"world\"!</div>", result);
     }
 
-    //@Test
-    public void testUnescapeHtml4_MalformedEntities_ReturnsUnescapedString() {
-        String input = "&lt;div&gt;Hello, &quotworld&quot;!&lt;/div&gt;";
-        String result = stringEscapeUtils.unescapeHtml4(input);
-        Assertions.assertEquals("<div>Hello, &quotworld&quot;!</div>", result);
-    }
 
     @Test
     public void testUnescapeHtml4_DecimalEntities_ReturnsUnescapedString() {
@@ -310,16 +247,6 @@ public class StringEscapeUtilsTest {
         assertEquals("abc", utils.unescapeHtml3("abc"));
     }
 
-    // Test string with escaped characters
-    //@Test
-    void testUnescapeHtml3_escapedCharacters() {
-        StringEscapeUtils utils = new StringEscapeUtils();
-        assertEquals("<", utils.unescapeHtml3("&lt;"));
-        assertEquals(">", utils.unescapeHtml3("&gt;"));
-        assertEquals("\"", utils.unescapeHtml3("&quot;"));
-        assertEquals("&", utils.unescapeHtml3("&amp;"));
-        assertEquals("'", utils.unescapeHtml3("&apos;"));
-    }
 
     // Test string with multiple escaped characters
     @Test
@@ -330,14 +257,6 @@ public class StringEscapeUtilsTest {
         assertEquals("&copy;", utils.unescapeHtml3("&amp;copy;"));
     }
 
-    // Test string with invalid escape sequences
-    //@Test
-    void testUnescapeHtml3_invalidEscapeSequences() {
-        StringEscapeUtils utils = new StringEscapeUtils();
-        assertEquals("&&amp;", utils.unescapeHtml3("&amp;&amp;amp;"));
-        assertEquals("&&lt;", utils.unescapeHtml3("&amp;&lt;"));
-    }
-    // Your Java code here
 
 
     @Test
@@ -367,17 +286,6 @@ public class StringEscapeUtilsTest {
         assertEquals("\\/", stringEscapeUtils.escapeEcmaScript("/"));
     }
 
-    //@Test
-    @DisplayName("Should escape single quote")
-    void shouldEscapeSingleQuote() {
-        assertEquals("\\\\'", stringEscapeUtils.escapeEcmaScript("\\'"));
-    }
-
-    //@Test
-    @DisplayName("Should escape double quote")
-    void shouldEscapeDoubleQuote() {
-        assertEquals("\\\\\"", stringEscapeUtils.escapeEcmaScript("\\\""));
-    }
 
     @Test
     @DisplayName("Should escape control characters")
@@ -391,11 +299,6 @@ public class StringEscapeUtilsTest {
         assertEquals("\\u0080", stringEscapeUtils.escapeEcmaScript("\u0080"));
     }
 
-    //@Test
-    @DisplayName("Should return empty string for null input")
-    void shouldReturnEmptyStringForNullInput() {
-        assertEquals("", stringEscapeUtils.escapeEcmaScript(null));
-    }
 
     @Test
     void testUnescapeJava() {
@@ -530,35 +433,6 @@ public class StringEscapeUtilsTest {
         String input = "Hello\\nWorld";
         String expected = "Hello\nWorld";
         assertEquals(expected, StringEscapeUtils.unescapeJava(input));
-    }
-
-    //@Test
-    void testEscapeHtml3() {
-        StringEscapeUtils escapeUtils = new StringEscapeUtils();
-
-        // Test basic HTML escaping
-        String input1 = "This is a <test> string.";
-        String expected1 = "This is a &lt;test&gt; string.";
-        String result1 = escapeUtils.escapeHtml3(input1);
-        assertEquals(expected1, result1);
-
-        // Test HTML escaping with special characters
-        String input2 = "<script>alert('Hello, world!');</script>";
-        String expected2 = "&lt;script&gt;alert(&#39;Hello, world!&#39;);&lt;/script&gt;";
-        String result2 = escapeUtils.escapeHtml3(input2);
-        assertEquals(expected2, result2);
-
-        // Test HTML escaping with empty input
-        String input3 = "";
-        String expected3 = "";
-        String result3 = escapeUtils.escapeHtml3(input3);
-        assertEquals(expected3, result3);
-
-        // Test HTML escaping with null input
-        String input4 = null;
-        String expected4 = null;
-        String result4 = escapeUtils.escapeHtml3(input4);
-        assertEquals(expected4, result4);
     }
 
     @Test

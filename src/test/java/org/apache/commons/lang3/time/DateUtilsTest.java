@@ -56,66 +56,6 @@ public class DateUtilsTest {
         dateUtils = new DateUtils();
     }
 
-    //@Test
-    void testNext2() {
-        Calendar start = Calendar.getInstance();
-        start.set(2022, Calendar.JANUARY, 1);
-
-        Calendar end = Calendar.getInstance();
-        end.set(2022, Calendar.JANUARY, 5);
-
-        DateUtils.DateIterator iterator = new DateUtils.DateIterator(start, end);
-
-        // Test hasNext() method
-        assertTrue(iterator.hasNext());
-
-        // Test next() method
-        Calendar nextDate = iterator.next();
-        assertEquals(new GregorianCalendar(2022, Calendar.JANUARY, 2), nextDate);
-        nextDate = iterator.next();
-        assertEquals(new GregorianCalendar(2022, Calendar.JANUARY, 3), nextDate);
-
-        // Test remove() method
-        assertThrows(UnsupportedOperationException.class, () -> iterator.remove());
-
-        // Test NoSuchElementException
-        iterator.next();
-        iterator.next();
-        assertThrows(NoSuchElementException.class, () -> iterator.next());
-    }
-    // Test functions
-
-    //@Test
-    @DisplayName("should remove all dates between start and end, including start and end dates")
-    void shouldRemoveAllDatesBetweenStartAndEnd() {
-        // Arrange
-        DateUtils.DateIterator iterator = new DateUtils.DateIterator(start, end);
-
-        // Act
-        while (iterator.hasNext()) {
-            iterator.next();
-            iterator.remove();
-        }
-
-        // Assert
-        assertFalse(iterator.hasNext());
-    }
-
-    //@Test
-    @DisplayName("should throw NoSuchElementException if called next() after removing all dates")
-    void shouldThrowNoSuchElementExceptionIfNextCalledAfterRemovingAllDates() {
-        // Arrange
-        DateUtils.DateIterator iterator = new DateUtils.DateIterator(start, end);
-
-        // Act
-        while (iterator.hasNext()) {
-            iterator.next();
-            iterator.remove();
-        }
-
-        // Assert
-        assertThrows(NoSuchElementException.class, iterator::next);
-    }
 
     @Test
     @DisplayName("should throw UnsupportedOperationException when remove() is called")
@@ -158,10 +98,6 @@ public class DateUtilsTest {
         assertFalse(DateUtils.isSameDay(cal1, cal2));
     }
 
-//    @Test
-//    void testIsSameDay_nullCalendars_throwsNullPointerException() {
-//        assertThrows(NullPointerException.class, () -> DateUtils.isSameDay(null, null));
-//    }
 
     @Test
     void testIsSameDay_sameDateDifferentTime_returnsTrue() {
@@ -274,54 +210,7 @@ public class DateUtilsTest {
         assertThrows(IllegalArgumentException.class, () -> DateUtils.setHours(date5, amount5));
     }
 
-    //@Test
-    @DisplayName("returns 0 when fragment is Calendar.YEAR")
-    void testGetFragmentInMillisecondsWithYear2() {
-        long result = DateUtils.getFragmentInMilliseconds(calendar, Calendar.YEAR);
-        assertEquals(0, result);
-    }
 
-    //@Test
-    @DisplayName("returns 0 when fragment is Calendar.MONTH")
-    void testGetFragmentInMillisecondsWithMonth2() {
-        long result = DateUtils.getFragmentInMilliseconds(calendar, Calendar.MONTH);
-        assertEquals(0, result);
-    }
-
-    //@Test
-    @DisplayName("returns 0 when fragment is Calendar.DAY_OF_YEAR")
-    void testGetFragmentInMillisecondsWithDayOfYear2() {
-        long result = DateUtils.getFragmentInMilliseconds(calendar, Calendar.DAY_OF_YEAR);
-        assertEquals(0, result);
-    }
-
-    //@Test
-    @DisplayName("returns 0 when fragment is Calendar.DATE")
-    void testGetFragmentInMillisecondsWithDate2() {
-        long result = DateUtils.getFragmentInMilliseconds(calendar, Calendar.DATE);
-        assertEquals(0, result);
-    }
-
-    //@Test
-    @DisplayName("returns 0 when fragment is Calendar.HOUR_OF_DAY")
-    void testGetFragmentInMillisecondsWithHourOfDay2() {
-        long result = DateUtils.getFragmentInMilliseconds(calendar, Calendar.HOUR_OF_DAY);
-        assertEquals(0, result);
-    }
-
-    //@Test
-    @DisplayName("returns 0 when fragment is Calendar.MINUTE")
-    void testGetFragmentInMillisecondsWithMinute2() {
-        long result = DateUtils.getFragmentInMilliseconds(calendar, Calendar.MINUTE);
-        assertEquals(0, result);
-    }
-
-    //@Test
-    @DisplayName("returns 0 when fragment is Calendar.SECOND")
-    void testGetFragmentInMillisecondsWithSecond2() {
-        long result = DateUtils.getFragmentInMilliseconds(calendar, Calendar.SECOND);
-        assertEquals(0, result);
-    }
 
     @Test
     @DisplayName("returns 0 when fragment is Calendar.MILLISECOND")
@@ -330,13 +219,6 @@ public class DateUtilsTest {
         assertEquals(0, result);
     }
 
-//    @Test
-//    @DisplayName("throws NullPointerException when calendar is null")
-//    void testGetFragmentInMillisecondsWithNullCalendar() {
-//        assertThrows(NullPointerException.class, () -> {
-//            DateUtils.getFragmentInMilliseconds(null, Calendar.YEAR);
-//        });
-//    }
 
     @Test
     @DisplayName("throws IllegalArgumentException when fragment is not supported")
@@ -410,13 +292,6 @@ public class DateUtilsTest {
         assertEquals(0, result);
     }
 
-//    @Test
-//    @DisplayName("throws NullPointerException when date is null")
-//    void testGetFragmentInMillisecondsWithNullDate() {
-//        assertThrows(NullPointerException.class, () -> {
-//            DateUtils.getFragmentInMilliseconds(null, Calendar.YEAR);
-//        });
-//    }
 
     @Test
     @DisplayName("throws IllegalArgumentException when fragment is not supported")
@@ -584,71 +459,6 @@ public class DateUtilsTest {
         assertEquals(0, DateUtils.truncatedCompareTo(date1, date2, Calendar.DATE));
     }
 
-    //@Test
-    @DisplayName("Test truncatedCompareTo - cal1 before cal2")
-    void testTruncatedCompareToCal1BeforeCal2() {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        Date date1 = new Date();
-        Date date2 = new Date();
-        cal1.set(2022, Calendar.JANUARY, 1);
-        cal2.set(2022, Calendar.JANUARY, 2);
-        assertTrue(DateUtils.truncatedCompareTo(cal1, cal2, Calendar.DATE) < 0);
-        assertTrue(DateUtils.truncatedCompareTo(date1, date2, Calendar.DATE) < 0);
-    }
-
-    //@Test
-    @DisplayName("Test truncatedCompareTo - cal1 after cal2")
-    void testTruncatedCompareToCal1AfterCal2() {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        Date date1 = new Date();
-        Date date2 = new Date();
-        cal1.set(2022, Calendar.JANUARY, 2);
-        cal2.set(2022, Calendar.JANUARY, 1);
-        assertTrue(DateUtils.truncatedCompareTo(cal1, cal2, Calendar.DATE) > 0);
-        assertTrue(DateUtils.truncatedCompareTo(date1, date2, Calendar.DATE) > 0);
-    }
-
-    //@Test
-    @DisplayName("Test truncatedCompareTo - cal1 equal to truncated cal2")
-    void testTruncatedCompareToCal1EqualToTruncatedCal2() {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        Date date1 = new Date();
-        Date date2 = new Date();
-        cal1.set(2022, Calendar.JANUARY, 1, 12, 30, 0);
-        cal2.set(2022, Calendar.JANUARY, 1, 15, 45, 0);
-        assertEquals(0, DateUtils.truncatedCompareTo(cal1, cal2, Calendar.HOUR_OF_DAY));
-        assertEquals(0, DateUtils.truncatedCompareTo(date1, date2, Calendar.HOUR_OF_DAY));
-    }
-
-    //@Test
-    @DisplayName("Test truncatedCompareTo - cal1 before truncated cal2")
-    void testTruncatedCompareToCal1BeforeTruncatedCal2() {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        Date date1 = new Date();
-        Date date2 = new Date();
-        cal1.set(2022, Calendar.JANUARY, 1, 12, 0, 0);
-        cal2.set(2022, Calendar.JANUARY, 1, 15, 0, 0);
-        assertTrue(DateUtils.truncatedCompareTo(cal1, cal2, Calendar.HOUR_OF_DAY) < 0);
-        assertTrue(DateUtils.truncatedCompareTo(date1, date2, Calendar.HOUR_OF_DAY) < 0);
-    }
-
-    //@Test
-    @DisplayName("Test truncatedCompareTo - cal1 after truncated cal2")
-    void testTruncatedCompareToCal1AfterTruncatedCal2() {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        Date date1 = new Date();
-        Date date2 = new Date();
-        cal1.set(2022, Calendar.JANUARY, 1, 15, 0, 0);
-        cal2.set(2022, Calendar.JANUARY, 1, 12, 0, 0);
-        assertTrue(DateUtils.truncatedCompareTo(cal1, cal2, Calendar.HOUR_OF_DAY) > 0);
-        assertTrue(DateUtils.truncatedCompareTo(date1, date2, Calendar.HOUR_OF_DAY) > 0);
-    }
-
     @Test
     @DisplayName("should add positive weeks to the date")
     void shouldAddPositiveWeeksToDate() {
@@ -659,20 +469,6 @@ public class DateUtilsTest {
 
         Calendar expected = Calendar.getInstance();
         expected.set(2021, Calendar.JANUARY, 15); // January 15, 2021
-
-        assertEquals(expected.getTime(), result);
-    }
-
-    //@Test
-    @DisplayName("should subtract negative weeks from the date")
-    void shouldSubtractNegativeWeeksFromDate() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2021, Calendar.JANUARY, 15); // January 15, 2021
-
-        Date result = dateUtils.addWeeks(calendar.getTime(), -2);
-
-        Calendar expected = Calendar.getInstance();
-        expected.set(2021, Calendar.JANUARY, 1); // January 1, 2021
 
         assertEquals(expected.getTime(), result);
     }
@@ -698,20 +494,6 @@ public class DateUtilsTest {
 
         Calendar expected = Calendar.getInstance();
         expected.set(2020, Calendar.MARCH, 7); // March 7, 2020
-
-        assertEquals(expected.getTime(), result);
-    }
-
-    //@Test
-    @DisplayName("should handle negative leap years correctly")
-    void shouldHandleNegativeLeapYearsCorrectly() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2020, Calendar.MARCH, 7); // March 7, 2020
-
-        Date result = dateUtils.addWeeks(calendar.getTime(), -1);
-
-        Calendar expected = Calendar.getInstance();
-        expected.set(2020, Calendar.FEBRUARY, 29); // February 29, 2020
 
         assertEquals(expected.getTime(), result);
     }
@@ -820,13 +602,6 @@ public class DateUtilsTest {
         assertFalse(DateUtils.isSameLocalTime(cal1, cal2));
     }
 
-//    @Test
-//    @DisplayName("Test isSameLocalTime with different eras")
-//    void testIsSameLocalTimeWithDifferentEras() {
-//        cal2.set(Calendar.ERA, Calendar.BC);
-//        assertFalse(DateUtils.isSameLocalTime(cal1, cal2));
-//    }
-
 
     @Test
     @DisplayName("Should return true if there is a next date in the iteration")
@@ -842,25 +617,6 @@ public class DateUtilsTest {
         }
 
         assertFalse(dateIterator.hasNext());
-    }
-
-    //@Test
-    @DisplayName("Should return the next date in the iteration")
-    void testNext1() {
-        Calendar expected = Calendar.getInstance();
-        expected.set(2022, Calendar.JANUARY, 1);
-
-        //assertEquals(expected, dateIterator.next());
-    }
-
-    //@Test
-    @DisplayName("Should throw NoSuchElementException if there is no next date in the iteration")
-    void testNext_noSuchElement() {
-        while (dateIterator.hasNext()) {
-            dateIterator.next();
-        }
-
-        assertThrows(NoSuchElementException.class, () -> dateIterator.next());
     }
 
     @Test
@@ -897,19 +653,6 @@ public class DateUtilsTest {
         assertEquals(127, hours);
     }
 
-    //@Test
-    @DisplayName("Returns 0 for unsupported fragment")
-    void whenFragmentIsUnsupported_thenReturnZero1() {
-        // Arrange
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2021, Calendar.JANUARY, 1, 7, 15, 10);
-
-        // Act
-        long hours = dateUtils.getFragmentInHours(calendar, Calendar.YEAR);
-
-        // Assert
-        assertEquals(0, hours);
-    }
 
     @Test
     @DisplayName("Returns correct number of hours for Calendar.DAY_OF_YEAR")
@@ -941,58 +684,6 @@ public class DateUtilsTest {
         assertEquals(127, hours);
     }
 
-    //@Test
-    @DisplayName("Returns 0 for unsupported fragment")
-    void whenFragmentIsUnsupported_thenReturnZero2() {
-        // Arrange
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2021, Calendar.JANUARY, 1, 7, 15, 10);
-        Date date = calendar.getTime();
-
-        // Act
-        long hours = dateUtils.getFragmentInHours(date, Calendar.YEAR);
-
-        // Assert
-        assertEquals(0, hours);
-    }
-
-    //@Test
-    void testGetFragmentInDays() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2022, Calendar.JANUARY, 1); // January 1, 2022
-
-        // Test for Calendar.YEAR fragment
-        long result = DateUtils.getFragmentInDays(calendar, Calendar.YEAR);
-        assertEquals(0, result, "Failed for Calendar.YEAR");
-
-        // Test for Calendar.MONTH fragment
-        result = DateUtils.getFragmentInDays(calendar, Calendar.MONTH);
-        assertEquals(0, result, "Failed for Calendar.MONTH");
-
-        // Test for Calendar.DAY_OF_YEAR fragment
-        result = DateUtils.getFragmentInDays(calendar, Calendar.DAY_OF_YEAR);
-        assertEquals(0, result, "Failed for Calendar.DAY_OF_YEAR");
-
-        // Test for Calendar.DATE fragment
-        result = DateUtils.getFragmentInDays(calendar, Calendar.DATE);
-        assertEquals(0, result, "Failed for Calendar.DATE");
-
-        // Test for Calendar.HOUR_OF_DAY fragment
-        result = DateUtils.getFragmentInDays(calendar, Calendar.HOUR_OF_DAY);
-        assertEquals(0, result, "Failed for Calendar.HOUR_OF_DAY");
-
-        // Test for Calendar.MINUTE fragment
-        result = DateUtils.getFragmentInDays(calendar, Calendar.MINUTE);
-        assertEquals(0, result, "Failed for Calendar.MINUTE");
-
-        // Test for Calendar.SECOND fragment
-        result = DateUtils.getFragmentInDays(calendar, Calendar.SECOND);
-        assertEquals(0, result, "Failed for Calendar.SECOND");
-
-        // Test for Calendar.MILLISECOND fragment
-        result = DateUtils.getFragmentInDays(calendar, Calendar.MILLISECOND);
-        assertEquals(0, result, "Failed for Calendar.MILLISECOND");
-    }
 
     @Test
     void testGetFragmentInDaysWithInvalidFragment() {
@@ -1041,25 +732,6 @@ public class DateUtilsTest {
         assertEquals(expectedCeil, ceil);
     }
 
-    //@Test
-    void testCeilingWithDate() {
-        Date date = new Date();
-
-        // Set date to 28 Mar 2002 13:45:01.231
-        date.setTime(1017315901231L);
-
-        Calendar expectedCeil = Calendar.getInstance();
-        expectedCeil.setTimeInMillis(date.getTime());
-        expectedCeil.set(Calendar.HOUR_OF_DAY, 14);
-        expectedCeil.set(Calendar.MINUTE, 0);
-        expectedCeil.set(Calendar.SECOND, 0);
-        expectedCeil.set(Calendar.MILLISECOND, 0);
-
-        Date ceil = DateUtils.ceiling(date, Calendar.HOUR_OF_DAY);
-
-        assertEquals(expectedCeil.getTime(), ceil);
-    }
-
     @Test
     void testCeilingWithInvalidType() {
         String invalidType = "invalid";
@@ -1069,58 +741,6 @@ public class DateUtilsTest {
         });
     }
 
-//    @Test
-//    void testCeilingWithNull() {
-//        assertThrows(NullPointerException.class, () -> {
-//            DateUtils.ceiling(null, Calendar.HOUR_OF_DAY);
-//        });
-//    }
-
-    //@Test
-    void testTruncatedEquals() {
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-
-        // Test case 1: Same calendars, same field
-        cal1.set(2021, Calendar.JANUARY, 1);
-        cal2.set(2021, Calendar.JANUARY, 1);
-        assertTrue(DateUtils.truncatedEquals(cal1, cal2, Calendar.YEAR));
-
-        // Test case 2: Same calendars, different field
-        cal1.set(2021, Calendar.JANUARY, 1);
-        cal2.set(2021, Calendar.FEBRUARY, 1);
-        assertFalse(DateUtils.truncatedEquals(cal1, cal2, Calendar.YEAR));
-
-        // Test case 3: Different calendars, same field
-        cal1.set(2021, Calendar.JANUARY, 1);
-        cal2.set(2022, Calendar.JANUARY, 1);
-        assertFalse(DateUtils.truncatedEquals(cal1, cal2, Calendar.YEAR));
-
-        // Test case 4: Different calendars, different field
-        cal1.set(2021, Calendar.JANUARY, 1);
-        cal2.set(2022, Calendar.FEBRUARY, 1);
-        assertFalse(DateUtils.truncatedEquals(cal1, cal2, Calendar.YEAR));
-
-        // Test case 5: Same date objects, same field
-        Date date1 = new Date(2021, Calendar.JANUARY, 1);
-        Date date2 = new Date(2021, Calendar.JANUARY, 1);
-        assertTrue(DateUtils.truncatedEquals(date1, date2, Calendar.YEAR));
-
-        // Test case 6: Same date objects, different field
-        date1 = new Date(2021, Calendar.JANUARY, 1);
-        date2 = new Date(2021, Calendar.FEBRUARY, 1);
-        assertFalse(DateUtils.truncatedEquals(date1, date2, Calendar.YEAR));
-
-        // Test case 7: Different date objects, same field
-        date1 = new Date(2021, Calendar.JANUARY, 1);
-        date2 = new Date(2022, Calendar.JANUARY, 1);
-        assertFalse(DateUtils.truncatedEquals(date1, date2, Calendar.YEAR));
-
-        // Test case 8: Different date objects, different field
-        date1 = new Date(2021, Calendar.JANUARY, 1);
-        date2 = new Date(2022, Calendar.FEBRUARY, 1);
-        assertFalse(DateUtils.truncatedEquals(date1, date2, Calendar.YEAR));
-    }
 
     @Test
     @DisplayName("Test hasNext() when there are more dates")
@@ -1138,15 +758,6 @@ public class DateUtilsTest {
         assertFalse(iterator.hasNext());
     }
 
-    //@Test
-    @DisplayName("Test next() returns the next calendar")
-    void testNext() {
-        Iterator<Calendar> iterator = new DateUtils.DateIterator(start, end);
-        Calendar nextCalendar = iterator.next();
-        Calendar expectedCalendar = (Calendar) start.clone();
-        expectedCalendar.add(Calendar.DATE, 1);
-        assertEquals(expectedCalendar, nextCalendar);
-    }
 
     @Test
     @DisplayName("Test next() throws NoSuchElementException when there are no more dates")
@@ -1164,42 +775,12 @@ public class DateUtilsTest {
         assertThrows(UnsupportedOperationException.class, () -> iterator.remove());
     }
 
-    //@Test
-    @DisplayName("Test iterator() returns an iterator for each day in range")
-    void testIterator() {
-        Iterator<Calendar> iterator = DateUtils.iterator(start, DateUtils.RANGE_WEEK_MONDAY);
-        int count = 0;
-        while (iterator.hasNext()) {
-            iterator.next();
-            count++;
-        }
-        assertEquals(31, count);
-    }
-
-//    @Test
-//    @DisplayName("Test iterator() throws NullPointerException when calendar is null")
-//    void testIteratorNullCalendar() {
-//        assertThrows(NullPointerException.class, () -> DateUtils.iterator(null, DateUtils.RANGE_WEEK_MONDAY));
-//    }
-
     @Test
     @DisplayName("Test iterator() throws IllegalArgumentException when rangeStyle is invalid")
     void testIteratorInvalidRangeStyle() {
         assertThrows(IllegalArgumentException.class, () -> DateUtils.iterator(start, 100));
     }
 
-    //@Test
-    @DisplayName("Test iterator() returns an iterator for each day in range using Date")
-    void testIteratorFromDate() {
-        Date startDate = start.getTime();
-        Iterator<Calendar> iterator = DateUtils.iterator(startDate, DateUtils.RANGE_WEEK_MONDAY);
-        int count = 0;
-        while (iterator.hasNext()) {
-            iterator.next();
-            count++;
-        }
-        assertEquals(31, count);
-    }
 
     @Test
     @DisplayName("Test iterator() throws NullPointerException when date is null")
@@ -1314,95 +895,11 @@ public class DateUtilsTest {
         assertThrows(IllegalArgumentException.class, () -> dateUtils.setMonths(date, 12));
     }
 
-    // @Test
-    void testGetFragmentInSeconds_Year() {
-        calendar.set(Calendar.YEAR, 2020);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(calendar, Calendar.YEAR);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_Month() {
-        calendar.set(Calendar.MONTH, Calendar.JANUARY);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(calendar, Calendar.MONTH);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_DayOfYear() {
-        calendar.set(Calendar.DAY_OF_YEAR, 100);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(calendar, Calendar.DAY_OF_YEAR);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_HourOfDay() {
-        calendar.set(Calendar.HOUR_OF_DAY, 12);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(calendar, Calendar.HOUR_OF_DAY);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_Minute() {
-        calendar.set(Calendar.MINUTE, 30);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(calendar, Calendar.MINUTE);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    // @Test
-    void testGetFragmentInSeconds_Second() {
-        calendar.set(Calendar.SECOND, 45);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(calendar, Calendar.SECOND);
-        assertEquals(45, fragmentInSeconds);
-    }
-
     @Test
     void testGetFragmentInSeconds_Millisecond() {
         calendar.set(Calendar.MILLISECOND, 500);
         long fragmentInSeconds = DateUtils.getFragmentInSeconds(calendar, Calendar.MILLISECOND);
         assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_DateObject_Year() {
-        date1.setYear(120);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(date1, Calendar.YEAR);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_DateObject_Month() {
-        date1.setMonth(Calendar.JANUARY);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(date1, Calendar.MONTH);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_DateObject_DayOfYear() {
-        date1.setDate(100);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(date1, Calendar.DAY_OF_YEAR);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    // @Test
-    void testGetFragmentInSeconds_DateObject_HourOfDay() {
-        date1.setHours(12);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(date1, Calendar.HOUR_OF_DAY);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_DateObject_Minute() {
-        date1.setMinutes(30);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(date1, Calendar.MINUTE);
-        assertEquals(0, fragmentInSeconds);
-    }
-
-    //@Test
-    void testGetFragmentInSeconds_DateObject_Second() {
-        date1.setSeconds(45);
-        long fragmentInSeconds = DateUtils.getFragmentInSeconds(date1, Calendar.SECOND);
-        assertEquals(45, fragmentInSeconds);
     }
 
     @Test
@@ -1411,7 +908,6 @@ public class DateUtilsTest {
         long fragmentInSeconds = DateUtils.getFragmentInSeconds(date1, Calendar.MILLISECOND);
         assertEquals(0, fragmentInSeconds);
     }
-
 
     @Test
     @DisplayName("Test getFragmentInMinutes for Calendar.YEAR fragment")
@@ -1489,72 +985,6 @@ public class DateUtilsTest {
         assertEquals(minutes, calendar.get(Calendar.MINUTE));
     }
 
-    //@Test
-    @DisplayName("should throw NullPointerException when date is null")
-    void shouldThrowNullPointerException() {
-        // Arrange
-        Date date = null;
-        int minutes = 30;
-
-        // Act and Assert
-        NullPointerException exception = assertThrows(NullPointerException.class,
-                () -> dateUtils.setMinutes(date, minutes));
-        assertEquals("The date must not be null", exception.getMessage());
-    }
-
-    //@Test
-    @DisplayName("should throw IllegalArgumentException when minutes is negative")
-    void shouldThrowIllegalArgumentExceptionForNegativeMinutes() {
-        // Arrange
-        Date date = calendar.getTime();
-        int minutes = -1;
-
-        // Act and Assert
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> dateUtils.setMinutes(date, minutes));
-        assertEquals("The minutes must be in the range 0 <= minutes <= 59", exception.getMessage());
-    }
-
-    //@Test
-    @DisplayName("should throw IllegalArgumentException when minutes is greater than 59")
-    void shouldThrowIllegalArgumentExceptionForMinutesGreaterThan59() {
-        // Arrange
-        Date date = calendar.getTime();
-        int minutes = 60;
-
-        // Act and Assert
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> dateUtils.setMinutes(date, minutes));
-        assertEquals("The minutes must be in the range 0 <= minutes <= 59", exception.getMessage());
-    }
-
-//    @Test
-//    void testAddMilliseconds() {
-//        // Positive amount
-//        Date initialDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 0);
-//        Date expectedDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 100);
-//        assertEquals(expectedDate, DateUtils.addMilliseconds(initialDate, 100));
-//
-//        // Negative amount
-//        initialDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 0);
-//        expectedDate = createDate(2021, Calendar.DECEMBER, 31, 23, 59, 900);
-//        assertEquals(expectedDate, DateUtils.addMilliseconds(initialDate, -100));
-//
-//        // Amount = 0
-//        initialDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 0);
-//        expectedDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 0);
-//        assertEquals(expectedDate, DateUtils.addMilliseconds(initialDate, 0));
-//
-//        // Edge case: Maximum milliseconds
-//        initialDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 0);
-//        expectedDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 999);
-//        assertEquals(expectedDate, DateUtils.addMilliseconds(initialDate, Integer.MAX_VALUE));
-//
-//        // Edge case: Minimum milliseconds
-//        initialDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 0);
-//        expectedDate = createDate(2022, Calendar.JANUARY, 1, 0, 0, 0);
-//        assertEquals(expectedDate, DateUtils.addMilliseconds(initialDate, Integer.MIN_VALUE));
-//    }
 
     @Test
     @DisplayName("Test isSameInstant with two equal calendars")
@@ -1619,113 +1049,10 @@ public class DateUtilsTest {
         });
     }
 
-//    @Test
-//    @DisplayName("should add positive seconds to a date")
-//    void shouldAddPositiveSecondsToDate() {
-//        // Arrange
-//        Date date = createDate(2020, Calendar.JANUARY, 1, 0, 0, 0);
-//        int secondsToAdd = 60;
-//
-//        // Act
-//        Date result = dateUtils.addSeconds(date, secondsToAdd);
-//
-//        // Assert
-//        assertEquals(createDate(2020, Calendar.JANUARY, 1, 0, 1, 0), result);
-//    }
-//
-//    @Test
-//    @DisplayName("should add negative seconds to a date")
-//    void shouldAddNegativeSecondsToDate() {
-//        // Arrange
-//        Date date = createDate(2020, Calendar.JANUARY, 1, 0, 0, 0);
-//        int secondsToAdd = -60;
-//
-//        // Act
-//        Date result = dateUtils.addSeconds(date, secondsToAdd);
-//
-//        // Assert
-//        assertEquals(createDate(2019, Calendar.DECEMBER, 31, 23, 59, 0), result);
-//    }
-//
-//    @Test
-//    @DisplayName("should return the same date when adding 0 seconds")
-//    void shouldReturnSameDateWhenAddingZeroSeconds() {
-//        // Arrange
-//        Date date = createDate(2020, Calendar.JANUARY, 1, 0, 0, 0);
-//        int secondsToAdd = 0;
-//
-//        // Act
-//        Date result = dateUtils.addSeconds(date, secondsToAdd);
-//
-//        // Assert
-//        assertEquals(date, result);
-//    }
-//
-////    @Test
-//    @DisplayName("should handle dates at the start of the year")
-//    void shouldHandleDatesAtStartOfYear() {
-//        // Arrange
-//        Date date = createDate(2020, Calendar.JANUARY, 1, 0, 0, 0);
-//        int secondsToAdd = 3600;
-//
-//        // Act
-//        Date result = dateUtils.addSeconds(date, secondsToAdd);
-//
-//        // Assert
-//        assertEquals(createDate(2020, Calendar.JANUARY, 1, 1, 0, 0), result);
-//    }
-//
-//    @Test
-//    @DisplayName("should handle dates at the end of the year")
-//    void shouldHandleDatesAtEndOfYear() {
-//        // Arrange
-//        Date date = createDate(2020, Calendar.DECEMBER, 31, 23, 59, 0);
-//        int secondsToAdd = 3600;
-//
-//        // Act
-//        Date result = dateUtils.addSeconds(date, secondsToAdd);
-//
-//        // Assert
-//        assertEquals(createDate(2021, Calendar.JANUARY, 1, 0, 59, 0), result);
-//    }
-//
-//    @Test
-//    @DisplayName("should handle leap years")
-//    void shouldHandleLeapYears() {
-//        // Arrange
-//        Date date = createDate(2020, Calendar.FEBRUARY, 28, 0, 0, 0);
-//        int secondsToAdd = 86400;
-//
-//        // Act
-//        Date result = dateUtils.addSeconds(date, secondsToAdd);
-//
-//        // Assert
-//        assertEquals(createDate(2020, Calendar.FEBRUARY, 29, 0, 0, 0), result);
-//    }
 
     @Test
     void testAddMinutesWithNullDate() {
         assertThrows(NullPointerException.class, () -> DateUtils.addMinutes(null, 60));
-    }
-
-    //@Test
-    void testAddMinutesWithMaxValue() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(9999, Calendar.DECEMBER, 31, 23, 59, 59);
-        Date date = calendar.getTime();
-        Date expected = calendar.getTime();
-        Date result = DateUtils.addMinutes(date, Integer.MAX_VALUE);
-        assertEquals(expected, result);
-    }
-
-    //@Test
-    void testAddMinutesWithMinValue() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(1, Calendar.JANUARY, 1, 0, 0, 0);
-        Date date = calendar.getTime();
-        Date expected = calendar.getTime();
-        Date result = DateUtils.addMinutes(date, Integer.MIN_VALUE);
-        assertEquals(expected, result);
     }
 
     @Test
@@ -1770,63 +1097,6 @@ public class DateUtilsTest {
         assertThrows(ParseException.class, () -> DateUtils.parseDate(dateString, locale));
     }
 
-//    @Test
-//    void parseDateWithLeniency_nullString_throwNullPointerException() {
-//        assertThrows(NullPointerException.class, () -> DateUtils.parseDateWithLeniency(null));
-//    }
-//
-//    @Test
-//    void parseDateWithLeniency_invalidDateString_throwParseException() {
-//        assertThrows(ParseException.class, () -> DateUtils.parseDateWithLeniency("2021-13-01"));
-//    }
-//
-//    @Test
-//    void parseDateWithLeniency_withLocale_invalidDateString_throwParseException() {
-//        Locale locale = Locale.US;
-//        String dateString = "13/01/2021";
-//        assertThrows(ParseException.class, () -> DateUtils.parseDateWithLeniency(dateString, locale));
-//    }
-//
-//    @Test
-//    void testAddDays_positiveAmount() {
-//        // Initialize
-//        Date date = createDate(2021, 5, 15);
-//        int amount = 5;
-//
-//        // Execute
-//        Date result = DateUtils.addDays(date, amount);
-//
-//        // Verify
-//        Date expected = createDate(2021, 5, 20);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    void testAddDays_negativeAmount() {
-//        // Initialize
-//        Date date = createDate(2021, 5, 15);
-//        int amount = -5;
-//
-//        // Execute
-//        Date result = DateUtils.addDays(date, amount);
-//
-//        // Verify
-//        Date expected = createDate(2021, 5, 10);
-//        assertEquals(expected, result);
-//    }
-//
-//    @Test
-//    void testAddDays_zeroAmount() {
-//        // Initialize
-//        Date date = createDate(2021, 5, 15);
-//        int amount = 0;
-//
-//        // Execute
-//        Date result = DateUtils.addDays(date, amount);
-//
-//        // Verify
-//        assertEquals(date, result);
-//    }
 
     @Test
     void testAddDays_dateIsNull() {
@@ -1867,187 +1137,6 @@ public class DateUtilsTest {
         assertEquals(timeZone, calendar.getTimeZone());
     }
 
-    //@Test
-    void testRoundCalendarYear() {
-        Calendar roundedCalendar = DateUtils.round(calendar, Calendar.YEAR);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundCalendarMonth() {
-        Calendar roundedCalendar = DateUtils.round(calendar, Calendar.MONTH);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundCalendarDay() {
-        Calendar roundedCalendar = DateUtils.round(calendar, Calendar.DAY_OF_MONTH);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundCalendarHour() {
-        Calendar roundedCalendar = DateUtils.round(calendar, Calendar.HOUR_OF_DAY);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundCalendarMinute() {
-        Calendar roundedCalendar = DateUtils.round(calendar, Calendar.MINUTE);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundCalendarSecond() {
-        Calendar roundedCalendar = DateUtils.round(calendar, Calendar.SECOND);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundCalendarMillisecond() {
-        Calendar roundedCalendar = DateUtils.round(calendar, Calendar.MILLISECOND);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundDateYear() {
-        Date roundedDate = DateUtils.round(calendar.getTime(), Calendar.YEAR);
-        Calendar roundedCalendar = Calendar.getInstance();
-        roundedCalendar.setTime(roundedDate);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundDateMonth() {
-        Date roundedDate = DateUtils.round(calendar.getTime(), Calendar.MONTH);
-        Calendar roundedCalendar = Calendar.getInstance();
-        roundedCalendar.setTime(roundedDate);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundDateDay() {
-        Date roundedDate = DateUtils.round(calendar.getTime(), Calendar.DAY_OF_MONTH);
-        Calendar roundedCalendar = Calendar.getInstance();
-        roundedCalendar.setTime(roundedDate);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundDateHour() {
-        Date roundedDate = DateUtils.round(calendar.getTime(), Calendar.HOUR_OF_DAY);
-        Calendar roundedCalendar = Calendar.getInstance();
-        roundedCalendar.setTime(roundedDate);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundDateMinute() {
-        Date roundedDate = DateUtils.round(calendar.getTime(), Calendar.MINUTE);
-        Calendar roundedCalendar = Calendar.getInstance();
-        roundedCalendar.setTime(roundedDate);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    //@Test
-    void testRoundDateSecond() {
-        Date roundedDate = DateUtils.round(calendar.getTime(), Calendar.SECOND);
-        Calendar roundedCalendar = Calendar.getInstance();
-        roundedCalendar.setTime(roundedDate);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
-
-    ////@Test
-    void testRoundDateMillisecond() {
-        Date roundedDate = DateUtils.round(calendar.getTime(), Calendar.MILLISECOND);
-        Calendar roundedCalendar = Calendar.getInstance();
-        roundedCalendar.setTime(roundedDate);
-        assertEquals(2021, roundedCalendar.get(Calendar.YEAR));
-        assertEquals(Calendar.JANUARY, roundedCalendar.get(Calendar.MONTH));
-        assertEquals(1, roundedCalendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(0, roundedCalendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(0, roundedCalendar.get(Calendar.MINUTE));
-        assertEquals(0, roundedCalendar.get(Calendar.SECOND));
-        assertEquals(0, roundedCalendar.get(Calendar.MILLISECOND));
-    }
 
     @Test
     void testSetYears_NullDate_ThrowsNullPointerException() {
@@ -2069,30 +1158,5 @@ public class DateUtilsTest {
         assertEquals(2022, resultCalendar.get(Calendar.YEAR));
     }
 
-    //@Test
-    void testSetYears_NegativeYear_CorrectlySetsYear() {
-        Calendar calendar = new GregorianCalendar();
-        calendar.set(Calendar.YEAR, 2021);
-        Date date = calendar.getTime();
-
-        Date result = dateUtils.setYears(date, -2022);
-
-        Calendar resultCalendar = new GregorianCalendar();
-        resultCalendar.setTime(result);
-        assertEquals(-2022, resultCalendar.get(Calendar.YEAR));
-    }
-
-    //@Test
-    void testSetYears_ZeroYear_CorrectlySetsYear() {
-        Calendar calendar = new GregorianCalendar();
-        calendar.set(Calendar.YEAR, 2021);
-        Date date = calendar.getTime();
-
-        Date result = dateUtils.setYears(date, 0);
-
-        Calendar resultCalendar = new GregorianCalendar();
-        resultCalendar.setTime(result);
-        assertEquals(0, resultCalendar.get(Calendar.YEAR));
-    }
 }
 

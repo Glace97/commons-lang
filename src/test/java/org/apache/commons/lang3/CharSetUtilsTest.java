@@ -67,71 +67,6 @@ public class CharSetUtilsTest {
         assertEquals("ell", result);
     }
 
-//    @Test
-//   @DisplayName("should return null when input string is null")
-//    public void testDeleteNullString() {
-//        assertNull(charSetUtils.delete(null, "a"));
-//    }
-//
-//    @Test
-//    @DisplayName("should return empty string when input string is empty")
-//    public void testDeleteEmptyString() {
-//        assertEquals("", charSetUtils.delete("", "a"));
-//    }
-//
-//    @Test
-//    @DisplayName("should return null when set of characters to delete is null")
-//    public void testDeleteNullSet() {
-//        assertNull(charSetUtils.delete("hello", null));
-//    }
-//
-//    @Test
-//    @DisplayName("should return input string when set of characters to delete is empty")
-//    public void testDeleteEmptySet() {
-//        assertEquals("hello", charSetUtils.delete("hello", new String[]{}));
-//    }
-//
-//    @Test
-//    @DisplayName("should delete characters from input string")
-//    public void testDeleteCharacters() {
-//        assertEquals("eo", charSetUtils.delete("hello", "hl"));
-//        assertEquals("ho", charSetUtils.delete("hello", "le"));
-//    }
-//    @Test
-//    void testCount_NullStringInput_ReturnsZero() {
-//        int count = charSetUtils.count(null, "a", "b", "c");
-//        assertEquals(0, count);
-//    }
-//
-//    @Test
-//    void testCount_EmptyStringInput_ReturnsZero() {
-//        int count = charSetUtils.count("", "a", "b", "c");
-//        assertEquals(0, count);
-//    }
-//
-//    @Test
-//    void testCount_NullSetInput_ReturnsZero() {
-//        int count = charSetUtils.count("hello", (String[])null);
-//        assertEquals(0, count);
-//    }
-//
-//    @Test
-//    void testCount_EmptySetInput_ReturnsZero() {
-//        int count = charSetUtils.count("hello", "");
-//        assertEquals(0, count);
-//    }
-//
-//    @Test
-//    void testCount_ValidInputs_ReturnsCorrectCount() {
-//        int count = charSetUtils.count("hello", "k-p");
-//        assertEquals(3, count);
-//    }
-//
-//    @Test
-//    void testCount_ValidInputs_ReturnsCorrectCount2() {
-//        int count = charSetUtils.count("hello", "a-e");
-//        assertEquals(1, count);
-//    }
     @Test
     void testContainsAny_NullString_ReturnsFalse() {
         boolean result = CharSetUtils.containsAny(null, "a", "b", "c");
@@ -309,11 +244,5 @@ public class CharSetUtilsTest {
         Assertions.assertEquals("hello", result);
     }
 
-    //@Test
-    @DisplayName("Test squeeze with repeated characters in set")
-    void testSqueezeWithRepeatedCharactersInSet() {
-        String result = CharSetUtils.squeeze("hello", "ee");
-        Assertions.assertEquals("helo", result);
-    }
 
 }
