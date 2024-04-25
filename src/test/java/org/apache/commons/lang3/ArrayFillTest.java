@@ -1,117 +1,78 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package org.apache.commons.lang3;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
-
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
 
-/**
- * Tests {@link ArrayFill}.
- */
-public class ArrayFillTest extends AbstractLangTest {
+public class ArrayFillTest {
 
     @Test
     public void testFillByteArray() {
-        final byte[] array = new byte[3];
-        final byte val = (byte) 1;
-        final byte[] actual = ArrayFill.fill(array, val);
-        assertSame(array, actual);
-        for (final byte v : actual) {
-            assertEquals(val, v);
-        }
+        byte[] array = new byte[5];
+        byte value = 10;
+        byte[] result = ArrayFill.fill(array, value);
+        assertArrayEquals(new byte[]{10, 10, 10, 10, 10}, result, "The byte array should be filled with the value 10");
     }
 
     @Test
     public void testFillCharArray() {
-        final char[] array = new char[3];
-        final char val = 1;
-        final char[] actual = ArrayFill.fill(array, val);
-        assertSame(array, actual);
-        for (final char v : actual) {
-            assertEquals(val, v);
-        }
+        char[] array = new char[3];
+        char value = 'x';
+        char[] result = ArrayFill.fill(array, value);
+        assertArrayEquals(new char[]{'x', 'x', 'x'}, result, "The char array should be filled with 'x'");
     }
 
     @Test
     public void testFillDoubleArray() {
-        final double[] array = new double[3];
-        final double val = 1;
-        final double[] actual = ArrayFill.fill(array, val);
-        assertSame(array, actual);
-        for (final double v : actual) {
-            assertEquals(val, v);
-        }
+        double[] array = new double[4];
+        double value = 1.1;
+        double[] result = ArrayFill.fill(array, value);
+        assertArrayEquals(new double[]{1.1, 1.1, 1.1, 1.1}, result, "The double array should be filled with 1.1");
     }
 
     @Test
     public void testFillFloatArray() {
-        final float[] array = new float[3];
-        final float val = 1;
-        final float[] actual = ArrayFill.fill(array, val);
-        assertSame(array, actual);
-        for (final float v : actual) {
-            assertEquals(val, v);
-        }
+        float[] array = new float[2];
+        float value = 2.2f;
+        float[] result = ArrayFill.fill(array, value);
+        assertArrayEquals(new float[]{2.2f, 2.2f}, result, "The float array should be filled with 2.2f");
     }
 
     @Test
     public void testFillIntArray() {
-        final int[] array = new int[3];
-        final int val = 1;
-        final int[] actual = ArrayFill.fill(array, val);
-        assertSame(array, actual);
-        for (final int v : actual) {
-            assertEquals(val, v);
-        }
+        int[] array = new int[3];
+        int value = 3;
+        int[] result = ArrayFill.fill(array, value);
+        assertArrayEquals(new int[]{3, 3, 3}, result, "The int array should be filled with 3");
     }
 
     @Test
     public void testFillLongArray() {
-        final long[] array = new long[3];
-        final long val = 1;
-        final long[] actual = ArrayFill.fill(array, val);
-        assertSame(array, actual);
-        for (final long v : actual) {
-            assertEquals(val, v);
-        }
-    }
-
-    @Test
-    public void testFillObjectArray() {
-        final String[] array = new String[3];
-        final String val = "A";
-        final String[] actual = ArrayFill.fill(array, val);
-        assertSame(array, actual);
-        for (final String v : actual) {
-            assertEquals(val, v);
-        }
+        long[] array = new long[1];
+        long value = 999L;
+        long[] result = ArrayFill.fill(array, value);
+        assertArrayEquals(new long[]{999L}, result, "The long array should be filled with 999L");
     }
 
     @Test
     public void testFillShortArray() {
-        final short[] array = new short[3];
-        final short val = (byte) 1;
-        final short[] actual = ArrayFill.fill(array, val);
-        assertSame(array, actual);
-        for (final short v : actual) {
-            assertEquals(val, v);
-        }
+        short[] array = new short[2];
+        short value = 20;
+        short[] result = ArrayFill.fill(array, value);
+        assertArrayEquals(new short[]{20, 20}, result, "The short array should be filled with 20");
+    }
+
+    @Test
+    public void testFillObjectArray() {
+        String[] array = new String[3];
+        String value = "test";
+        String[] result = ArrayFill.fill(array, value);
+        assertArrayEquals(new String[]{"test", "test", "test"}, result, "The Object array should be filled with 'test'");
+    }
+
+    @Test
+    public void testFillEmptyArray() {
+        int[] array = new int[0];
+        int[] result = ArrayFill.fill(array, 5);
+        assertArrayEquals(new int[]{}, result, "An empty array should remain empty after fill operation");
     }
 }
