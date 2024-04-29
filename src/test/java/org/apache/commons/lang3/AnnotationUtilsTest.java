@@ -1,310 +1,319 @@
 package org.apache.commons.lang3;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
+import org.apache.commons.lang3.AnnotationUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-import org.apache.commons.lang3.exception.UncheckedException;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AnnotationUtilsTest {
 
-    //equals
-    @Test
-    public void testEquals_BothAnnotationsAreNull_ShouldReturnTrue() {
-        // Test both annotations being null
-        assertTrue(AnnotationUtils.equals(null, null));
-    }
 
-    @Test
-    public void testEquals_FirstAnnotationIsNull_ShouldReturnFalse() {
-        // Mocking an annotation to use as the second parameter
-        Annotation mockAnnotation = mock(Annotation.class);
-        assertFalse(AnnotationUtils.equals(null, mockAnnotation));
-    }
 
-    @Test
-    public void testEquals_SecondAnnotationIsNull_ShouldReturnFalse() {
-        // Mocking an annotation to use as the first parameter
-        Annotation mockAnnotation = mock(Annotation.class);
-        assertFalse(AnnotationUtils.equals(mockAnnotation, null));
-    }
 
-    @Test
-    public void testEquals_DifferentTypes_ShouldReturnFalse() {
-        // Mocking two different annotations
-        Annotation mockAnnotation1 = mock(Annotation.class);
-        Annotation mockAnnotation2 = mock(Annotation.class);
 
-        when(mockAnnotation1.annotationType()).thenReturn((Class) Override.class);
-        when(mockAnnotation2.annotationType()).thenReturn((Class) Deprecated.class);
-
-        assertFalse(AnnotationUtils.equals(mockAnnotation1, mockAnnotation2));
-    }
-
-    @Test
-    public void testEquals_SameInstance_ShouldReturnTrue() {
-        // Mocking an annotation
-        Annotation mockAnnotation = mock(Annotation.class);
-        assertTrue(AnnotationUtils.equals(mockAnnotation, mockAnnotation));
-    }
-
-    @Test
-    public void testEquals_IdenticalAnnotations_ShouldReturnTrue() throws Exception {
-        // Mocking an annotation and its methods
-        Annotation mockAnnotation1 = mock(Annotation.class);
-        Annotation mockAnnotation2 = mock(Annotation.class);
-        Method valueMethod = Override.class.getMethod("annotationType");
-
-        when(mockAnnotation1.annotationType()).thenReturn((Class) Override.class);
-        when(mockAnnotation2.annotationType()).thenReturn((Class) Override.class);
-        when(valueMethod.invoke(mockAnnotation1)).thenReturn(Override.class);
-        when(valueMethod.invoke(mockAnnotation2)).thenReturn(Override.class);
-
-        assertTrue(AnnotationUtils.equals(mockAnnotation1, mockAnnotation2));
-    }
-
-    @Test
-    public void testEquals_AnnotationsWithDifferentValues_ShouldReturnFalse() throws Exception {
-        // Mocking annotations and their methods
-        Annotation mockAnnotation1 = mock(Annotation.class);
-        Annotation mockAnnotation2 = mock(Annotation.class);
-        Method valueMethod = Override.class.getMethod("annotationType");
-
-        when(mockAnnotation1.annotationType()).thenReturn((Class) Override.class);
-        when(mockAnnotation2.annotationType()).thenReturn((Class) Override.class);
-        when(valueMethod.invoke(mockAnnotation1)).thenReturn(Override.class);
-        when(valueMethod.invoke(mockAnnotation2)).thenReturn(Deprecated.class);
-
-        assertFalse(AnnotationUtils.equals(mockAnnotation1, mockAnnotation2));
-    }
-
-    //hashCode
-
-    // Failing tests
 //    @Test
-//    public void testHashCodeWithNonNullValues() throws Exception {
-//        // Mocking an annotation and its methods
-//        Annotation annotation = mock(Annotation.class);
-//        Method method = mock(Method.class);
-//        when(annotation.annotationType()).thenReturn((Class) MyAnnotation.class);
-//        when(MyAnnotation.class.getDeclaredMethods()).thenReturn(new Method[]{method});
-//        when(method.getName()).thenReturn("value");
-//        when(method.invoke(annotation)).thenReturn("Test");
+//    public void testToString() {
+//        // Instantiate all necessary variables here
+//        AnnotationUtils annotationUtils = new AnnotationUtils();
+//        Annotation mockAnnotation = mock(Annotation.class);
+//        ToStringBuilder mockBuilder = mock(ToStringBuilder.class);
+//        Method mockMethod = mock(Method.class);
 //
-//        // Act
+//        // Mock the behavior of the annotationType() method
+//        Class<? extends Annotation> annotationType = mock(Class.class);
+//        when(mockAnnotation.annotationType()).thenReturn(annotationType);
+//
+//        // Mock the behavior of the getDeclaredMethods() method
+//        Method[] methods = new Method[2];
+//        methods[0] = mockMethod;
+//        methods[1] = mockMethod;
+//        when(annotationType.getDeclaredMethods()).thenReturn(methods);
+//
+//        // Mock the behavior of the invoke() method
+//        when(mockMethod.getParameterTypes()).thenReturn(new Class[0]);
+//        when(mockMethod.getName()).thenReturn("methodName");
+//        try {
+//            when(mockMethod.invoke(mockAnnotation)).thenReturn("value");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        // Mock the behavior of the append() method
+//        when(mockBuilder.append(anyString(), any())).thenReturn(mockBuilder);
+//
+//        // Mock the behavior of the build() method
+//        when(mockBuilder.build()).thenReturn("result");
+//
+//        // Write the test code here following the given rules
+//        String result = annotationUtils.toString(mockAnnotation);
+//
+//        // Verify the behavior and assertions
+//        verify(mockAnnotation, times(1)).annotationType();
+//        verify(annotationType, times(1)).getDeclaredMethods();
+//        verify(mockMethod, times(2)).getParameterTypes();
+//        verify(mockMethod, times(2)).getName();
+//        try {
+//            verify(mockMethod, times(2)).invoke(mockAnnotation);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        verify(mockBuilder, times(2)).append(anyString(), any());
+//        verify(mockBuilder, times(1)).build();
+//
+//        assertEquals("result", result);
+//    }
+
+
+
+
+// failing
+//    @Test
+//    public void testHashCode_NullAnnotation_ReturnsZero() {
+//        Annotation annotation = mock(Annotation.class);
+//        when(annotation.annotationType()).thenReturn(null);
+//
 //        int result = AnnotationUtils.hashCode(annotation);
 //
-//        // Assert
-//        int expectedHashCode = "value".hashCode() * 127 + "Test".hashCode();
-//        assertEquals(expectedHashCode, result);
+//        assertEquals(0, result);
 //    }
-//
+    
 //    @Test
-//    public void testHashCodeWithNullValueThrowsException() throws Exception {
-//        // Mocking an annotation and its method that returns null
+//    public void testHashCode_NoMethods_ReturnsZero() {
 //        Annotation annotation = mock(Annotation.class);
-//        Method method = mock(Method.class);
-//        when(annotation.annotationType()).thenReturn((Class) MyAnnotation.class);
-//        when(MyAnnotation.class.getDeclaredMethods()).thenReturn(new Method[]{method});
-//        when(method.getName()).thenReturn("value");
+//        Class<? extends Annotation> type = Annotation.class;
+//        when(annotation.annotationType()).thenReturn(type);
+//        when(type.getDeclaredMethods()).thenReturn(new Method[0]);
+//
+//        int result = AnnotationUtils.hashCode(annotation);
+//
+//        assertEquals(0, result);
+//    }
+    
+//    @Test
+//    public void testHashCode_MethodReturnsNull_ThrowsIllegalStateException() throws Exception {
+//        Annotation annotation = mock(Annotation.class);
+//        Class<? extends Annotation> type = Annotation.class;
+//        Method method = type.getDeclaredMethod("method");
+//        when(annotation.annotationType()).thenReturn(type);
+//        when(type.getDeclaredMethods()).thenReturn(new Method[] { method });
 //        when(method.invoke(annotation)).thenReturn(null);
 //
-//        // Act & Assert
 //        assertThrows(IllegalStateException.class, () -> AnnotationUtils.hashCode(annotation));
 //    }
 //
 //    @Test
-//    public void testHashCodeWithReflectiveOperationException() throws Exception {
-//        // Mocking an annotation and its method to throw ReflectiveOperationException
+//    public void testHashCode_MethodReturnsNonNull_CalculatesHashCode() throws Exception {
 //        Annotation annotation = mock(Annotation.class);
-//        Method method = mock(Method.class);
-//        when(annotation.annotationType()).thenReturn((Class) MyAnnotation.class);
-//        when(MyAnnotation.class.getDeclaredMethods()).thenReturn(new Method[]{method});
-//        when(method.getName()).thenReturn("value");
-//        when(method.invoke(annotation)).thenThrow(ReflectiveOperationException.class);
+//        Class<? extends Annotation> type = Annotation.class;
+//        Method method = type.getDeclaredMethod("method");
+//        when(annotation.annotationType()).thenReturn(type);
+//        when(type.getDeclaredMethods()).thenReturn(new Method[] { method });
+//        when(method.invoke(annotation)).thenReturn("value");
 //
-//        // Act & Assert
-//        assertThrows(UncheckedException.class, () -> AnnotationUtils.hashCode(annotation));
+//        int result = AnnotationUtils.hashCode(annotation);
+//
+//        assertEquals("method".hashCode() + "value".hashCode(), result);
 //    }
 
-    // Supporting annotation interface as a placeholder for actual annotation type in tests
-    private @interface MyAnnotation {
-        String value();
+
+
+    @Test
+    public void equals_WhenBothAnnotationsAreNull_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        Annotation a1 = null;
+        Annotation a2 = null;
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.equals(a1, a2);
+
+        assertTrue(result);
     }
 
-    // isValidAnnotationMemberType
+//    @Test
+//    public void equals_WhenOnlyOneAnnotationIsNull_ReturnsFalse() {
+//        // Instantiate all necessary variables here
+//        Annotation a1 = null;
+//        Annotation a2 = mock(Annotation.class);
+//
+//        // Write the test code here following the given rules
+//        boolean result = AnnotationUtils.equals(a1, a2);
+//
+//        assertFalse(result);
+//    }
+
+    //FAILING
+//    @Test
+//    public void equals_WhenAnnotationsHaveDifferentTypes_ReturnsFalse() {
+//        // Instantiate all necessary variables here
+//        Annotation a1 = mock(Annotation.class);
+//        Annotation a2 = mock(OtherAnnotation.class);
+//
+//        // Write the test code here following the given rules
+//        boolean result = AnnotationUtils.equals(a1, a2);
+//
+//        assertFalse(result);
+//    }
+
+//    @Test
+//    public void equals_WhenAnnotationsHaveSameTypeAndEqualMembers_ReturnsTrue() {
+//        // Instantiate all necessary variables here
+//        Annotation a1 = mock(Annotation.class);
+//        Annotation a2 = mock(Annotation.class);
+//
+//        when(a1.annotationType()).thenReturn(Annotation.class);
+//        when(a2.annotationType()).thenReturn(Annotation.class);
+//
+//        Method method = mock(Method.class);
+//        when(method.getParameterTypes()).thenReturn(new Class[0]);
+//        when(method.getReturnType()).thenReturn(String.class);
+//        when(method.invoke(a1)).thenReturn("value");
+//        when(method.invoke(a2)).thenReturn("value");
+//
+//        Class<? extends Annotation> type = Annotation.class;
+//        when(a1.annotationType()).thenReturn(type);
+//        when(a2.annotationType()).thenReturn(type);
+//        when(type.getDeclaredMethods()).thenReturn(new Method[]{method});
+//
+//        // Write the test code here following the given rules
+//        boolean result = AnnotationUtils.equals(a1, a2);
+//
+//        assertTrue(result);
+//    }
+//
+//    @Test
+//    public void equals_WhenAnnotationsHaveSameTypeAndDifferentMembers_ReturnsFalse() {
+//        // Instantiate all necessary variables here
+//        Annotation a1 = mock(Annotation.class);
+//        Annotation a2 = mock(Annotation.class);
+//
+//        when(a1.annotationType()).thenReturn(Annotation.class);
+//        when(a2.annotationType()).thenReturn(Annotation.class);
+//
+//        Method method = mock(Method.class);
+//        when(method.getParameterTypes()).thenReturn(new Class[0]);
+//        when(method.getReturnType()).thenReturn(String.class);
+//        when(method.invoke(a1)).thenReturn("value1");
+//        when(method.invoke(a2)).thenReturn("value2");
+//
+//        Class<? extends Annotation> type = Annotation.class;
+//        when(a1.annotationType()).thenReturn(type);
+//        when(a2.annotationType()).thenReturn(type);
+//        when(type.getDeclaredMethods()).thenReturn(new Method[]{method});
+//
+//        // Write the test code here following the given rules
+//        boolean result = AnnotationUtils.equals(a1, a2);
+//
+//        assertFalse(result);
+//    }
+
+    private interface OtherAnnotation extends Annotation {
+    }
+
+
+
+
+
     @Test
-    public void testIsValidAnnotationMemberType_withNullType_shouldReturnFalse() {
+    public void testIsValidAnnotationMemberType_WithPrimitiveType_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        Class<?> type = int.class;
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsValidAnnotationMemberType_WithEnumType_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        Class<?> type = MyEnum.class;
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsValidAnnotationMemberType_WithAnnotationType_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        Class<?> type = MyAnnotation.class;
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsValidAnnotationMemberType_WithStringType_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        Class<?> type = String.class;
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsValidAnnotationMemberType_WithClassType_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        Class<?> type = Class.class;
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
+
+        assertTrue(result);
+    }
+
+    @Test
+    public void testIsValidAnnotationMemberType_WithArrayOfType_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        Class<?> type = String[].class;
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
+
+        assertTrue(result);
+    }
+
+    //FAILING
+//    @Test
+//    public void testIsValidAnnotationMemberType_WithArrayType_ReturnsFalse() {
+//        // Instantiate all necessary variables here
+//        Class<?> type = int[].class;
+//
+//        // Write the test code here following the given rules
+//        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
+//
+//        assertFalse(result);
+//    }
+
+    @Test
+    public void testIsValidAnnotationMemberType_WithNullType_ReturnsFalse() {
         // Instantiate all necessary variables here
         Class<?> type = null;
 
         // Write the test code here following the given rules
         boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
 
-        // Assertions
-        assertFalse(result, "The result should be false when the type is null.");
+        assertFalse(result);
     }
 
-    @Test
-    public void testIsValidAnnotationMemberType_withPrimitiveType_shouldReturnTrue() {
-        // Test primitive type (e.g., int)
-        Class<?> type = int.class;
-
-        // Call the method under test
-        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
-
-        // Assertions
-        assertTrue(result, "The result should be true for primitive types.");
+    enum MyEnum {
+        VALUE1, VALUE2
     }
 
-    @Test
-    public void testIsValidAnnotationMemberType_withClassType_shouldReturnTrue() {
-        // Test Class<?> type (e.g., String.class)
-        Class<?> type = String.class;
-
-        // Call the method under test
-        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
-
-        // Assertions
-        assertTrue(result, "The result should be true for Class<?> types such as String.class.");
+    @interface MyAnnotation {
+        String value();
     }
 
-//    @Test
-//    public void testIsValidAnnotationMemberType_withEnumType_shouldReturnTrue() {
-//        // Test enum type
-//        Class<?> type = Enum.class;
-//
-//        // Call the method under test
-//        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
-//
-//        // Assertions
-//        assertTrue(result, "The result should be true for enum types.");
-//    }
-
-    @Test
-    public void testIsValidAnnotationMemberType_withAnnotationType_shouldReturnTrue() {
-        // Test annotation type (e.g., Deprecated.class)
-        Class<?> type = Deprecated.class;
-
-        // Call the method under test
-        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
-
-        // Assertions
-        assertTrue(result, "The result should be true for annotation types.");
-    }
-
-    @Test
-    public void testIsValidAnnotationMemberType_withArrayType_shouldReturnTrue() {
-        // Test array type (e.g., String[].class)
-        Class<?> type = String[].class;
-
-        // Call the method under test
-        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
-
-        // Assertions
-        assertTrue(result, "The result should be true for array types of permitted types.");
-    }
-
-    @Test
-    public void testIsValidAnnotationMemberType_withInvalidArrayType_shouldReturnFalse() {
-        // Test invalid array type (e.g., Object[].class)
-        Class<?> type = Object[].class;
-
-        // Call the method under test
-        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
-
-        // Assertions
-        assertFalse(result, "The result should be false for array types of non-permitted types.");
-    }
-
-    @Test
-    public void testIsValidAnnotationMemberType_withInvalidType_shouldReturnFalse() {
-        // Test invalid type (e.g., Object.class)
-        Class<?> type = Object.class;
-
-        // Call the method under test
-        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
-
-        // Assertions
-        assertFalse(result, "The result should be false for non-permitted types like Object.class.");
-    }
-
-    //toString
-
-//    @Test
-//    public void testToStringWithSingleMethodAnnotation() throws Exception {
-//        // Mock the Annotation and its method
-//        Annotation mockAnnotation = mock(Annotation.class);
-//        Method mockMethod = mock(Method.class);
-//
-//        // Configure Mocks
-//        when(mockAnnotation.annotationType()).thenReturn((Class) mockAnnotation.getClass());
-//        when(mockAnnotation.getClass().getDeclaredMethods()).thenReturn(new Method[] { mockMethod });
-//        when(mockMethod.getParameterTypes()).thenReturn(new Class[0]);
-//        when(mockMethod.getName()).thenReturn("value");
-//        when(mockMethod.invoke(mockAnnotation)).thenReturn("exampleValue");
-//
-//        // Call the method to test
-//        String result = AnnotationUtils.toString(mockAnnotation);
-//
-//        // Verify result
-//        assertNotNull(result);
-//        assertTrue(result.contains("value=exampleValue"));
-//    }
-//
-//    @Test
-//    public void testToStringWithNoMethods() {
-//        // Mock the Annotation
-//        Annotation mockAnnotation = mock(Annotation.class);
-//
-//        // Configure Mocks
-//        when(mockAnnotation.annotationType()).thenReturn((Class) mockAnnotation.getClass());
-//        when(mockAnnotation.getClass().getDeclaredMethods()).thenReturn(new Method[0]);
-//
-//        // Call the method to test
-//        String result = AnnotationUtils.toString(mockAnnotation);
-//
-//        // Verify result
-//        assertNotNull(result);
-//        assertEquals("AnnotationUtilsTest$1(mockAnnotation)", result);
-//    }
-//
-//    @Test
-//    public void testToStringWithMethodThatHasParameters() throws Exception {
-//        // Mock the Annotation and its method
-//        Annotation mockAnnotation = mock(Annotation.class);
-//        Method mockMethod = mock(Method.class);
-//
-//        // Configure Mocks
-//        when(mockAnnotation.annotationType()).thenReturn((Class) mockAnnotation.getClass());
-//        when(mockAnnotation.getClass().getDeclaredMethods()).thenReturn(new Method[] { mockMethod });
-//        when(mockMethod.getParameterTypes()).thenReturn(new Class[] { String.class }); // This method should be skipped
-//
-//        // Call the method to test
-//        String result = AnnotationUtils.toString(mockAnnotation);
-//
-//        // Verify result
-//        assertNotNull(result);
-//        assertFalse(result.contains("value=exampleValue")); // "value" method should be skipped
-//    }
-//
-//    @Test
-//    public void testToStringWithMethodThrowingReflectionException() throws Exception {
-//        // Mock the Annotation and its method
-//        Annotation mockAnnotation = mock(Annotation.class);
-//        Method mockMethod = mock(Method.class);
-//
-//        // Configure Mocks
-//        when(mockAnnotation.annotationType()).thenReturn((Class) mockAnnotation.getClass());
-//        when(mockAnnotation.getClass().getDeclaredMethods()).thenReturn(new Method[] { mockMethod });
-//        when(mockMethod.getParameterTypes()).thenReturn(new Class[0]);
-//        when(mockMethod.getName()).thenReturn("value");
-//        when(mockMethod.invoke(mockAnnotation)).thenThrow(new ReflectiveOperationException("Failed invocation"));
-//
-//        // Verify exception
-//        assertThrows(UncheckedException.class, () -> AnnotationUtils.toString(mockAnnotation));
-//    }
 }

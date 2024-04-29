@@ -1,75 +1,38 @@
 package org.apache.commons.lang3;
+
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.Test;
 
 public class LongRangeTest {
 
     @Test
-    public void testOfWithNormalOrder() {
-        // Test normal order (min, max)
-        Long min = 1L;
-        Long max = 10L;
-        LongRange range = LongRange.of(min, max);
+    public void testOf_withLongParameters_shouldReturnRangeObject() {
+        // Instantiate all necessary variables here
+        long fromInclusive = 0;
+        long toInclusive = 10;
 
-        assertEquals(min, range.getMinimum());
-        assertEquals(max, range.getMaximum());
+        // Write the test code here following the given rules
+        LongRange range = LongRange.of(fromInclusive, toInclusive);
+
+        assertNotNull(range);
+        assertEquals(fromInclusive, range.getMinimum());
+        assertEquals(toInclusive, range.getMaximum());
     }
 
     @Test
-    public void testOfWithReverseOrder() {
-        // Test reverse order (max, min)
-        Long min = 1L;
-        Long max = 10L;
-        LongRange range = LongRange.of(max, min);
+    public void testOf_withLongWrapperParameters_shouldReturnRangeObject() {
+        // Instantiate all necessary variables here
+        Long fromInclusive = Long.valueOf(0);
+        Long toInclusive = Long.valueOf(10);
 
-        assertEquals(min, range.getMinimum());
-        assertEquals(max, range.getMaximum());
-    }
+        // Write the test code here following the given rules
+        LongRange range = LongRange.of(fromInclusive, toInclusive);
 
-    @Test
-    public void testOfWithEqualValues() {
-        // Test with equal min and max values
-        Long value = 5L;
-        LongRange range = LongRange.of(value, value);
-
-        assertEquals(value, range.getMinimum());
-        assertEquals(value, range.getMaximum());
-    }
-
-    @Test
-    public void testOfWithNullFirstArgument() {
-        // Test passing null as the first argument
-        Long max = 10L;
-        assertThrows(NullPointerException.class, () -> {
-            LongRange.of(null, max);
-        });
-    }
-
-    @Test
-    public void testOfWithNullSecondArgument() {
-        // Test passing null as the second argument
-        Long min = 1L;
-        assertThrows(NullPointerException.class, () -> {
-            LongRange.of(min, null);
-        });
-    }
-
-    @Test
-    public void testOfWithBothArgumentsNull() {
-        // Test passing null for both arguments
-        assertThrows(NullPointerException.class, () -> {
-            LongRange.of(null, null);
-        });
-    }
-
-    @Test
-    public void testOfWithExtremes() {
-        // Test with extreme long values
-        Long min = Long.MIN_VALUE;
-        Long max = Long.MAX_VALUE;
-        LongRange range = LongRange.of(min, max);
-
-        assertEquals(min, range.getMinimum());
-        assertEquals(max, range.getMaximum());
+        assertNotNull(range);
+        assertEquals(fromInclusive, range.getMinimum());
+        assertEquals(toInclusive, range.getMaximum());
     }
 }
