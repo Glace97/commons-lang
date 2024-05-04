@@ -67,7 +67,7 @@ public class AnnotationUtilsTest {
 
 
 
-    //@Test
+    @Test
     public void testToString() {
         Annotation annotation = mock(Annotation.class);
         Method method = mock(Method.class);
@@ -90,7 +90,7 @@ public class AnnotationUtilsTest {
         }
     }
 
-    //@Test
+    @Test
     public void testToString_WhenException() {
         Annotation annotation = mock(Annotation.class);
         Method method = mock(Method.class);
@@ -110,7 +110,7 @@ public class AnnotationUtilsTest {
         }
     }
 
-    //@Test
+    @Test
     public void testToString_WhenMethodHasParameters() {
         Annotation annotation = mock(Annotation.class);
         Method method = mock(Method.class);
@@ -135,7 +135,7 @@ public class AnnotationUtilsTest {
 
 
 
-    //@Test
+    @Test
     public void testHashCode() throws Exception {
         // Instantiate all necessary variables here
         Annotation mockAnnotation = mock(Annotation.class);
@@ -159,7 +159,7 @@ public class AnnotationUtilsTest {
         assertNotEquals(0, hashCode);
     }
 
-    //@Test
+    @Test
     public void testHashCode_WhenAnnotationMethodReturnsNull() throws Exception {
         // Instantiate all necessary variables here
         Annotation mockAnnotation = mock(Annotation.class);
@@ -176,7 +176,7 @@ public class AnnotationUtilsTest {
         assertThrows(IllegalStateException.class, () -> AnnotationUtils.hashCode(mockAnnotation));
     }
 
-    //@Test
+    @Test
     public void testHashCode_WhenAnnotationMethodThrowsException() throws Exception {
         // Instantiate all necessary variables here
         Annotation mockAnnotation = mock(Annotation.class);
@@ -218,14 +218,14 @@ public class AnnotationUtilsTest {
         assertFalse(AnnotationUtils.equals(annotation, null));
     }
 
-    //@Test
+    @Test
     public void testEqualsDifferentTypes() throws Exception {
         Annotation annotation1 = mock(TestAnnotation1.class);
         Annotation annotation2 = mock(TestAnnotation2.class);
         assertFalse(AnnotationUtils.equals(annotation1, annotation2));
     }
 
-    //@Test
+    @Test
     public void testEqualsSameTypeDifferentValues() throws Exception {
         TestAnnotation1 annotation1 = mock(TestAnnotation1.class);
         TestAnnotation1 annotation2 = mock(TestAnnotation1.class);
@@ -236,7 +236,7 @@ public class AnnotationUtilsTest {
         assertFalse(AnnotationUtils.equals(annotation1, annotation2));
     }
 
-    //@Test
+    @Test
     public void testEqualsSameTypeSameValues() throws Exception {
         TestAnnotation1 annotation1 = mock(TestAnnotation1.class);
         TestAnnotation1 annotation2 = mock(TestAnnotation1.class);

@@ -38,7 +38,7 @@ public class LongRangeTest {
         assertEquals(10L, longRange.getMaximum());
     }
 
-    //@Test
+    @Test
     public void testOfWithNullValues() {
         assertThrows(IllegalArgumentException.class, () -> LongRange.of(null, 5L));
         assertThrows(IllegalArgumentException.class, () -> LongRange.of(5L, null));

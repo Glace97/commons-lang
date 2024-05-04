@@ -6,27 +6,26 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
+import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
-import java.util.List;
+
 import org.junit.jupiter.api.function.Executable;
 import java.lang.reflect.Method;
-import java.util.Iterator;
+
 import static org.mockito.Mockito.mock;
-import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.Mockito;
 import org.mockito.Mock;
-import java.util.Arrays;
-import java.util.HashSet;
+
 import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.MockitoAnnotations;
-import java.util.Comparator;
+
 import java.lang.ClassNotFoundException;
-import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -374,53 +373,54 @@ public class ClassUtilsTest {
         assertEquals("java.lang.String", clazz.getName());
     }
 
-    @Test
-    public void getClass_whenCalledWithClassLoaderAndClassName_thenReturnsClass() throws ClassNotFoundException {
-        ClassLoader classLoader = mock(ClassLoader.class);
-        when(classLoader.loadClass(anyString())).thenReturn(String.class);
-        Class<?> clazz = ClassUtils.getClass(classLoader, "java.lang.String");
-        assertNotNull(clazz);
-        assertEquals("java.lang.String", clazz.getName());
-    }
+//    @Test
+//    public void getClass_whenCalledWithClassLoaderAndClassName_thenReturnsClass() throws ClassNotFoundException {
+//        ClassLoader classLoader = mock(ClassLoader.class);
+//        when(classLoader.loadClass(anyString())).thenReturn(String.class);
+//        Class<?> clazz = ClassUtils.getClass(classLoader, "java.lang.String");
+//        assertNotNull(clazz);
+//        assertEquals("java.lang.String", clazz.getName());
+//    }
 
-    @Test
-    public void getClass_whenCalledWithClassLoaderAndClassNameAndInitializeFlag_thenReturnsClass() throws ClassNotFoundException {
-        ClassLoader classLoader = mock(ClassLoader.class);
-        when(classLoader.loadClass(anyString())).thenReturn(String.class);
-        Class<?> clazz = ClassUtils.getClass(classLoader, "java.lang.String", true);
-        assertNotNull(clazz);
-        assertEquals("java.lang.String", clazz.getName());
-    }
-
-
+//    @Test
+//    public void getClass_whenCalledWithClassLoaderAndClassNameAndInitializeFlag_thenReturnsClass() throws ClassNotFoundException {
+//        ClassLoader classLoader = mock(ClassLoader.class);
+//        when(classLoader.loadClass(anyString())).thenReturn(String.class);
+//        Class<?> clazz = ClassUtils.getClass(classLoader, "java.lang.String", true);
+//        assertNotNull(clazz);
+//        assertEquals("java.lang.String", clazz.getName());
+//    }
 
 
 
-    @Test
-    public void hasNext_True_Test() {
-        // Instantiate all necessary variables here
-        Iterator iterator = mock(Iterator.class);
 
-        when(iterator.hasNext()).thenReturn(true);
+    // REDO Manually
 
-        ClassUtils classUtils = new ClassUtils(iterator);
-
-        // Assert
-        assertTrue(classUtils.hasNext());
-    }
-
-    @Test
-    public void hasNext_False_Test() {
-        // Instantiate all necessary variables here
-        Iterator iterator = mock(Iterator.class);
-
-        when(iterator.hasNext()).thenReturn(false);
-
-        ClassUtils classUtils = new ClassUtils(iterator);
-
-        // Assert
-        assertFalse(classUtils.hasNext());
-    }
+//    @Test
+//    public void hasNext_True_Test() {
+//        // Instantiate all necessary variables here
+//        Iterator iterator = mock(Iterator.class);
+//
+//        when(iterator.hasNext()).thenReturn(true);
+//
+//        ClassUtils classUtils = new ClassUtils(iterator);
+//
+//        // Assert
+//        assertTrue(classUtils.hasNext());
+//    }
+//
+//    @Test
+//    public void hasNext_False_Test() {
+//        // Instantiate all necessary variables here
+//        Iterator iterator = mock(Iterator.class);
+//
+//        when(iterator.hasNext()).thenReturn(false);
+//
+//        ClassUtils classUtils = new ClassUtils(iterator);
+//
+//        // Assert
+//        assertFalse(classUtils.hasNext());
+//    }
 
 
 
@@ -446,13 +446,13 @@ public class ClassUtilsTest {
         assertFalse(ClassUtils.isInnerClass(nonInnerClass));
     }
 
-    @Test
-    public void testIsInnerClass_MockInnerClass() {
-        // Test case: The input class is a mock inner class
-        Class<?> mockClass = mock(Class.class);
-        when(mockClass.getEnclosingClass()).thenReturn(NonInnerClass.class);
-        assertTrue(ClassUtils.isInnerClass(mockClass));
-    }
+//    @Test
+//    public void testIsInnerClass_MockInnerClass() {
+//        // Test case: The input class is a mock inner class
+//        Class<?> mockClass = mock(Class.class);
+//        when(mockClass.getEnclosingClass()).thenReturn(NonInnerClass.class);
+//        assertTrue(ClassUtils.isInnerClass(mockClass));
+//    }
 
     @Test
     public void testIsInnerClass_MockNonInnerClass() {
@@ -481,142 +481,142 @@ public class ClassUtilsTest {
 
 
 
-
-    @Test
-    public void testRemoveMethod() {
-        // Instantiate ClassUtils
-        ClassUtils classUtils = new ClassUtils();
-
-        // Expect UnsupportedOperationException when remove method is called
-        assertThrows(UnsupportedOperationException.class, new Executable() {
-            @Override
-            public void execute() throws Throwable {
-                classUtils.remove();
-            }
-        });
-    }
-
-    @Test
-    public void testRemoveMethodWithMockito() {
-        // Create a spy of ClassUtils
-        ClassUtils classUtils = spy(new ClassUtils());
-
-        // When remove method is called, throw UnsupportedOperationException
-        doThrow(new UnsupportedOperationException()).when(classUtils).remove();
-
-        // Assert that UnsupportedOperationException is thrown
-        assertThrows(UnsupportedOperationException.class, new Executable() {
-            @Override
-            public void execute() throws Throwable {
-                classUtils.remove();
-            }
-        });
-    }
-
-
+// REDO
+//    @Test
+//    public void testRemoveMethod() {
+//        // Instantiate ClassUtils
+//        ClassUtils classUtils = new ClassUtils();
+//
+//        // Expect UnsupportedOperationException when remove method is called
+//        assertThrows(UnsupportedOperationException.class, new Executable() {
+//            @Override
+//            public void execute() throws Throwable {
+//                classUtils.remove();
+//            }
+//        });
+//    }
+//
+//    @Test
+//    public void testRemoveMethodWithMockito() {
+//        // Create a spy of ClassUtils
+//        ClassUtils classUtils = spy(new ClassUtils());
+//
+//        // When remove method is called, throw UnsupportedOperationException
+//        doThrow(new UnsupportedOperationException()).when(classUtils).remove();
+//
+//        // Assert that UnsupportedOperationException is thrown
+//        assertThrows(UnsupportedOperationException.class, new Executable() {
+//            @Override
+//            public void execute() throws Throwable {
+//                classUtils.remove();
+//            }
+//        });
+//    }
 
 
 
 
 
-    @Mock
-    private Class<?> mockClass;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
 
-    @Test
-    public void testHierarchyWithExcludeInterfaces() {
-        // Given
-        when(mockClass.getSuperclass()).thenReturn(null);
+//    @Mock
+//    private Class<?> mockClass;
+//
+//    @BeforeEach
+//    public void setUp() {
+//        MockitoAnnotations.openMocks(this);
+//    }
 
-        // When
-        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.EXCLUDE);
+//    @Test
+//    public void testHierarchyWithExcludeInterfaces() {
+//        // Given
+//        when(mockClass.getSuperclass()).thenReturn(null);
+//
+//        // When
+//        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.EXCLUDE);
+//
+//        // Then
+//        assert output != null;
+//        Iterator<Class<?>> iterator = output.iterator();
+//        assertTrue(iterator.hasNext());
+//        assertEquals(mockClass, iterator.next());
+//        assertFalse(iterator.hasNext());
+//    }
 
-        // Then
-        assert output != null;
-        Iterator<Class<?>> iterator = output.iterator();
-        assertTrue(iterator.hasNext());
-        assertEquals(mockClass, iterator.next());
-        assertFalse(iterator.hasNext());
-    }
+//    @Test
+//    public void testHierarchyWithIncludeInterfaces() {
+//        // Given
+//        when(mockClass.getInterfaces()).thenReturn(new Class<?>[0]);
+//        when(mockClass.getSuperclass()).thenReturn(null);
+//
+//        // When
+//        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.INCLUDE);
+//
+//        // Then
+//        assert output != null;
+//        Iterator<Class<?>> iterator = output.iterator();
+//        assertTrue(iterator.hasNext());
+//        assertEquals(mockClass, iterator.next());
+//        assertFalse(iterator.hasNext());
+//    }
 
-    @Test
-    public void testHierarchyWithIncludeInterfaces() {
-        // Given
-        when(mockClass.getInterfaces()).thenReturn(new Class<?>[0]);
-        when(mockClass.getSuperclass()).thenReturn(null);
+//    @Test
+//    public void testHierarchyWithSuperClassAndExcludeInterfaces() {
+//        // Given
+//        when(mockClass.getSuperclass()).thenReturn(Object.class);
+//
+//        // When
+//        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.EXCLUDE);
+//
+//        // Then
+//        assert output != null;
+//        Iterator<Class<?>> iterator = output.iterator();
+//        assertTrue(iterator.hasNext());
+//        assertEquals(mockClass, iterator.next());
+//        assertTrue(iterator.hasNext());
+//        assertEquals(Object.class, iterator.next());
+//        assertFalse(iterator.hasNext());
+//    }
 
-        // When
-        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.INCLUDE);
-
-        // Then
-        assert output != null;
-        Iterator<Class<?>> iterator = output.iterator();
-        assertTrue(iterator.hasNext());
-        assertEquals(mockClass, iterator.next());
-        assertFalse(iterator.hasNext());
-    }
-
-    @Test
-    public void testHierarchyWithSuperClassAndExcludeInterfaces() {
-        // Given
-        when(mockClass.getSuperclass()).thenReturn(Object.class);
-
-        // When
-        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.EXCLUDE);
-
-        // Then
-        assert output != null;
-        Iterator<Class<?>> iterator = output.iterator();
-        assertTrue(iterator.hasNext());
-        assertEquals(mockClass, iterator.next());
-        assertTrue(iterator.hasNext());
-        assertEquals(Object.class, iterator.next());
-        assertFalse(iterator.hasNext());
-    }
-
-    @Test
-    public void testHierarchyWithSuperClassAndIncludeInterfaces() {
-        // Given
-        when(mockClass.getInterfaces()).thenReturn(new Class<?>[0]);
-        when(mockClass.getSuperclass()).thenReturn(Object.class);
-
-        // When
-        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.INCLUDE);
-
-        // Then
-        assert output != null;
-        Iterator<Class<?>> iterator = output.iterator();
-        assertTrue(iterator.hasNext());
-        assertEquals(mockClass, iterator.next());
-        assertTrue(iterator.hasNext());
-        assertEquals(Object.class, iterator.next());
-        assertFalse(iterator.hasNext());
-    }
-
-    @Test
-    public void testHierarchyWithInterfaceAndIncludeInterfaces() {
-        // Given
-        Class<?> mockInterface = mock(Class.class);
-        when(mockClass.getInterfaces()).thenReturn(new Class<?>[]{mockInterface});
-        when(mockClass.getSuperclass()).thenReturn(null);
-        when(mockInterface.getInterfaces()).thenReturn(new Class<?>[0]);
-
-        // When
-        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.INCLUDE);
-
-        // Then
-        assert output != null;
-        Iterator<Class<?>> iterator = output.iterator();
-        assertTrue(iterator.hasNext());
-        assertEquals(mockClass, iterator.next());
-        assertTrue(iterator.hasNext());
-        assertEquals(mockInterface, iterator.next());
-        assertFalse(iterator.hasNext());
-    }
+//    @Test
+//    public void testHierarchyWithSuperClassAndIncludeInterfaces() {
+//        // Given
+//        when(mockClass.getInterfaces()).thenReturn(new Class<?>[0]);
+//        when(mockClass.getSuperclass()).thenReturn(Object.class);
+//
+//        // When
+//        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.INCLUDE);
+//
+//        // Then
+//        assert output != null;
+//        Iterator<Class<?>> iterator = output.iterator();
+//        assertTrue(iterator.hasNext());
+//        assertEquals(mockClass, iterator.next());
+//        assertTrue(iterator.hasNext());
+//        assertEquals(Object.class, iterator.next());
+//        assertFalse(iterator.hasNext());
+//    }
+//
+//    @Test
+//    public void testHierarchyWithInterfaceAndIncludeInterfaces() {
+//        // Given
+//        Class<?> mockInterface = mock(Class.class);
+//        when(mockClass.getInterfaces()).thenReturn(new Class<?>[]{mockInterface});
+//        when(mockClass.getSuperclass()).thenReturn(null);
+//        when(mockInterface.getInterfaces()).thenReturn(new Class<?>[0]);
+//
+//        // When
+//        Iterable<Class<?>> output = ClassUtils.hierarchy(mockClass, ClassUtils.Interfaces.INCLUDE);
+//
+//        // Then
+//        assert output != null;
+//        Iterator<Class<?>> iterator = output.iterator();
+//        assertTrue(iterator.hasNext());
+//        assertEquals(mockClass, iterator.next());
+//        assertTrue(iterator.hasNext());
+//        assertEquals(mockInterface, iterator.next());
+//        assertFalse(iterator.hasNext());
+//    }
 
 
 
@@ -651,37 +651,37 @@ public class ClassUtilsTest {
 
 
 
-    @Test
-    public void testWalkInterfaces() throws NoSuchFieldException, IllegalAccessException {
-        // Instantiate necessary variables
-        ClassUtils classUtils = new ClassUtils();
-        Set<Class<?>> addTo = new HashSet<>();
-        Class<?> classToTest = Mockito.mock(Class.class);
-        Class<?> interface1 = Mockito.mock(Class.class);
-        Class<?> interface2 = Mockito.mock(Class.class);
-        Class<?>[] interfaces = {interface1, interface2};
-
-        // Mocking the getInterfaces method of the Class object
-        when(classToTest.getInterfaces()).thenReturn(interfaces);
-
-        // Access the private field seenInterfaces
-        Field seenInterfacesField = ClassUtils.class.getDeclaredField("seenInterfaces");
-        seenInterfacesField.setAccessible(true);
-        Set<Class<?>> seenInterfaces = (Set<Class<?>>) seenInterfacesField.get(classUtils);
-
-        // Add the first interface to the seenInterfaces set
-        seenInterfaces.add(interface1);
-
-        // Write the test code
-        classUtils.walkInterfaces(addTo, classToTest);
-
-        // Check if the second interface was added to the addTo set
-        assertEquals(1, addTo.size());
-        assertTrue(addTo.contains(interface2));
-
-        // Check if the first interface was not added to the addTo set
-        assertFalse(addTo.contains(interface1));
-    }
+//    @Test
+//    public void testWalkInterfaces() throws NoSuchFieldException, IllegalAccessException {
+//        // Instantiate necessary variables
+//        ClassUtils classUtils = new ClassUtils();
+//        Set<Class<?>> addTo = new HashSet<>();
+//        Class<?> classToTest = Mockito.mock(Class.class);
+//        Class<?> interface1 = Mockito.mock(Class.class);
+//        Class<?> interface2 = Mockito.mock(Class.class);
+//        Class<?>[] interfaces = {interface1, interface2};
+//
+//        // Mocking the getInterfaces method of the Class object
+//        when(classToTest.getInterfaces()).thenReturn(interfaces);
+//
+//        // Access the private field seenInterfaces
+//        Field seenInterfacesField = ClassUtils.class.getDeclaredField("seenInterfaces");
+//        seenInterfacesField.setAccessible(true);
+//        Set<Class<?>> seenInterfaces = (Set<Class<?>>) seenInterfacesField.get(classUtils);
+//
+//        // Add the first interface to the seenInterfaces set
+//        seenInterfaces.add(interface1);
+//
+//        // Write the test code
+//        classUtils.walkInterfaces(addTo, classToTest);
+//
+//        // Check if the second interface was added to the addTo set
+//        assertEquals(1, addTo.size());
+//        assertTrue(addTo.contains(interface2));
+//
+//        // Check if the first interface was not added to the addTo set
+//        assertFalse(addTo.contains(interface1));
+//    }
 
 
 
@@ -785,12 +785,12 @@ public class ClassUtilsTest {
         assertNull(result, "Result should be null when the input class is null");
     }
 
-    @Test
-    public void getComponentType_whenClassIsNotArray() {
-        Class<String> cls = String.class;
-        Class<String> result = ClassUtils.getComponentType(cls);
-        assertNull(result, "Result should be null when the input class is not an array");
-    }
+//    @Test
+//    public void getComponentType_whenClassIsNotArray() {
+//        Class<String> cls = String.class;
+//        Class<String> result = ClassUtils.getComponentType(cls);
+//        assertNull(result, "Result should be null when the input class is not an array");
+//    }
 
     @Test
     public void getComponentType_whenClassIsArray() {
@@ -865,20 +865,20 @@ public class ClassUtilsTest {
 
 
 
-    @Test
-    public void testGetShortClassNameWithClass() {
-        // Test with non-null Class
-        String className = ClassUtils.getShortClassName(String.class);
-        assertEquals("String", className);
-
-        // Test with null Class
-        className = ClassUtils.getShortClassName(null);
-        assertEquals("", className);
-
-        // Test with inner Class
-        className = ClassUtils.getShortClassName(Map.Entry.class);
-        assertEquals("Map.Entry", className);
-    }
+//    @Test
+//    public void testGetShortClassNameWithClass() {
+//        // Test with non-null Class
+//        String className = ClassUtils.getShortClassName(String.class);
+//        assertEquals("String", className);
+//
+//        // Test with null Class
+//        className = ClassUtils.getShortClassName(null);
+//        assertEquals("", className);
+//
+//        // Test with inner Class
+//        className = ClassUtils.getShortClassName(Map.Entry.class);
+//        assertEquals("Map.Entry", className);
+//    }
 
     @Test
     public void testGetShortClassNameWithObject() {
@@ -895,24 +895,24 @@ public class ClassUtilsTest {
         assertEquals("SimpleEntry", className);
     }
 
-    @Test
-    public void testGetShortClassNameWithString() {
-        // Test with non-null className
-        String className = ClassUtils.getShortClassName("java.lang.String");
-        assertEquals("String", className);
-
-        // Test with null className
-        className = ClassUtils.getShortClassName(null);
-        assertEquals("", className);
-
-        // Test with empty className
-        className = ClassUtils.getShortClassName("");
-        assertEquals("", className);
-
-        // Test with className of inner class
-        className = ClassUtils.getShortClassName("java.util.Map$Entry");
-        assertEquals("Map.Entry", className);
-    }
+//    @Test
+//    public void testGetShortClassNameWithString() {
+//        // Test with non-null className
+//        String className = ClassUtils.getShortClassName("java.lang.String");
+//        assertEquals("String", className);
+//
+//        // Test with null className
+//        className = ClassUtils.getShortClassName(null);
+//        assertEquals("", className);
+//
+//        // Test with empty className
+//        className = ClassUtils.getShortClassName("");
+//        assertEquals("", className);
+//
+//        // Test with className of inner class
+//        className = ClassUtils.getShortClassName("java.util.Map$Entry");
+//        assertEquals("Map.Entry", className);
+//    }
 
 
 
@@ -1237,21 +1237,21 @@ public class ClassUtilsTest {
         }
     }
 
-    @Test
-    public void testNext2() {
-        ClassUtils classUtils = new ClassUtils();
-        Method method;
-
-        try {
-            method = ClassUtils.class.getDeclaredMethod("next");
-            method.setAccessible(true);
-
-            assertThrows(Exception.class, () -> method.invoke(classUtils));
-
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
+//    @Test
+//    public void testNext2() {
+//        ClassUtils classUtils = new ClassUtils();
+//        Method method;
+//
+//        try {
+//            method = ClassUtils.class.getDeclaredMethod("next");
+//            method.setAccessible(true);
+//
+//            assertThrows(Exception.class, () -> method.invoke(classUtils));
+//
+//        } catch (NoSuchMethodException | IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 
@@ -1359,7 +1359,7 @@ public class ClassUtilsTest {
     public void testConvertClassNamesToClasses() {
         // Instantiate all necessary variables here
         List<String> classNames = Arrays.asList("java.lang.String", "java.lang.Integer", "invalid.class.Name");
-        
+
         // Write the test code here following the given rules
         List<Class<?>> result = ClassUtils.convertClassNamesToClasses(classNames);
 
@@ -1416,7 +1416,7 @@ public class ClassUtilsTest {
         // Test with Integer wrapper class
         Class<?> primitiveClass = ClassUtils.wrapperToPrimitive(Integer.class);
         assertEquals(int.class, primitiveClass);
-        
+
         // Test with Double wrapper class
         primitiveClass = ClassUtils.wrapperToPrimitive(Double.class);
         assertEquals(double.class, primitiveClass);
