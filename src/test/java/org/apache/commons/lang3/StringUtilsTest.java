@@ -42,16 +42,16 @@ import java.text.Normalizer;
 
 public class StringUtilsTest {
 
-//    @Test
-//    public void testIsNoneBlank_NullCss_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        CharSequence[] css = null;
-//
-//        // Write the test code here following the given rules
-//        boolean result = StringUtils.isNoneBlank(css);
-//
-//        assertFalse(result);
-//    }
+    //@Test
+    public void testIsNoneBlank_NullCss_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        CharSequence[] css = null;
+
+        // Write the test code here following the given rules
+        boolean result = StringUtils.isNoneBlank(css);
+
+        assertFalse(result);
+    }
 
     @Test
     public void testIsNoneBlank_NullElement_ReturnsFalse() {
@@ -616,187 +616,187 @@ public class StringUtilsTest {
     @Mock
     private StringUtils stringUtils;
     
-//    @Test
-//    public void testSubstringWithPositiveStart() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        int start = 2;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start)).thenReturn("cdef");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start);
-//
-//        // Verify the result
-//        assertEquals("cdef", result);
-//    }
+    //@Test
+    public void testSubstringWithPositiveStart() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        int start = 2;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start)).thenReturn("cdef");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start);
+
+        // Verify the result
+        assertEquals("cdef", result);
+    }
     
-//    @Test
-//    public void testSubstringWithNegativeStart() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        int start = -2;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start)).thenReturn("ef");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start);
-//
-//        // Verify the result
-//        assertEquals("ef", result);
-//    }
+    //@Test
+    public void testSubstringWithNegativeStart() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        int start = -2;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start)).thenReturn("ef");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start);
+
+        // Verify the result
+        assertEquals("ef", result);
+    }
     
-//    @Test
-//    public void testSubstringWithOutOfBoundsStart() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        int start = 10;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start)).thenReturn("");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start);
-//
-//        // Verify the result
-//        assertEquals("", result);
-//    }
+    //@Test
+    public void testSubstringWithOutOfBoundsStart() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        int start = 10;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start)).thenReturn("");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start);
+
+        // Verify the result
+        assertEquals("", result);
+    }
     
-//    @Test
-//    public void testSubstringWithNullString() {
-//        // Instantiate all necessary variables here
-//        String str = null;
-//        int start = 2;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start)).thenReturn(null);
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start);
-//
-//        // Verify the result
-//        assertNull(result);
-//    }
-//
-//    @Test
-//    public void testSubstringWithEmptyString() {
-//        // Instantiate all necessary variables here
-//        String str = "";
-//        int start = 2;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start)).thenReturn("");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start);
-//
-//        // Verify the result
-//        assertEquals("", result);
-//    }
+    //@Test
+    public void testSubstringWithNullString() {
+        // Instantiate all necessary variables here
+        String str = null;
+        int start = 2;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start)).thenReturn(null);
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start);
+
+        // Verify the result
+        assertNull(result);
+    }
+
+    //@Test
+    public void testSubstringWithEmptyString() {
+        // Instantiate all necessary variables here
+        String str = "";
+        int start = 2;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start)).thenReturn("");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start);
+
+        // Verify the result
+        assertEquals("", result);
+    }
     
-//    @Test
-//    public void testSubstringWithPositiveStartAndEnd() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        int start = 1;
-//        int end = 4;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start, end)).thenReturn("bcd");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start, end);
-//
-//        // Verify the result
-//        assertEquals("bcd", result);
-//    }
+    //@Test
+    public void testSubstringWithPositiveStartAndEnd() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        int start = 1;
+        int end = 4;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start, end)).thenReturn("bcd");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start, end);
+
+        // Verify the result
+        assertEquals("bcd", result);
+    }
     
-//    @Test
-//    public void testSubstringWithNegativeStartAndEnd() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        int start = -3;
-//        int end = -1;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start, end)).thenReturn("de");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start, end);
-//
-//        // Verify the result
-//        assertEquals("de", result);
-//    }
+    //@Test
+    public void testSubstringWithNegativeStartAndEnd() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        int start = -3;
+        int end = -1;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start, end)).thenReturn("de");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start, end);
+
+        // Verify the result
+        assertEquals("de", result);
+    }
     
-//    @Test
-//    public void testSubstringWithOutOfBoundsStartAndEnd() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        int start = 0;
-//        int end = 10;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start, end)).thenReturn("abcdef");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start, end);
-//
-//        // Verify the result
-//        assertEquals("abcdef", result);
-//    }
-//
-//    @Test
-//    public void testSubstringWithStartGreaterThanEnd() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        int start = 4;
-//        int end = 2;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start, end)).thenReturn("");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start, end);
-//
-//        // Verify the result
-//        assertEquals("", result);
-//    }
+    //@Test
+    public void testSubstringWithOutOfBoundsStartAndEnd() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        int start = 0;
+        int end = 10;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start, end)).thenReturn("abcdef");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start, end);
+
+        // Verify the result
+        assertEquals("abcdef", result);
+    }
+
+    //@Test
+    public void testSubstringWithStartGreaterThanEnd() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        int start = 4;
+        int end = 2;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start, end)).thenReturn("");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start, end);
+
+        // Verify the result
+        assertEquals("", result);
+    }
     
-//    @Test
-//    public void testSubstringWithNullStringAndStartAndEnd() {
-//        // Instantiate all necessary variables here
-//        String str = null;
-//        int start = 1;
-//        int end = 3;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start, end)).thenReturn(null);
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start, end);
-//
-//        // Verify the result
-//        assertNull(result);
-//    }
+    //@Test
+    public void testSubstringWithNullStringAndStartAndEnd() {
+        // Instantiate all necessary variables here
+        String str = null;
+        int start = 1;
+        int end = 3;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start, end)).thenReturn(null);
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start, end);
+
+        // Verify the result
+        assertNull(result);
+    }
     
-//    @Test
-//    public void testSubstringWithEmptyStringAndStartAndEnd() {
-//        // Instantiate all necessary variables here
-//        String str = "";
-//        int start = 1;
-//        int end = 3;
-//
-//        // Mock the StringUtils class
-//        when(stringUtils.substring(str, start, end)).thenReturn("");
-//
-//        // Write the test code here following the given rules
-//        String result = stringUtils.substring(str, start, end);
-//
-//        // Verify the result
-//        assertEquals("", result);
-//    }
+    //@Test
+    public void testSubstringWithEmptyStringAndStartAndEnd() {
+        // Instantiate all necessary variables here
+        String str = "";
+        int start = 1;
+        int end = 3;
+
+        // Mock the StringUtils class
+        when(stringUtils.substring(str, start, end)).thenReturn("");
+
+        // Write the test code here following the given rules
+        String result = stringUtils.substring(str, start, end);
+
+        // Verify the result
+        assertEquals("", result);
+    }
 
 
 
@@ -866,18 +866,18 @@ public class StringUtilsTest {
         assertEquals(0, result);
     }
 
-//    @Test
-//    public void testIndexOfIgnoreCase_NonMatchingCase_ReturnsNegativeOne() {
-//        // Instantiate all necessary variables here
-//        CharSequence str = "aabaabaa";
-//        CharSequence searchStr = "b";
-//
-//        // Write the test code here following the given rules
-//        int result = StringUtils.indexOfIgnoreCase(str, searchStr);
-//
-//        // Assert the result
-//        assertEquals(-1, result);
-//    }
+    //@Test
+    public void testIndexOfIgnoreCase_NonMatchingCase_ReturnsNegativeOne() {
+        // Instantiate all necessary variables here
+        CharSequence str = "aabaabaa";
+        CharSequence searchStr = "b";
+
+        // Write the test code here following the given rules
+        int result = StringUtils.indexOfIgnoreCase(str, searchStr);
+
+        // Assert the result
+        assertEquals(-1, result);
+    }
 
     @Test
     public void testIndexOfIgnoreCase_PartialMatch_ReturnsCorrectIndex() {
@@ -1688,31 +1688,31 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void testRemoveAll() {
-//        // Instantiate all necessary variables here
-//        String text = "ABCabc123abc";
-//        String regex = "[a-z]";
-//
-//        // Mock the RegExUtils class
-//        try (MockedStatic<RegExUtils> mockedStatic = Mockito.mockStatic(RegExUtils.class)) {
-//            // Mock the removeAll() method of RegExUtils class
-//            mockedStatic.when(() -> RegExUtils.removeAll(text, regex)).thenAnswer(new Answer<String>() {
-//                @Override
-//                public String answer(InvocationOnMock invocation) throws Throwable {
-//                    String text = invocation.getArgument(0);
-//                    String regex = invocation.getArgument(1);
-//                    return text.replaceAll(regex, "");
-//                }
-//            });
-//
-//            // Call the method under test
-//            String result = StringUtils.removeAll(text, regex);
-//
-//            // Verify the result
-//            assertEquals("ABC123", result);
-//        }
-//    }
+    //@Test
+    public void testRemoveAll() {
+        // Instantiate all necessary variables here
+        String text = "ABCabc123abc";
+        String regex = "[a-z]";
+
+        // Mock the RegExUtils class
+        try (MockedStatic<RegExUtils> mockedStatic = Mockito.mockStatic(RegExUtils.class)) {
+            // Mock the removeAll() method of RegExUtils class
+            mockedStatic.when(() -> RegExUtils.removeAll(text, regex)).thenAnswer(new Answer<String>() {
+                @Override
+                public String answer(InvocationOnMock invocation) throws Throwable {
+                    String text = invocation.getArgument(0);
+                    String regex = invocation.getArgument(1);
+                    return text.replaceAll(regex, "");
+                }
+            });
+
+            // Call the method under test
+            String result = StringUtils.removeAll(text, regex);
+
+            // Verify the result
+            assertEquals("ABC123", result);
+        }
+    }
 
 
 
@@ -2337,7 +2337,7 @@ public class StringUtilsTest {
 
 
 
-
+//parser error
 //    @Test
 //    public void testConvertRemainingAccentCharacters() {
 //        // Instantiate all necessary variables here
@@ -2467,16 +2467,16 @@ public class StringUtilsTest {
         assertEquals(" ", result);
     }
 
-//    @Test
-//    public void testGetIfEmpty_NonEmptyInput_ReturnsInput() {
-//        Supplier<String> defaultSupplier = mock(Supplier.class);
-//        when(defaultSupplier.get()).thenReturn("DEFAULT");
-//
-//        String result = StringUtils.getIfEmpty("bat", defaultSupplier);
-//
-//        verify(defaultSupplier, never()).get();
-//        assertEquals("bat", result);
-//    }
+    @Test
+    public void testGetIfEmpty_NonEmptyInput_ReturnsInput() {
+        Supplier<String> defaultSupplier = mock(Supplier.class);
+        when(defaultSupplier.get()).thenReturn("DEFAULT");
+
+        String result = StringUtils.getIfEmpty("bat", defaultSupplier);
+
+        verify(defaultSupplier, never()).get();
+        assertEquals("bat", result);
+    }
 
     @Test
     public void testGetIfEmpty_EmptyInputAndNullSupplier_ReturnsNull() {
@@ -2559,18 +2559,18 @@ public class StringUtilsTest {
         assertTrue(StringUtils.isAlpha(cs));
     }
 
-//    @Test
-//    public void testIsAlpha_MockedCharacterIsLetter_ReturnTrue() {
-//        // Instantiate all necessary variables here
-//        CharSequence cs = "abc";
-//        MockedStatic<Character> characterMockedStatic = mockStatic(Character.class);
-//
-//        // Write the test code here following the given rules
-//        characterMockedStatic.when(() -> Character.isLetter(anyChar())).thenReturn(true);
-//        assertTrue(StringUtils.isAlpha(cs));
-//
-//        characterMockedStatic.close();
-//    }
+    //@Test
+    public void testIsAlpha_MockedCharacterIsLetter_ReturnTrue() {
+        // Instantiate all necessary variables here
+        CharSequence cs = "abc";
+        MockedStatic<Character> characterMockedStatic = mockStatic(Character.class);
+
+        // Write the test code here following the given rules
+        characterMockedStatic.when(() -> Character.isLetter(anyChar())).thenReturn(true);
+        assertTrue(StringUtils.isAlpha(cs));
+
+        characterMockedStatic.close();
+    }
 
 
 
@@ -2958,44 +2958,44 @@ public class StringUtilsTest {
         assertEquals("abcdefg", result);
     }
     
-//    @Test
-//    public void abbreviate_EmptyAbbrevMarker_ReturnsAbbreviatedString() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdefg";
-//        String abbrevMarker = "";
-//        int maxWidth = 7;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.abbreviate(str, abbrevMarker, maxWidth);
-//
-//        assertEquals("abc...", result);
-//    }
+    //@Test
+    public void abbreviate_EmptyAbbrevMarker_ReturnsAbbreviatedString() {
+        // Instantiate all necessary variables here
+        String str = "abcdefg";
+        String abbrevMarker = "";
+        int maxWidth = 7;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.abbreviate(str, abbrevMarker, maxWidth);
+
+        assertEquals("abc...", result);
+    }
     
-//    @Test
-//    public void abbreviate_OffsetLessThanMaxWidth_ReturnsAbbreviatedStringWithOffset() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdefghijklmno";
-//        int offset = 3;
-//        int maxWidth = 10;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.abbreviate(str, offset, maxWidth);
-//
-//        assertEquals("abc...", result);
-//    }
-//
-//    @Test
-//    public void abbreviate_OffsetGreaterThanMaxWidth_ReturnsAbbreviatedStringWithoutOffset() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdefghijklmno";
-//        int offset = 10;
-//        int maxWidth = 10;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.abbreviate(str, offset, maxWidth);
-//
-//        assertEquals("...klmno", result);
-//    }
+    //@Test
+    public void abbreviate_OffsetLessThanMaxWidth_ReturnsAbbreviatedStringWithOffset() {
+        // Instantiate all necessary variables here
+        String str = "abcdefghijklmno";
+        int offset = 3;
+        int maxWidth = 10;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.abbreviate(str, offset, maxWidth);
+
+        assertEquals("abc...", result);
+    }
+
+    //@Test
+    public void abbreviate_OffsetGreaterThanMaxWidth_ReturnsAbbreviatedStringWithoutOffset() {
+        // Instantiate all necessary variables here
+        String str = "abcdefghijklmno";
+        int offset = 10;
+        int maxWidth = 10;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.abbreviate(str, offset, maxWidth);
+
+        assertEquals("...klmno", result);
+    }
     
     @Test
     public void abbreviate_MaxWidthLessThanAbbrevMarkerLengthPlusOne_ThrowsIllegalArgumentException() {
@@ -3626,28 +3626,28 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void testReplaceFirst() {
-//        // Instantiate all necessary variables here
-//        String text = "Lorem ipsum dolor sit amet";
-//        String regex = "ipsum";
-//        String replacement = "replacement";
-//
-//        // Mock the RegExUtils class
-//        RegExUtils regExUtilsMock = mock(RegExUtils.class);
-//
-//        // Mock the replaceFirst method of RegExUtils
-//        when(regExUtilsMock.replaceFirst(text, regex, replacement)).thenReturn("Lorem replacement dolor sit amet");
-//
-//        // Test the replaceFirst method of StringUtils
-//        String result = StringUtils.replaceFirst(text, regex, replacement);
-//
-//        // Verify the method calls
-//        verify(regExUtilsMock).replaceFirst(text, regex, replacement);
-//
-//        // Assert the result
-//        assertEquals("Lorem replacement dolor sit amet", result);
-//    }
+    //@Test
+    public void testReplaceFirst() {
+        // Instantiate all necessary variables here
+        String text = "Lorem ipsum dolor sit amet";
+        String regex = "ipsum";
+        String replacement = "replacement";
+
+        // Mock the RegExUtils class
+        RegExUtils regExUtilsMock = mock(RegExUtils.class);
+
+        // Mock the replaceFirst method of RegExUtils
+        when(regExUtilsMock.replaceFirst(text, regex, replacement)).thenReturn("Lorem replacement dolor sit amet");
+
+        // Test the replaceFirst method of StringUtils
+        String result = StringUtils.replaceFirst(text, regex, replacement);
+
+        // Verify the method calls
+        verify(regExUtilsMock).replaceFirst(text, regex, replacement);
+
+        // Assert the result
+        assertEquals("Lorem replacement dolor sit amet", result);
+    }
 
 
 
@@ -4722,15 +4722,15 @@ public class StringUtilsTest {
         assertFalse(StringUtils.endsWith(str, suffix));
     }
 
-//    @Test
-//    public void testEndsWith_CaseSensitive_ReturnsTrue() {
-//        // Instantiate all necessary variables here
-//        CharSequence str = "ABCDEF";
-//        CharSequence suffix = "def";
-//
-//        // Write the test code here following the given rules
-//        assertTrue(StringUtils.endsWith(str, suffix));
-//    }
+    //@Test
+    public void testEndsWith_CaseSensitive_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        CharSequence str = "ABCDEF";
+        CharSequence suffix = "def";
+
+        // Write the test code here following the given rules
+        assertTrue(StringUtils.endsWith(str, suffix));
+    }
 
     @Test
     public void testEndsWith_CaseInsensitive_ReturnsFalse() {
@@ -4752,26 +4752,26 @@ public class StringUtilsTest {
         assertTrue(StringUtils.endsWith(str, suffix));
     }
 
-//    @Test
-//    public void testEndsWith_MockitoExample() {
-//        // Instantiate all necessary variables here
-//        CharSequence str = "Hello World";
-//        CharSequence suffix = "World";
-//
-//        // Mock StringUtils class
-//        try (MockedStatic<StringUtils> mockedStatic = Mockito.mockStatic(StringUtils.class)) {
-//            mockedStatic.when(() -> StringUtils.endsWith(str, suffix)).thenAnswer(new Answer<Boolean>() {
-//                public Boolean answer(InvocationOnMock invocation) throws Throwable {
-//                    CharSequence strArg = invocation.getArgument(0);
-//                    CharSequence suffixArg = invocation.getArgument(1);
-//                    return strArg != null && suffixArg != null && strArg.toString().endsWith(suffixArg.toString());
-//                }
-//            });
-//
-//            // Write the test code here following the given rules
-//            assertTrue(StringUtils.endsWith(str, suffix));
-//        }
-//    }
+    //@Test
+    public void testEndsWith_MockitoExample() {
+        // Instantiate all necessary variables here
+        CharSequence str = "Hello World";
+        CharSequence suffix = "World";
+
+        // Mock StringUtils class
+        try (MockedStatic<StringUtils> mockedStatic = Mockito.mockStatic(StringUtils.class)) {
+            mockedStatic.when(() -> StringUtils.endsWith(str, suffix)).thenAnswer(new Answer<Boolean>() {
+                public Boolean answer(InvocationOnMock invocation) throws Throwable {
+                    CharSequence strArg = invocation.getArgument(0);
+                    CharSequence suffixArg = invocation.getArgument(1);
+                    return strArg != null && suffixArg != null && strArg.toString().endsWith(suffixArg.toString());
+                }
+            });
+
+            // Write the test code here following the given rules
+            assertTrue(StringUtils.endsWith(str, suffix));
+        }
+    }
 
 
 
@@ -4857,17 +4857,17 @@ public class StringUtilsTest {
         assertEquals(5, result);
     }
 
-//    @Test
-//    public void testLastIndexOf_SearchSeqLongerThanSeq_ReturnsMinusOne() {
-//        // Instantiate all necessary variables here
-//        CharSequence seq = "aabaabaa";
-//        CharSequence searchSeq = "ab";
-//
-//        // Write the test code here following the given rules
-//        int result = StringUtils.lastIndexOf(seq, searchSeq);
-//
-//        assertEquals(-1, result);
-//    }
+    //@Test
+    public void testLastIndexOf_SearchSeqLongerThanSeq_ReturnsMinusOne() {
+        // Instantiate all necessary variables here
+        CharSequence seq = "aabaabaa";
+        CharSequence searchSeq = "ab";
+
+        // Write the test code here following the given rules
+        int result = StringUtils.lastIndexOf(seq, searchSeq);
+
+        assertEquals(-1, result);
+    }
 
     @Test
     public void testLastIndexOf_EmptySearchSeq_ReturnsLengthOfSeq() {
@@ -4907,18 +4907,18 @@ public class StringUtilsTest {
         assertEquals(-1, result);
     }
 
-//    @Test
-//    public void testLastIndexOf_StartPosGreaterThanSeqLength_ReturnsMinusOne() {
-//        // Instantiate all necessary variables here
-//        CharSequence seq = "aabaabaa";
-//        CharSequence searchSeq = "a";
-//        int startPos = 10;
-//
-//        // Write the test code here following the given rules
-//        int result = StringUtils.lastIndexOf(seq, searchSeq, startPos);
-//
-//        assertEquals(-1, result);
-//    }
+    //@Test
+    public void testLastIndexOf_StartPosGreaterThanSeqLength_ReturnsMinusOne() {
+        // Instantiate all necessary variables here
+        CharSequence seq = "aabaabaa";
+        CharSequence searchSeq = "a";
+        int startPos = 10;
+
+        // Write the test code here following the given rules
+        int result = StringUtils.lastIndexOf(seq, searchSeq, startPos);
+
+        assertEquals(-1, result);
+    }
 
     @Test
     public void testLastIndexOf_NegativeStartPos_ReturnsMinusOne() {
@@ -4959,18 +4959,18 @@ public class StringUtilsTest {
         assertEquals(5, result);
     }
 
-//    @Test
-//    public void testLastIndexOf_SearchSeqLongerThanSeqWithStartPos_ReturnsMinusOne() {
-//        // Instantiate all necessary variables here
-//        CharSequence seq = "aabaabaa";
-//        CharSequence searchSeq = "ab";
-//        int startPos = 10;
-//
-//        // Write the test code here following the given rules
-//        int result = StringUtils.lastIndexOf(seq, searchSeq, startPos);
-//
-//        assertEquals(-1, result);
-//    }
+    //@Test
+    public void testLastIndexOf_SearchSeqLongerThanSeqWithStartPos_ReturnsMinusOne() {
+        // Instantiate all necessary variables here
+        CharSequence seq = "aabaabaa";
+        CharSequence searchSeq = "ab";
+        int startPos = 10;
+
+        // Write the test code here following the given rules
+        int result = StringUtils.lastIndexOf(seq, searchSeq, startPos);
+
+        assertEquals(-1, result);
+    }
 
     @Test
     public void testLastIndexOf_EmptySearchSeqWithStartPos_ReturnsStartPos() {
@@ -5190,21 +5190,21 @@ public class StringUtilsTest {
         assertEquals(expected, result);
     }
 
-//    @Test
-//    public void testReplaceIgnoreCase_MockStatic() {
-//        try (MockedStatic<Pattern> mockedPattern = Mockito.mockStatic(Pattern.class)) {
-//            String text = "aba";
-//            String searchString = "A";
-//            String replacement = "z";
-//            String expected = "zbz";
-//
-//            mockedPattern.when(() -> Pattern.compile("\\p{InCombiningDiacriticalMarks}+")).thenReturn(Pattern.compile("A"));
-//
-//            String result = StringUtils.replaceIgnoreCase(text, searchString, replacement);
-//
-//            assertEquals(expected, result);
-//        }
-//    }
+    //@Test
+    public void testReplaceIgnoreCase_MockStatic() {
+        try (MockedStatic<Pattern> mockedPattern = Mockito.mockStatic(Pattern.class)) {
+            String text = "aba";
+            String searchString = "A";
+            String replacement = "z";
+            String expected = "zbz";
+
+            mockedPattern.when(() -> Pattern.compile("\\p{InCombiningDiacriticalMarks}+")).thenReturn(Pattern.compile("A"));
+
+            String result = StringUtils.replaceIgnoreCase(text, searchString, replacement);
+
+            assertEquals(expected, result);
+        }
+    }
 
 
 
@@ -5363,83 +5363,83 @@ public class StringUtilsTest {
         assertEquals(expected, actual);
     }
     
-//    @Test
-//    public void testToRootLowerCase_SpecialCharactersSource() {
-//        // Instantiate all necessary variables here
-//        String source = "¡HÓLÁ!";
-//
-//        // Write the test code here following the given rules
-//        String expected = "¡hÓlÁ!";
-//        String actual = StringUtils.toRootLowerCase(source);
-//
-//        assertEquals(expected, actual);
-//    }
+    //@Test
+    public void testToRootLowerCase_SpecialCharactersSource() {
+        // Instantiate all necessary variables here
+        String source = "¡HÓLÁ!";
+
+        // Write the test code here following the given rules
+        String expected = "¡hÓlÁ!";
+        String actual = StringUtils.toRootLowerCase(source);
+
+        assertEquals(expected, actual);
+    }
 
 
 
 
 
-//    @Test
-//    public void testGetIfBlank_ReturnsInputString_WhenNotEmpty() {
-//        // Arrange
-//        String input = "not blank";
-//        Supplier<String> defaultSupplier = mock(Supplier.class);
-//
-//        // Act
-//        String result = StringUtils.getIfBlank(input, defaultSupplier);
-//
-//        // Assert
-//        assertEquals(input, result);
-//        verify(defaultSupplier, never()).get();
-//    }
+    @Test
+    public void testGetIfBlank_ReturnsInputString_WhenNotEmpty() {
+        // Arrange
+        String input = "not blank";
+        Supplier<String> defaultSupplier = mock(Supplier.class);
 
-//    @Test
-//    public void testGetIfBlank_ReturnsDefault_WhenNullInputAndNonNullSupplier() {
-//        // Arrange
-//        String input = null;
-//        String defaultValue = "default";
-//        Supplier<String> defaultSupplier = mock(Supplier.class);
-//        when(defaultSupplier.get()).thenReturn(defaultValue);
-//
-//        // Act
-//        String result = StringUtils.getIfBlank(input, defaultSupplier);
-//
-//        // Assert
-//        assertEquals(defaultValue, result);
-//        verify(defaultSupplier).get();
-//    }
+        // Act
+        String result = StringUtils.getIfBlank(input, defaultSupplier);
 
-//    @Test
-//    public void testGetIfBlank_ReturnsDefault_WhenEmptyInputAndNonNullSupplier() {
-//        // Arrange
-//        String input = "";
-//        String defaultValue = "default";
-//        Supplier<String> defaultSupplier = mock(Supplier.class);
-//        when(defaultSupplier.get()).thenReturn(defaultValue);
-//
-//        // Act
-//        String result = StringUtils.getIfBlank(input, defaultSupplier);
-//
-//        // Assert
-//        assertEquals(defaultValue, result);
-//        verify(defaultSupplier).get();
-//    }
+        // Assert
+        assertEquals(input, result);
+        verify(defaultSupplier, never()).get();
+    }
 
-//    @Test
-//    public void testGetIfBlank_ReturnsDefault_WhenBlankInputAndNonNullSupplier() {
-//        // Arrange
-//        String input = "  ";
-//        String defaultValue = "default";
-//        Supplier<String> defaultSupplier = mock(Supplier.class);
-//        when(defaultSupplier.get()).thenReturn(defaultValue);
-//
-//        // Act
-//        String result = StringUtils.getIfBlank(input, defaultSupplier);
-//
-//        // Assert
-//        assertEquals(defaultValue, result);
-//        verify(defaultSupplier).get();
-//    }
+    @Test
+    public void testGetIfBlank_ReturnsDefault_WhenNullInputAndNonNullSupplier() {
+        // Arrange
+        String input = null;
+        String defaultValue = "default";
+        Supplier<String> defaultSupplier = mock(Supplier.class);
+        when(defaultSupplier.get()).thenReturn(defaultValue);
+
+        // Act
+        String result = StringUtils.getIfBlank(input, defaultSupplier);
+
+        // Assert
+        assertEquals(defaultValue, result);
+        verify(defaultSupplier).get();
+    }
+
+    @Test
+    public void testGetIfBlank_ReturnsDefault_WhenEmptyInputAndNonNullSupplier() {
+        // Arrange
+        String input = "";
+        String defaultValue = "default";
+        Supplier<String> defaultSupplier = mock(Supplier.class);
+        when(defaultSupplier.get()).thenReturn(defaultValue);
+
+        // Act
+        String result = StringUtils.getIfBlank(input, defaultSupplier);
+
+        // Assert
+        assertEquals(defaultValue, result);
+        verify(defaultSupplier).get();
+    }
+
+    @Test
+    public void testGetIfBlank_ReturnsDefault_WhenBlankInputAndNonNullSupplier() {
+        // Arrange
+        String input = "  ";
+        String defaultValue = "default";
+        Supplier<String> defaultSupplier = mock(Supplier.class);
+        when(defaultSupplier.get()).thenReturn(defaultValue);
+
+        // Act
+        String result = StringUtils.getIfBlank(input, defaultSupplier);
+
+        // Assert
+        assertEquals(defaultValue, result);
+        verify(defaultSupplier).get();
+    }
 
     @Test
     public void testGetIfBlank_ReturnsNull_WhenNullInputAndNullSupplier() {
@@ -5554,15 +5554,15 @@ public class StringUtilsTest {
         assertEquals("qd", result);
     }
     
-//    @Test
-//    public void testRemoveIgnoreCase_MultipleOccurrencesOfRemoveString_ReturnsSubstringWithAllOccurrencesRemoved() {
-//        String str = "queued";
-//        String remove = "u";
-//
-//        String result = StringUtils.removeIgnoreCase(str, remove);
-//
-//        assertEquals("qed", result);
-//    }
+    //@Test
+    public void testRemoveIgnoreCase_MultipleOccurrencesOfRemoveString_ReturnsSubstringWithAllOccurrencesRemoved() {
+        String str = "queued";
+        String remove = "u";
+
+        String result = StringUtils.removeIgnoreCase(str, remove);
+
+        assertEquals("qed", result);
+    }
     
     @Test
     public void testRemoveIgnoreCase_RemoveStringEqualsSourceString_ReturnsEmptyString() {
@@ -5624,20 +5624,20 @@ public class StringUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void testEndsWithAny_EmptySearchStrings_ReturnsTrue() {
-//        // Instantiate all necessary variables here
-//        CharSequence sequence = "abcxyz";
-//        CharSequence[] searchStrings = new CharSequence[] {};
-//
-//        // Mock the dependencies
-//
-//        // Write the test code here following the given rules
-//        boolean result = StringUtils.endsWithAny(sequence, searchStrings);
-//
-//        // Perform assertions
-//        assertTrue(result);
-//    }
+    //@Test
+    public void testEndsWithAny_EmptySearchStrings_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        CharSequence sequence = "abcxyz";
+        CharSequence[] searchStrings = new CharSequence[] {};
+
+        // Mock the dependencies
+
+        // Write the test code here following the given rules
+        boolean result = StringUtils.endsWithAny(sequence, searchStrings);
+
+        // Perform assertions
+        assertTrue(result);
+    }
 
     @Test
     public void testEndsWithAny_SequenceEndsWithSearchString_ReturnsTrue() {
@@ -5857,19 +5857,19 @@ public class StringUtilsTest {
         assertNull(result);
     }
     
-//    @Test
-//    public void testAppendIfMissing_NullStringEmptySuffix_ReturnsEmptySuffix() {
-//        // Instantiate all necessary variables here
-//        String str = null;
-//        CharSequence suffix = "";
-//        CharSequence[] suffixes = null;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.appendIfMissing(str, suffix, suffixes);
-//
-//        // Verify the result
-//        assertEquals("", result);
-//    }
+    //@Test
+    public void testAppendIfMissing_NullStringEmptySuffix_ReturnsEmptySuffix() {
+        // Instantiate all necessary variables here
+        String str = null;
+        CharSequence suffix = "";
+        CharSequence[] suffixes = null;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.appendIfMissing(str, suffix, suffixes);
+
+        // Verify the result
+        assertEquals("", result);
+    }
     
     @Test
     public void testAppendIfMissing_NonNullStringNullSuffix_ReturnsSameString() {
@@ -6119,17 +6119,17 @@ public class StringUtilsTest {
         assertTrue(result);
     }
     
-//    @Test
-//    public void testContainsAny_whenCharSequenceDoesNotContainAnyOfTheSearchCharSequences_shouldReturnFalse() {
-//        // Instantiate all necessary variables here
-//        CharSequence cs = "abc";
-//        CharSequence[] searchCharSequences = {"d", "abc"};
-//
-//        // Write the test code here following the given rules
-//        boolean result = StringUtils.containsAny(cs, searchCharSequences);
-//
-//        assertFalse(result);
-//    }
+    //@Test
+    public void testContainsAny_whenCharSequenceDoesNotContainAnyOfTheSearchCharSequences_shouldReturnFalse() {
+        // Instantiate all necessary variables here
+        CharSequence cs = "abc";
+        CharSequence[] searchCharSequences = {"d", "abc"};
+
+        // Write the test code here following the given rules
+        boolean result = StringUtils.containsAny(cs, searchCharSequences);
+
+        assertFalse(result);
+    }
     
     @Test
     public void testContainsAny_whenCharSequenceIsNullAndSearchCharSequencesAreNotNull_shouldReturnFalse() {
@@ -6250,7 +6250,7 @@ public class StringUtilsTest {
 //        // Assert
 //        assertEquals("true,false,true", result);
 //    }
-
+//
 //    @Test
 //    public void testJoinWithIteratorAndDelimiterReturnsElementsSeparatedByDelimiter() {
 //        // Arrange
@@ -6330,7 +6330,7 @@ public class StringUtilsTest {
 //        // Assert
 //        assertEquals("a--b--c", result);
 //    }
-//
+
 //    @Test
 //    public void testJoinWithListAndStartIndexAndEndIndexReturnsElementsInRangeSeparatedBySeparator() {
 //        // Arrange
@@ -6385,7 +6385,7 @@ public class StringUtilsTest {
 //
 //        // Write the test code here following the given rules
 //    }
-//
+
     @Test
     public void testCenter_withNullString_shouldReturnNull() {
         // Arrange
@@ -6936,12 +6936,12 @@ public class StringUtilsTest {
         assertEquals(0.0, distance);
     }
 
-//    @Test
-//    public void testGetJaroWinklerDistance_SimilarStrings_ReturnsExpectedDistanceWithDifferentScalingFactor() {
-//        double distance1 = StringUtils.getJaroWinklerDistance("hello", "hallo");
-//        double distance2 = StringUtils.getJaroWinklerDistance("hello", "hallo");
-//        assertNotEquals(distance1, distance2);
-//    }
+    //@Test
+    public void testGetJaroWinklerDistance_SimilarStrings_ReturnsExpectedDistanceWithDifferentScalingFactor() {
+        double distance1 = StringUtils.getJaroWinklerDistance("hello", "hallo");
+        double distance2 = StringUtils.getJaroWinklerDistance("hello", "hallo");
+        assertNotEquals(distance1, distance2);
+    }
 
     @Test
     public void testGetJaroWinklerDistance_MatchingInitials_ReturnsExpectedDistance() {
@@ -7009,44 +7009,44 @@ public class StringUtilsTest {
         assertEquals(str, result);
     }
 
-//    @Test
-//    public void testAbbreviateMiddle_WithLengthLessThanMiddleLengthPlus2_ReturnsOriginalString() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        String middle = ".";
-//        int length = 4;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.abbreviateMiddle(str, middle, length);
-//
-//        assertEquals(str, result);
-//    }
+    //@Test
+    public void testAbbreviateMiddle_WithLengthLessThanMiddleLengthPlus2_ReturnsOriginalString() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        String middle = ".";
+        int length = 4;
 
-//    @Test
-//    public void testAbbreviateMiddle_WithValidInputs_ReturnsAbbreviatedString() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        String middle = ".";
-//        int length = 6;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.abbreviateMiddle(str, middle, length);
-//
-//        assertEquals("ab.f", result);
-//    }
+        // Write the test code here following the given rules
+        String result = StringUtils.abbreviateMiddle(str, middle, length);
 
-//    @Test
-//    public void testAbbreviateMiddle_WithValidInputsAndOddLength_ReturnsAbbreviatedString() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdefgh";
-//        String middle = ".";
-//        int length = 7;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.abbreviateMiddle(str, middle, length);
-//
-//        assertEquals("ab.fgh", result);
-//    }
+        assertEquals(str, result);
+    }
+
+    //@Test
+    public void testAbbreviateMiddle_WithValidInputs_ReturnsAbbreviatedString() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        String middle = ".";
+        int length = 6;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.abbreviateMiddle(str, middle, length);
+
+        assertEquals("ab.f", result);
+    }
+
+    //@Test
+    public void testAbbreviateMiddle_WithValidInputsAndOddLength_ReturnsAbbreviatedString() {
+        // Instantiate all necessary variables here
+        String str = "abcdefgh";
+        String middle = ".";
+        int length = 7;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.abbreviateMiddle(str, middle, length);
+
+        assertEquals("ab.fgh", result);
+    }
 
 
 
@@ -7425,11 +7425,11 @@ public class StringUtilsTest {
         assertEquals(0, distance);
     }
 
-//    @Test
-//    public void getLevenshteinDistance_SingleCharacterDifference_ReturnsOne() {
-//        int distance = StringUtils.getLevenshteinDistance("fly", "fog");
-//        assertEquals(1, distance);
-//    }
+    //@Test
+    public void getLevenshteinDistance_SingleCharacterDifference_ReturnsOne() {
+        int distance = StringUtils.getLevenshteinDistance("fly", "fog");
+        assertEquals(1, distance);
+    }
 
     @Test
     public void getLevenshteinDistance_MultipleCharacterDifference_ReturnsCorrectDistance() {
@@ -7465,11 +7465,11 @@ public class StringUtilsTest {
         assertThrows(IllegalArgumentException.class, () -> StringUtils.getLevenshteinDistance(null, null, 0));
     }
 
-//    @Test
-//    public void getLevenshteinDistance_ThresholdZero_ReturnsDistanceIfBelowThreshold() {
-//        int distance = StringUtils.getLevenshteinDistance("aaapppp", "", 0);
-//        assertEquals(7, distance);
-//    }
+    //@Test
+    public void getLevenshteinDistance_ThresholdZero_ReturnsDistanceIfBelowThreshold() {
+        int distance = StringUtils.getLevenshteinDistance("aaapppp", "", 0);
+        assertEquals(7, distance);
+    }
 
     @Test
     public void getLevenshteinDistance_ThresholdZero_ReturnsNegativeOneIfAboveThreshold() {
@@ -7812,7 +7812,7 @@ public class StringUtilsTest {
 
 
 
-
+//Parser error
 //    @Test
 //    public void testMatches() {
 //        // Test case 1: first and second are empty strings
@@ -7879,16 +7879,16 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void isAnyEmpty_NullInput_ReturnsTrue() {
-//        // Instantiate all necessary variables here
-//        CharSequence[] css = null;
-//
-//        // Write the test code here following the given rules
-//        boolean result = StringUtils.isAnyEmpty(css);
-//
-//        assertTrue(result);
-//    }
+    //@Test
+    public void isAnyEmpty_NullInput_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        CharSequence[] css = null;
+
+        // Write the test code here following the given rules
+        boolean result = StringUtils.isAnyEmpty(css);
+
+        assertTrue(result);
+    }
 
     @Test
     public void isAnyEmpty_NullString_ReturnsTrue() {
@@ -8777,27 +8777,27 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void testJoinWith() {
-//        // Instantiate all necessary variables here
-//        String delimiter = ",";
-//        Object[] array = {"a", "b"};
-//
-//        // Mock dependencies
-//        StringUtils StringUtilsMock = mock(StringUtils.class);
-//
-//        // Set up mocks
-//        when(StringUtilsMock.join(array, delimiter)).thenReturn("a,b");
-//
-//        // Call the method to be tested
-//        String result = StringUtils.joinWith(delimiter, array);
-//
-//        // Verify the result
-//        assertEquals("a,b", result);
-//
-//        // Verify the interactions with mocked dependencies
-//        verify(StringUtilsMock).join(array, delimiter);
-//    }
+    //@Test
+    public void testJoinWith() {
+        // Instantiate all necessary variables here
+        String delimiter = ",";
+        Object[] array = {"a", "b"};
+
+        // Mock dependencies
+        StringUtils StringUtilsMock = mock(StringUtils.class);
+
+        // Set up mocks
+        when(StringUtilsMock.join(array, delimiter)).thenReturn("a,b");
+
+        // Call the method to be tested
+        String result = StringUtils.joinWith(delimiter, array);
+
+        // Verify the result
+        assertEquals("a,b", result);
+
+        // Verify the interactions with mocked dependencies
+        verify(StringUtilsMock).join(array, delimiter);
+    }
 
 
 
@@ -9048,41 +9048,41 @@ public class StringUtilsTest {
         assertEquals("control", result);
     }
 
-//    @Test
-//    public void stripAccents_AccentedInput_AccentsStripped() {
-//        // Arrange
-//        String input = "&eacute;clair";
-//
-//        // Act
-//        String result = StringUtils.stripAccents(input);
-//
-//        // Assert
-//        assertEquals("eclair", result);
-//    }
+    //@Test
+    public void stripAccents_AccentedInput_AccentsStripped() {
+        // Arrange
+        String input = "&eacute;clair";
 
-//    @Test
-//    public void stripAccents_AccentedInputWithLigatures_AccentsAndLigaturesStripped() {
-//        // Arrange
-//        String input = "æœñ";
-//
-//        // Act
-//        String result = StringUtils.stripAccents(input);
-//
-//        // Assert
-//        assertEquals("aen", result);
-//    }
-//
-//    @Test
-//    public void stripAccents_AccentedInputWithSpecialCharacters_AccentsAndSpecialCharactersStripped() {
-//        // Arrange
-//        String input = "çåß";
-//
-//        // Act
-//        String result = StringUtils.stripAccents(input);
-//
-//        // Assert
-//        assertEquals("cass", result);
-//    }
+        // Act
+        String result = StringUtils.stripAccents(input);
+
+        // Assert
+        assertEquals("eclair", result);
+    }
+
+    //@Test
+    public void stripAccents_AccentedInputWithLigatures_AccentsAndLigaturesStripped() {
+        // Arrange
+        String input = "æœñ";
+
+        // Act
+        String result = StringUtils.stripAccents(input);
+
+        // Assert
+        assertEquals("aen", result);
+    }
+
+    //@Test
+    public void stripAccents_AccentedInputWithSpecialCharacters_AccentsAndSpecialCharactersStripped() {
+        // Arrange
+        String input = "çåß";
+
+        // Act
+        String result = StringUtils.stripAccents(input);
+
+        // Assert
+        assertEquals("cass", result);
+    }
 
 
 
@@ -9115,46 +9115,46 @@ public class StringUtilsTest {
         assertEquals(" ", result[0]);
     }
     
-//    @Test
-//    public void testSplitByCharacterType_SingleCharacterInput_ReturnArrayOfSingleCharacters() {
-//        String str = "abc";
-//
-//        String[] result = StringUtils.splitByCharacterType(str);
-//
-//        assertEquals(3, result.length);
-//        assertEquals("a", result[0]);
-//        assertEquals("b", result[1]);
-//        assertEquals("c", result[2]);
-//    }
-//
-//    @Test
-//    public void testSplitByCharacterType_MixedCharacterTypes_ReturnArrayOfTokens() {
-//        String str = "ab12:cd34!ef";
-//
-//        String[] result = StringUtils.splitByCharacterType(str);
-//
-//        assertEquals(6, result.length);
-//        assertEquals("ab", result[0]);
-//        assertEquals("12", result[1]);
-//        assertEquals(":", result[2]);
-//        assertEquals("cd", result[3]);
-//        assertEquals("34", result[4]);
-//        assertEquals("!ef", result[5]);
-//    }
-//
-//    @Test
-//    public void testSplitByCharacterType_UnicodeInput_ReturnArrayOfTokens() {
-//        String str = "你好Hello123";
-//
-//        String[] result = StringUtils.splitByCharacterType(str);
-//
-//        assertEquals(5, result.length);
-//        assertEquals("你好", result[0]);
-//        assertEquals("Hello", result[1]);
-//        assertEquals("1", result[2]);
-//        assertEquals("2", result[3]);
-//        assertEquals("3", result[4]);
-//    }
+    //@Test
+    public void testSplitByCharacterType_SingleCharacterInput_ReturnArrayOfSingleCharacters() {
+        String str = "abc";
+
+        String[] result = StringUtils.splitByCharacterType(str);
+
+        assertEquals(3, result.length);
+        assertEquals("a", result[0]);
+        assertEquals("b", result[1]);
+        assertEquals("c", result[2]);
+    }
+
+    //@Test
+    public void testSplitByCharacterType_MixedCharacterTypes_ReturnArrayOfTokens() {
+        String str = "ab12:cd34!ef";
+
+        String[] result = StringUtils.splitByCharacterType(str);
+
+        assertEquals(6, result.length);
+        assertEquals("ab", result[0]);
+        assertEquals("12", result[1]);
+        assertEquals(":", result[2]);
+        assertEquals("cd", result[3]);
+        assertEquals("34", result[4]);
+        assertEquals("!ef", result[5]);
+    }
+
+    //@Test
+    public void testSplitByCharacterType_UnicodeInput_ReturnArrayOfTokens() {
+        String str = "你好Hello123";
+
+        String[] result = StringUtils.splitByCharacterType(str);
+
+        assertEquals(5, result.length);
+        assertEquals("你好", result[0]);
+        assertEquals("Hello", result[1]);
+        assertEquals("1", result[2]);
+        assertEquals("2", result[3]);
+        assertEquals("3", result[4]);
+    }
 
 
 
@@ -9308,20 +9308,20 @@ public class StringUtilsTest {
         assertTrue(result);
     }
 
-//    @Test
-//    public void isNotBlank_WithMockedIsBlank_ReturnsInvertedResult() {
-//        // Arrange
-//        CharSequence cs = "bob";
-//        StringUtils utils = Mockito.spy(StringUtils.class);
-//        Mockito.doReturn(false).when(utils).isBlank(cs);
-//
-//        // Act
-//        boolean result = utils.isNotBlank(cs);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
-//
+    //@Test
+    public void isNotBlank_WithMockedIsBlank_ReturnsInvertedResult() {
+        // Arrange
+        CharSequence cs = "bob";
+        StringUtils utils = Mockito.spy(StringUtils.class);
+        Mockito.doReturn(false).when(utils).isBlank(cs);
+
+        // Act
+        boolean result = utils.isNotBlank(cs);
+
+        // Assert
+        assertFalse(result);
+    }
+
 
 
 
@@ -9403,18 +9403,18 @@ public class StringUtilsTest {
         assertEquals("  abc", result);
     }
 
-//    @Test
-//    public void testStripEnd_CustomStripChars_NotFound_ReturnsOriginalString() {
-//        // Arrange
-//        String str = "120.00";
-//        String stripChars = ".0";
-//
-//        // Act
-//        String result = StringUtils.stripEnd(str, stripChars);
-//
-//        // Assert
-//        assertEquals("120.00", result);
-//    }
+    //@Test
+    public void testStripEnd_CustomStripChars_NotFound_ReturnsOriginalString() {
+        // Arrange
+        String str = "120.00";
+        String stripChars = ".0";
+
+        // Act
+        String result = StringUtils.stripEnd(str, stripChars);
+
+        // Assert
+        assertEquals("120.00", result);
+    }
 
     @Test
     public void testStripEnd_MultipleStripChars_ReturnsStrippedString() {
@@ -9581,19 +9581,19 @@ public class StringUtilsTest {
         assertEquals("zbz", result);
     }
     
-//    @Test
-//    public void testReplace_MultipleOccurrences_ReplacesCorrectly() {
-//        // Arrange
-//        String text = "abaa";
-//        String searchString = "a";
-//        String replacement = "z";
-//
-//        // Act
-//        String result = StringUtils.replace(text, searchString, replacement);
-//
-//        // Assert
-//        assertEquals("zbza", result);
-//    }
+    //@Test
+    public void testReplace_MultipleOccurrences_ReplacesCorrectly() {
+        // Arrange
+        String text = "abaa";
+        String searchString = "a";
+        String replacement = "z";
+
+        // Act
+        String result = StringUtils.replace(text, searchString, replacement);
+
+        // Assert
+        assertEquals("zbza", result);
+    }
     
     @Test
     public void testReplace_MaxLimitZero_ReturnsSameText() {
@@ -10064,25 +10064,25 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void testAppendIfMissingIgnoreCase() {
-//        // Instantiate all necessary variables here
-//        String str = "abc";
-//        CharSequence suffix = "xyz";
-//        CharSequence[] suffixes = new CharSequence[] {"mno"};
-//
-//        // Mock the StringUtils class
-//        StringUtils mockStringUtils = mock(StringUtils.class);
-//
-//        // Mock the appendIfMissingIgnoreCase method
-//        when(mockStringUtils.appendIfMissingIgnoreCase(str, suffix, suffixes)).thenReturn("abcxyz");
-//
-//        // Perform the test
-//        String result = mockStringUtils.appendIfMissingIgnoreCase(str, suffix, suffixes);
-//
-//        // Verify the result
-//        assertEquals("abcxyz", result);
-//    }
+    //@Test
+    public void testAppendIfMissingIgnoreCase() {
+        // Instantiate all necessary variables here
+        String str = "abc";
+        CharSequence suffix = "xyz";
+        CharSequence[] suffixes = new CharSequence[] {"mno"};
+
+        // Mock the StringUtils class
+        StringUtils mockStringUtils = mock(StringUtils.class);
+
+        // Mock the appendIfMissingIgnoreCase method
+        when(mockStringUtils.appendIfMissingIgnoreCase(str, suffix, suffixes)).thenReturn("abcxyz");
+
+        // Perform the test
+        String result = mockStringUtils.appendIfMissingIgnoreCase(str, suffix, suffixes);
+
+        // Verify the result
+        assertEquals("abcxyz", result);
+    }
 
 
 
@@ -10198,38 +10198,38 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void ExampleTest7() {
-//        // Instantiate all necessary variables here
-//        String[] strs = {"i am a machine", "i am a robot"};
-//
-//        // Mock StringUtils class
-//        StringUtils StringUtilsMock = Mockito.spy(StringUtils.class);
-//        // Mock static method ArrayUtils.isEmpty()
-//        Mockito.doAnswer(new Answer<Boolean>() {
-//            public Boolean answer(InvocationOnMock invocation) throws Throwable {
-//                Object[] arguments = invocation.getArguments();
-//                if(arguments[0] instanceof String[]) {
-//                    String[] arr = (String[]) arguments[0];
-//                    if (arr == null || arr.length == 0) {
-//                        return true;
-//                    }
-//                }
-//                return false;
-//            }
-//        }).when(ArrayUtils.class);
-//        ArrayUtils.isEmpty(any(String[].class));
-//
-//        // Call the method to be tested
-//        String result = StringUtilsMock.getCommonPrefix(strs);
-//
-//        // Assert the result
-//        assertEquals("i am a ", result);
-//    }
+    //@Test
+    public void ExampleTest7() {
+        // Instantiate all necessary variables here
+        String[] strs = {"i am a machine", "i am a robot"};
+
+        // Mock StringUtils class
+        StringUtils StringUtilsMock = Mockito.spy(StringUtils.class);
+        // Mock static method ArrayUtils.isEmpty()
+        Mockito.doAnswer(new Answer<Boolean>() {
+            public Boolean answer(InvocationOnMock invocation) throws Throwable {
+                Object[] arguments = invocation.getArguments();
+                if(arguments[0] instanceof String[]) {
+                    String[] arr = (String[]) arguments[0];
+                    if (arr == null || arr.length == 0) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }).when(ArrayUtils.class);
+        ArrayUtils.isEmpty(any(String[].class));
+
+        // Call the method to be tested
+        String result = StringUtilsMock.getCommonPrefix(strs);
+
+        // Assert the result
+        assertEquals("i am a ", result);
+    }
 
 
 
-
+//Parser error
 //    @Test
 //    public void testToStringOrEmpty_WhenObjectIsNull_ReturnsEmptyString() {
 //        // Arrange
@@ -10310,7 +10310,7 @@ public class StringUtilsTest {
 //        // Assert
 //        assertEquals("Test", result);
 //    }
-//
+
 
 
 
@@ -10395,18 +10395,18 @@ public class StringUtilsTest {
         assertEquals(",b", result[1]);
     }
     
-//    @Test
-//    public void testSplitByWholeSeparatorPreserveAllTokens_SeparatorWithSpaces_ReturnsArrayWithEmptyElements() {
-//        String str = "a, ,b";
-//        String separator = ", ";
-//
-//        String[] result = StringUtils.splitByWholeSeparatorPreserveAllTokens(str, separator);
-//
-//        //assertEquals(3, result.length);
-//        assertEquals("a", result[0]);
-//        assertEquals("", result[1]);
-//        assertEquals("b", result[2]);
-//    }
+    //@Test
+    public void testSplitByWholeSeparatorPreserveAllTokens_SeparatorWithSpaces_ReturnsArrayWithEmptyElements() {
+        String str = "a, ,b";
+        String separator = ", ";
+
+        String[] result = StringUtils.splitByWholeSeparatorPreserveAllTokens(str, separator);
+
+        //assertEquals(3, result.length);
+        assertEquals("a", result[0]);
+        assertEquals("", result[1]);
+        assertEquals("b", result[2]);
+    }
 
 
 
@@ -10623,18 +10623,18 @@ public class StringUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void equalsAnyIgnoreCase_NullStringAndSearchStrings_ReturnsTrue() {
-//        // Arrange
-//        CharSequence string = null;
-//        CharSequence[] searchStrings = null;
-//
-//        // Act
-//        boolean result = StringUtils.equalsAnyIgnoreCase(string, searchStrings);
-//
-//        // Assert
-//        assertTrue(result);
-//    }
+    //@Test
+    public void equalsAnyIgnoreCase_NullStringAndSearchStrings_ReturnsTrue() {
+        // Arrange
+        CharSequence string = null;
+        CharSequence[] searchStrings = null;
+
+        // Act
+        boolean result = StringUtils.equalsAnyIgnoreCase(string, searchStrings);
+
+        // Assert
+        assertTrue(result);
+    }
 
     @Test
     public void equalsAnyIgnoreCase_NoMatch_ReturnsFalse() {
@@ -10796,16 +10796,16 @@ public class StringUtilsTest {
         assertEquals("abc", result);
     }
     
-//    @Test
-//    public void testChop_StringWithCarriageReturn_ReturnsStringWithoutCarriageReturn() {
-//        // Instantiate all necessary variables here
-//        String str = "abc\r";
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.chop(str);
-//
-//        assertEquals("abc ", result);
-//    }
+    //@Test
+    public void testChop_StringWithCarriageReturn_ReturnsStringWithoutCarriageReturn() {
+        // Instantiate all necessary variables here
+        String str = "abc\r";
+
+        // Write the test code here following the given rules
+        String result = StringUtils.chop(str);
+
+        assertEquals("abc ", result);
+    }
     
     @Test
     public void testChop_StringWithMultipleCharacters_ReturnsStringWithoutLastCharacter() {
@@ -10840,16 +10840,16 @@ public class StringUtilsTest {
         assertEquals("abcde", result);
     }
 
-//    @Test
-//    public void testChop_StringWithMultipleCharactersAndCarriageReturn_ReturnsStringWithoutCarriageReturn() {
-//        // Instantiate all necessary variables here
-//        String str = "abcde\r";
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.chop(str);
-//
-//        assertEquals("abcde ", result);
-//    }
+    //@Test
+    public void testChop_StringWithMultipleCharactersAndCarriageReturn_ReturnsStringWithoutCarriageReturn() {
+        // Instantiate all necessary variables here
+        String str = "abcde\r";
+
+        // Write the test code here following the given rules
+        String result = StringUtils.chop(str);
+
+        assertEquals("abcde ", result);
+    }
 
 
 
@@ -11238,15 +11238,15 @@ public class StringUtilsTest {
         assertFalse(StringUtils.startsWithAny(sequence, searchStrings));
     }
     
-//    @Test
-//    public void testStartsWithAny_NonEmptySequenceAndEmptySearchStrings_ReturnsTrue() {
-//        // Instantiate all necessary variables here
-//        CharSequence sequence = "abcxyz";
-//        CharSequence[] searchStrings = {};
-//
-//        // Write the test code here following the given rules
-//        assertTrue(StringUtils.startsWithAny(sequence, searchStrings));
-//    }
+    //@Test
+    public void testStartsWithAny_NonEmptySequenceAndEmptySearchStrings_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        CharSequence sequence = "abcxyz";
+        CharSequence[] searchStrings = {};
+
+        // Write the test code here following the given rules
+        assertTrue(StringUtils.startsWithAny(sequence, searchStrings));
+    }
     
     @Test
     public void testStartsWithAny_NonEmptySequenceAndMatchingSearchStrings_ReturnsTrue() {
@@ -11353,17 +11353,17 @@ public class StringUtilsTest {
         assertFalse(result);
     }
     
-//    @Test
-//    public void testContainsNone_CharSequenceContainsInvalidCharsWithOtherValidChars_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        CharSequence cs = "ab1";
-//        char[] searchChars = {'x', 'y', 'z'};
-//
-//        // Write the test code here following the given rules
-//        boolean result = StringUtils.containsNone(cs, searchChars);
-//
-//        assertFalse(result);
-//    }
+    //@Test
+    public void testContainsNone_CharSequenceContainsInvalidCharsWithOtherValidChars_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        CharSequence cs = "ab1";
+        char[] searchChars = {'x', 'y', 'z'};
+
+        // Write the test code here following the given rules
+        boolean result = StringUtils.containsNone(cs, searchChars);
+
+        assertFalse(result);
+    }
     
     @Test
     public void testContainsNone_CharSequenceDoesNotContainInvalidChars_ReturnsTrue() {
@@ -11449,29 +11449,29 @@ public class StringUtilsTest {
         assertFalse(result);
     }
     
-//    @Test
-//    public void testContainsNone_CharSequenceContainsInvalidCharsWithOtherValidCharsAsString_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        CharSequence cs = "ab1";
-//        String invalidChars = "xyz";
-//
-//        // Write the test code here following the given rules
-//        boolean result = StringUtils.containsNone(cs, invalidChars);
-//
-//        assertFalse(result);
-//    }
+    //@Test
+    public void testContainsNone_CharSequenceContainsInvalidCharsWithOtherValidCharsAsString_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        CharSequence cs = "ab1";
+        String invalidChars = "xyz";
+
+        // Write the test code here following the given rules
+        boolean result = StringUtils.containsNone(cs, invalidChars);
+
+        assertFalse(result);
+    }
     
-//    @Test
-//    public void testContainsNone_CharSequenceDoesNotContainInvalidCharsAsString_ReturnsTrue() {
-//        // Instantiate all necessary variables here
-//        CharSequence cs = "abz";
-//        String invalidChars = "xyzw";
-//
-//        // Write the test code here following the given rules
-//        boolean result = StringUtils.containsNone(cs, invalidChars);
-//
-//        assertTrue(result);
-//    }
+    //@Test
+    public void testContainsNone_CharSequenceDoesNotContainInvalidCharsAsString_ReturnsTrue() {
+        // Instantiate all necessary variables here
+        CharSequence cs = "abz";
+        String invalidChars = "xyzw";
+
+        // Write the test code here following the given rules
+        boolean result = StringUtils.containsNone(cs, invalidChars);
+
+        assertTrue(result);
+    }
 
 
 
@@ -12033,24 +12033,24 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void testReplaceAll() {
-//        // Instantiate all necessary variables here
-//        String text = "Lorem ipsum dolor sit amet";
-//        String regex = "ipsum";
-//        String replacement = "REPLACED";
-//
-//        // Mock the RegExUtils class
-//        RegExUtils regExUtilsMock = mock(RegExUtils.class);
-//        when(regExUtilsMock.replaceAll(text, regex, replacement)).thenReturn("Lorem REPLACED dolor sit amet");
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.replaceAll(text, regex, replacement);
-//
-//        // Verify the result
-//        assertEquals("Lorem REPLACED dolor sit amet", result);
-//        verify(regExUtilsMock).replaceAll(text, regex, replacement);
-//    }
+    //@Test
+    public void testReplaceAll() {
+        // Instantiate all necessary variables here
+        String text = "Lorem ipsum dolor sit amet";
+        String regex = "ipsum";
+        String replacement = "REPLACED";
+
+        // Mock the RegExUtils class
+        RegExUtils regExUtilsMock = mock(RegExUtils.class);
+        when(regExUtilsMock.replaceAll(text, regex, replacement)).thenReturn("Lorem REPLACED dolor sit amet");
+
+        // Write the test code here following the given rules
+        String result = StringUtils.replaceAll(text, regex, replacement);
+
+        // Verify the result
+        assertEquals("Lorem REPLACED dolor sit amet", result);
+        verify(regExUtilsMock).replaceAll(text, regex, replacement);
+    }
 
 
 
@@ -12094,18 +12094,18 @@ public class StringUtilsTest {
         assertEquals(prefix, result);
     }
     
-//    @Test
-//    public void testPrependIfMissingIgnoreCase_StringWithPrefix_ReturnString() {
-//        // Instantiate all necessary variables here
-//        String str = "abc";
-//        String prefix = "xyz";
-//        String[] prefixes = {};
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.prependIfMissingIgnoreCase(str, prefix, prefixes);
-//
-//        assertEquals(str, result);
-//    }
+    //@Test
+    public void testPrependIfMissingIgnoreCase_StringWithPrefix_ReturnString() {
+        // Instantiate all necessary variables here
+        String str = "abc";
+        String prefix = "xyz";
+        String[] prefixes = {};
+
+        // Write the test code here following the given rules
+        String result = StringUtils.prependIfMissingIgnoreCase(str, prefix, prefixes);
+
+        assertEquals(str, result);
+    }
     
     @Test
     public void testPrependIfMissingIgnoreCase_StringWithoutPrefix_ReturnStringWithPrefix() {
@@ -12265,14 +12265,14 @@ public class StringUtilsTest {
         assertFalse(StringUtils.isBlank(cs));
     }
     
-//    @Test
-//    public void isBlank_StringWithTabsAndNewlines_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        CharSequence cs = "\t\n";
-//
-//        // Write the test code here following the given rules
-//        assertFalse(StringUtils.isBlank(cs));
-//    }
+    //@Test
+    public void isBlank_StringWithTabsAndNewlines_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        CharSequence cs = "\t\n";
+
+        // Write the test code here following the given rules
+        assertFalse(StringUtils.isBlank(cs));
+    }
     
     @Test
     public void isBlank_StringWithSpecialCharacters_ReturnsFalse() {
@@ -12568,17 +12568,17 @@ public class StringUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void startsWithIgnoreCase_CaseSensitive_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        CharSequence str = "abcdef";
-//        CharSequence prefix = "abc";
-//
-//        // Write the test code here following the given rules
-//        boolean result = StringUtils.startsWithIgnoreCase(str, prefix);
-//
-//        assertFalse(result);
-//    }
+    //@Test
+    public void startsWithIgnoreCase_CaseSensitive_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        CharSequence str = "abcdef";
+        CharSequence prefix = "abc";
+
+        // Write the test code here following the given rules
+        boolean result = StringUtils.startsWithIgnoreCase(str, prefix);
+
+        assertFalse(result);
+    }
 
     @Test
     public void startsWithIgnoreCase_CaseInsensitive_ReturnsTrue() {
@@ -12595,135 +12595,135 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void testSubstringsBetween() {
-//        // Instantiate all necessary variables here
-//        String str = "[a][b][c]";
-//        String open = "[";
-//        String close = "]";
-//
-//        // Mock the dependencies
-//        StringUtils utils = spy(new StringUtils());
-//
-//        // Define the expected result
-//        String[] expectedResult = {"a", "b", "c"};
-//
-//        // Stub the method call
-//        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
-//
-//        // Call the method
-//        String[] actualResult = utils.substringsBetween(str, open, close);
-//
-//        // Verify the result
-//        assertArrayEquals(expectedResult, actualResult);
-//
-//        // Verify the method call
-//        verify(utils).substringsBetween(str, open, close);
-//    }
-//
-//    @Test
-//    public void testSubstringsBetween_NullInput() {
-//        // Instantiate all necessary variables here
-//        String str = null;
-//        String open = "[";
-//        String close = "]";
-//
-//        // Mock the dependencies
-//        StringUtils utils = spy(new StringUtils());
-//
-//        // Define the expected result
-//        String[] expectedResult = null;
-//
-//        // Stub the method call
-//        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
-//
-//        // Call the method
-//        String[] actualResult = utils.substringsBetween(str, open, close);
-//
-//        // Verify the result
-//        assertArrayEquals(expectedResult, actualResult);
-//
-//        // Verify the method call
-//        verify(utils).substringsBetween(str, open, close);
-//    }
-//
-//    @Test
-//    public void testSubstringsBetween_NullOpenClose() {
-//        // Instantiate all necessary variables here
-//        String str = "[a][b][c]";
-//        String open = null;
-//        String close = null;
-//
-//        // Mock the dependencies
-//        StringUtils utils = spy(new StringUtils());
-//
-//        // Define the expected result
-//        String[] expectedResult = null;
-//
-//        // Stub the method call
-//        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
-//
-//        // Call the method
-//        String[] actualResult = utils.substringsBetween(str, open, close);
-//
-//        // Verify the result
-//        assertArrayEquals(expectedResult, actualResult);
-//
-//        // Verify the method call
-//        verify(utils).substringsBetween(str, open, close);
-//    }
-//
-//    @Test
-//    public void testSubstringsBetween_EmptyOpenClose() {
-//        // Instantiate all necessary variables here
-//        String str = "[a][b][c]";
-//        String open = "";
-//        String close = "";
-//
-//        // Mock the dependencies
-//        StringUtils utils = spy(new StringUtils());
-//
-//        // Define the expected result
-//        String[] expectedResult = null;
-//
-//        // Stub the method call
-//        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
-//
-//        // Call the method
-//        String[] actualResult = utils.substringsBetween(str, open, close);
-//
-//        // Verify the result
-//        assertArrayEquals(expectedResult, actualResult);
-//
-//        // Verify the method call
-//        verify(utils).substringsBetween(str, open, close);
-//    }
+    //@Test
+    public void testSubstringsBetween() {
+        // Instantiate all necessary variables here
+        String str = "[a][b][c]";
+        String open = "[";
+        String close = "]";
+
+        // Mock the dependencies
+        StringUtils utils = spy(new StringUtils());
+
+        // Define the expected result
+        String[] expectedResult = {"a", "b", "c"};
+
+        // Stub the method call
+        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
+
+        // Call the method
+        String[] actualResult = utils.substringsBetween(str, open, close);
+
+        // Verify the result
+        assertArrayEquals(expectedResult, actualResult);
+
+        // Verify the method call
+        verify(utils).substringsBetween(str, open, close);
+    }
+
+    //@Test
+    public void testSubstringsBetween_NullInput() {
+        // Instantiate all necessary variables here
+        String str = null;
+        String open = "[";
+        String close = "]";
+
+        // Mock the dependencies
+        StringUtils utils = spy(new StringUtils());
+
+        // Define the expected result
+        String[] expectedResult = null;
+
+        // Stub the method call
+        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
+
+        // Call the method
+        String[] actualResult = utils.substringsBetween(str, open, close);
+
+        // Verify the result
+        assertArrayEquals(expectedResult, actualResult);
+
+        // Verify the method call
+        verify(utils).substringsBetween(str, open, close);
+    }
+
+    //@Test
+    public void testSubstringsBetween_NullOpenClose() {
+        // Instantiate all necessary variables here
+        String str = "[a][b][c]";
+        String open = null;
+        String close = null;
+
+        // Mock the dependencies
+        StringUtils utils = spy(new StringUtils());
+
+        // Define the expected result
+        String[] expectedResult = null;
+
+        // Stub the method call
+        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
+
+        // Call the method
+        String[] actualResult = utils.substringsBetween(str, open, close);
+
+        // Verify the result
+        assertArrayEquals(expectedResult, actualResult);
+
+        // Verify the method call
+        verify(utils).substringsBetween(str, open, close);
+    }
+
+    //@Test
+    public void testSubstringsBetween_EmptyOpenClose() {
+        // Instantiate all necessary variables here
+        String str = "[a][b][c]";
+        String open = "";
+        String close = "";
+
+        // Mock the dependencies
+        StringUtils utils = spy(new StringUtils());
+
+        // Define the expected result
+        String[] expectedResult = null;
+
+        // Stub the method call
+        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
+
+        // Call the method
+        String[] actualResult = utils.substringsBetween(str, open, close);
+
+        // Verify the result
+        assertArrayEquals(expectedResult, actualResult);
+
+        // Verify the method call
+        verify(utils).substringsBetween(str, open, close);
+    }
     
-//    @Test
-//    public void testSubstringsBetween_EmptyString() {
-//        // Instantiate all necessary variables here
-//        String str = "";
-//        String open = "[";
-//        String close = "]";
-//
-//        // Mock the dependencies
-//        StringUtils utils = spy(new StringUtils());
-//
-//        // Define the expected result
-//        String[] expectedResult = new String[0];
-//
-//        // Stub the method call
-//        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
-//
-//        // Call the method
-//        String[] actualResult = utils.substringsBetween(str, open, close);
-//
-//        // Verify the result
-//        assertArrayEquals(expectedResult, actualResult);
-//
-//        // Verify the method call
-//        verify(utils).substringsBetween(str, open, close);
-//    }
+    //@Test
+    public void testSubstringsBetween_EmptyString() {
+        // Instantiate all necessary variables here
+        String str = "";
+        String open = "[";
+        String close = "]";
+
+        // Mock the dependencies
+        StringUtils utils = spy(new StringUtils());
+
+        // Define the expected result
+        String[] expectedResult = new String[0];
+
+        // Stub the method call
+        doReturn(expectedResult).when(utils).substringsBetween(str, open, close);
+
+        // Call the method
+        String[] actualResult = utils.substringsBetween(str, open, close);
+
+        // Verify the result
+        assertArrayEquals(expectedResult, actualResult);
+
+        // Verify the method call
+        verify(utils).substringsBetween(str, open, close);
+    }
 
 
 
@@ -12916,33 +12916,33 @@ public class StringUtilsTest {
         assertNull(result);
     }
 
-//    @Test
-//    public void overlay_shouldReturnString_whenOverlayIsNull() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        String overlay = null;
-//        int start = 2;
-//        int end = 4;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.overlay(str, overlay, start, end);
-//
-//        assertEquals(str, result);
-//    }
-//
-//    @Test
-//    public void overlay_shouldReturnString_whenStartAndEndIndicesAreEqual() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        String overlay = "zzzz";
-//        int start = 2;
-//        int end = 2;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.overlay(str, overlay, start, end);
-//
-//        assertEquals(str, result);
-//    }
+    //@Test
+    public void overlay_shouldReturnString_whenOverlayIsNull() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        String overlay = null;
+        int start = 2;
+        int end = 4;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.overlay(str, overlay, start, end);
+
+        assertEquals(str, result);
+    }
+
+    //@Test
+    public void overlay_shouldReturnString_whenStartAndEndIndicesAreEqual() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        String overlay = "zzzz";
+        int start = 2;
+        int end = 2;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.overlay(str, overlay, start, end);
+
+        assertEquals(str, result);
+    }
 
     @Test
     public void overlay_shouldReturnString_whenStartIndexIsNegative() {
@@ -12972,19 +12972,19 @@ public class StringUtilsTest {
         assertEquals("abcdefzzzz", result);
     }
 
-//    @Test
-//    public void overlay_shouldReturnString_whenEndIndexIsNegative() {
-//        // Instantiate all necessary variables here
-//        String str = "abcdef";
-//        String overlay = "zzzz";
-//        int start = 2;
-//        int end = -3;
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.overlay(str, overlay, start, end);
-//
-//        assertEquals("zzzzabcdef", result);
-//    }
+    //@Test
+    public void overlay_shouldReturnString_whenEndIndexIsNegative() {
+        // Instantiate all necessary variables here
+        String str = "abcdef";
+        String overlay = "zzzz";
+        int start = 2;
+        int end = -3;
+
+        // Write the test code here following the given rules
+        String result = StringUtils.overlay(str, overlay, start, end);
+
+        assertEquals("zzzzabcdef", result);
+    }
 
     @Test
     public void overlay_shouldReturnString_whenEndIndexIsGreaterThanStringLength() {
@@ -13023,41 +13023,41 @@ public class StringUtilsTest {
     @Mock
     private CharSequence searchStr;
     
-//    @Test
-//    public void ExampleTest8() {
-//        MockitoAnnotations.initMocks(this);
-//
-//        // Test when str and searchStr are null
-//        int result = StringUtils.lastIndexOfIgnoreCase(null, null);
-//        assertEquals(-1, result);
-//
-//        // Test when str is null and searchStr is not null
-//        result = StringUtils.lastIndexOfIgnoreCase(null, searchStr);
-//        assertEquals(-1, result);
-//
-//        // Test when str is not null and searchStr is null
-//        result = StringUtils.lastIndexOfIgnoreCase(str, null);
-//        assertEquals(-1, result);
-//
-//        // Test when str and searchStr are empty
-//        when(str.length()).thenReturn(0);
-//        when(searchStr.length()).thenReturn(0);
-//        result = StringUtils.lastIndexOfIgnoreCase(str, searchStr);
-//        assertEquals(0, result);
-//
-//        // Test when str is not empty and searchStr is empty
-//        when(str.length()).thenReturn(5);
-//        when(searchStr.length()).thenReturn(0);
-//        result = StringUtils.lastIndexOfIgnoreCase(str, searchStr);
-//        assertEquals(5, result);
-//
-//        // Test when str and searchStr are not empty
-//        when(str.length()).thenReturn(10);
-//        when(searchStr.length()).thenReturn(2);
-//        when(CharSequenceUtils.regionMatches(str, true, 7, searchStr, 0, 2)).thenReturn(true);
-//        result = StringUtils.lastIndexOfIgnoreCase(str, searchStr);
-//        assertEquals(7, result);
-//    }
+    //@Test
+    public void ExampleTest8() {
+        MockitoAnnotations.initMocks(this);
+
+        // Test when str and searchStr are null
+        int result = StringUtils.lastIndexOfIgnoreCase(null, null);
+        assertEquals(-1, result);
+
+        // Test when str is null and searchStr is not null
+        result = StringUtils.lastIndexOfIgnoreCase(null, searchStr);
+        assertEquals(-1, result);
+
+        // Test when str is not null and searchStr is null
+        result = StringUtils.lastIndexOfIgnoreCase(str, null);
+        assertEquals(-1, result);
+
+        // Test when str and searchStr are empty
+        when(str.length()).thenReturn(0);
+        when(searchStr.length()).thenReturn(0);
+        result = StringUtils.lastIndexOfIgnoreCase(str, searchStr);
+        assertEquals(0, result);
+
+        // Test when str is not empty and searchStr is empty
+        when(str.length()).thenReturn(5);
+        when(searchStr.length()).thenReturn(0);
+        result = StringUtils.lastIndexOfIgnoreCase(str, searchStr);
+        assertEquals(5, result);
+
+        // Test when str and searchStr are not empty
+        when(str.length()).thenReturn(10);
+        when(searchStr.length()).thenReturn(2);
+        when(CharSequenceUtils.regionMatches(str, true, 7, searchStr, 0, 2)).thenReturn(true);
+        result = StringUtils.lastIndexOfIgnoreCase(str, searchStr);
+        assertEquals(7, result);
+    }
 
 
 
@@ -13089,18 +13089,18 @@ public class StringUtilsTest {
         assertEquals("", result);
     }
 
-//    @Test
-//    public void testWrapIfMissing_withStringAlreadyWrapped_returnsSameString() {
-//        // Arrange
-//        String str = "abc";
-//        char wrapWith = 'x';
-//
-//        // Act
-//        String result = StringUtils.wrapIfMissing(str, wrapWith);
-//
-//        // Assert
-//        assertEquals("abc", result);
-//    }
+    //@Test
+    public void testWrapIfMissing_withStringAlreadyWrapped_returnsSameString() {
+        // Arrange
+        String str = "abc";
+        char wrapWith = 'x';
+
+        // Act
+        String result = StringUtils.wrapIfMissing(str, wrapWith);
+
+        // Assert
+        assertEquals("abc", result);
+    }
 
     @Test
     public void testWrapIfMissing_withStringNotWrapped_returnsWrappedString() {
@@ -13141,18 +13141,18 @@ public class StringUtilsTest {
         assertNull(result);
     }
 
-//    @Test
-//    public void testWrapIfMissing_withStringAlreadyWrappedAndValidWrapChar_returnsSameString() {
-//        // Arrange
-//        String str = "abc";
-//        char wrapWith = 'x';
-//
-//        // Act
-//        String result = StringUtils.wrapIfMissing(str, wrapWith);
-//
-//        // Assert
-//        assertEquals("abc", result);
-//    }
+    //@Test
+    public void testWrapIfMissing_withStringAlreadyWrappedAndValidWrapChar_returnsSameString() {
+        // Arrange
+        String str = "abc";
+        char wrapWith = 'x';
+
+        // Act
+        String result = StringUtils.wrapIfMissing(str, wrapWith);
+
+        // Assert
+        assertEquals("abc", result);
+    }
 
     @Test
     public void testWrapIfMissing_withStringNotWrappedAndValidWrapChar_returnsWrappedString() {
@@ -13193,18 +13193,18 @@ public class StringUtilsTest {
         assertNull(result);
     }
 
-//    @Test
-//    public void testWrapIfMissing_withStringAlreadyWrappedAndValidWrapString_returnsSameString() {
-//        // Arrange
-//        String str = "abc";
-//        String wrapWith = "x";
-//
-//        // Act
-//        String result = StringUtils.wrapIfMissing(str, wrapWith);
-//
-//        // Assert
-//        assertEquals("abc", result);
-//    }
+    //@Test
+    public void testWrapIfMissing_withStringAlreadyWrappedAndValidWrapString_returnsSameString() {
+        // Arrange
+        String str = "abc";
+        String wrapWith = "x";
+
+        // Act
+        String result = StringUtils.wrapIfMissing(str, wrapWith);
+
+        // Assert
+        assertEquals("abc", result);
+    }
 
     @Test
     public void testWrapIfMissing_withStringNotWrappedAndValidWrapString_returnsWrappedString() {
@@ -13222,29 +13222,29 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void testToString_withByteArrayAndCharsetName_shouldReturnString() throws UnsupportedEncodingException {
-//        // Instantiate all necessary variables here
-//        byte[] bytes = {97, 98, 99};
-//        String charsetName = "UTF-8";
-//
-//        // Mock the dependencies
-//        Charset charsetMock = mock(Charset.class);
-//        Charsets charsetsMock = mock(Charsets.class);
-//        StringUtils stringUtils = new StringUtils();
-//
-//        // Set up the mock behavior
-//        when(charsetsMock.toCharset(charsetName)).thenReturn(charsetMock);
-//        when(new String(bytes, charsetMock)).thenReturn("abc");
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.toString(bytes, charsetName);
-//
-//        // Verify the result
-//        assertEquals("abc", result);
-//        verify(charsetsMock).toCharset(charsetName);
-//        //verifyNew(String.class).withArguments(bytes, charsetMock);
-//    }
+    //@Test
+    public void testToString_withByteArrayAndCharsetName_shouldReturnString() throws UnsupportedEncodingException {
+        // Instantiate all necessary variables here
+        byte[] bytes = {97, 98, 99};
+        String charsetName = "UTF-8";
+
+        // Mock the dependencies
+        Charset charsetMock = mock(Charset.class);
+        Charsets charsetsMock = mock(Charsets.class);
+        StringUtils stringUtils = new StringUtils();
+
+        // Set up the mock behavior
+        when(charsetsMock.toCharset(charsetName)).thenReturn(charsetMock);
+        when(new String(bytes, charsetMock)).thenReturn("abc");
+
+        // Write the test code here following the given rules
+        String result = StringUtils.toString(bytes, charsetName);
+
+        // Verify the result
+        assertEquals("abc", result);
+        verify(charsetsMock).toCharset(charsetName);
+        //verifyNew(String.class).withArguments(bytes, charsetMock);
+    }
 
 
 
@@ -13305,33 +13305,33 @@ public class StringUtilsTest {
         assertEquals(source, result);
     }
 
-//    @Test
-//    public void replacePattern_EmptyRegex_ReturnsSource() {
-//        // Arrange
-//        String source = "abc123";
-//        String regex = "";
-//        String replacement = "xyz";
-//
-//        // Act
-//        String result = StringUtils.replacePattern(source, regex, replacement);
-//
-//        // Assert
-//        assertEquals(source, result);
-//    }
+    //@Test
+    public void replacePattern_EmptyRegex_ReturnsSource() {
+        // Arrange
+        String source = "abc123";
+        String regex = "";
+        String replacement = "xyz";
 
-//    @Test
-//    public void replacePattern_EmptyReplacement_ReturnsSourceWithRemovedMatches() {
-//        // Arrange
-//        String source = "abc123";
-//        String regex = "[a-z]";
-//        String replacement = "";
-//
-//        // Act
-//        String result = StringUtils.replacePattern(source, regex, replacement);
-//
-//        // Assert
-//        assertEquals("123", result);
-//    }
+        // Act
+        String result = StringUtils.replacePattern(source, regex, replacement);
+
+        // Assert
+        assertEquals(source, result);
+    }
+
+    @Test
+    public void replacePattern_EmptyReplacement_ReturnsSourceWithRemovedMatches() {
+        // Arrange
+        String source = "abc123";
+        String regex = "[a-z]";
+        String replacement = "";
+
+        // Act
+        String result = StringUtils.replacePattern(source, regex, replacement);
+
+        // Assert
+        assertEquals("123", result);
+    }
 
     @Test
     public void replacePattern_MatchingRegex_ReturnsSourceWithReplacedMatches() {
@@ -13347,19 +13347,19 @@ public class StringUtilsTest {
         assertEquals("xyz123xyz456", result);
     }
 
-//    @Test
-//    public void replacePattern_NoMatchingRegex_ReturnsSource() {
-//        // Arrange
-//        String source = "abc123def456";
-//        String regex = "\\d+";
-//        String replacement = "xyz";
-//
-//        // Act
-//        String result = StringUtils.replacePattern(source, regex, replacement);
-//
-//        // Assert
-//        assertEquals(source, result);
-//    }
+    //@Test
+    public void replacePattern_NoMatchingRegex_ReturnsSource() {
+        // Arrange
+        String source = "abc123def456";
+        String regex = "\\d+";
+        String replacement = "xyz";
+
+        // Act
+        String result = StringUtils.replacePattern(source, regex, replacement);
+
+        // Assert
+        assertEquals(source, result);
+    }
 
 
 
@@ -13464,19 +13464,19 @@ public class StringUtilsTest {
         assertEquals("bbb", result);
     }
 
-//    @Test
-//    public void testReplaceEachRepeatedly_SingleSearchMultipleReplacements_ReturnsReplacedText() {
-//        // Arrange
-//        String text = "aba";
-//        String[] searchList = {"a"};
-//        String[] replacementList = {"b", "c"};
-//
-//        // Act
-//        String result = StringUtils.replaceEachRepeatedly(text, searchList, replacementList);
-//
-//        // Assert
-//        assertEquals("bbc", result);
-//    }
+    //@Test
+    public void testReplaceEachRepeatedly_SingleSearchMultipleReplacements_ReturnsReplacedText() {
+        // Arrange
+        String text = "aba";
+        String[] searchList = {"a"};
+        String[] replacementList = {"b", "c"};
+
+        // Act
+        String result = StringUtils.replaceEachRepeatedly(text, searchList, replacementList);
+
+        // Assert
+        assertEquals("bbc", result);
+    }
 
     @Test
     public void testReplaceEachRepeatedly_MultipleSearchSingleReplacement_ReturnsReplacedText() {
@@ -14107,33 +14107,33 @@ public class StringUtilsTest {
         assertEquals("xyzabc", result);
     }
 
-//    @Test
-//    public void testPrependIfMissing_StringAndPrefixes_ReturnsStringWithFirstValidPrefix() {
-//        // Instantiate all necessary variables here
-//        String str = "abc";
-//        CharSequence prefix = "xyz";
-//        CharSequence[] prefixes = {"mno", null, ""};
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.prependIfMissing(str, prefix, prefixes);
-//
-//        // Assert
-//        assertEquals("xyzabc", result);
-//    }
+    //@Test
+    public void testPrependIfMissing_StringAndPrefixes_ReturnsStringWithFirstValidPrefix() {
+        // Instantiate all necessary variables here
+        String str = "abc";
+        CharSequence prefix = "xyz";
+        CharSequence[] prefixes = {"mno", null, ""};
 
-//    @Test
-//    public void testPrependIfMissing_StringAndPrefixesNoMatch_ReturnsUnmodifiedString() {
-//        // Instantiate all necessary variables here
-//        String str = "abc";
-//        CharSequence prefix = "xyz";
-//        CharSequence[] prefixes = {"mno"};
-//
-//        // Write the test code here following the given rules
-//        String result = StringUtils.prependIfMissing(str, prefix, prefixes);
-//
-//        // Assert
-//        assertEquals("abc", result);
-//    }
+        // Write the test code here following the given rules
+        String result = StringUtils.prependIfMissing(str, prefix, prefixes);
+
+        // Assert
+        assertEquals("xyzabc", result);
+    }
+
+    //@Test
+    public void testPrependIfMissing_StringAndPrefixesNoMatch_ReturnsUnmodifiedString() {
+        // Instantiate all necessary variables here
+        String str = "abc";
+        CharSequence prefix = "xyz";
+        CharSequence[] prefixes = {"mno"};
+
+        // Write the test code here following the given rules
+        String result = StringUtils.prependIfMissing(str, prefix, prefixes);
+
+        // Assert
+        assertEquals("abc", result);
+    }
 
     @Test
     public void testPrependIfMissing_StringWithValidPrefix_ReturnsStringWithValidPrefix() {
@@ -14273,52 +14273,52 @@ public class StringUtilsTest {
 
 
 
-//    @Test
-//    public void testContainsAnyIgnoreCase() {
-//        // Instantiate all necessary variables here
-//        CharSequence cs = "abcd";
-//        CharSequence[] searchCharSequences = {"ab", "cd"};
-//
-//        // Mock StringUtils class
-//        StringUtils stringUtils = mock(StringUtils.class);
-//
-//        // Mock StringUtils.containsIgnoreCase method
-//        when(stringUtils.containsIgnoreCase(any(CharSequence.class), any(CharSequence.class))).thenReturn(true);
-//
-//        // Call the method to be tested
-//        boolean result = StringUtils.containsAnyIgnoreCase(cs, searchCharSequences);
-//
-//        // Verify that StringUtils.containsIgnoreCase was called with correct arguments
-//        verify(stringUtils).containsIgnoreCase(eq(cs), eq("ab"));
-//        verify(stringUtils).containsIgnoreCase(eq(cs), eq("cd"));
-//
-//        // Assert the result
-//        assertTrue(result);
-//    }
+    //@Test
+    public void testContainsAnyIgnoreCase() {
+        // Instantiate all necessary variables here
+        CharSequence cs = "abcd";
+        CharSequence[] searchCharSequences = {"ab", "cd"};
+
+        // Mock StringUtils class
+        StringUtils stringUtils = mock(StringUtils.class);
+
+        // Mock StringUtils.containsIgnoreCase method
+        when(stringUtils.containsIgnoreCase(any(CharSequence.class), any(CharSequence.class))).thenReturn(true);
+
+        // Call the method to be tested
+        boolean result = StringUtils.containsAnyIgnoreCase(cs, searchCharSequences);
+
+        // Verify that StringUtils.containsIgnoreCase was called with correct arguments
+        verify(stringUtils).containsIgnoreCase(eq(cs), eq("ab"));
+        verify(stringUtils).containsIgnoreCase(eq(cs), eq("cd"));
+
+        // Assert the result
+        assertTrue(result);
+    }
 
 
 
 
-//    @Test
-//    public void testLowerCase() {
-//        // Instantiate all necessary variables here
-//        String str = "TEST";
-//        String expected = "test";
-//
-//        // Mock any dependencies here (if any)
-//        Locale locale = Locale.ENGLISH;
-//
-//        // Mock the behavior of dependencies (if any)
-//        when(StringUtils.lowerCase(str)).thenReturn(expected);
-//        when(StringUtils.lowerCase(str, locale)).thenReturn(expected);
-//
-//        // Write the test code here following the given rules
-//        String result1 = StringUtils.lowerCase(str);
-//        assertEquals(expected, result1);
-//
-//        String result2 = StringUtils.lowerCase(str, locale);
-//        assertEquals(expected, result2);
-//    }
+    //@Test
+    public void testLowerCase() {
+        // Instantiate all necessary variables here
+        String str = "TEST";
+        String expected = "test";
+
+        // Mock any dependencies here (if any)
+        Locale locale = Locale.ENGLISH;
+
+        // Mock the behavior of dependencies (if any)
+        when(StringUtils.lowerCase(str)).thenReturn(expected);
+        when(StringUtils.lowerCase(str, locale)).thenReturn(expected);
+
+        // Write the test code here following the given rules
+        String result1 = StringUtils.lowerCase(str);
+        assertEquals(expected, result1);
+
+        String result2 = StringUtils.lowerCase(str, locale);
+        assertEquals(expected, result2);
+    }
 
 
 

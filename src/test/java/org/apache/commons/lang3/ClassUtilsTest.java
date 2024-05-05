@@ -14,10 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ClassUtilsTest {
 
-
-
-
-
     @Test
     public void testWrapperToPrimitive_NullInput_ReturnsNull() {
         // Instantiate all necessary variables here
@@ -705,16 +701,16 @@ public class ClassUtilsTest {
         assertEquals("Object", result);
     }
 
-//    @Test
-//    public void shouldReturnShortClassNameFromString() {
-//        // Instantiate all necessary variables here
-//        String className = "java.util.Map$Entry";
-//
-//        // Write the test code here following the given rules
-//        String result = ClassUtils.getShortClassName(className);
-//
-//        assertEquals("Entry", result);
-//    }
+    //@Test
+    public void shouldReturnShortClassNameFromString() {
+        // Instantiate all necessary variables here
+        String className = "java.util.Map$Entry";
+
+        // Write the test code here following the given rules
+        String result = ClassUtils.getShortClassName(className);
+
+        assertEquals("Entry", result);
+    }
 
     @Test
     public void shouldReturnEmptyStringIfClassNameIsNull() {
@@ -738,16 +734,16 @@ public class ClassUtilsTest {
         assertEquals("String[]", result);
     }
 
-//    @Test
-//    public void shouldReturnShortClassNameFromInnerClass() {
-//        // Instantiate all necessary variables here
-//        String className = "java.util.Map$Entry$Key";
-//
-//        // Write the test code here following the given rules
-//        String result = ClassUtils.getShortClassName(className);
-//
-//        assertEquals("Key", result);
-//    }
+    //@Test
+    public void shouldReturnShortClassNameFromInnerClass() {
+        // Instantiate all necessary variables here
+        String className = "java.util.Map$Entry$Key";
+
+        // Write the test code here following the given rules
+        String result = ClassUtils.getShortClassName(className);
+
+        assertEquals("Key", result);
+    }
 
 
 
@@ -840,7 +836,7 @@ public class ClassUtilsTest {
 
 
 
-
+// Parsers fault
 //    @Test
 //    public void testRemove() {
 //        // Instantiate all necessary variables here
@@ -864,28 +860,28 @@ public class ClassUtilsTest {
         assertNull(result);
     }
 
-//    @Test
-//    public void testGetAllSuperclasses_NoSuperclass_ReturnsEmptyList() {
-//        // Instantiate all necessary variables here
-//        Class<?> cls = String.class;
-//
-//        // Write the test code here following the given rules
-//        List<Class<?>> result = ClassUtils.getAllSuperclasses(cls);
-//
-//        assertEquals(0, result.size());
-//    }
+    //@Test
+    public void testGetAllSuperclasses_NoSuperclass_ReturnsEmptyList() {
+        // Instantiate all necessary variables here
+        Class<?> cls = String.class;
 
-//    @Test
-//    public void testGetAllSuperclasses_SingleSuperclass_ReturnsSingleSuperclass() {
-//        // Instantiate all necessary variables here
-//        Class<?> cls = Integer.class;
-//
-//        // Write the test code here following the given rules
-//        List<Class<?>> result = ClassUtils.getAllSuperclasses(cls);
-//
-//        assertEquals(1, result.size());
-//        assertEquals(Number.class, result.get(0));
-//    }
+        // Write the test code here following the given rules
+        List<Class<?>> result = ClassUtils.getAllSuperclasses(cls);
+
+        assertEquals(0, result.size());
+    }
+
+    //@Test
+    public void testGetAllSuperclasses_SingleSuperclass_ReturnsSingleSuperclass() {
+        // Instantiate all necessary variables here
+        Class<?> cls = Integer.class;
+
+        // Write the test code here following the given rules
+        List<Class<?>> result = ClassUtils.getAllSuperclasses(cls);
+
+        assertEquals(1, result.size());
+        assertEquals(Number.class, result.get(0));
+    }
 
     @Test
     public void testGetAllSuperclasses_MultipleSuperclasses_ReturnsAllSuperclasses() {
@@ -1128,16 +1124,16 @@ public class ClassUtilsTest {
         assertNull(result);
     }
 
-//    @Test
-//    public void testGetAllInterfaces_NoInterfaces_ReturnEmptyList() {
-//        // Instantiate all necessary variables here
-//        Class<?> cls = MyClass.class;
-//
-//        // Write the test code here following the given rules
-//        List<Class<?>> result = ClassUtils.getAllInterfaces(cls);
-//
-//        assertTrue(result.isEmpty());
-//    }
+    //@Test
+    public void testGetAllInterfaces_NoInterfaces_ReturnEmptyList() {
+        // Instantiate all necessary variables here
+        Class<?> cls = MyClass.class;
+
+        // Write the test code here following the given rules
+        List<Class<?>> result = ClassUtils.getAllInterfaces(cls);
+
+        assertTrue(result.isEmpty());
+    }
 
     @Test
     public void testGetAllInterfaces_InterfacesInOrder() {
@@ -1167,21 +1163,21 @@ public class ClassUtilsTest {
 //        assertEquals(InterfaceC.class, result.get(2));
 //    }
 
-//    @Test
-//    public void testGetAllInterfaces_SuperclassInterfacesIncluded() {
-//        // Instantiate all necessary variables here
-//        Class<?> cls = MySubSubClass.class;
-//
-//        // Write the test code here following the given rules
-//        List<Class<?>> result = ClassUtils.getAllInterfaces(cls);
-//
-//        assertEquals(5, result.size());
-//        assertEquals(InterfaceA.class, result.get(0));
-//        assertEquals(InterfaceB.class, result.get(1));
-//        assertEquals(InterfaceC.class, result.get(2));
-//        assertEquals(InterfaceD.class, result.get(3));
-//        assertEquals(InterfaceE.class, result.get(4));
-//    }
+    //@Test
+    public void testGetAllInterfaces_SuperclassInterfacesIncluded() {
+        // Instantiate all necessary variables here
+        Class<?> cls = MySubSubClass.class;
+
+        // Write the test code here following the given rules
+        List<Class<?>> result = ClassUtils.getAllInterfaces(cls);
+
+        assertEquals(5, result.size());
+        assertEquals(InterfaceA.class, result.get(0));
+        assertEquals(InterfaceB.class, result.get(1));
+        assertEquals(InterfaceC.class, result.get(2));
+        assertEquals(InterfaceD.class, result.get(3));
+        assertEquals(InterfaceE.class, result.get(4));
+    }
 
     // Mock classes for testing
     interface InterfaceA {}
@@ -1232,17 +1228,17 @@ public class ClassUtilsTest {
         assertTrue(result);
     }
     
-//    @Test
-//    public void testIsInnerClass_ReturnsFalse_WhenClassIsStaticNestedClass() {
-//        // Arrange
-//        Class<?> cls = StaticNestedClass.class;
-//
-//        // Act
-//        boolean result = ClassUtils.isInnerClass(cls);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
+    //@Test
+    public void testIsInnerClass_ReturnsFalse_WhenClassIsStaticNestedClass() {
+        // Arrange
+        Class<?> cls = StaticNestedClass.class;
+
+        // Act
+        boolean result = ClassUtils.isInnerClass(cls);
+
+        // Assert
+        assertFalse(result);
+    }
     
     @Test
     public void testIsInnerClass_ReturnsTrue_WhenClassIsAnonymousClass() {
@@ -1268,59 +1264,59 @@ public class ClassUtilsTest {
 
 
 //FATAL: CLASSCLOADER?
-//
-//
-//    @Test
-//    public void testGetClass_withClassLoaderAndClassNameAndInitialize() throws ClassNotFoundException {
-//        // Instantiate all necessary variables here
-//        final ClassLoader classLoader = mock(ClassLoader.class);
-//        final String className = "java.util.Map.Entry";
-//        final boolean initialize = true;
-//
-//        // Write the test code here following the given rules
-//        Class<?> result = ClassUtils.getClass(classLoader, className, initialize);
-//
-//        assertNotNull(result);
-//        assertEquals(className, result.getName());
-//    }
-//
-//    @Test
-//    public void testGetClass_withClassLoaderAndClassNameAndNotInitialize() throws ClassNotFoundException {
-//        // Instantiate all necessary variables here
-//        final ClassLoader classLoader = mock(ClassLoader.class);
-//        final String className = "java.util.Map.Entry";
-//        final boolean initialize = false;
-//
-//        // Write the test code here following the given rules
-//        Class<?> result = ClassUtils.getClass(classLoader, className, initialize);
-//
-//        assertNotNull(result);
-//        assertEquals(className, result.getName());
-//    }
-//
-//    @Test
-//    public void testGetClass_withClassLoaderAndInvalidClassName() {
-//        // Instantiate all necessary variables here
-//        final ClassLoader classLoader = mock(ClassLoader.class);
-//        final String className = "invalid.class.Name";
-//        final boolean initialize = true;
-//
-//        // Write the test code here following the given rules
-//        assertThrows(ClassNotFoundException.class, () -> ClassUtils.getClass(classLoader, className, initialize));
-//    }
-//
-//    @Test
-//    public void testGetClass_withClassLoaderAndClassName() throws ClassNotFoundException {
-//        // Instantiate all necessary variables here
-//        final ClassLoader classLoader = mock(ClassLoader.class);
-//        final String className = "java.util.Map.Entry";
-//
-//        // Write the test code here following the given rules
-//        Class<?> result = ClassUtils.getClass(classLoader, className);
-//
-//        assertNotNull(result);
-//        assertEquals(className, result.getName());
-//    }
+
+
+    //@Test
+    public void testGetClass_withClassLoaderAndClassNameAndInitialize() throws ClassNotFoundException {
+        // Instantiate all necessary variables here
+        final ClassLoader classLoader = mock(ClassLoader.class);
+        final String className = "java.util.Map.Entry";
+        final boolean initialize = true;
+
+        // Write the test code here following the given rules
+        Class<?> result = ClassUtils.getClass(classLoader, className, initialize);
+
+        assertNotNull(result);
+        assertEquals(className, result.getName());
+    }
+
+    //@Test
+    public void testGetClass_withClassLoaderAndClassNameAndNotInitialize() throws ClassNotFoundException {
+        // Instantiate all necessary variables here
+        final ClassLoader classLoader = mock(ClassLoader.class);
+        final String className = "java.util.Map.Entry";
+        final boolean initialize = false;
+
+        // Write the test code here following the given rules
+        Class<?> result = ClassUtils.getClass(classLoader, className, initialize);
+
+        assertNotNull(result);
+        assertEquals(className, result.getName());
+    }
+
+    //@Test
+    public void testGetClass_withClassLoaderAndInvalidClassName() {
+        // Instantiate all necessary variables here
+        final ClassLoader classLoader = mock(ClassLoader.class);
+        final String className = "invalid.class.Name";
+        final boolean initialize = true;
+
+        // Write the test code here following the given rules
+        assertThrows(ClassNotFoundException.class, () -> ClassUtils.getClass(classLoader, className, initialize));
+    }
+
+    //@Test
+    public void testGetClass_withClassLoaderAndClassName() throws ClassNotFoundException {
+        // Instantiate all necessary variables here
+        final ClassLoader classLoader = mock(ClassLoader.class);
+        final String className = "java.util.Map.Entry";
+
+        // Write the test code here following the given rules
+        Class<?> result = ClassUtils.getClass(classLoader, className);
+
+        assertNotNull(result);
+        assertEquals(className, result.getName());
+    }
 
     @Test
     public void testGetClass_withInvalidClassName() {
@@ -1332,58 +1328,58 @@ public class ClassUtilsTest {
         assertThrows(ClassNotFoundException.class, () -> ClassUtils.getClass(className, initialize));
     }
 
-//    @Test
-//    public void testGetClass_withClassNameAndInitialize() throws ClassNotFoundException {
-//        // Instantiate all necessary variables here
-//        final String className = "java.util.Map.Entry";
-//        final boolean initialize = true;
-//
-//        // Write the test code here following the given rules
-//        Class<?> result = ClassUtils.getClass(className, initialize);
-//
-//        assertNotNull(result);
-//        assertEquals(className, result.getName());
-//    }
+    //@Test
+    public void testGetClass_withClassNameAndInitialize() throws ClassNotFoundException {
+        // Instantiate all necessary variables here
+        final String className = "java.util.Map.Entry";
+        final boolean initialize = true;
 
-//    @Test
-//    public void testGetClass_withClassNameAndNotInitialize() throws ClassNotFoundException {
-//        // Instantiate all necessary variables here
-//        final String className = "java.util.Map.Entry";
-//        final boolean initialize = false;
-//
-//        // Write the test code here following the given rules
-//        Class<?> result = ClassUtils.getClass(className, initialize);
-//
-//        assertNotNull(result);
-//        assertEquals(className, result.getName());
-//    }
+        // Write the test code here following the given rules
+        Class<?> result = ClassUtils.getClass(className, initialize);
 
-//    @Test
-//    public void testGetClass_withClassName() throws ClassNotFoundException {
-//        // Instantiate all necessary variables here
-//        final String className = "java.util.Map.Entry";
-//
-//        // Write the test code here following the given rules
-//        Class<?> result = ClassUtils.getClass(className);
-//
-//        assertNotNull(result);
-//        assertEquals(className, result.getName());
-//    }
+        assertNotNull(result);
+        assertEquals(className, result.getName());
+    }
 
+    //@Test
+    public void testGetClass_withClassNameAndNotInitialize() throws ClassNotFoundException {
+        // Instantiate all necessary variables here
+        final String className = "java.util.Map.Entry";
+        final boolean initialize = false;
 
+        // Write the test code here following the given rules
+        Class<?> result = ClassUtils.getClass(className, initialize);
+
+        assertNotNull(result);
+        assertEquals(className, result.getName());
+    }
+
+    //@Test
+    public void testGetClass_withClassName() throws ClassNotFoundException {
+        // Instantiate all necessary variables here
+        final String className = "java.util.Map.Entry";
+
+        // Write the test code here following the given rules
+        Class<?> result = ClassUtils.getClass(className);
+
+        assertNotNull(result);
+        assertEquals(className, result.getName());
+    }
 
 
-//    @Test
-//    public void testGetPackageCanonicalName_ClassNotNull_ReturnsPackageName() {
-//        // Instantiate all necessary variables here
-//        Class<?> cls = mock(Class.class);
-//        String className = "com.example.TestClass";
-//        when(cls.getName()).thenReturn(className);
-//
-//        // Write the test code here following the given rules
-//        String result = ClassUtils.getPackageCanonicalName(cls);
-//        assertEquals("com.example", result);
-//    }
+
+
+    //@Test
+    public void testGetPackageCanonicalName_ClassNotNull_ReturnsPackageName() {
+        // Instantiate all necessary variables here
+        Class<?> cls = mock(Class.class);
+        String className = "com.example.TestClass";
+        when(cls.getName()).thenReturn(className);
+
+        // Write the test code here following the given rules
+        String result = ClassUtils.getPackageCanonicalName(cls);
+        assertEquals("com.example", result);
+    }
     
     @Test
     public void testGetPackageCanonicalName_ClassNull_ReturnsEmptyString() {
@@ -1394,7 +1390,7 @@ public class ClassUtilsTest {
         String result = ClassUtils.getPackageCanonicalName(cls);
         assertEquals("", result);
     }
-//
+
 //    @Test
 //    public void testGetPackageCanonicalName_ObjectNotNull_ReturnsPackageName() {
 //        // Instantiate all necessary variables here
@@ -1467,17 +1463,17 @@ public class ClassUtilsTest {
         assertTrue(result);
     }
 
-//    @Test
-//    public void isAssignable_ObjectToPrimitive_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        Class<?> cls = Integer.class;
-//        Class<?> toClass = int.class;
-//
-//        // Write the test code here following the given rules
-//        boolean result = ClassUtils.isAssignable(cls, toClass);
-//
-//        assertFalse(result);
-//    }
+    //@Test
+    public void isAssignable_ObjectToPrimitive_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        Class<?> cls = Integer.class;
+        Class<?> toClass = int.class;
+
+        // Write the test code here following the given rules
+        boolean result = ClassUtils.isAssignable(cls, toClass);
+
+        assertFalse(result);
+    }
 
     @Test
     public void isAssignable_ObjectToObject_ReturnsTrue() {
@@ -1553,7 +1549,7 @@ public class ClassUtilsTest {
 
 
 
-
+//Parser fault
 //    @Test
 //    public void testNext() {
 //        // Instantiate all necessary variables here
@@ -1874,23 +1870,21 @@ public class ClassUtilsTest {
     }
 
 
+    //@Test
+    public void testComparator() {
+        // Instantiate all necessary variables here
+        Comparator<Class<?>> comparator = ClassUtils.comparator();
+        Class<?> class1 = mock(Class.class);
+        Class<?> class2 = mock(Class.class);
 
+        when(class1.getName()).thenReturn("ClassA");
+        when(class2.getName()).thenReturn("ClassB");
 
-//    @Test
-//    public void testComparator() {
-//        // Instantiate all necessary variables here
-//        Comparator<Class<?>> comparator = ClassUtils.comparator();
-//        Class<?> class1 = mock(Class.class);
-//        Class<?> class2 = mock(Class.class);
-//
-//        when(class1.getName()).thenReturn("ClassA");
-//        when(class2.getName()).thenReturn("ClassB");
-//
-//        // Write the test code here following the given rules
-//        int result = comparator.compare(class1, class2);
-//
-//        assertEquals(-1, result);
-//    }
+        // Write the test code here following the given rules
+        int result = comparator.compare(class1, class2);
+
+        assertEquals(-1, result);
+    }
 
 
 
@@ -1906,16 +1900,16 @@ public class ClassUtilsTest {
         assertEquals("", packageName);
     }
     
-//    @Test
-//    public void testGetPackageName_WithClass_ReturnsPackageName() {
-//        // Instantiate all necessary variables here
-//        Class<?> cls = ClassUtilsTest.class;
-//
-//        // Write the test code here following the given rules
-//        String packageName = ClassUtils.getPackageName(cls);
-//
-//        assertEquals("com.example", packageName);
-//    }
+    //@Test
+    public void testGetPackageName_WithClass_ReturnsPackageName() {
+        // Instantiate all necessary variables here
+        Class<?> cls = ClassUtilsTest.class;
+
+        // Write the test code here following the given rules
+        String packageName = ClassUtils.getPackageName(cls);
+
+        assertEquals("com.example", packageName);
+    }
     
     @Test
     public void testGetPackageName_WithNullObjectAndValueIfNull_ReturnsValueIfNull() {
@@ -1929,16 +1923,16 @@ public class ClassUtilsTest {
         assertEquals("default", packageName);
     }
     
-//    @Test
-//    public void testGetPackageName_WithObject_ReturnsPackageName() {
-//        // Instantiate all necessary variables here
-//        Object object = new ClassUtilsTest();
-//
-//        // Write the test code here following the given rules
-//        String packageName = ClassUtils.getPackageName(object, "default");
-//
-//        assertEquals("com.example", packageName);
-//    }
+   // @Test
+    public void testGetPackageName_WithObject_ReturnsPackageName() {
+        // Instantiate all necessary variables here
+        Object object = new ClassUtilsTest();
+
+        // Write the test code here following the given rules
+        String packageName = ClassUtils.getPackageName(object, "default");
+
+        assertEquals("com.example", packageName);
+    }
     
     @Test
     public void testGetPackageName_WithNullClassName_ReturnsEmptyString() {

@@ -7,6 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -72,16 +73,16 @@ public class AnnotationUtilsTest {
 
 
 
-// failing
-//    @Test
-//    public void testHashCode_NullAnnotation_ReturnsZero() {
-//        Annotation annotation = mock(Annotation.class);
-//        when(annotation.annotationType()).thenReturn(null);
-//
-//        int result = AnnotationUtils.hashCode(annotation);
-//
-//        assertEquals(0, result);
-//    }
+ //failing
+    //@Test
+    public void testHashCode_NullAnnotation_ReturnsZero() {
+        Annotation annotation = mock(Annotation.class);
+        when(annotation.annotationType()).thenReturn(null);
+
+        int result = AnnotationUtils.hashCode(annotation);
+
+        assertEquals(0, result);
+    }
     
 //    @Test
 //    public void testHashCode_NoMethods_ReturnsZero() {
@@ -94,7 +95,7 @@ public class AnnotationUtilsTest {
 //
 //        assertEquals(0, result);
 //    }
-    
+//
 //    @Test
 //    public void testHashCode_MethodReturnsNull_ThrowsIllegalStateException() throws Exception {
 //        Annotation annotation = mock(Annotation.class);
@@ -135,33 +136,32 @@ public class AnnotationUtilsTest {
         assertTrue(result);
     }
 
-//    @Test
-//    public void equals_WhenOnlyOneAnnotationIsNull_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        Annotation a1 = null;
-//        Annotation a2 = mock(Annotation.class);
-//
-//        // Write the test code here following the given rules
-//        boolean result = AnnotationUtils.equals(a1, a2);
-//
-//        assertFalse(result);
-//    }
+    @Test
+    public void equals_WhenOnlyOneAnnotationIsNull_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        Annotation a1 = null;
+        Annotation a2 = mock(Annotation.class);
 
-    //FAILING
-//    @Test
-//    public void equals_WhenAnnotationsHaveDifferentTypes_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        Annotation a1 = mock(Annotation.class);
-//        Annotation a2 = mock(OtherAnnotation.class);
-//
-//        // Write the test code here following the given rules
-//        boolean result = AnnotationUtils.equals(a1, a2);
-//
-//        assertFalse(result);
-//    }
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.equals(a1, a2);
+
+        assertFalse(result);
+    }
+
+    //@Test
+    public void equals_WhenAnnotationsHaveDifferentTypes_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        Annotation a1 = mock(Annotation.class);
+        Annotation a2 = mock(OtherAnnotation.class);
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.equals(a1, a2);
+
+        assertFalse(result);
+    }
 
 //    @Test
-//    public void equals_WhenAnnotationsHaveSameTypeAndEqualMembers_ReturnsTrue() {
+//    public void equals_WhenAnnotationsHaveSameTypeAndEqualMembers_ReturnsTrue() throws InvocationTargetException, IllegalAccessException {
 //        // Instantiate all necessary variables here
 //        Annotation a1 = mock(Annotation.class);
 //        Annotation a2 = mock(Annotation.class);
@@ -185,9 +185,9 @@ public class AnnotationUtilsTest {
 //
 //        assertTrue(result);
 //    }
-//
+
 //    @Test
-//    public void equals_WhenAnnotationsHaveSameTypeAndDifferentMembers_ReturnsFalse() {
+//    public void equals_WhenAnnotationsHaveSameTypeAndDifferentMembers_ReturnsFalse() throws InvocationTargetException, IllegalAccessException {
 //        // Instantiate all necessary variables here
 //        Annotation a1 = mock(Annotation.class);
 //        Annotation a2 = mock(Annotation.class);
@@ -285,17 +285,16 @@ public class AnnotationUtilsTest {
         assertTrue(result);
     }
 
-    //FAILING
-//    @Test
-//    public void testIsValidAnnotationMemberType_WithArrayType_ReturnsFalse() {
-//        // Instantiate all necessary variables here
-//        Class<?> type = int[].class;
-//
-//        // Write the test code here following the given rules
-//        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
-//
-//        assertFalse(result);
-//    }
+    //@Test
+    public void testIsValidAnnotationMemberType_WithArrayType_ReturnsFalse() {
+        // Instantiate all necessary variables here
+        Class<?> type = int[].class;
+
+        // Write the test code here following the given rules
+        boolean result = AnnotationUtils.isValidAnnotationMemberType(type);
+
+        assertFalse(result);
+    }
 
     @Test
     public void testIsValidAnnotationMemberType_WithNullType_ReturnsFalse() {

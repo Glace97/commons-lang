@@ -8,8 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ProcessorTest {
 
-
-
     @Test
     public void isRISCV_ReturnsTrue_WhenTypeIsRISCV() {
         // Instantiate all necessary variables here
@@ -137,17 +135,17 @@ public class ProcessorTest {
         assertFalse(result);
     }
     
-//    @Test
-//    public void testIsX86_ReturnsFalse_WhenArchIsUnknown() {
-//        // Instantiate all necessary variables here
-//        Processor.Arch arch = Processor.Arch.UNKNOWN;
-//        Processor.Type type = Processor.Type.X86;
-//        Processor processor = new Processor(arch, type);
-//
-//        // Write the test code here following the given rules
-//        boolean result = processor.isX86();
-//        assertFalse(result);
-//    }
+    //@Test
+    public void testIsX86_ReturnsFalse_WhenArchIsUnknown() {
+        // Instantiate all necessary variables here
+        Processor.Arch arch = Processor.Arch.UNKNOWN;
+        Processor.Type type = Processor.Type.X86;
+        Processor processor = new Processor(arch, type);
+
+        // Write the test code here following the given rules
+        boolean result = processor.isX86();
+        assertFalse(result);
+    }
 
 
 
@@ -300,31 +298,31 @@ public class ProcessorTest {
 
 
 
-//    @Test
-//    public void testIs64Bit_ReturnsTrue_WhenArchIsBIT_64() {
-//        // Instantiate all necessary variables here
-//        Processor.Arch arch = Processor.Arch.BIT_64;
-//        Processor.Type type = mock(Processor.Type.class);
-//        Processor processor = new Processor(arch, type);
-//
-//        // Write the test code here following the given rules
-//        boolean result = processor.is64Bit();
-//
-//        assertTrue(result);
-//    }
-//
-//    @Test
-//    public void testIs64Bit_ReturnsFalse_WhenArchIsNotBIT_64() {
-//        // Instantiate all necessary variables here
-//        Processor.Arch arch = Processor.Arch.BIT_32;
-//        Processor.Type type = mock(Processor.Type.class);
-//        Processor processor = new Processor(arch, type);
-//
-//        // Write the test code here following the given rules
-//        boolean result = processor.is64Bit();
-//
-//        assertFalse(result);
-//    }
+    //@Test
+    public void testIs64Bit_ReturnsTrue_WhenArchIsBIT_64() {
+        // Instantiate all necessary variables here
+        Processor.Arch arch = Processor.Arch.BIT_64;
+        Processor.Type type = mock(Processor.Type.class);
+        Processor processor = new Processor(arch, type);
+
+        // Write the test code here following the given rules
+        boolean result = processor.is64Bit();
+
+        assertTrue(result);
+    }
+
+    //@Test
+    public void testIs64Bit_ReturnsFalse_WhenArchIsNotBIT_64() {
+        // Instantiate all necessary variables here
+        Processor.Arch arch = Processor.Arch.BIT_32;
+        Processor.Type type = mock(Processor.Type.class);
+        Processor processor = new Processor(arch, type);
+
+        // Write the test code here following the given rules
+        boolean result = processor.is64Bit();
+
+        assertFalse(result);
+    }
 
 
 

@@ -39,9 +39,9 @@ import java.io.UncheckedIOException;
 public class FunctionsTest {
 
 
-//
-//
-//
+
+
+
 //    @Test
 //    public void testAsCallable() throws Exception {
 //        // Instantiate all necessary variables here
@@ -94,12 +94,12 @@ public class FunctionsTest {
 
 
 
-//
-//
-//
-//
-//
-//
+
+
+
+
+
+
 //    @Test
 //    public void testTryWithResources() throws Throwable {
 //        // Mock the dependencies
@@ -127,8 +127,8 @@ public class FunctionsTest {
 //        Throwable error = errorHandlerCaptor.getValue();
 //        assertNotNull(error);
 //    }
-//
-//
+
+
 
 
 
@@ -144,7 +144,7 @@ public class FunctionsTest {
 //
 //        assertTrue(stream.isEmpty());
 //    }
-
+//
 //    @Test
 //    public void testStream_WithNonEmptyCollection_ShouldReturnStreamWithSameElements() {
 //        // Instantiate all necessary variables here
@@ -157,7 +157,7 @@ public class FunctionsTest {
 //        assertEquals(collection.size(), result.size());
 //        assertTrue(result.containsAll(collection));
 //    }
-//
+
 //    @Test
 //    public void testStream_WithFailablePredicate_ShouldApplyPredicateOnAllElements() throws Exception {
 //        // Instantiate all necessary variables here
@@ -205,11 +205,11 @@ public class FunctionsTest {
 //        // Verify the mock
 //        verify(failableConsumer, times(collection.size())).accept(anyInt());
 //    }
-//
-//
 
 
-//
+
+
+
 //    @Test
 //    public void call_shouldReturnResultFromCallable() throws Exception {
 //        // Instantiate all necessary variables here
@@ -235,8 +235,8 @@ public class FunctionsTest {
 //        assertThrows(RuntimeException.class, () -> Functions.call(callable));
 //        verify(callable, times(1)).call();
 //    }
-//
-//
+
+
 
 
 
@@ -272,13 +272,6 @@ public class FunctionsTest {
 
 
 
-
-
-
-
-
-
-//
 //    @Test
 //    public void testAsRunnable() throws Throwable {
 //        // Instantiate all necessary variables here
@@ -289,8 +282,8 @@ public class FunctionsTest {
 //        doThrow(IOException.class).when(failableRunnable).run();
 //        assertThrows(IOException.class, () -> runnable.run());
 //    }
-//
-//
+
+
 
 
 
@@ -315,11 +308,6 @@ public class FunctionsTest {
     }
 
 
-
-
-
-
-//
 //    @Test
 //    public void testAsBiConsumer() throws Exception {
 //        // Instantiate all necessary variables here
@@ -332,7 +320,7 @@ public class FunctionsTest {
 //        assertDoesNotThrow(() -> biConsumer.accept(input1, input2));
 //        verify(failableBiConsumer, times(1)).accept(input1, input2);
 //    }
-//
+
 
 
     @Test
@@ -347,8 +335,8 @@ public class FunctionsTest {
     }
 
 
-//
-//
+
+
 //    @Test
 //    public void asFunction_ShouldReturnFunctionThatAppliesFailableFunction() throws Exception {
 //        // Instantiate all necessary variables here
@@ -362,7 +350,7 @@ public class FunctionsTest {
 //        assertEquals(10, result);
 //        verify(failableFunction).apply("input");
 //    }
-//
+
 //    @Test
 //    public void asFunction_ShouldThrowException_WhenFailableFunctionThrowsException() throws Exception {
 //        // Instantiate all necessary variables here
@@ -375,12 +363,12 @@ public class FunctionsTest {
 //        assertThrows(Exception.class, () -> function.apply("input"));
 //        verify(failableFunction).apply("input");
 //    }
-//
 
 
 
-//
-//
+
+
+
 //    @Test
 //    public void apply_FailableBiFunction_ReturnsResult() throws Throwable {
 //        // Instantiate all necessary variables here
@@ -438,10 +426,10 @@ public class FunctionsTest {
 //        assertThrows(RuntimeException.class, () -> Functions.apply(function, input));
 //        verify(function).apply(input);
 //    }
-//
-//
-//
-//
+
+
+
+
 //    @Test
 //    public void testAsBiFunction() throws Exception {
 //        // Instantiate all necessary variables here
@@ -463,9 +451,9 @@ public class FunctionsTest {
 //        // Verify the method call
 //        verify(failableBiFunction).apply(input1, input2);
 //    }
-//
-//
-//
+
+
+
 //
 //    @Test
 //    public void testAsConsumer() throws Exception {
@@ -481,10 +469,10 @@ public class FunctionsTest {
 //
 
 
-//
-//
-//
-//
+
+
+
+
 //    @Test
 //    public void testTestWithFailableBiPredicate() throws Throwable {
 //        // Instantiate all necessary variables here
@@ -517,11 +505,11 @@ public class FunctionsTest {
 //        // Verify the result
 //        assertEquals(expectedResult, result);
 //    }
-//
-//
-//
-//
-//
+
+
+
+
+
 //    @Test
 //    public void testAsPredicate() throws Throwable {
 //        // Instantiate all necessary variables here
@@ -537,10 +525,10 @@ public class FunctionsTest {
 //        predicate.test(input);
 //        verify(failablePredicate).test(input);
 //    }
-//
-//
-//
-//
+
+
+
+
 //    @Test
 //    public void testAsSupplier() throws Exception {
 //        // Mock the FailableSupplier

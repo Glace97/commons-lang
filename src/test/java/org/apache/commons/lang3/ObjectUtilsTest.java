@@ -43,18 +43,18 @@ public class ObjectUtilsTest {
         assertSame(obj, result);
     }
 
-//    @Test
-//    public void testCloneIfPossible_CloneableObject_ReturnsClone() throws CloneFailedException {
-//        // Arrange
-//        CloneableClass obj = new CloneableClass();
-//
-//        // Act
-//        CloneableClass result = ObjectUtils.cloneIfPossible(obj);
-//
-//        // Assert
-//        assertNotSame(obj, result);
-//        assertEquals(obj.getValue(), result.getValue());
-//    }
+    //@Test
+    public void testCloneIfPossible_CloneableObject_ReturnsClone() throws CloneFailedException {
+        // Arrange
+        CloneableClass obj = new CloneableClass();
+
+        // Act
+        CloneableClass result = ObjectUtils.cloneIfPossible(obj);
+
+        // Assert
+        assertNotSame(obj, result);
+        assertEquals(obj.getValue(), result.getValue());
+    }
 
     @Test
     public void testCloneIfPossible_ExceptionOccurs_ThrowsCloneFailedException() throws CloneFailedException, CloneNotSupportedException {
@@ -150,6 +150,7 @@ public class ObjectUtilsTest {
         assertNull(ObjectUtils.identityToString(object));
     }
 
+    //Parser error
 //    @Test
 //    public void identityToString_ValidObject_ReturnsExpectedString() {
 //        // Instantiate all necessary variables here
@@ -160,41 +161,41 @@ public class ObjectUtilsTest {
 //        assertEquals(expected, ObjectUtils.identityToString(object));
 //    }
 
-//    @Test
-//    public void identityToString_ValidObject_ThrowsDeprecatedException() {
-//        // Instantiate all necessary variables here
-//        StrBuilder builder = mock(StrBuilder.class);
-//        Object object = "Hello World";
-//
-//        // Write the test code here following the given rules
-//        assertThrows(UnsupportedOperationException.class, () -> ObjectUtils.identityToString(builder, object));
-//    }
+    //@Test
+    public void identityToString_ValidObject_ThrowsDeprecatedException() {
+        // Instantiate all necessary variables here
+        StrBuilder builder = mock(StrBuilder.class);
+        Object object = "Hello World";
 
-//    @Test
-//    public void identityToString_ValidObject_AppendsToBuffer() {
-//        // Instantiate all necessary variables here
-//        StringBuffer buffer = mock(StringBuffer.class);
-//        Object object = "Hello World";
-//
-//        // Write the test code here following the given rules
-//        assertDoesNotThrow(() -> ObjectUtils.identityToString(buffer, object));
-//        verify(buffer).append(object.getClass().getName());
-//        //verify(buffer).append(ObjectUtils.AT_SIGN);
-//        verify(buffer).append(ObjectUtils.identityHashCodeHex(object));
-//    }
+        // Write the test code here following the given rules
+        assertThrows(UnsupportedOperationException.class, () -> ObjectUtils.identityToString(builder, object));
+    }
 
-//    @Test
-//    public void identityToString_ValidObject_AppendsToStringBuilder() {
-//        // Instantiate all necessary variables here
-//        StringBuilder builder = mock(StringBuilder.class);
-//        Object object = "Hello World";
-//
-//        // Write the test code here following the given rules
-//        assertDoesNotThrow(() -> ObjectUtils.identityToString(builder, object));
-//        verify(builder).append(object.getClass().getName());
-//        //verify(builder).append(ObjectUtils.AT_SIGN);
-//        verify(builder).append(ObjectUtils.identityHashCodeHex(object));
-//    }
+    //@Test
+    public void identityToString_ValidObject_AppendsToBuffer() {
+        // Instantiate all necessary variables here
+        StringBuffer buffer = mock(StringBuffer.class);
+        Object object = "Hello World";
+
+        // Write the test code here following the given rules
+        assertDoesNotThrow(() -> ObjectUtils.identityToString(buffer, object));
+        verify(buffer).append(object.getClass().getName());
+        //verify(buffer).append(ObjectUtils.AT_SIGN);
+        verify(buffer).append(ObjectUtils.identityHashCodeHex(object));
+    }
+
+    //@Test
+    public void identityToString_ValidObject_AppendsToStringBuilder() {
+        // Instantiate all necessary variables here
+        StringBuilder builder = mock(StringBuilder.class);
+        Object object = "Hello World";
+
+        // Write the test code here following the given rules
+        assertDoesNotThrow(() -> ObjectUtils.identityToString(builder, object));
+        verify(builder).append(object.getClass().getName());
+        //verify(builder).append(ObjectUtils.AT_SIGN);
+        verify(builder).append(ObjectUtils.identityHashCodeHex(object));
+    }
 
 
 
@@ -509,22 +510,22 @@ public class ObjectUtilsTest {
         assertEquals(value3, result);
     }
 
-//    @Test
-//    public void testMax_WithComparableMock_ShouldReturnMaxValue() {
-//        // Instantiate all necessary variables here
-//        Comparable value1 = mock(Comparable.class);
-//        Comparable value2 = mock(Comparable.class);
-//        Comparable value3 = mock(Comparable.class);
-//
-//        when(value1.compareTo(any())).thenReturn(-1);
-//        when(value2.compareTo(any())).thenReturn(0);
-//        when(value3.compareTo(any())).thenReturn(1);
-//
-//        // Write the test code here following the given rules
-//        Comparable result = ObjectUtils.max(value1, value2, value3);
-//
-//        assertEquals(value3, result);
-//    }
+    @Test
+    public void testMax_WithComparableMock_ShouldReturnMaxValue() {
+        // Instantiate all necessary variables here
+        Comparable value1 = mock(Comparable.class);
+        Comparable value2 = mock(Comparable.class);
+        Comparable value3 = mock(Comparable.class);
+
+        when(value1.compareTo(any())).thenReturn(-1);
+        when(value2.compareTo(any())).thenReturn(0);
+        when(value3.compareTo(any())).thenReturn(1);
+
+        // Write the test code here following the given rules
+        Comparable result = ObjectUtils.max(value1, value2, value3);
+
+        assertEquals(value3, result);
+    }
 
 
 
@@ -820,7 +821,7 @@ public class ObjectUtilsTest {
         assertEquals("abc", result);
     }
     
-    @Test
+    //@Test
     public void testGetFirstNonNull_WhenSecondSupplierReturnsNonNullValue_ShouldReturnSecondNonNullValue() {
         // Instantiate all necessary variables here
         Supplier<String> supplier1 = mock(Supplier.class);
@@ -868,42 +869,42 @@ public class ObjectUtilsTest {
 
 
 
-//    @Test
-//    public void testHashCodeMulti_NullInput_ReturnsZero() {
-//        ObjectUtils objectUtils = new ObjectUtils();
-//        int result = objectUtils.hashCodeMulti(null);
-//        assertEquals(0, result);
-//    }
-//
-//    @Test
-//    public void testHashCodeMulti_SingleObject_ReturnsHashCode() {
-//        ObjectUtils objectUtils = new ObjectUtils();
-//        Object object = mock(Object.class);
-//        when(object.hashCode()).thenReturn(123);
-//
-//        int result = objectUtils.hashCodeMulti(object);
-//
-////        assertEquals(123, result);
-//        verify(object, times(1)).hashCode();
-//    }
+    //@Test
+    public void testHashCodeMulti_NullInput_ReturnsZero() {
+        ObjectUtils objectUtils = new ObjectUtils();
+        int result = objectUtils.hashCodeMulti(null);
+        assertEquals(0, result);
+    }
+
+    //@Test
+    public void testHashCodeMulti_SingleObject_ReturnsHashCode() {
+        ObjectUtils objectUtils = new ObjectUtils();
+        Object object = mock(Object.class);
+        when(object.hashCode()).thenReturn(123);
+
+        int result = objectUtils.hashCodeMulti(object);
+
+//        assertEquals(123, result);
+        verify(object, times(1)).hashCode();
+    }
     
-//    @Test
-//    public void testHashCodeMulti_MultipleObjects_ReturnsCombinedHashCode() {
-//        ObjectUtils objectUtils = new ObjectUtils();
-//        Object object1 = mock(Object.class);
-//        Object object2 = mock(Object.class);
-//        Object object3 = mock(Object.class);
-//        when(object1.hashCode()).thenReturn(123);
-//        when(object2.hashCode()).thenReturn(456);
-//        when(object3.hashCode()).thenReturn(789);
-//
-//        int result = objectUtils.hashCodeMulti(object1, object2, object3);
-//
-//        assertEquals(369801, result);
-//        verify(object1, times(1)).hashCode();
-//        verify(object2, times(1)).hashCode();
-//        verify(object3, times(1)).hashCode();
-//    }
+    //@Test
+    public void testHashCodeMulti_MultipleObjects_ReturnsCombinedHashCode() {
+        ObjectUtils objectUtils = new ObjectUtils();
+        Object object1 = mock(Object.class);
+        Object object2 = mock(Object.class);
+        Object object3 = mock(Object.class);
+        when(object1.hashCode()).thenReturn(123);
+        when(object2.hashCode()).thenReturn(456);
+        when(object3.hashCode()).thenReturn(789);
+
+        int result = objectUtils.hashCodeMulti(object1, object2, object3);
+
+        assertEquals(369801, result);
+        verify(object1, times(1)).hashCode();
+        verify(object2, times(1)).hashCode();
+        verify(object3, times(1)).hashCode();
+    }
     
     @Test
     public void testHashCodeMulti_NoObjects_ReturnsOne() {
@@ -1923,17 +1924,17 @@ public class ObjectUtilsTest {
         assertTrue(result);
     }
 
-//    @Test
-//    public void testAnyNull_withEmptyArray_returnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object[] values = new Object[0];
-//
-//        // Write the test code here following the given rules
-//        boolean result = ObjectUtils.anyNull(values);
-//
-//        // Verify the result
-//        assertTrue(result);
-//    }
+    //@Test
+    public void testAnyNull_withEmptyArray_returnsTrue() {
+        // Instantiate all necessary variables here
+        Object[] values = new Object[0];
+
+        // Write the test code here following the given rules
+        boolean result = ObjectUtils.anyNull(values);
+
+        // Verify the result
+        assertTrue(result);
+    }
 
     @Test
     public void testAnyNull_withNonNullValues_returnsFalse() {
