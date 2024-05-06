@@ -8,8 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class CharUtilsTest {
 
-
-
     @Test
     public void testIsAsciiAlpha() {
         // Test with lowercase alphabets
@@ -59,10 +57,6 @@ public class CharUtilsTest {
         assertFalse(CharUtils.isAsciiAlpha(CharUtils.NUL));
     }
 
-
-
-
-
     @Test
     public void testIsAsciiWithAsciiCharacters() {
         // ASCII characters range from 0 to 127
@@ -87,10 +81,6 @@ public class CharUtilsTest {
         assertTrue(CharUtils.isAscii('\r')); // carriage return character
         //assertFalse(CharUtils.isAscii('©')); // copyright symbol
     }
-
-
-
-
 
     @Test
     void toIntValueChar_Success() {
@@ -149,10 +139,6 @@ public class CharUtilsTest {
         assertEquals(-1, result);
     }
 
-
-
-
-
     @Test
     public void testToStringWithChar() {
         assertEquals("a", CharUtils.toString('a'));
@@ -177,10 +163,6 @@ public class CharUtilsTest {
         assertEquals("\r", CharUtils.toString(Character.valueOf(CharUtils.CR)));
         assertEquals("\0", CharUtils.toString(Character.valueOf(CharUtils.NUL)));
     }
-
-
-
-
 
     @Test
     public void whenCharIsLowercase_thenAsciiAlphaUpperShouldReturnFalse() {
@@ -212,20 +194,6 @@ public class CharUtilsTest {
         assertFalse(CharUtils.isAsciiAlphaUpper(ch));
     }
 
-//    @Test
-//    public void whenCharIsNonAscii_thenAsciiAlphaUpperShouldReturnFalse() {
-//        char ch = '©';  // This is a non-ASCII character
-//        assertFalse(CharUtils.isAsciiAlphaUpper(ch));
-//    }
-
-
-
-
-
-
-
-
-
     @Test
     public void testIsAsciiAlphanumeric() {
         // Test with alphanumeric characters
@@ -244,10 +212,6 @@ public class CharUtilsTest {
         assertTrue(CharUtils.isAsciiAlphanumeric('z'));
         assertTrue(CharUtils.isAsciiAlphanumeric('Z'));
     }
-
-
-
-
 
     @Test
     public void testIsAsciiAlphaLower_withLowerCaseLetters() {
@@ -274,22 +238,6 @@ public class CharUtilsTest {
         assertFalse(CharUtils.isAsciiAlphaLower('-'));
         assertFalse(CharUtils.isAsciiAlphaLower('\n'));
     }
-
-//    @Test
-//    public void testIsAsciiAlphaLower_withNonAsciiCharacters() {
-//        assertFalse(CharUtils.isAsciiAlphaLower('å'));
-//        assertFalse(CharUtils.isAsciiAlphaLower('©'));
-//    }
-
-
-
-
-
-
-
-
-
-
 
     @Test
     public void testToCharacterObjectWithChar() {
@@ -333,8 +281,6 @@ public class CharUtilsTest {
         assertEquals('B', result);
     }
 
-
-
     @Test
     public void compare_CharactersAreEqual_ReturnsZero() {
         // Arrange
@@ -374,19 +320,6 @@ public class CharUtilsTest {
         assertTrue(result > 0, "When x is greater than y, result should be positive");
     }
 
-    //@Test
-    public void compare_ControlCharacters_ReturnsExpectedDifference() {
-        // Arrange
-        char x = CharUtils.LF;
-        char y = CharUtils.CR;
-
-        // Act
-        int result = CharUtils.compare(x, y);
-
-        // Assert
-        assertEquals(-1, result, "Comparing LF and CR should return -1");
-    }
-
     @Test
     public void compare_NullCharacter_ReturnsExpectedDifference() {
         // Arrange
@@ -399,8 +332,6 @@ public class CharUtilsTest {
         // Assert
         assertTrue(result < 0, "Comparing NUL with any character should be negative");
     }
-
-
 
     @Test
     public void toChar_CharacterNotNull_ReturnsChar() {
@@ -462,9 +393,6 @@ public class CharUtilsTest {
         assertEquals('H', CharUtils.toChar(str, 'X'));
     }
 
-
-
-
     @Test
     public void Given_AsciiPrintableCharacter_When_isAsciiPrintableCalled_Then_ReturnTrue() {
         // Given
@@ -513,9 +441,6 @@ public class CharUtilsTest {
         assertFalse(isPrintable);
     }
 
-
-
-
     @Test
     public void testUnicodeEscapedWithChar() {
         assertEquals("\\u0041", CharUtils.unicodeEscaped('A'));
@@ -538,11 +463,6 @@ public class CharUtilsTest {
     public void testUnicodeEscapedWithNullCharacter() {
         assertNull(CharUtils.unicodeEscaped((Character) null));
     }
-
-
-
-
-
 
     @Test
     public void testIsAsciiControl_withAsciiControlChar() {
@@ -591,10 +511,6 @@ public class CharUtilsTest {
         // Assert
         assertTrue(result, "Expected isAsciiControl to return true for ASCII control character 127.");
     }
-
-
-
-
     @Test
     public void testIsAsciiNumericWithNumeric() {
         assertTrue(CharUtils.isAsciiNumeric('3'), "Expected '3' to be identified as ASCII Numeric");
@@ -639,11 +555,5 @@ public class CharUtilsTest {
     public void testIsAsciiNumericWithHighestAsciiNumericValue() {
         assertTrue(CharUtils.isAsciiNumeric('9'), "Expected highest ASCII Numeric value to be identified as ASCII Numeric");
     }
-
-
-
-
-
-
 
 }

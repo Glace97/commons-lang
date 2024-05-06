@@ -10,84 +10,6 @@ import org.mockito.Mockito;
 
 public class CharSequenceUtilsTest {
 
-
-
-
-
-
-//Parser error
-//    @Test
-//    public void testCheckLaterThan1_SameChars() {
-//        CharSequenceUtils utils = new CharSequenceUtils();
-//        CharSequence cs = "abcdef";
-//        CharSequence searchChar = "bcde";
-//        int len2 = 4;
-//        int start1 = 1;
-//        assertTrue(utils.checkLaterThan1(cs, searchChar, len2, start1));
-//    }
-
-//    @Test
-//    public void testCheckLaterThan1_DifferentChars() {
-//        CharSequenceUtils utils = new CharSequenceUtils();
-//        CharSequence cs = "abcdef";
-//        CharSequence searchChar = "cdef";
-//        int len2 = 4;
-//        int start1 = 1;
-//        assertFalse(utils.checkLaterThan1(cs, searchChar, len2, start1));
-//    }
-//
-//    @Test
-//    public void testCheckLaterThan1_EmptySearchChar() {
-//        CharSequenceUtils utils = new CharSequenceUtils();
-//        CharSequence cs = "abcdef";
-//        CharSequence searchChar = "";
-//        int len2 = 0;
-//        int start1 = 1;
-//        assertTrue(utils.checkLaterThan1(cs, searchChar, len2, start1));
-//    }
-
-//    @Test
-//    public void testCheckLaterThan1_StartBeyondLength() {
-//        CharSequenceUtils utils = new CharSequenceUtils();
-//        CharSequence cs = "abcdef";
-//        CharSequence searchChar = "bcde";
-//        int len2 = 4;
-//        int start1 = 10;
-//        assertThrows(StringIndexOutOfBoundsException.class, () -> utils.checkLaterThan1(cs, searchChar, len2, start1));
-//    }
-
-//    @Test
-//    public void testCheckLaterThan1_NegativeStart() {
-//        CharSequenceUtils utils = new CharSequenceUtils();
-//        CharSequence cs = "abcdef";
-//        CharSequence searchChar = "bcde";
-//        int len2 = 4;
-//        int start1 = -1;
-//        assertThrows(StringIndexOutOfBoundsException.class, () -> utils.checkLaterThan1(cs, searchChar, len2, start1));
-//    }
-
-//    @Test
-//    public void testCheckLaterThan1_Len2GreaterThanCharsLength() {
-//        CharSequenceUtils utils = new CharSequenceUtils();
-//        CharSequence cs = "abcdef";
-//        CharSequence searchChar = "bcdefgh";
-//        int len2 = 7;
-//        int start1 = 1;
-//        assertThrows(StringIndexOutOfBoundsException.class, () -> utils.checkLaterThan1(cs, searchChar, len2, start1));
-//    }
-//
-//    @Test
-//    public void testCheckLaterThan1_NegativeLen2() {
-//        CharSequenceUtils utils = new CharSequenceUtils();
-//        CharSequence cs = "abcdef";
-//        CharSequence searchChar = "bcde";
-//        int len2 = -1;
-//        int start1 = 1;
-//        assertThrows(StringIndexOutOfBoundsException.class, () -> utils.checkLaterThan1(cs, searchChar, len2, start1));
-//    }
-
-
-
     @Test
     public void testLastIndexOfCharSequence() {
         CharSequence cs = "testing lastIndexOf method";
@@ -132,8 +54,6 @@ public class CharSequenceUtilsTest {
         //assertEquals(-1, result);
     }
 
-
-
     @Test
     public void testSubSequenceWithValidStart() {
         CharSequence mockCharSequence = Mockito.mock(CharSequence.class);
@@ -150,15 +70,6 @@ public class CharSequenceUtilsTest {
         assertNull(result);
     }
 
-    //@Test
-    public void testSubSequenceWithEmptyCharSequence() {
-        CharSequence mockCharSequence = Mockito.mock(CharSequence.class);
-        when(mockCharSequence.length()).thenReturn(0);
-
-        CharSequence result = CharSequenceUtils.subSequence(mockCharSequence, 0);
-        assertEquals("", result.toString());
-    }
-
     @Test
     public void testSubSequenceWithStartEqualsLength() {
         CharSequence mockCharSequence = Mockito.mock(CharSequence.class);
@@ -168,28 +79,6 @@ public class CharSequenceUtilsTest {
         CharSequence result = CharSequenceUtils.subSequence(mockCharSequence, 5);
         assertEquals("", result.toString());
     }
-
-    //@Test
-    public void testSubSequenceWithStartGreaterThanLength() {
-        CharSequence mockCharSequence = Mockito.mock(CharSequence.class);
-        when(mockCharSequence.length()).thenReturn(5);
-
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            CharSequenceUtils.subSequence(mockCharSequence, 6);
-        });
-    }
-
-    //@Test
-    public void testSubSequenceWithNegativeStart() {
-        CharSequence mockCharSequence = Mockito.mock(CharSequence.class);
-        when(mockCharSequence.length()).thenReturn(5);
-
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            CharSequenceUtils.subSequence(mockCharSequence, -1);
-        });
-    }
-
-
 
     @Test
     public void whenRegionMatchesWithCaseIgnoredThenReturnTrue() {
@@ -211,11 +100,6 @@ public class CharSequenceUtilsTest {
         assertFalse(CharSequenceUtils.regionMatches("HelloWorld", false, 0, "world", 0, 5));
     }
 
-    //@Test
-    public void whenRegionMatchesWithInvalidLengthThenReturnFalse() {
-        assertFalse(CharSequenceUtils.regionMatches("HelloWorld", true, 0, "hello", 0, -1));
-    }
-
     @Test
     public void whenRegionMatchesWithInvalidThisStartThenReturnFalse() {
         assertFalse(CharSequenceUtils.regionMatches("HelloWorld", true, -1, "hello", 0, 5));
@@ -235,10 +119,6 @@ public class CharSequenceUtilsTest {
     public void whenRegionMatchesWithEmptyStringsThenReturnTrue() {
         assertTrue(CharSequenceUtils.regionMatches("", true, 0, "", 0, 0));
     }
-
-
-
-
 
     @Test
     public void testIndexOfCharSequence() {
@@ -299,9 +179,6 @@ public class CharSequenceUtilsTest {
         assertEquals(-1, CharSequenceUtils.indexOf(cs, 'H', 15));
         assertEquals(-1, CharSequenceUtils.indexOf(cs, 'x', 15));
     }
-
-
-
 
     @Test
     public void testToCharArray_whenSourceIsEmpty() {

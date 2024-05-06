@@ -56,10 +56,6 @@ public class FunctionsTest {
         verify(mockCallable, times(1)).call();
     }
 
-
-
-
-
     @Test
     public void testAcceptFailableBiConsumer() throws Exception {
         Functions.FailableBiConsumer<String, String, Exception> consumer = mock(Functions.FailableBiConsumer.class);
@@ -96,10 +92,6 @@ public class FunctionsTest {
         });
     }
 
-
-
-
-
     @Test
     public void testAsConsumer() throws Exception {
         Functions.FailableConsumer<String, Exception> mockFailableConsumer = mock(Functions.FailableConsumer.class);
@@ -131,12 +123,6 @@ public class FunctionsTest {
 
         verify(mockFailableConsumer).accept(null);
     }
-
-
-
-
-
-
 
     @Test
     public void applyBiFunctionTest() {
@@ -180,10 +166,6 @@ public class FunctionsTest {
         assertThrows(RuntimeException.class, () -> Functions.apply(function, 2));
     }
 
-
-
-
-
     @Test
     public void asRunnable_noException() throws Exception {
         Functions.FailableRunnable<Exception> failableRunnable = mock(Functions.FailableRunnable.class);
@@ -207,14 +189,6 @@ public class FunctionsTest {
         verify(failableRunnable, times(1)).run();
     }
 
-
-
-
-
-
-
-
-
     @Test
     public void asBiConsumer_GivenValidConsumer_ShouldReturnBiConsumerThatDoesNotThrowException() {
         // Instantiate all necessary variables here
@@ -225,20 +199,6 @@ public class FunctionsTest {
 
         assertDoesNotThrow(() -> biConsumer.accept("input1", "input2"));
     }
-
-    //@Test
-    public void asBiConsumer_GivenConsumerThatThrowsException_ShouldReturnBiConsumerThatDoesNotThrowException() throws IOException {
-        // Instantiate all necessary variables here
-        Functions.FailableBiConsumer<String, String, IOException> failableBiConsumer = mock(Functions.FailableBiConsumer.class);
-        doThrow(IOException.class).when(failableBiConsumer).accept(anyString(), anyString());
-
-        // Write the test code here following the given rules
-        BiConsumer<String, String> biConsumer = Functions.asBiConsumer(failableBiConsumer);
-
-        assertDoesNotThrow(() -> biConsumer.accept("input1", "input2"));
-    }
-
-
 
     @Test
     public void testRun_ThrowsException() throws Throwable {
@@ -262,9 +222,6 @@ public class FunctionsTest {
         assertDoesNotThrow(() -> Functions.run(mockRunnable));
     }
 
-
-
-
     @Test
     @DisplayName("Test asFunction with a function that does not throw an exception")
     public void testAsFunctionWithoutException() throws Exception {
@@ -285,9 +242,6 @@ public class FunctionsTest {
         assertThrows(RuntimeException.class, () -> function.apply(5));
     }
 
-
-
-
     @Test
     public void rethrow_RuntimeException_Test() {
         RuntimeException runtimeException = new RuntimeException("test");
@@ -295,19 +249,6 @@ public class FunctionsTest {
         assertEquals("test", exception.getMessage());
     }
 
-//    @Test
-//    public void rethrow_ErrorException_Test() {
-//        Error error = new Error("test");
-//        Exception exception = assertThrows(Error.class, () -> Functions.rethrow(error));
-//        assertEquals("test", exception.getMessage());
-//    }
-
-    //@Test
-    public void rethrow_IOException_Test() {
-        IOException ioException = new IOException("test");
-        Exception exception = assertThrows(UncheckedIOException.class, () -> Functions.rethrow(ioException));
-        assertEquals("test", exception.getMessage());
-    }
 
     @Test
     public void rethrow_OtherException_Test() {
@@ -321,11 +262,6 @@ public class FunctionsTest {
         assertThrows(NullPointerException.class, () -> Functions.rethrow(null));
     }
 
-
-
-
-
-
     @Test
     public void testAsBiFunction_withNoExceptionThrown() {
         Functions.FailableBiFunction<String, String, Integer, IOException> failableBiFunction = (s1, s2) -> s1.length() + s2.length();
@@ -335,76 +271,6 @@ public class FunctionsTest {
         assertEquals(6, result);
     }
 
-    //@Test
-    public void testAsBiFunction_withExceptionThrown() {
-        Functions.FailableBiFunction<String, String, Integer, IOException> failableBiFunction = (s1, s2) -> {
-            throw new IOException("Test");
-        };
-
-        BiFunction<String, String, Integer> biFunction = Functions.asBiFunction(failableBiFunction);
-
-        assertThrows(UndeclaredThrowableException.class, () -> biFunction.apply("abc", "def"));
-    }
-
-    //@Test
-    public void testAsBiFunction_withNullInput() {
-        Functions.FailableBiFunction<String, String, Integer, IOException> failableBiFunction = (s1, s2) -> s1.length() + s2.length();
-        BiFunction<String, String, Integer> biFunction = Functions.asBiFunction(failableBiFunction);
-
-        Integer result = biFunction.apply(null, null);
-        assertEquals(0, result);
-    }
-
-    //@Test
-    public void testAsBiFunction_withNullFunction() {
-        assertThrows(NullPointerException.class, () -> Functions.asBiFunction(null));
-    }
-
-
-
-
-
-
-
-//    @Test
-//    public void testStreamFromCollection() {
-//        // Instantiate necessary variables
-//        Collection<String> collection = Arrays.asList("Element 1", "Element 2", "Element 3");
-//
-//        // Call the method under test
-//        Functions.FailableStream<String> failableStream = Functions.stream(collection);
-//
-//        // Verify the result
-//        assertNotNull(failableStream);
-//        assertEquals(3, failableStream.count());
-//    }
-//
-//    @Test
-//    public void testStreamFromStream() {
-//        // Instantiate necessary variables
-//        Stream<String> stream = Stream.of("Element 1", "Element 2", "Element 3");
-//
-//        // Call the method under test
-//        Functions.FailableStream<String> failableStream = Functions.stream(stream);
-//
-//        // Verify the result
-//        assertNotNull(failableStream);
-//        assertEquals(3, failableStream.count());
-//    }
-//
-//    @Test
-//    public void testStreamFromEmptyCollection() {
-//        // Instantiate necessary variables
-//        Collection<String> collection = Arrays.asList();
-//
-//        // Call the method under test
-//        Functions.FailableStream<String> failableStream = Functions.stream(collection);
-//
-//        // Verify the result
-//        assertNotNull(failableStream);
-//        assertEquals(0, failableStream.count());
-//    }
-
     @Test
     public void testStreamFromNullCollection() {
         // Expect an exception
@@ -413,18 +279,6 @@ public class FunctionsTest {
             Functions.stream((Collection<String>) null);
         });
     }
-
-    //@Test
-    public void testStreamFromNullStream() {
-        // Expect an exception
-        assertThrows(NullPointerException.class, () -> {
-            // Call the method with a null stream
-            Functions.stream((Stream<String>) null);
-        });
-    }
-
-
-
 
     @Test
     public void testFailableBiPredicate() {
@@ -475,9 +329,6 @@ public class FunctionsTest {
         
         assertEquals("Test Exception", exception.getCause().getMessage());
     }
-
-
-
 
     @Test
     public void tryWithResourcesActionSuccessResourcesSuccess() throws Throwable {
@@ -541,9 +392,6 @@ public class FunctionsTest {
         Mockito.verify(errorHandler).accept(Mockito.any(RuntimeException.class));
     }
 
-
-
-
     @Test
     @DisplayName("asPredicate - success scenario")
     public void testAsPredicate_Success() throws Exception {
@@ -572,9 +420,6 @@ public class FunctionsTest {
         // Then
         assertThrows(UndeclaredThrowableException.class, () -> predicate.test("test"));
     }
-
-
-
 
     @Test
     public void asSupplier_ShouldReturnSupplier_WhenFailableSupplierIsProvided() {
@@ -616,9 +461,6 @@ public class FunctionsTest {
         assertThrows(RuntimeException.class, supplier::get);
     }
 
-
-
-    
     @Test
     public void testGet_whenSupplierReturnsValue() throws Exception {
         // Instantiate necessary variables
@@ -649,9 +491,6 @@ public class FunctionsTest {
         Exception exception = assertThrows(RuntimeException.class, executable);
         assertEquals("Test exception", exception.getCause().getMessage());
     }
-
-
-
 
     @Test
     public void testAsCallable() throws Exception {
@@ -685,9 +524,6 @@ public class FunctionsTest {
         //verify(failableCallable, times(1)).call();
     }
 
-
-
-
     @Test
     public void asBiPredicate_whenPredicateDoesNotThrowException_shouldReturnTrue() {
         // Instantiate necessary variables
@@ -698,20 +534,6 @@ public class FunctionsTest {
 
         // Assert results
         assertTrue(biPredicate.test("test1", "test2"));
-    }
-
-    //@Test
-    public void asBiPredicate_whenPredicateThrowsException_shouldReturnFalse() {
-        // Instantiate necessary variables
-        Functions.FailableBiPredicate<String, String, Exception> failableBiPredicate = (s1, s2) -> {
-            throw new Exception("Test exception");
-        };
-
-        // Call the method to test
-        BiPredicate<String, String> biPredicate = Functions.asBiPredicate(failableBiPredicate);
-
-        // Assert results
-        assertFalse(biPredicate.test("test1", "test2"));
     }
 
     @Test

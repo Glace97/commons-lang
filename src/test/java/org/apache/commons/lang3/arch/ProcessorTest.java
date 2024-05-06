@@ -124,29 +124,6 @@ public class ProcessorTest {
 
 
 
-
-
-//    @Test
-//    public void testGetLabelWhenArchIsBit32AndTypeIsX86() {
-//        Processor processor = new Processor(Processor.Arch.BIT_32, Processor.Type.X86);
-//        assertEquals(null, processor.getLabel());
-//    }
-//
-//    @Test
-//    public void testGetLabelWhenArchIsBit64AndTypeIsAARCH_64() {
-//        Processor processor = new Processor(Processor.Arch.BIT_64, Processor.Type.AARCH_64);
-//        assertEquals(null, processor.getLabel());
-//    }
-//
-//    @Test
-//    public void testGetLabelWhenArchIsUnknownAndTypeIsUnknown() {
-//        Processor processor = new Processor(Processor.Arch.UNKNOWN, Processor.Type.UNKNOWN);
-//        assertEquals(null, processor.getLabel());
-//    }
-
-
-
-
     private Processor processor;
 
     @BeforeEach

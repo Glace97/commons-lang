@@ -22,22 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class ObjectUtilsTest {
 
-
-
-    //@Test
-    public void testWaitWithNullDuration() throws InterruptedException {
-        Object mockObject = Mockito.mock(Object.class);
-        ObjectUtils.wait(mockObject, null);
-        verify(mockObject, times(1)).wait(0L);
-    }
-
-    //@Test
-    public void testWaitWithPositiveDuration() throws InterruptedException {
-        Object mockObject = Mockito.mock(Object.class);
-        ObjectUtils.wait(mockObject, Duration.ofMillis(1000));
-        verify(mockObject, times(1)).wait(1000L);
-    }
-
     @Test
     public void testWaitWithNegativeDuration() {
         Object mockObject = Mockito.mock(Object.class);
@@ -51,19 +35,6 @@ public class ObjectUtilsTest {
         assertThrows(IllegalMonitorStateException.class, () ->
                 ObjectUtils.wait(mockObject, Duration.ofMillis(1000)));
     }
-
-    //@Test
-    public void testWaitWithInterruptedThread() {
-        Object mockObject = Mockito.mock(Object.class);
-        Thread.currentThread().interrupt();
-        assertThrows(InterruptedException.class, () ->
-                ObjectUtils.wait(mockObject, Duration.ofMillis(1000)));
-        Thread.interrupted(); // Clear interrupted status
-    }
-
-
-
-
 
     @Test
     public void cloneIfPossible_notCloneableObject_returnsSameObject() {
@@ -85,32 +56,9 @@ public class ObjectUtilsTest {
         assertSame(clone, result);
     }
 
-//    @Test
-//    public void cloneIfPossible_cloneThrowsException_returnsSameObject() {
-//        CloneableObject originalObject = Mockito.mock(CloneableObject.class);
-//        Mockito.when(originalObject.clone()).thenThrow(new CloneFailedException());
-//
-//        Object result = ObjectUtils.cloneIfPossible(originalObject);
-//
-//        assertSame(originalObject, result);
-//    }
-
     private interface CloneableObject extends Cloneable {
         CloneableObject clone();
     }
-
-
-//    @Test
-//    public void testMedianWithComparator() {
-//        Comparator<Integer> comparator = mock(Comparator.class);
-//        when(comparator.compare(anyInt(), anyInt())).thenAnswer(i -> ((Integer)i.getArgument(0)).compareTo(i.getArgument(1)));
-//
-//        assertEquals(2, ObjectUtils.median(comparator, 1, 2, 3));
-//        assertThrows(NullPointerException.class, () -> ObjectUtils.median(null, 1, 2, 3));
-//        assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median(comparator, (Integer[])null));
-//        assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median(comparator, new Integer[0]));
-//        assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median(comparator, 1, null, 3));
-//    }
 
     @Test
     public void testMedian() {
@@ -119,10 +67,6 @@ public class ObjectUtilsTest {
         assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median(new Integer[0]));
         assertThrows(IllegalArgumentException.class, () -> ObjectUtils.median(1, null, 3));
     }
-
-
-
-
 
     @Test
     public void testCONST_Boolean() {
@@ -194,10 +138,6 @@ public class ObjectUtilsTest {
         assertEquals(testValue, result);
     }
 
-
-
-
-
     @Test
     public void testAllNotNullWithNullArray() {
         // test case with null array
@@ -234,12 +174,6 @@ public class ObjectUtilsTest {
         assertFalse(ObjectUtils.allNotNull("test", null, "test"));
     }
 
-
-
-
-
-
-
     @Test
     public void testToStringWithNullObject() {
         String result = ObjectUtils.toString((Object) null);
@@ -257,12 +191,6 @@ public class ObjectUtilsTest {
         String result = ObjectUtils.toString("bat");
         assertEquals("bat", result);
     }
-
-//    @Test
-//    public void testToStringWithNullObjectAndNullString() {
-//        String result = ObjectUtils.toString(null, null);
-//        assertNull(result);
-//    }
 
     @Test
     public void testToStringWithNullObjectAndNonNullString() {
@@ -327,12 +255,6 @@ public class ObjectUtilsTest {
         assertFalse(ObjectUtils.equals(Boolean.TRUE, Boolean.FALSE));
     }
 
-
-//    @Override
-//    protected ExceptionInCloneObject clone() {
-//        throw new RuntimeException("Exception in clone");
-//    }
-
     private String value;
 
     public String getValue() {
@@ -342,18 +264,6 @@ public class ObjectUtilsTest {
     public void setValue(String value) {
         this.value = value;
     }
-
-//    @Override
-//    protected CloneableObject clone() {
-//        CloneableObject clone = new CloneableObject();
-//        clone.setValue(this.value);
-//        return clone;
-//    }
-
-
-    // This class intentionally does not implement the clone() method
-
-
 
     @Test
     public void testClone_NullObject() {
@@ -365,36 +275,6 @@ public class ObjectUtilsTest {
         String nonCloneable = "Non-cloneable object";
         assertNull(ObjectUtils.clone(nonCloneable));
     }
-
-//    @Test
-//    public void testClone_CloneableObject() {
-//        CloneableObject original = new CloneableObject();
-//        original.setValue("Original value");
-//
-//        CloneableObject clone = ObjectUtils.clone(original);
-//
-//        assertNotNull(clone);
-//        assertEquals(original.getValue(), clone.getValue());
-//        assertNotSame(original, clone);
-//    }
-//
-//    @Test
-//    public void testClone_NoCloneMethod() throws NoSuchMethodException {
-//        NoCloneMethodObject original = new NoCloneMethodObject();
-//
-//        assertThrows(CloneFailedException.class, () -> ObjectUtils.clone(original));
-//    }
-//
-//    @Test
-//    public void testClone_ExceptionInClone() throws NoSuchMethodException {
-//        ExceptionInCloneObject original = new ExceptionInCloneObject();
-//
-//        assertThrows(CloneFailedException.class, () -> ObjectUtils.clone(original));
-//    }
-
-
-
-
 
     @Test
     public void testMaxWithAllNulls() {
@@ -445,10 +325,6 @@ public class ObjectUtilsTest {
         assertNull(result);
     }
 
-
-
-
-
     @Test
     public void testNotEqualWithNulls() {
         assertTrue(ObjectUtils.notEqual(null, "test"));
@@ -473,10 +349,6 @@ public class ObjectUtilsTest {
         assertTrue(ObjectUtils.notEqual(new Integer(5), new Integer(6)));
     }
 
-
-
-
-
     @Test
     public void testAnyNullWhenAllNull() {
         Object[] values = {null, null, null};
@@ -493,12 +365,6 @@ public class ObjectUtilsTest {
     public void testAnyNullWhenNoneNull() {
         Object[] values = {new Object(), new Object(), new Object()};
         assertFalse(ObjectUtils.anyNull(values));
-    }
-
-    //@Test
-    public void testAnyNullWhenEmptyArray() {
-        Object[] values = {};
-        assertTrue(ObjectUtils.anyNull(values));
     }
 
     @Test
@@ -1015,9 +881,6 @@ public class ObjectUtilsTest {
         assertFalse(ObjectUtils.isEmpty(new Object()));
     }
 
-
-
-
     @Test
     public void testConstShort_WithinRange() {
         // Instantiate necessary variables
@@ -1072,11 +935,6 @@ public class ObjectUtilsTest {
         assertThrows(IllegalArgumentException.class, () -> ObjectUtils.CONST_SHORT(inputValue));
     }
 
-
-
-
-
-
     @Test
     public void testHashCodeWithNonNullObject() {
         // Instantiate a dummy object
@@ -1098,10 +956,6 @@ public class ObjectUtilsTest {
         // The hash code of a null object should be zero
         assertEquals(0, actualHash, "The hash code of a null object should be zero");
     }
-
-
-
-
 
     @Test
     public void shouldReturnOneWhenNullIsPassed() {
@@ -1138,10 +992,6 @@ public class ObjectUtilsTest {
         // Then
         assertEquals(expected, result);
     }
-
-
-
-
 
     @Test
     public void constByte_ValidByte_ReturnsSameByte() {
@@ -1193,9 +1043,6 @@ public class ObjectUtilsTest {
         }, "CONST_BYTE should throw an IllegalArgumentException for values smaller than Byte.MIN_VALUE.");
     }
 
-
-
-
     @Test
     public void testGetClass_NullObject() {
         // Test case: the input object is null
@@ -1241,14 +1088,6 @@ public class ObjectUtilsTest {
         assertEquals(ObjectUtils.class, result, "The result should be ObjectUtils.class when the object is an instance of ObjectUtils.");
     }
 
-
-
-
-
-
-
-
-
     @Test
     public void testMin_WithNullValues() {
         Integer[] values = {null, 2, 3, 4};
@@ -1283,10 +1122,6 @@ public class ObjectUtilsTest {
         Integer min = ObjectUtils.min(values);
         assertEquals(1, min);
     }
-
-
-
-
 
     @Test
     public void shouldReturnFalseWhenObjectIsNull() {
@@ -1349,32 +1184,10 @@ public class ObjectUtilsTest {
         assertTrue(ObjectUtils.isNotEmpty(optional));
     }
 
-    //@Test
-    public void testHashCodeHexWithNonNullObject() {
-        Object mockObject = mock(Object.class);
-        when(mockObject.hashCode()).thenReturn(123456);
-
-        String hexCode = ObjectUtils.hashCodeHex(mockObject);
-
-        assertEquals(Integer.toHexString(mockObject.hashCode()), hexCode);
-        verify(mockObject).hashCode();
-    }
-
     @Test
     public void testHashCodeHexWithNullObject() {
         String hexCode = ObjectUtils.hashCodeHex(null);
         assertEquals(Integer.toHexString(0), hexCode);
-    }
-
-   // @Test
-    public void testHashCodeHexWithObjectHavingZeroHashCode() {
-        Object mockObject = mock(Object.class);
-        when(mockObject.hashCode()).thenReturn(0);
-
-        String hexCode = ObjectUtils.hashCodeHex(mockObject);
-
-        assertEquals(Integer.toHexString(mockObject.hashCode()), hexCode);
-        verify(mockObject).hashCode();
     }
 
     @Test
@@ -1415,7 +1228,5 @@ public class ObjectUtilsTest {
         StringBuffer buffer = new StringBuffer();
         assertThrows(NullPointerException.class, () -> ObjectUtils.identityToString(buffer, null));
     }
-
-
 
 }

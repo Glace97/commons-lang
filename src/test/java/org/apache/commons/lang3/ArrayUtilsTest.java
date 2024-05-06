@@ -1218,95 +1218,6 @@ public class ArrayUtilsTest {
     }
 
 
-
-
-
-    //@Test
-    public void testShuffleInt() {
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(anyInt())).thenReturn(0);
-        int[] array = {1, 2, 3, 4, 5};
-        int[] expectedArray = {5, 2, 3, 4, 1};
-        ArrayUtils.shuffle(array, mockRandom);
-        assertArrayEquals(expectedArray, array);
-    }
-
-    //@Test
-    public void testShuffleBoolean() {
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(anyInt())).thenReturn(0);
-        boolean[] array = {true, false, true, false, true};
-        boolean[] expectedArray = {true, false, true, false, true};
-        ArrayUtils.shuffle(array, mockRandom);
-        assertArrayEquals(expectedArray, array);
-    }
-
-    //@Test
-    public void testShuffleByte() {
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(anyInt())).thenReturn(0);
-        byte[] array = {1, 2, 3, 4, 5};
-        byte[] expectedArray = {5, 2, 3, 4, 1};
-        ArrayUtils.shuffle(array, mockRandom);
-        assertArrayEquals(expectedArray, array);
-    }
-
-    //@Test
-    public void testShuffleChar() {
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(anyInt())).thenReturn(0);
-        char[] array = {'a', 'b', 'c', 'd', 'e'};
-        char[] expectedArray = {'e', 'b', 'c', 'd', 'a'};
-        ArrayUtils.shuffle(array, mockRandom);
-        assertArrayEquals(expectedArray, array);
-    }
-
-    //@Test
-    public void testShuffleDouble() {
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(anyInt())).thenReturn(0);
-        double[] array = {1.1, 2.2, 3.3, 4.4, 5.5};
-        double[] expectedArray = {5.5, 2.2, 3.3, 4.4, 1.1};
-        ArrayUtils.shuffle(array, mockRandom);
-        //assertArrayEquals(expectedArray, array, 0.0);
-    }
-
-    //@Test
-    public void testShuffleFloat() {
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(anyInt())).thenReturn(0);
-        float[] array = {1.1f, 2.2f, 3.3f, 4.4f, 5.5f};
-        float[] expectedArray = {5.5f, 2.2f, 3.3f, 4.4f, 1.1f};
-        ArrayUtils.shuffle(array, mockRandom);
-        //assertArrayEquals(expectedArray, array, 0.0f);
-    }
-
-    //@Test
-    public void testShuffleLong() {
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(anyInt())).thenReturn(0);
-        long[] array = {1L, 2L, 3L, 4L, 5L};
-        long[] expectedArray = {5L, 2L, 3L, 4L, 1L};
-        ArrayUtils.shuffle(array, mockRandom);
-        assertArrayEquals(expectedArray, array);
-    }
-
-   // @Test
-    public void testShuffleShort() {
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(anyInt())).thenReturn(0);
-        short[] array = {1, 2, 3, 4, 5};
-        short[] expectedArray = {5, 2, 3, 4, 1};
-        ArrayUtils.shuffle(array, mockRandom);
-        //assertArrayEquals(expectedArray, array);
-    }
-
-
-
-
-
-
-
     @Test
     public void whenBooleanArrayIsConvertedToPrimitiveThenShouldReturnPrimitiveArray() {
         Boolean[] array = {true, false, null};
@@ -1363,10 +1274,6 @@ public class ArrayUtilsTest {
         assertArrayEquals(expected, ArrayUtils.toPrimitive(array, (short) 0));
     }
 
-//    @Test
-//    public void whenNullArrayIsConvertedToPrimitiveThenShouldReturnNull() {
-//        assertNull(ArrayUtils.toPrimitive(null));
-//    }
 
     @Test
     public void whenEmptyArrayIsConvertedToPrimitiveThenShouldReturnEmptyArray() {
@@ -1374,11 +1281,6 @@ public class ArrayUtilsTest {
         boolean[] expected = {};
         assertArrayEquals(expected, ArrayUtils.toPrimitive(array));
     }
-
-
-
-
-
 
 
     @Test
@@ -1457,10 +1359,6 @@ public class ArrayUtilsTest {
         }
     }
 
-
-
-
-
     @Test
     public void testInsertBooleanArray() {
         boolean[] array = new boolean[] {true, false, true};
@@ -1524,46 +1422,6 @@ public class ArrayUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-
-
-
-
-
-
-    //@Test
-    public void testGetComponentType() {
-        String[] array = new String[0];
-        try (MockedStatic<ClassUtils> classUtilsMock = Mockito.mockStatic(ClassUtils.class)) {
-            try (MockedStatic<ObjectUtils> objectUtilsMock = Mockito.mockStatic(ObjectUtils.class)) {
-                objectUtilsMock.when(() -> ObjectUtils.getClass(any())).thenReturn(String[].class);
-                classUtilsMock.when(() -> ClassUtils.getComponentType(any())).thenReturn(String.class);
-
-                Class<String> result = ArrayUtils.getComponentType(array);
-                assertEquals(String.class, result);
-                objectUtilsMock.verify(() -> ObjectUtils.getClass(array), times(1));
-                classUtilsMock.verify(() -> ClassUtils.getComponentType(String[].class), times(1));
-            }
-        }
-    }
-
-    //@Test
-    public void testGetComponentTypeWithNull() {
-        try (MockedStatic<ClassUtils> classUtilsMock = Mockito.mockStatic(ClassUtils.class)) {
-            try (MockedStatic<ObjectUtils> objectUtilsMock = Mockito.mockStatic(ObjectUtils.class)) {
-                objectUtilsMock.when(() -> ObjectUtils.getClass(null)).thenReturn(null);
-
-                Class<?> result = ArrayUtils.getComponentType(null);
-                assertNull(result);
-                objectUtilsMock.verify(() -> ObjectUtils.getClass(null), times(1));
-                classUtilsMock.verifyNoInteractions();
-            }
-        }
-    }
-
-
-
-
-
     @Test
     public void testContainsAny_WithNullArray() {
         Object[] array = null;
@@ -1606,15 +1464,6 @@ public class ArrayUtilsTest {
         assertTrue(ArrayUtils.containsAny(array, objectsToFind));
     }
 
-
-
-//    @Test
-//    public void testContainsBoolean() {
-//        boolean[] array = {true, false};
-//        assertTrue(ArrayUtils.contains(array, true));
-//        assertFalse(ArrayUtils.contains(array, null));
-//    }
-
     @Test
     public void testContainsByte() {
         byte[] array = {1, 2, 3};
@@ -1634,13 +1483,6 @@ public class ArrayUtilsTest {
         double[] array = {1.1, 2.2, 3.3};
         assertTrue(ArrayUtils.contains(array, 1.1));
         assertFalse(ArrayUtils.contains(array, 4.4));
-    }
-
-    //@Test
-    public void testContainsDoubleWithTolerance() {
-        double[] array = {1.1, 2.2, 3.3};
-        assertTrue(ArrayUtils.contains(array, 1.10001, 0.0001));
-        assertFalse(ArrayUtils.contains(array, 1.1001, 0.0001));
     }
 
     @Test
@@ -1678,28 +1520,6 @@ public class ArrayUtilsTest {
         assertFalse(ArrayUtils.contains(array, (short) 4));
     }
 
-
-
-
-
-    //@Test
-    public void testLastIndexOf_BooleanArray() {
-        boolean[] array = {true, false, true, false, true};
-        assertEquals(4, ArrayUtils.lastIndexOf(array, true));
-        assertEquals(3, ArrayUtils.lastIndexOf(array, false));
-        assertEquals(-1, ArrayUtils.lastIndexOf(array, true, 1));
-        assertEquals(-1, ArrayUtils.lastIndexOf(null, true));
-    }
-
-    //@Test
-    public void testLastIndexOf_ByteArray() {
-        byte[] array = {1, 2, 3, 2, 1};
-        assertEquals(4, ArrayUtils.lastIndexOf(array, (byte) 1));
-        assertEquals(3, ArrayUtils.lastIndexOf(array, (byte) 2));
-        assertEquals(-1, ArrayUtils.lastIndexOf(array, (byte) 1, 2));
-        //assertEquals(-1, ArrayUtils.lastIndexOf(null, (byte) 1));
-    }
-
     @Test
     public void testLastIndexOf_CharArray() {
         char[] array = {'a', 'b', 'c', 'b', 'a'};
@@ -1716,15 +1536,6 @@ public class ArrayUtilsTest {
         assertEquals(3, ArrayUtils.lastIndexOf(array, 2.2));
         //assertEquals(-1, ArrayUtils.lastIndexOf(array, 1.1, 2));
         assertEquals(-1, ArrayUtils.lastIndexOf(null, 1.1));
-    }
-
-    //@Test
-    public void testLastIndexOf_FloatArray() {
-        float[] array = {1.1f, 2.2f, 3.3f, 2.2f, 1.1f};
-        assertEquals(4, ArrayUtils.lastIndexOf(array, 1.1f));
-        assertEquals(3, ArrayUtils.lastIndexOf(array, 2.2f));
-        assertEquals(-1, ArrayUtils.lastIndexOf(array, 1.1f, 2));
-        //assertEquals(-1, ArrayUtils.lastIndexOf(null, 1.1f));
     }
 
     @Test
@@ -1753,20 +1564,6 @@ public class ArrayUtilsTest {
         //assertEquals(-1, ArrayUtils.lastIndexOf(array, "one", 2));
         assertEquals(-1, ArrayUtils.lastIndexOf(null, "one"));
     }
-
-    //@Test
-    public void testLastIndexOf_ShortArray() {
-        short[] array = {1, 2, 3, 2, 1};
-        assertEquals(4, ArrayUtils.lastIndexOf(array, (short) 1));
-        assertEquals(3, ArrayUtils.lastIndexOf(array, (short) 2));
-        assertEquals(-1, ArrayUtils.lastIndexOf(array, (short) 1, 2));
-        //assertEquals(-1, ArrayUtils.lastIndexOf(null, (short) 1));
-    }
-
-
-
-
-
 
     @Test
     public void shouldReturnEmptyArrayWhenNoArgumentsPassed() {
@@ -1809,10 +1606,6 @@ public class ArrayUtilsTest {
         assertEquals(firstElement, actualArray[0]);
         assertEquals(secondElement, actualArray[1]);
     }
-
-
-
-
 
     @Test
     public void testIsSortedBooleanArray() {
@@ -1925,12 +1718,6 @@ public class ArrayUtilsTest {
         assertThrows(NullPointerException.class, () -> ArrayUtils.isSorted(array, null));
     }
 
-
-
-
-
-
-
     @Test
     public void testSubarray_boolean() {
         boolean[] array = {true, false, true, false, true};
@@ -2033,10 +1820,6 @@ public class ArrayUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-
-
-
-
     @Test
     public void shouldReturnNullWhenNullArrayPassed() {
         Object[] array = null;
@@ -2072,10 +1855,6 @@ public class ArrayUtilsTest {
         Object[] array = {1, 2, "String", null};
         assertArrayEquals(new String[]{"1", "2", "String", "Default"}, ArrayUtils.toStringArray(array, "Default"));
     }
-
-
-
-
 
     @Test
     public void testReverseBooleanArray() {
@@ -2175,11 +1954,6 @@ public class ArrayUtilsTest {
         ArrayUtils.reverse(shortArray);
         assertNull(shortArray);
     }
-
-
-
-
-
     @Test
     public void testRemoveBooleanArray_SuccessfulRemoval() {
         boolean[] array = new boolean[]{true, false, true};
@@ -2284,15 +2058,6 @@ public class ArrayUtilsTest {
         assertThrows(IndexOutOfBoundsException.class, () -> ArrayUtils.remove(array, -1));
     }
 
-//    @Test
-//    public void testRemove_ThrowsIndexOutOfBoundsExceptionForNullArray() {
-//        assertThrows(IndexOutOfBoundsException.class, () -> ArrayUtils.remove(null, 0));
-//    }
-//
-
-
-
-
     @Test
     public void isEquals_shouldReturnTrue_whenSameArraysAreCompared() {
         // Instantiate all necessary variables here
@@ -2336,14 +2101,6 @@ public class ArrayUtilsTest {
         boolean result = ArrayUtils.isEquals(array1, array2);
         assertFalse(result, "Arrays should not be equal");
     }
-
-
-
-
-
-
-
-
 
     @Test
     public void testAddAllBoolean() {
@@ -2425,9 +2182,6 @@ public class ArrayUtilsTest {
 
         assertArrayEquals(new String[] {"a", "b", "c", "d"}, result);
     }
-
-
-
 
     @Test
     public void testIsNotEmptyForBooleanArray() {
@@ -2528,9 +2282,6 @@ public class ArrayUtilsTest {
         //assertFalse(ArrayUtils.isNotEmpty(null));
     }
 
-
-
-
     @Test
     public void indexOf_booleanArray_SuccessfulIndex() {
         boolean[] array = new boolean[] {true, false, true};
@@ -2587,9 +2338,6 @@ public class ArrayUtilsTest {
         assertEquals(-1, index);
     }
 
-
-
-
     @Test
     public void testToObject_booleanArray() {
         final boolean[] booleanArray = {true, false, true};
@@ -2633,10 +2381,6 @@ public class ArrayUtilsTest {
     }
 
     // similar tests can be written for each of the primitive types
-
-
-
-
 
     @Test
     public void testGetLengthNullInput() {
@@ -2694,14 +2438,6 @@ public class ArrayUtilsTest {
         // Then
         assertThrows(IllegalArgumentException.class, () -> ArrayUtils.getLength(object));
     }
-
-
-
-
-
-
-
-
 
     @Test
     public void testRemoveAllOccurencesBoolean() {
@@ -2783,9 +2519,6 @@ public class ArrayUtilsTest {
 
         assertArrayEquals(expectedOutput, ArrayUtils.removeAllOccurences(inputArray, element));
     }
-
-
-
 
     @Test
     public void whenGetIsCalledWithValidIndexThenReturnsCorrectElement() {
