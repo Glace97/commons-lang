@@ -279,53 +279,6 @@ public class ProcessorTest {
 
 
 
-
-//    @Test
-//    public void testGetLabel() {
-//        // Instantiate all necessary variables here
-//        Processor.Arch mockArch = mock(Processor.Arch.class);
-//        Processor.Type mockType = mock(Processor.Type.class);
-//        Processor processor = new Processor(mockArch, mockType);
-//
-//        // Write the test code here following the given rules
-//        when(mockArch.getLabel()).thenReturn("32-bit");
-//        when(mockType.getLabel()).thenReturn("AArch64");
-//
-//        assertEquals("32-bit", processor.getLabel());
-//    }
-
-
-
-
-
-    //@Test
-    public void testIs64Bit_ReturnsTrue_WhenArchIsBIT_64() {
-        // Instantiate all necessary variables here
-        Processor.Arch arch = Processor.Arch.BIT_64;
-        Processor.Type type = mock(Processor.Type.class);
-        Processor processor = new Processor(arch, type);
-
-        // Write the test code here following the given rules
-        boolean result = processor.is64Bit();
-
-        assertTrue(result);
-    }
-
-    //@Test
-    public void testIs64Bit_ReturnsFalse_WhenArchIsNotBIT_64() {
-        // Instantiate all necessary variables here
-        Processor.Arch arch = Processor.Arch.BIT_32;
-        Processor.Type type = mock(Processor.Type.class);
-        Processor processor = new Processor(arch, type);
-
-        // Write the test code here following the given rules
-        boolean result = processor.is64Bit();
-
-        assertFalse(result);
-    }
-
-
-
     @Test
     public void testIsAarch64_WhenTypeIsAarch64_ReturnsTrue() {
         // Instantiate all necessary variables here

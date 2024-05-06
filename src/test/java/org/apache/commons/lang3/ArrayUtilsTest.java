@@ -64,19 +64,6 @@ public class ArrayUtilsTest {
         assertEquals(0, result.length);
     }
     
-    //@Test
-    public void testRemoveAllOccurrences_BooleanArray_WithNoOccurrences_ReturnsSameArray() {
-        // Arrange
-        boolean[] array = {false, false, false};
-        boolean element = true;
-        
-        // Act
-        boolean[] result = ArrayUtils.removeAllOccurences(array, element);
-        
-        // Assert
-        assertSame(array, result);
-    }
-    
     @Test
     public void testRemoveAllOccurrences_BooleanArray_WithOccurrences_RemovesAllOccurrences() {
         // Arrange
@@ -119,20 +106,7 @@ public class ArrayUtilsTest {
         assertNotNull(result);
         assertEquals(0, result.length);
     }
-    
-    //@Test
-    public void testRemoveAllOccurrences_ByteArray_WithNoOccurrences_ReturnsSameArray() {
-        // Arrange
-        byte[] array = {2, 2, 2};
-        byte element = 1;
-        
-        // Act
-        byte[] result = ArrayUtils.removeAllOccurences(array, element);
-        
-        // Assert
-        assertSame(array, result);
-    }
-    
+
     @Test
     public void testRemoveAllOccurrences_ByteArray_WithOccurrences_RemovesAllOccurrences() {
         // Arrange
@@ -231,20 +205,7 @@ public class ArrayUtilsTest {
         assertNotNull(result);
         assertEquals(0, result.length);
     }
-    
-    //@Test
-    public void testRemoveAllOccurrences_DoubleArray_WithNoOccurrences_ReturnsSameArray() {
-        // Arrange
-        double[] array = {2.0, 2.0, 2.0};
-        double element = 1.0;
-        
-        // Act
-        double[] result = ArrayUtils.removeAllOccurences(array, element);
-        
-        // Assert
-        assertSame(array, result);
-    }
-    
+
     @Test
     public void testRemoveAllOccurrences_DoubleArray_WithOccurrences_RemovesAllOccurrences() {
         // Arrange
@@ -287,20 +248,7 @@ public class ArrayUtilsTest {
         assertNotNull(result);
         assertEquals(0, result.length);
     }
-    
-    //@Test
-    public void testRemoveAllOccurrences_FloatArray_WithNoOccurrences_ReturnsSameArray() {
-        // Arrange
-        float[] array = {2.0f, 2.0f, 2.0f};
-        float element = 1.0f;
-        
-        // Act
-        float[] result = ArrayUtils.removeAllOccurences(array, element);
-        
-        // Assert
-        assertSame(array, result);
-    }
-    
+
     @Test
     public void testRemoveAllOccurrences_FloatArray_WithOccurrences_RemovesAllOccurrences() {
         // Arrange
@@ -343,20 +291,7 @@ public class ArrayUtilsTest {
         assertNotNull(result);
         assertEquals(0, result.length);
     }
-    
-    //@Test
-    public void testRemoveAllOccurrences_IntArray_WithNoOccurrences_ReturnsSameArray() {
-        // Arrange
-        int[] array = {2, 2, 2};
-        int element = 1;
-        
-        // Act
-        int[] result = ArrayUtils.removeAllOccurences(array, element);
-        
-        // Assert
-        assertSame(array, result);
-    }
-    
+
     @Test
     public void testRemoveAllOccurrences_IntArray_WithOccurrences_RemovesAllOccurrences() {
         // Arrange
@@ -399,20 +334,7 @@ public class ArrayUtilsTest {
         assertNotNull(result);
         assertEquals(0, result.length);
     }
-    
-    //@Test
-    public void testRemoveAllOccurrences_LongArray_WithNoOccurrences_ReturnsSameArray() {
-        // Arrange
-        long[] array = {2L, 2L, 2L};
-        long element = 1L;
-        
-        // Act
-        long[] result = ArrayUtils.removeAllOccurences(array, element);
-        
-        // Assert
-        assertSame(array, result);
-    }
-    
+
     @Test
     public void testRemoveAllOccurrences_LongArray_WithOccurrences_RemovesAllOccurrences() {
         // Arrange
@@ -455,20 +377,7 @@ public class ArrayUtilsTest {
         assertNotNull(result);
         assertEquals(0, result.length);
     }
-    
-    //@Test
-    public void testRemoveAllOccurrences_ShortArray_WithNoOccurrences_ReturnsSameArray() {
-        // Arrange
-        short[] array = {2, 2, 2};
-        short element = 1;
-        
-        // Act
-        short[] result = ArrayUtils.removeAllOccurences(array, element);
-        
-        // Assert
-        assertSame(array, result);
-    }
-    
+
     @Test
     public void testRemoveAllOccurrences_ShortArray_WithOccurrences_RemovesAllOccurrences() {
         // Arrange
@@ -511,20 +420,7 @@ public class ArrayUtilsTest {
         assertNotNull(result);
         assertEquals(0, result.length);
     }
-    
-    //@Test
-    public void testRemoveAllOccurrences_ObjectArray_WithNoOccurrences_ReturnsSameArray() {
-        // Arrange
-        Object[] array = {"b", "b", "b"};
-        Object element = "a";
-        
-        // Act
-        Object[] result = ArrayUtils.removeAllOccurences(array, element);
-        
-        // Assert
-        assertSame(array, result);
-    }
-    
+
     @Test
     public void testRemoveAllOccurrences_ObjectArray_WithOccurrences_RemovesAllOccurrences() {
         // Arrange
@@ -540,24 +436,6 @@ public class ArrayUtilsTest {
         assertEquals("b", result[0]);
         assertEquals("b", result[1]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Test
     public void testToObject_withNullArray_shouldReturnNull() {
@@ -803,12 +681,6 @@ public class ArrayUtilsTest {
         }
     }
 
-
-
-
-
-
-
     @Test
     public void testIsNotEmpty_withBooleanArray_returnTrue() {
         // Arrange
@@ -882,10 +754,6 @@ public class ArrayUtilsTest {
     }
 
     // Repeat the same pattern for other primitive types and Object arrays
-
-
-
-
 
     @Test
     public void testAddAll_booleanArray() {
@@ -1004,10 +872,6 @@ public class ArrayUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-
-
-
-
     @Test
     public void testRemoveAll_boolean() {
         // Instantiate all necessary variables here
@@ -1125,10 +989,6 @@ public class ArrayUtilsTest {
         assertEquals("b", result[0]);
     }
 
-
-
-
-
     @Test
     public void testIsNullArray_ReturnsFalse() {
         // Arrange
@@ -1217,36 +1077,6 @@ public class ArrayUtilsTest {
 
         // Assert
         assertEquals(3, length);
-    }
-
-
-
-
-
-    //@Test
-    public void testShift_withBooleanArray() {
-        // Instantiate all necessary variables here
-        boolean[] array = {true, false, true, false};
-        int offset = 2;
-        boolean[] expectedArray = {true, false, false, true};
-
-        // Write the test code here following the given rules
-        ArrayUtils.shift(array, offset);
-
-        assertArrayEquals(expectedArray, array);
-    }
-
-    //@Test
-    public void testShift_withBooleanArray_andNegativeOffset() {
-        // Instantiate all necessary variables here
-        boolean[] array = {true, false, true, false};
-        int offset = -2;
-        boolean[] expectedArray = {true, false, false, true};
-
-        // Write the test code here following the given rules
-        ArrayUtils.shift(array, offset);
-
-        assertArrayEquals(expectedArray, array);
     }
 
     @Test
@@ -1456,12 +1286,6 @@ public class ArrayUtilsTest {
 
         assertArrayEquals(expectedArray, array);
     }
-
-
-
-
-
-
 
     @Test
     public void testClone_BooleanArray_ReturnsClonedArray() {
@@ -1688,11 +1512,6 @@ public class ArrayUtilsTest {
         assertNull(result);
     }
 
-
-
-
-
-
     @Test
     public void testIsEquals_WithEqualArrays_ReturnsTrue() {
         // Arrange
@@ -1758,32 +1577,6 @@ public class ArrayUtilsTest {
         assertFalse(result);
     }
 
-
-
-
-
-//    @Test
-//    public void random_ReturnsRandomValueWithinRange() {
-//        // Instantiate all necessary variables here
-//        ArrayUtils arrayUtils = new ArrayUtils();
-//        ThreadLocalRandom threadLocalRandom = mock(ThreadLocalRandom.class);
-//        when(threadLocalRandom.nextInt()).thenReturn(5);
-//        when(threadLocalRandom.nextInt(10)).thenReturn(7);
-//
-//        // Write the test code here following the given rules
-//        int random1 = arrayUtils.random();
-//        int random2 = arrayUtils.random(10);
-//
-//        assertEquals(5, random1);
-//        assertEquals(7, random2);
-//        verify(threadLocalRandom, times(1)).nextInt();
-//        verify(threadLocalRandom, times(1)).nextInt(10);
-//    }
-
-
-
-
-
     @Test
     public void testRemove_booleanArray_success() {
         // Instantiate all necessary variables here
@@ -1796,18 +1589,6 @@ public class ArrayUtilsTest {
         assertEquals(2, result.length);
         assertEquals(true, result[0]);
         assertEquals(true, result[1]);
-    }
-
-    //@Test
-    public void testRemove_booleanArray_emptyArray() {
-        // Instantiate all necessary variables here
-        boolean[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        boolean[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
     }
 
     @Test
@@ -1824,18 +1605,6 @@ public class ArrayUtilsTest {
         assertEquals(3, result[1]);
     }
 
-    //@Test
-    public void testRemove_byteArray_emptyArray() {
-        // Instantiate all necessary variables here
-        byte[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        byte[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
-    }
-
     @Test
     public void testRemove_charArray_success() {
         // Instantiate all necessary variables here
@@ -1848,18 +1617,6 @@ public class ArrayUtilsTest {
         assertEquals(2, result.length);
         assertEquals('a', result[0]);
         assertEquals('c', result[1]);
-    }
-
-    //@Test
-    public void testRemove_charArray_emptyArray() {
-        // Instantiate all necessary variables here
-        char[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        char[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
     }
 
     @Test
@@ -1876,17 +1633,6 @@ public class ArrayUtilsTest {
         assertEquals(3.3, result[1]);
     }
 
-    //@Test
-    public void testRemove_doubleArray_emptyArray() {
-        // Instantiate all necessary variables here
-        double[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        double[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
-    }
 
     @Test
     public void testRemove_floatArray_success() {
@@ -1900,18 +1646,6 @@ public class ArrayUtilsTest {
         assertEquals(2, result.length);
         assertEquals(1.1f, result[0]);
         assertEquals(3.3f, result[1]);
-    }
-
-    //@Test
-    public void testRemove_floatArray_emptyArray() {
-        // Instantiate all necessary variables here
-        float[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        float[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
     }
 
     @Test
@@ -1928,18 +1662,6 @@ public class ArrayUtilsTest {
         assertEquals(3, result[1]);
     }
 
-    //@Test
-    public void testRemove_intArray_emptyArray() {
-        // Instantiate all necessary variables here
-        int[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        int[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
-    }
-
     @Test
     public void testRemove_longArray_success() {
         // Instantiate all necessary variables here
@@ -1952,18 +1674,6 @@ public class ArrayUtilsTest {
         assertEquals(2, result.length);
         assertEquals(1L, result[0]);
         assertEquals(3L, result[1]);
-    }
-
-    //@Test
-    public void testRemove_longArray_emptyArray() {
-        // Instantiate all necessary variables here
-        long[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        long[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
     }
 
     @Test
@@ -1980,18 +1690,6 @@ public class ArrayUtilsTest {
         assertEquals(3, result[1]);
     }
 
-    //@Test
-    public void testRemove_shortArray_emptyArray() {
-        // Instantiate all necessary variables here
-        short[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        short[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
-    }
-
     @Test
     public void testRemove_genericArray_success() {
         // Instantiate all necessary variables here
@@ -2005,22 +1703,6 @@ public class ArrayUtilsTest {
         assertEquals("a", result[0]);
         assertEquals("c", result[1]);
     }
-
-    //@Test
-    public void testRemove_genericArray_emptyArray() {
-        // Instantiate all necessary variables here
-        String[] array = {};
-        int index = 0;
-
-        // Write the test code here following the given rules
-        String[] result = ArrayUtils.remove(array, index);
-
-        assertEquals(0, result.length);
-    }
-
-
-
-
 
     @Test
     public void testRemoveElementWithBooleanArray() {
@@ -2148,10 +1830,6 @@ public class ArrayUtilsTest {
         assertEquals(2, result.length);
     }
 
-
-
-
-
     @Test
     public void reverse_WhenArrayIsNull_ShouldDoNothing() {
         // Arrange
@@ -2235,24 +1913,6 @@ public class ArrayUtilsTest {
         // Assert
         assertArrayEquals(new boolean[]{true, false, true}, array);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Test
     public void testIsSameType_BothArraysNull_ThrowsIllegalArgumentException() {
@@ -2354,12 +2014,6 @@ public class ArrayUtilsTest {
         // Assert
         assertFalse(result);
     }
-
-
-
-
-
-
 
     @Test
     public void testIsSorted_emptyArray_returnsTrue() {
@@ -2713,104 +2367,6 @@ public class ArrayUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void testIsSorted_emptyObjectArray_returnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object[] array = {};
-//
-//        // Write the test code here following the given rules
-//        boolean result = ArrayUtils.isSorted(array);
-//
-//        assertTrue(result);
-//    }
-
-//    @Test
-//    public void testIsSorted_singleElementObjectArray_returnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object[] array = {1};
-//
-//        // Write the test code here following the given rules
-//        boolean result = ArrayUtils.isSorted(array);
-//
-//        assertTrue(result);
-//    }
-//
-//    @Test
-//    public void testIsSorted_sortedObjectArray_returnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object[] array = {1, 2, 3, 4, 5};
-//
-//        // Write the test code here following the given rules
-//        boolean result = ArrayUtils.isSorted(array);
-//
-//        assertTrue(result);
-//    }
-//
-//    @Test
-//    public void testIsSorted_unsortedObjectArray_returnsFalse() {
-//        // Instantiate all necessary variables here
-//        Object[] array = {1, 3, 2, 4, 5};
-//
-//        // Write the test code here following the given rules
-//        boolean result = ArrayUtils.isSorted(array);
-//
-//        assertFalse(result);
-//    }
-//
-//    @Test
-//    public void testIsSorted_emptyObjectArray_withComparator_returnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object[] array = {};
-//        Comparator<Object> comparator = Comparator.naturalOrder();
-//
-//        // Write the test code here following the given rules
-//        boolean result = ArrayUtils.isSorted(array, comparator);
-//
-//        assertTrue(result);
-//    }
-//
-//    @Test
-//    public void testIsSorted_singleElementObjectArray_withComparator_returnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object[] array = {1};
-//        Comparator<Object> comparator = Comparator.naturalOrder();
-//
-//        // Write the test code here following the given rules
-//        boolean result = ArrayUtils.isSorted(array, comparator);
-//
-//        assertTrue(result);
-//    }
-//
-//    @Test
-//    public void testIsSorted_sortedObjectArray_withComparator_returnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object[] array = {1, 2, 3, 4, 5};
-//        Comparator<Object> comparator = Comparator.naturalOrder();
-//
-//        // Write the test code here following the given rules
-//        boolean result = ArrayUtils.isSorted(array, comparator);
-//
-//        assertTrue(result);
-//    }
-//
-//    @Test
-//    public void testIsSorted_unsortedObjectArray_withComparator_returnsFalse() {
-//        // Instantiate all necessary variables here
-//        Object[] array = {1, 3, 2, 4, 5};
-//        Comparator<Object> comparator = Comparator.naturalOrder();
-//
-//        // Write the test code here following the given rules
-//        boolean result = ArrayUtils.isSorted(array, comparator);
-//
-//        assertFalse(result);
-//    }
-
-
-
-
-
-
-
     @Test
     public void testToArray_EmptyArray() {
         // Instantiate all necessary variables here
@@ -2877,12 +2433,6 @@ public class ArrayUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-
-
-
-
-
-
     @Test
     public void testInsert_WithNullArray_ReturnsNull() {
         // Arrange
@@ -2895,21 +2445,6 @@ public class ArrayUtilsTest {
 
         // Assert
         assertNull(result);
-    }
-
-    //@Test
-    public void testInsert_WithEmptyArray_ReturnsClonedArray() {
-        // Arrange
-        int index = 0;
-        boolean[] array = {};
-        boolean[] values = { true, false };
-
-        // Act
-        boolean[] result = ArrayUtils.insert(index, array, values);
-
-        // Assert
-        assertArrayEquals(array, result);
-        assertNotSame(array, result);
     }
 
     @Test
@@ -2941,14 +2476,6 @@ public class ArrayUtilsTest {
     }
     
     // Additional test cases for other overloaded insert methods can be added here
-
-
-
-
-
-
-
-
 
     @Test
     public void testContains_booleanArray_valueToFindPresent_returnsTrue() {
@@ -3253,8 +2780,6 @@ public class ArrayUtilsTest {
         assertFalse(ArrayUtils.contains(array, valueToFind));
     }
 
-
-
     @Test
     public void testContainsAny_ReturnsTrue_WhenArrayContainsAnyOfTheObjects() {
         // Instantiate all necessary variables here
@@ -3302,9 +2827,6 @@ public class ArrayUtilsTest {
 
         assertFalse(result);
     }
-
-
-
 
     @Test
     public void testGetComponentType_WithBooleanArray_ShouldReturnBooleanClass() {
@@ -3426,9 +2948,6 @@ public class ArrayUtilsTest {
         assertEquals(Object.class, result);
     }
 
-
-
-  
     @Test
     public void testLastIndexOf_withBooleanArray_shouldReturnIndex() {
         // Instantiate all necessary variables here
@@ -3467,12 +2986,6 @@ public class ArrayUtilsTest {
     }
     
     // Repeat the above tests for other data types...
-    
-
-
-
-
-
     @Test
     public void setAll_WithNonNullArrayAndNonNullGenerator_ShouldSetAllElementsOfArray() {
         // Instantiate all necessary variables here
@@ -3523,29 +3036,6 @@ public class ArrayUtilsTest {
         Integer[] expectedArray = {};
         assertArrayEquals(expectedArray, result);
     }
-
-    //@Test
-    public void setAll_WithNonNullArrayAndNonNullGenerator_WhenGeneratorThrowsException_ShouldRelayExceptionAndLeaveArrayInIndeterminateState() {
-        // Instantiate all necessary variables here
-        Integer[] array = {1, 2, 3, 4, 5};
-        IntFunction<Integer> generator = (index) -> {
-            if (index == 2) {
-                throw new RuntimeException("Generator exception");
-            }
-            return index * 2;
-        };
-
-        // Write the test code here following the given rules
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> ArrayUtils.setAll(array, generator));
-        assertEquals("Generator exception", exception.getMessage());
-
-        Integer[] expectedArray = {0, 2, 0, 8, 10};
-        assertArrayEquals(expectedArray, array);
-    }
-
-
-
-
 
     @Test
     public void toPrimitive_NullArray_ReturnsNull() {
@@ -3637,192 +3127,6 @@ public class ArrayUtilsTest {
     }
 
 
-
-
-    //Mvn
-    //@Test
-    public void shuffle_ShouldShuffleBooleanArray() {
-        // Instantiate all necessary variables here
-        boolean[] array = {true, false, true, false, true};
-        Random random = mock(Random.class);
-
-        // Write the test code here following the given rules
-        ArrayUtils.shuffle(array, random);
-
-        // Verify that the random.nextInt() method is called for each index
-        verify(random, times(array.length - 1)).nextInt(anyInt());
-
-        // Verify that the swap() method is called for each index
-        for (int i = 0; i < array.length; i++) {
-            //verify(ArrayUtils.class, times(1)).swap(eq(array), eq(i), anyInt(), eq(1));
-        }
-
-        // Verify that the array is shuffled
-        boolean[] originalArray = {true, false, true, false, true};
-        assertFalse(Arrays.equals(array, originalArray));
-    }
-
-    //Mvn
-    //@Test
-    public void shuffle_ShouldShuffleByteArray() {
-        // Instantiate all necessary variables here
-        byte[] array = {1, 2, 3, 4, 5};
-        Random random = mock(Random.class);
-
-        // Write the test code here following the given rules
-        ArrayUtils.shuffle(array, random);
-
-        // Verify that the random.nextInt() method is called for each index
-        verify(random, times(array.length - 1)).nextInt(anyInt());
-
-        // Verify that the swap() method is called for each index
-        for (int i = 0; i < array.length; i++) {
-            //verify(ArrayUtils.class, times(1)).swap(eq(array), eq(i), anyInt(), eq(1));
-        }
-
-        // Verify that the array is shuffled
-        byte[] originalArray = {1, 2, 3, 4, 5};
-        assertFalse(Arrays.equals(array, originalArray));
-    }
-
-    //Mvn
-    //@Test
-    public void shuffle_ShouldShuffleCharArray() {
-        // Instantiate all necessary variables here
-        char[] array = {'a', 'b', 'c', 'd', 'e'};
-        Random random = mock(Random.class);
-
-        // Write the test code here following the given rules
-        ArrayUtils.shuffle(array, random);
-
-        // Verify that the random.nextInt() method is called for each index
-        verify(random, times(array.length - 1)).nextInt(anyInt());
-
-        // Verify that the swap() method is called for each index
-        for (int i = 0; i < array.length; i++) {
-            //verify(ArrayUtils.class, times(1)).swap(eq(array), eq(i), anyInt(), eq(1));
-        }
-
-        // Verify that the array is shuffled
-        char[] originalArray = {'a', 'b', 'c', 'd', 'e'};
-        assertFalse(Arrays.equals(array, originalArray));
-    }
-
-    //Mvn
-    //@Test
-    public void shuffle_ShouldShuffleDoubleArray() {
-        // Instantiate all necessary variables here
-        double[] array = {1.1, 2.2, 3.3, 4.4, 5.5};
-        Random random = mock(Random.class);
-
-        // Write the test code here following the given rules
-        ArrayUtils.shuffle(array, random);
-
-        // Verify that the random.nextInt() method is called for each index
-        verify(random, times(array.length - 1)).nextInt(anyInt());
-
-        // Verify that the swap() method is called for each index
-        for (int i = 0; i < array.length; i++) {
-            //verify(ArrayUtils.class, times(1)).swap(eq(array), eq(i), anyInt(), eq(1));
-        }
-
-        // Verify that the array is shuffled
-        double[] originalArray = {1.1, 2.2, 3.3, 4.4, 5.5};
-        assertFalse(Arrays.equals(array, originalArray));
-    }
-
-    //Mvn
-    //@Test
-    public void shuffle_ShouldShuffleFloatArray() {
-        // Instantiate all necessary variables here
-        float[] array = {1.1f, 2.2f, 3.3f, 4.4f, 5.5f};
-        Random random = mock(Random.class);
-
-        // Write the test code here following the given rules
-        ArrayUtils.shuffle(array, random);
-
-        // Verify that the random.nextInt() method is called for each index
-        verify(random, times(array.length - 1)).nextInt(anyInt());
-
-        // Verify that the swap() method is called for each index
-        for (int i = 0; i < array.length; i++) {
-            //verify(ArrayUtils.class, times(1)).swap(eq(array), eq(i), anyInt(), eq(1));
-        }
-
-        // Verify that the array is shuffled
-        float[] originalArray = {1.1f, 2.2f, 3.3f, 4.4f, 5.5f};
-        assertFalse(Arrays.equals(array, originalArray));
-    }
-
-    //Mvn
-    //@Test
-    public void shuffle_ShouldShuffleIntArray() {
-        // Instantiate all necessary variables here
-        int[] array = {1, 2, 3, 4, 5};
-        Random random = mock(Random.class);
-
-        // Write the test code here following the given rules
-        ArrayUtils.shuffle(array, random);
-
-        // Verify that the random.nextInt() method is called for each index
-        verify(random, times(array.length - 1)).nextInt(anyInt());
-
-        // Verify that the swap() method is called for each index
-        for (int i = 0; i < array.length; i++) {
-            //verify(ArrayUtils.class, times(1)).swap(eq(array), eq(i), anyInt(), eq(1));
-        }
-
-        // Verify that the array is shuffled
-        int[] originalArray = {1, 2, 3, 4, 5};
-        assertFalse(Arrays.equals(array, originalArray));
-    }
-
-    //Mvn
-    //@Test
-    public void shuffle_ShouldShuffleLongArray() {
-        // Instantiate all necessary variables here
-        long[] array = {1L, 2L, 3L, 4L, 5L};
-        Random random = mock(Random.class);
-
-        // Write the test code here following the given rules
-        ArrayUtils.shuffle(array, random);
-
-        // Verify that the random.nextInt() method is called for each index
-        verify(random, times(array.length - 1)).nextInt(anyInt());
-
-        // Verify that the swap() method is called for each index
-        for (int i = 0; i < array.length; i++) {
-            //verify(ArrayUtils.class, times(1)).swap(eq(array), eq(i), anyInt(), eq(1));
-        }
-
-        // Verify that the array is shuffled
-        long[] originalArray = {1L, 2L, 3L, 4L, 5L};
-        assertFalse(Arrays.equals(array, originalArray));
-    }
-
-    //Mvn
-    //@Test
-    public void shuffle_ShouldShuffleObjectArray() {
-        // Instantiate all necessary variables here
-        Object[] array = {"a", "b", "c", "d", "e"};
-        Random random = mock(Random.class);
-
-        // Write the test code here following the given rules
-        ArrayUtils.shuffle(array, random);
-
-        // Verify that the random.nextInt() method is called for each index
-        verify(random, times(array.length - 1)).nextInt(anyInt());
-
-        // Verify that the swap() method is called for each index
-        for (int i = 0; i < array.length; i++) {
-            //verify(ArrayUtils.class, times(1)).swap(eq(array), eq(i), anyInt(), eq(1));
-        }
-
-        // Verify that the array is shuffled
-        Object[] originalArray = {"a", "b", "c", "d", "e"};
-        assertFalse(Arrays.equals(array, originalArray));
-    }
-
     @Test
     public void swap_ShouldSwapElementsInArray() {
         // Instantiate all necessary variables here
@@ -3837,9 +3141,6 @@ public class ArrayUtilsTest {
         int[] expectedArray = {1, 4, 3, 2, 5};
         assertArrayEquals(expectedArray, array);
     }
-
-
-
 
 
     @Test
@@ -4024,19 +3325,6 @@ public class ArrayUtilsTest {
         assertNull(result);
     }
 
-    //@Test
-    public void subarray_StartIndexNegative_ReturnsEmptyArray() {
-        // Arrange
-        boolean[] array = new boolean[] { true, false, true };
-        int startIndexInclusive = -1;
-        int endIndexExclusive = 3;
-
-        // Act
-        boolean[] result = ArrayUtils.subarray(array, startIndexInclusive, endIndexExclusive);
-
-        // Assert
-        assertArrayEquals(new boolean[0], result);
-    }
 
     @Test
     public void subarray_EndIndexGreaterThanArrayLength_ReturnsSubarrayUpToEnd() {
@@ -4078,23 +3366,6 @@ public class ArrayUtilsTest {
 
         // Assert
         assertArrayEquals(new boolean[] { false, true }, result);
-    }
-
-
-
-
-    //@Test
-    public void testRemoveElements_withBooleanArray_shouldReturnNewArrayWithoutRemovedElements() {
-        // Arrange
-        boolean[] array = {true, false, true, false};
-        boolean[] values = {true};
-        boolean[] expected = {false, false};
-
-        // Act
-        boolean[] result = ArrayUtils.removeElements(array, values);
-
-        // Assert
-        assertArrayEquals(expected, result);
     }
 
     @Test
@@ -4209,9 +3480,6 @@ public class ArrayUtilsTest {
         assertArrayEquals(expected, result);
     }
 
-
-
-    
     @Test
     public void testToStringArray_NullArray_ReturnsNull() {
         // Arrange
@@ -4317,69 +3585,6 @@ public class ArrayUtilsTest {
     }
 
 
-
-
-    //@Test
-    public void testHashCode_NullArray_ReturnsZero() {
-        // Instantiate all necessary variables here
-        Object array = null;
-
-        // Write the test code here following the given rules
-        int hashCode = ArrayUtils.hashCode(array);
-
-        assertEquals(0, hashCode);
-    }
-
-    //@Test
-    public void testHashCode_EmptyArray_ReturnsZero() {
-        // Instantiate all necessary variables here
-        Object array = new Object[0];
-
-        // Write the test code here following the given rules
-        int hashCode = ArrayUtils.hashCode(array);
-
-        assertEquals(0, hashCode);
-    }
-
-    //@Test
-    public void testHashCode_SingleElementArray_ReturnsHashCode() {
-        // Instantiate all necessary variables here
-        Object[] array = new Object[] { "element" };
-
-        // Write the test code here following the given rules
-        int hashCode = ArrayUtils.hashCode(array);
-
-        assertEquals("element".hashCode(), hashCode);
-    }
-
-    //@Test
-    public void testHashCode_MultipleElementArray_ReturnsHashCode() {
-        // Instantiate all necessary variables here
-        Object[] array = new Object[] { "element1", "element2", "element3" };
-
-        // Write the test code here following the given rules
-        int hashCode = ArrayUtils.hashCode(array);
-
-        int expectedHashCode = "element1".hashCode() ^ "element2".hashCode() ^ "element3".hashCode();
-        assertEquals(expectedHashCode, hashCode);
-    }
-
-    //@Test
-    public void testHashCode_MultiDimensionalArray_ReturnsHashCode() {
-        // Instantiate all necessary variables here
-        Object[][] array = { { "element1", "element2" }, { "element3", "element4" } };
-
-        // Write the test code here following the given rules
-        int hashCode = ArrayUtils.hashCode(array);
-
-        int expectedHashCode = "element1".hashCode() ^ "element2".hashCode() ^ "element3".hashCode()
-                ^ "element4".hashCode();
-        assertEquals(expectedHashCode, hashCode);
-    }
-
-
-
-
     @Test
     public void testAdd_WithNullArray_ShouldReturnArrayWithElement() {
         // Arrange
@@ -4419,16 +3624,6 @@ public class ArrayUtilsTest {
         assertArrayEquals(new int[]{1, 2, 3, element}, result);
     }
     
-    //@Test
-    public void testAdd_WithNullArrayAndNullElement_ShouldThrowIllegalArgumentException() {
-        // Arrange
-        int[] array = null;
-        Integer element = null;
-        
-        // Act and Assert
-        assertThrows(IllegalArgumentException.class, () -> ArrayUtils.add(array, element));
-    }
-    
     @Test
     public void testAdd_WithEmptyArrayAndNullElement_ShouldReturnArrayWithNullElement() {
         // Arrange
@@ -4454,9 +3649,6 @@ public class ArrayUtilsTest {
         // Assert
         assertArrayEquals(new Integer[]{1, 2, 3, element}, result);
     }
-
-
-
 
     @Test
     public void testSwapBooleanArray() {
@@ -4575,15 +3767,6 @@ public class ArrayUtilsTest {
         assertEquals(1, array[2]);
     }
 
-
-
-
-
-
-
-
-
-
     @Test
     public void testRemoveAllOccurrences_boolean() {
         // Instantiate all necessary variables here
@@ -4700,14 +3883,6 @@ public class ArrayUtilsTest {
         
         assertArrayEquals(expected, result);
     }
-
-
-
-
-
-
-
-
 
     @Test
     public void testIndexOf_BooleanArray_ValueFound_ReturnsIndex() {
@@ -4971,10 +4146,6 @@ public class ArrayUtilsTest {
         assertEquals(expectedIndex, actualIndex);
     }
 
-
-
-
-
     @Test
     public void testToString_NullArray_ReturnsEmptyString() {
         // Arrange
@@ -5054,20 +4225,6 @@ public class ArrayUtilsTest {
         assertEquals(expected, result);
     }
 
-    //@Test
-    public void testToString_EmptyArrayWithCustomString_ReturnsCustomString() {
-        // Arrange
-        Object array = new Object[0];
-        String stringIfNull = "Empty";
-        String expected = stringIfNull;
-
-        // Act
-        String result = ArrayUtils.toString(array, stringIfNull);
-
-        // Assert
-        assertEquals(expected, result);
-    }
-
     @Test
     public void testToString_SingleElementArrayWithCustomString_ReturnsFormattedString() {
         // Arrange
@@ -5109,9 +4266,6 @@ public class ArrayUtilsTest {
         // Assert
         assertEquals(expected, result);
     }
-
-
-
 
     @Test
     public void testGetLength_NullArray_ReturnsZero() {
@@ -5257,9 +4411,6 @@ public class ArrayUtilsTest {
         assertEquals(4, result);
     }
 
-
-
-
     @Test
     public void testNullToEmpty_withEmptyBooleanArray_returnsEmptyBooleanArray() {
         // Arrange
@@ -5309,10 +4460,6 @@ public class ArrayUtilsTest {
     }
     
     // Additional test cases for other data types...
-
-
-
-
     @Test
     public void indexesOf_BooleanArray_ReturnsEmptyBitSetForNullInput() {
         // Arrange
@@ -5437,9 +4584,6 @@ public class ArrayUtilsTest {
         assertTrue(result.get(4));
     }
 
-
-
-
     @Test
     public void isSameLength_WithNullArrays_ReturnsTrue() {
         // Arrange
@@ -5492,28 +4636,6 @@ public class ArrayUtilsTest {
         assertTrue(result);
     }
 
-    //@Test
-    public void isSameLength_WithMockedArrays_ReturnsTrue() {
-        // Arrange
-        boolean[] array1 = mock(boolean[].class);
-        boolean[] array2 = mock(boolean[].class);
-
-        // Mocking the getLength method
-        try (MockedStatic<ArrayUtils> mockedStatic = mockStatic(ArrayUtils.class)) {
-            mockedStatic.when(() -> ArrayUtils.getLength(array1)).thenReturn(3);
-            mockedStatic.when(() -> ArrayUtils.getLength(array2)).thenReturn(3);
-
-            // Act
-            boolean result = ArrayUtils.isSameLength(array1, array2);
-
-            // Assert
-            assertTrue(result);
-        }
-    }
-
-
-
-
     @Test
     public void testToMap_withNullArray_shouldReturnNullMap() {
         // Arrange
@@ -5539,26 +4661,6 @@ public class ArrayUtilsTest {
         assertTrue(result.isEmpty());
     }
 
-//    @Test
-//    public void testToMap_withArrayOfEntries_shouldReturnMapWithEntries() {
-//        // Arrange
-//        Object[] array = {
-//            new Map.Entry<>("key1", "value1"),
-//            new Map.Entry<>("key2", "value2"),
-//            new Map.Entry<>("key3", "value3")
-//        };
-//
-//        // Act
-//        Map<Object, Object> result = ArrayUtils.toMap(array);
-//
-//        // Assert
-//        assertNotNull(result);
-//        assertEquals(3, result.size());
-//        assertEquals("value1", result.get("key1"));
-//        assertEquals("value2", result.get("key2"));
-//        assertEquals("value3", result.get("key3"));
-//    }
-
     @Test
     public void testToMap_withArrayOfArrays_shouldReturnMapWithEntries() {
         // Arrange
@@ -5579,38 +4681,6 @@ public class ArrayUtilsTest {
         assertEquals("value3", result.get("key3"));
     }
 
-//    @Test
-//    public void testToMap_withArrayOfEntriesAndArrays_shouldReturnMapWithEntries() {
-//        // Arrange
-//        Object[] array = {
-//            new Map.Entry<>("key1", "value1"),
-//            new Object[]{"key2", "value2"},
-//            new Map.Entry<>("key3", "value3")
-//        };
-//
-//        // Act
-//        Map<Object, Object> result = ArrayUtils.toMap(array);
-//
-//        // Assert
-//        assertNotNull(result);
-//        assertEquals(3, result.size());
-//        assertEquals("value1", result.get("key1"));
-//        assertEquals("value2", result.get("key2"));
-//        assertEquals("value3", result.get("key3"));
-//    }
-//
-//    @Test
-//    public void testToMap_withArrayOfEntriesAndInvalidArray_shouldThrowIllegalArgumentException() {
-//        // Arrange
-//        Object[] array = {
-//            new Map.Entry<>("key1", "value1"),
-//            new Object[]{"key2"}
-//        };
-//
-//        // Act and Assert
-//        assertThrows(IllegalArgumentException.class, () -> ArrayUtils.toMap(array));
-//    }
-
     @Test
     public void testToMap_withArrayOfInvalidObjects_shouldThrowIllegalArgumentException() {
         // Arrange
@@ -5624,9 +4694,6 @@ public class ArrayUtilsTest {
         // Act and Assert
         assertThrows(IllegalArgumentException.class, () -> ArrayUtils.toMap(array));
     }
-
-
-
 
     @Test
     public void testNewInstance_withIntegerArray() {
@@ -5672,11 +4739,6 @@ public class ArrayUtilsTest {
         assertNotNull(result);
         assertEquals(length, result.length);
     }
-
-
-
-
-
 
     @Test
     public void testGet_ValidIndex_ReturnsElement() {
@@ -5727,9 +4789,6 @@ public class ArrayUtilsTest {
 
         assertEquals(defaultValue, result);
     }
-
-
-
 
     @Test
     public void testAddFirst_withNullArrayAndBooleanElement() {
@@ -5946,6 +5005,5 @@ public class ArrayUtilsTest {
         Object[] actual = ArrayUtils.addFirst(array, element);
         assertArrayEquals(expected, actual);
     }
-
 
 }

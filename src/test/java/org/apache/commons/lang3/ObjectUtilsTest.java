@@ -43,18 +43,6 @@ public class ObjectUtilsTest {
         assertSame(obj, result);
     }
 
-    //@Test
-    public void testCloneIfPossible_CloneableObject_ReturnsClone() throws CloneFailedException {
-        // Arrange
-        CloneableClass obj = new CloneableClass();
-
-        // Act
-        CloneableClass result = ObjectUtils.cloneIfPossible(obj);
-
-        // Assert
-        assertNotSame(obj, result);
-        assertEquals(obj.getValue(), result.getValue());
-    }
 
     @Test
     public void testCloneIfPossible_ExceptionOccurs_ThrowsCloneFailedException() throws CloneFailedException, CloneNotSupportedException {
@@ -114,33 +102,6 @@ public class ObjectUtilsTest {
         }
     }
 
-
-
-
-
-//    @Test
-//    public void identityToString_NullObject_ReturnsNull() {
-//        // Instantiate all necessary variables here
-//        Appendable appendable = mock(Appendable.class);
-//        Object object = null;
-//
-//        // Write the test code here following the given rules
-//        assertThrows(NullPointerException.class, () -> ObjectUtils.identityToString(appendable, object));
-//    }
-
-//    @Test
-//    public void identityToString_ValidObject_ReturnsExpectedString1() throws IOException {
-//        // Instantiate all necessary variables here
-//        Appendable appendable = mock(Appendable.class);
-//        Object object = "Hello World";
-//
-//        // Write the test code here following the given rules
-//        //assertDoesNotThrow(() -> ObjectUtils.identityToString(appendable, object));
-////        verify(appendable).append(object.getClass().getName());
-//        //verify(appendable).append(ObjectUtils.AT_SIGN);
-//        verify(appendable).append(ObjectUtils.identityHashCodeHex(object));
-//    }
-
     @Test
     public void identityToString_NullObject_ReturnsNullString() {
         // Instantiate all necessary variables here
@@ -149,57 +110,6 @@ public class ObjectUtilsTest {
         // Write the test code here following the given rules
         assertNull(ObjectUtils.identityToString(object));
     }
-
-    //Parser error
-//    @Test
-//    public void identityToString_ValidObject_ReturnsExpectedString() {
-//        // Instantiate all necessary variables here
-//        Object object = "Hello World";
-//
-//        // Write the test code here following the given rules
-//        String expected = object.getClass().getName() + ObjectUtils.AT_SIGN + ObjectUtils.identityHashCodeHex(object);
-//        assertEquals(expected, ObjectUtils.identityToString(object));
-//    }
-
-    //@Test
-    public void identityToString_ValidObject_ThrowsDeprecatedException() {
-        // Instantiate all necessary variables here
-        StrBuilder builder = mock(StrBuilder.class);
-        Object object = "Hello World";
-
-        // Write the test code here following the given rules
-        assertThrows(UnsupportedOperationException.class, () -> ObjectUtils.identityToString(builder, object));
-    }
-
-    //@Test
-    public void identityToString_ValidObject_AppendsToBuffer() {
-        // Instantiate all necessary variables here
-        StringBuffer buffer = mock(StringBuffer.class);
-        Object object = "Hello World";
-
-        // Write the test code here following the given rules
-        assertDoesNotThrow(() -> ObjectUtils.identityToString(buffer, object));
-        verify(buffer).append(object.getClass().getName());
-        //verify(buffer).append(ObjectUtils.AT_SIGN);
-        verify(buffer).append(ObjectUtils.identityHashCodeHex(object));
-    }
-
-    //@Test
-    public void identityToString_ValidObject_AppendsToStringBuilder() {
-        // Instantiate all necessary variables here
-        StringBuilder builder = mock(StringBuilder.class);
-        Object object = "Hello World";
-
-        // Write the test code here following the given rules
-        assertDoesNotThrow(() -> ObjectUtils.identityToString(builder, object));
-        verify(builder).append(object.getClass().getName());
-        //verify(builder).append(ObjectUtils.AT_SIGN);
-        verify(builder).append(ObjectUtils.identityHashCodeHex(object));
-    }
-
-
-
-
 
     @Test
     public void testMedianWithComparator() {
@@ -228,18 +138,6 @@ public class ObjectUtilsTest {
         // Verify the expected result
         assertEquals(3, result);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Test
     public void testIsNotEmpty_WithNull_ReturnsFalse() {
@@ -296,18 +194,6 @@ public class ObjectUtilsTest {
         assertTrue(result);
     }
 
-//    @Test
-//    public void testIsNotEmpty_WithNonEmptyCollection_ReturnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object object = new ArrayList<>();
-//        ((ArrayList<?>) object).add("element");
-//
-//        // Write the test code here following the given rules
-//        boolean result = ObjectUtils.isNotEmpty(object);
-//
-//        assertTrue(result);
-//    }
-
     @Test
     public void testIsNotEmpty_WithEmptyCollection_ReturnsFalse() {
         // Instantiate all necessary variables here
@@ -318,18 +204,6 @@ public class ObjectUtilsTest {
 
         assertFalse(result);
     }
-
-//    @Test
-//    public void testIsNotEmpty_WithNonEmptyMap_ReturnsTrue() {
-//        // Instantiate all necessary variables here
-//        Object object = new HashMap<>();
-//        ((HashMap<?, ?>) object).put("key", "value");
-//
-//        // Write the test code here following the given rules
-//        boolean result = ObjectUtils.isNotEmpty(object);
-//
-//        assertTrue(result);
-//    }
 
     @Test
     public void testIsNotEmpty_WithEmptyMap_ReturnsFalse() {
@@ -363,14 +237,6 @@ public class ObjectUtilsTest {
 
         assertFalse(result);
     }
-
-
-
-
-
-
-
-
 
     @Test
     public void testClone_NullObject_ReturnsNull() {
@@ -407,22 +273,6 @@ public class ObjectUtilsTest {
         assertNotSame(obj, result);
     }
 
-//    @Test
-//    public void testClone_CloneableNonArrayObject_ReturnsClone() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, CloneNotSupportedException {
-//        // Instantiate all necessary variables here
-//        CloneableClass obj = new CloneableClass();
-//
-//        CloneableClass clone = mock(CloneableClass.class);
-//        Method cloneMethod = obj.getClass().getMethod("clone");
-//        when(cloneMethod.invoke(obj)).thenReturn(clone);
-//
-//        // Write the test code here following the given rules
-//        CloneableClass result = ObjectUtils.clone(obj);
-//
-//        assertSame(clone, result);
-//        verify(obj, times(1)).clone();
-//    }
-
     @Test
     public void testClone_NonCloneableObject_ReturnsNull() {
         // Instantiate all necessary variables here
@@ -444,10 +294,6 @@ public class ObjectUtilsTest {
     private static class NonCloneableClass {
         // No clone() method
     }
-
-
-
-
 
     @Test
     public void testMax_WithNullValues_ShouldReturnNull() {
@@ -526,10 +372,6 @@ public class ObjectUtilsTest {
 
         assertEquals(value3, result);
     }
-
-
-
-
 
     @Test
     public void testNotEqual_NullObjects_ReturnsFalse() {
@@ -651,12 +493,6 @@ public class ObjectUtilsTest {
         assertTrue(result);
     }
 
-
-
-
-
-
-
     @Test
     public void testIsArray_NullObject_ReturnsFalse() {
         // Instantiate all necessary variables here
@@ -729,10 +565,6 @@ public class ObjectUtilsTest {
         assertFalse(result);
     }
 
-
-
-
-
     @Test
     public void testGetClass_WithNull_ReturnsNull() {
         // Instantiate all necessary variables here
@@ -755,37 +587,6 @@ public class ObjectUtilsTest {
         assertNotNull(result);
         assertEquals(Object.class, result);
     }
-
-//    @Test
-//    public void testGetClass_WithNullMock_ReturnsNull() {
-//        // Instantiate all necessary variables here
-//        Object object = mock(Object.class);
-//        when(object.getClass()).thenReturn(null);
-//
-//        // Write the test code here following the given rules
-//        Class<?> result = ObjectUtils.getClass(object);
-//
-//        assertNull(result);
-//    }
-
-//    @Test
-//    public void testGetClass_WithNonNullMock_ReturnsClass() {
-//        // Instantiate all necessary variables here
-//        Object object = mock(Object.class);
-//        when(object.getClass()).thenReturn(String.class);
-//
-//        // Write the test code here following the given rules
-//        Class<?> result = ObjectUtils.getClass(object);
-//
-//        assertNotNull(result);
-//        assertEquals(String.class, result);
-//    }
-
-
-
-
-
-
 
     @Test
     public void testGetFirstNonNull_WhenAllSuppliersReturnNull_ShouldReturnNull() {
@@ -821,23 +622,6 @@ public class ObjectUtilsTest {
         assertEquals("abc", result);
     }
     
-    //@Test
-    public void testGetFirstNonNull_WhenSecondSupplierReturnsNonNullValue_ShouldReturnSecondNonNullValue() {
-        // Instantiate all necessary variables here
-        Supplier<String> supplier1 = mock(Supplier.class);
-        Supplier<String> supplier2 = mock(Supplier.class);
-        Supplier<String> supplier3 = mock(Supplier.class);
-        
-        // Write the test code here following the given rules
-        when(supplier1.get()).thenReturn(null);
-        when(supplier2.get()).thenReturn("def");
-        when(supplier3.get()).thenReturn(null);
-        
-        Object result = ObjectUtils.getFirstNonNull(supplier1, supplier2, supplier3);
-        
-        assertEquals("def", result);
-    }
-    
     @Test
     public void testGetFirstNonNull_WhenAllSuppliersReturnNonNullValues_ShouldReturnFirstNonNullValue() {
         // Instantiate all necessary variables here
@@ -865,47 +649,6 @@ public class ObjectUtilsTest {
         assertNull(result);
     }
 
-
-
-
-
-    //@Test
-    public void testHashCodeMulti_NullInput_ReturnsZero() {
-        ObjectUtils objectUtils = new ObjectUtils();
-        int result = objectUtils.hashCodeMulti(null);
-        assertEquals(0, result);
-    }
-
-    //@Test
-    public void testHashCodeMulti_SingleObject_ReturnsHashCode() {
-        ObjectUtils objectUtils = new ObjectUtils();
-        Object object = mock(Object.class);
-        when(object.hashCode()).thenReturn(123);
-
-        int result = objectUtils.hashCodeMulti(object);
-
-//        assertEquals(123, result);
-        verify(object, times(1)).hashCode();
-    }
-    
-    //@Test
-    public void testHashCodeMulti_MultipleObjects_ReturnsCombinedHashCode() {
-        ObjectUtils objectUtils = new ObjectUtils();
-        Object object1 = mock(Object.class);
-        Object object2 = mock(Object.class);
-        Object object3 = mock(Object.class);
-        when(object1.hashCode()).thenReturn(123);
-        when(object2.hashCode()).thenReturn(456);
-        when(object3.hashCode()).thenReturn(789);
-
-        int result = objectUtils.hashCodeMulti(object1, object2, object3);
-
-        assertEquals(369801, result);
-        verify(object1, times(1)).hashCode();
-        verify(object2, times(1)).hashCode();
-        verify(object3, times(1)).hashCode();
-    }
-    
     @Test
     public void testHashCodeMulti_NoObjects_ReturnsOne() {
         ObjectUtils objectUtils = new ObjectUtils();
@@ -914,16 +657,6 @@ public class ObjectUtilsTest {
         
         assertEquals(1, result);
     }
-
-
-
-
-
-
-
-
-
-
 
     @Test
     public void testFirstNonNullWithNullValues() {
@@ -1019,12 +752,6 @@ public class ObjectUtilsTest {
         // Assert
         assertNull(result);
     }
-
-
-
-
-
-
 
     @Test
     public void testIsEmpty_NullObject_ReturnsTrue() {
@@ -1125,14 +852,6 @@ public class ObjectUtilsTest {
         assertFalse(result);
     }
 
-
-
-
-
-
-
-
-
     @Test
     public void testDefaultIfNull_WhenObjectIsNull_ThenReturnDefaultValue() {
         // Instantiate all necessary variables here
@@ -1204,10 +923,6 @@ public class ObjectUtilsTest {
 
         assertEquals(object, result);
     }
-
-
-
-
 
     @Test
     public void testRequireNonEmpty_WithNonNullObject_ReturnsObject() {
@@ -1347,24 +1062,6 @@ public class ObjectUtilsTest {
         });
     }
 
-
-
-
-
-//    @Test
-//    public void testGetIfNull_ReturnsObject_WhenObjectIsNotNull() {
-//        // Arrange
-//        String object = "test";
-//        Supplier<String> defaultSupplier = mock(Supplier.class);
-//
-//        // Act
-//        String result = ObjectUtils.getIfNull(object, defaultSupplier);
-//
-//        // Assert
-//        assertEquals(object, result);
-//       verifyZeroInteractions(defaultSupplier);
-//    }
-
     @Test
     public void testGetIfNull_ReturnsDefault_WhenObjectIsNull() {
         // Arrange
@@ -1407,8 +1104,6 @@ public class ObjectUtilsTest {
         assertEquals(defaultValue, result);
 //        verify(defaultSupplier).get();
     }
-
-
 
     @Test
     public void testCompare_NullInputs_ReturnsZero() {
@@ -1542,11 +1237,6 @@ public class ObjectUtilsTest {
         assertTrue(result > 0);
     }
 
-
-
-
-
-
     @Test
     public void testAllNull_EmptyArray_ReturnsTrue() {
         // Instantiate all necessary variables here
@@ -1602,9 +1292,6 @@ public class ObjectUtilsTest {
         assertFalse(result);
     }
 
-
-
-
     @Test
     public void identityHashCodeHex_NullObject_ReturnsHexStringOfNullHashCode() {
         // Instantiate all necessary variables here
@@ -1637,10 +1324,6 @@ public class ObjectUtilsTest {
         String actual = ObjectUtils.identityHashCodeHex(object);
         assertEquals(expected, actual);
     }
-
-
-
-
 
     @Test
     public void testCONST_SHORT_ValidValue() {
@@ -1713,10 +1396,6 @@ public class ObjectUtilsTest {
         assertEquals(value, result);
     }
 
-
-
-
-
     @Test
     public void testMode_ReturnsMostFrequentlyOccurringItem_WhenItemsAreSupplied() {
         // Instantiate all necessary variables here
@@ -1783,9 +1462,6 @@ public class ObjectUtilsTest {
         assertNull(ObjectUtils.mode(items));
     }
 
-
-
-
     @Test
     public void testHashCode_NullObject_ReturnsZero() {
         // Instantiate all necessary variables here
@@ -1808,22 +1484,6 @@ public class ObjectUtilsTest {
         assertEquals(obj.hashCode(), result);
     }
 
-//    @Test
-//    public void testHashCode_MockObject_ReturnsHashCode() {
-//        // Instantiate all necessary variables here
-//        Object obj = mock(Object.class);
-//        int hashCode = 12345;
-//        when(obj.hashCode()).thenReturn(hashCode);
-//
-//        // Write the test code here following the given rules
-//        int result = ObjectUtils.hashCode(obj);
-//
-//        assertEquals(hashCode, result);
-//    }
-
-
-
-
     @Test
     public void anyNotNull_ShouldReturnTrue_WhenAtLeastOneNonNullValue() {
         // Arrange
@@ -1836,19 +1496,6 @@ public class ObjectUtilsTest {
         // Assert
         assertTrue(result);
     }
-
-//    @Test
-//    public void anyNotNull_ShouldReturnFalse_WhenAllValuesAreNull() {
-//        // Arrange
-//        ObjectUtils.Null nullValue = ObjectUtils.NULL;
-//        Object[] values = { nullValue, nullValue };
-//
-//        // Act
-//        boolean result = ObjectUtils.anyNotNull(values);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
 
     @Test
     public void anyNotNull_ShouldReturnFalse_WhenValuesArrayIsNull() {
@@ -1887,11 +1534,6 @@ public class ObjectUtilsTest {
         assertTrue(result);
     }
 
-
-
-
-
-
     @Test
     public void testCONST_BYTE() {
         // Instantiate all necessary variables here
@@ -1908,26 +1550,10 @@ public class ObjectUtilsTest {
     }
 
 
-
-
-
-
     @Test
     public void testAnyNull_withNullArray_returnsTrue() {
         // Instantiate all necessary variables here
         Object[] values = null;
-
-        // Write the test code here following the given rules
-        boolean result = ObjectUtils.anyNull(values);
-
-        // Verify the result
-        assertTrue(result);
-    }
-
-    //@Test
-    public void testAnyNull_withEmptyArray_returnsTrue() {
-        // Instantiate all necessary variables here
-        Object[] values = new Object[0];
 
         // Write the test code here following the given rules
         boolean result = ObjectUtils.anyNull(values);
@@ -1972,12 +1598,6 @@ public class ObjectUtilsTest {
         assertTrue(result);
     }
 
-
-
-
-
-
-
     @Test
     public void testMinWithNullValues() {
         // Instantiate all necessary variables here
@@ -2021,9 +1641,6 @@ public class ObjectUtilsTest {
 
         assertNull(result);
     }
-
-
-
 
     @Test
     public void testEquals_SameObject_ReturnsTrue() {
@@ -2084,10 +1701,6 @@ public class ObjectUtilsTest {
         // Write the test code here following the given rules
         assertFalse(ObjectUtils.equals(object1, object2));
     }
-
-
-
-
 
     @Test
     public void testToString_NullInput_ReturnsEmptyString() {
@@ -2190,9 +1803,6 @@ public class ObjectUtilsTest {
         assertEquals("null", result);
     }
 
-
-
-
     @Test
     public void testHashCodeHex_NullObject_ReturnsZero() {
         // Instantiate all necessary variables here
@@ -2228,9 +1838,6 @@ public class ObjectUtilsTest {
 
         assertNotEquals(actual1, actual2);
     }
-
-
-
 
     @Test
     public void testAllNotNull_WithNonNullValues_ShouldReturnTrue() {
@@ -2297,9 +1904,6 @@ public class ObjectUtilsTest {
 
         assertFalse(result);
     }
-
-
-
 
     @Test
     public void testCONSTBoolean() {
@@ -2390,12 +1994,6 @@ public class ObjectUtilsTest {
 
         assertEquals(expected, result);
     }
-
-
-
-
-
-
 
     @Test
     public void testWait() throws InterruptedException {

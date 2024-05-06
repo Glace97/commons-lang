@@ -70,24 +70,6 @@ public class CharUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void testIsAsciiAlpha_WithUnicodeCharacter() {
-//        // Arrange
-//        char ch = '©';
-//
-//        // Act
-//        boolean result = CharUtils.isAsciiAlpha(ch);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
-
-
-
-
-
-
-
     @Test
     public void testToIntValue_ValidNumericCharacter_ReturnsIntValue() {
         char ch = '5';
@@ -188,9 +170,6 @@ public class CharUtilsTest {
     }
 
 
-
-
-
     @Test
     public void testToString_withValidCharacter_shouldReturnStringWithCharacter() {
         // Arrange
@@ -251,18 +230,6 @@ public class CharUtilsTest {
         assertEquals("\u0000", result);
     }
 
-//    @Test
-//    public void testToString_withNonAsciiCharacter_shouldReturnStringWithCharacter() {
-//        // Arrange
-//        char ch = 'Æ';
-//
-//        // Act
-//        String result = CharUtils.toString(ch);
-//
-//        // Assert
-//        assertEquals("Æ", result);
-//    }
-
     @Test
     public void testToString_withCharacterGreaterThanCharArrayLength_shouldReturnStringWithCharacter() {
         // Arrange
@@ -274,10 +241,6 @@ public class CharUtilsTest {
         // Assert
         assertEquals(String.valueOf(ch), result);
     }
-
-
-
-
 
     @Test
     public void testIsAsciiAlphaUpper_ReturnsTrueForUpperCaseLetters() {
@@ -339,24 +302,6 @@ public class CharUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void testIsAsciiAlphaUpper_ReturnsFalseForCopyrightSymbol() {
-//        // Arrange
-//        char ch = '©';
-//
-//        // Act
-//        boolean result = CharUtils.isAsciiAlphaUpper(ch);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
-
-
-
-
-
-
-
     @Test
     public void testIsAsciiControl_ReturnsTrueForLF() {
         // Arrange
@@ -417,26 +362,6 @@ public class CharUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void testIsAsciiControl_ReturnsFalseForSpecialCharacters() {
-//        // Arrange
-//        char ch = '&copy;';
-//
-//        // Act
-//        boolean result = CharUtils.isAsciiControl(ch);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
-
-
-
-
-
-
-
-
-
     @Test
     public void testUnicodeEscaped() {
         // Test with space character
@@ -463,10 +388,6 @@ public class CharUtilsTest {
         String actual4 = CharUtils.unicodeEscaped(ch4);
         assertEquals(expected4, actual4);
     }
-
-
-
-
 
     @Test
     public void testIsAsciiPrintable_ReturnsTrueForLowercaseLetter() {
@@ -528,18 +449,6 @@ public class CharUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void testIsAsciiPrintable_ReturnsFalseForNonAsciiCharacter() {
-//        // Arrange
-//        char ch = '©';
-//
-//        // Act
-//        boolean result = CharUtils.isAsciiPrintable(ch);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
-
     @Test
     public void testIsAsciiPrintable_ReturnsFalseForNullControlCharacter() {
         // Arrange
@@ -565,12 +474,6 @@ public class CharUtilsTest {
             assertTrue(result);
         }
     }
-
-
-
-
-
-
 
     @Test
     public void testCompare_GivenSameChars_ReturnsZero() {
@@ -637,22 +540,6 @@ public class CharUtilsTest {
         assertTrue(result < 0);
     }
 
-//Parser error
-//    @Test
-//    public void testCompare_GivenHexDigits_ReturnsCorrectValue() {
-//        // Arrange
-//        char x = CharUtils.HEX_DIGITS[0];
-//        char y = CharUtils.HEX_DIGITS[1];
-//
-//        // Act
-//        int result = CharUtils.compare(x, y);
-//
-//        // Assert
-//        assertTrue(result < 0);
-//    }
-
-
-
     @Test
     public void testToCharacterObjectWithAsciiCharacter() {
         // Arrange
@@ -664,18 +551,6 @@ public class CharUtilsTest {
         // Assert
         assertEquals(Character.valueOf(ch), result);
     }
-
-//    @Test
-//    public void testToCharacterObjectWithNonAsciiCharacter() {
-//        // Arrange
-//        char ch = 'Ω';
-//
-//        // Act
-//        Character result = CharUtils.toCharacterObject(ch);
-//
-//        // Assert
-//        assertEquals(Character.valueOf(ch), result);
-//    }
 
     @Test
     public void testToCharacterObjectWithNullCharacter() {
@@ -760,9 +635,6 @@ public class CharUtilsTest {
         // Assert
         assertNull(result);
     }
-
-
-
 
     @Test
     public void testToCharNonNull() {
@@ -866,11 +738,6 @@ public class CharUtilsTest {
         assertEquals('X', result);
     }
 
-
-
-
-
-
     @Test
     public void testIsAsciiAlphaLower_WhenCharacterIsLowerCaseAlphabet_ReturnsTrue() {
         // Arrange
@@ -930,21 +797,6 @@ public class CharUtilsTest {
         // Assert
         assertFalse(result);
     }
-
-//    @Test
-//    public void testIsAsciiAlphaLower_WhenCharacterIsNonAscii_ReturnsFalse() {
-//        // Arrange
-//        char ch = '©';
-//
-//        // Act
-//        boolean result = CharUtils.isAsciiAlphaLower(ch);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
-
-
-
 
     @Test
     public void testIsAsciiAlphanumeric_ReturnsTrueForLowercaseLetters() {
@@ -1006,22 +858,6 @@ public class CharUtilsTest {
         assertFalse(result);
     }
 
-//    @Test
-//    public void testIsAsciiAlphanumeric_ReturnsFalseForSpecialCharacter() {
-//        // Arrange
-//        char ch = '&copy;';
-//
-//        // Act
-//        boolean result = CharUtils.isAsciiAlphanumeric(ch);
-//
-//        // Assert
-//        assertFalse(result);
-//    }
-
-
-
-
-
     @Test
     public void testIsAsciiNumeric() {
         // Test when ch is a digit
@@ -1036,25 +872,6 @@ public class CharUtilsTest {
         assertFalse(CharUtils.isAsciiNumeric('&'));
         assertFalse(CharUtils.isAsciiNumeric('\u00a9'));
     }
-
-//    @Test
-//    public void testIsAsciiNumeric_MockedStatic() {
-//        try (MockedStatic<CharUtils> mockedStatic = mockStatic(CharUtils.class)) {
-//            char ch = '0';
-//            mockedStatic.when(() -> CharUtils.isAsciiNumeric(ch)).thenReturn(true);
-//            assertTrue(CharUtils.isAsciiNumeric(ch));
-//
-//            ch = 'a';
-//            mockedStatic.when(() -> CharUtils.isAsciiNumeric(ch)).thenReturn(false);
-//            assertFalse(CharUtils.isAsciiNumeric(ch));
-//        }
-//    }
-
-
-
-
-
-
 
     @Test
     public void testIsAscii_lowerCaseLetter() {
@@ -1111,17 +928,6 @@ public class CharUtilsTest {
         assertTrue(actualResult);
     }
 
-//    @Test
-//    public void testIsAscii_nonAsciiCharacter() {
-//        // Instantiate all necessary variables here
-//        char ch = '©';
-//
-//        // Write the test code here following the given rules
-//        boolean actualResult = CharUtils.isAscii(ch);
-//
-//        assertFalse(actualResult);
-//    }
-
     @Test
     public void testIsAscii_edgeCase() {
         // Instantiate all necessary variables here
@@ -1132,6 +938,5 @@ public class CharUtilsTest {
 
         assertFalse(actualResult);
     }
-
 
 }
